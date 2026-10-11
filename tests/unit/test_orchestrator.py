@@ -13,7 +13,7 @@ from plotline.contract import (
 from plotline.agents import stubs
 from plotline.orchestrator import Engine, run
 from plotline.state import CoverageDecision, Failure, L1Request
-from helpers import SNAPSHOT_SHA, small_df
+from tests.support import SNAPSHOT_SHA, small_df
 
 
 def engine(**kw) -> Engine:

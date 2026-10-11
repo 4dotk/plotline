@@ -8,7 +8,7 @@ from plotline.contract import (
     ANOMALY_PCT, Criteria, TraceEvent, TrendRecord, TrendReport, canonical_criteria_json,
     report_to_json, window_months,
 )
-from helpers import a1_report, a1_report_dict
+from tests.support import a1_report, a1_report_dict
 
 
 def invalid(test, fn_or_dict, *needles):

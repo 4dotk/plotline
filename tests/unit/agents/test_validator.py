@@ -7,7 +7,7 @@ from plotline.contract import Criteria, RunOptions, TrendRecord, window_months
 from plotline.llm_client import LlmClient
 from plotline.state import Failure
 from plotline.trace import TraceLog
-from helpers import FakeChat, llm_config
+from tests.support import FakeChat, llm_config
 
 END = "2010-12"
 ORIGINAL = Criteria(localities=["Adyar"], bhk=[1], price_band=[7000000, 9000000], window_end=END)

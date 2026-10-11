@@ -2,8 +2,10 @@
 
 Every test writes its own log files under ``test_logs/`` (recreated each session):
 
-    test_logs/<module>/<Class>.<test>.log     human-readable, DEBUG level, ends with the result
-    test_logs/<module>/<Class>.<test>.jsonl   one JSON object per log record
+    test_logs/<dir>/<module>/<Class>.<test>.log     human-readable, DEBUG level, ends with the result
+    test_logs/<dir>/<module>/<Class>.<test>.jsonl   one JSON object per log record
+
+(``<dir>/<module>`` mirrors the path under tests/, e.g. ``unit/agents/test_planner``.)
     test_logs/_all.log                        every test, in run order
     test_logs/_summary.txt                    one line per test: outcome, duration, log lines
 
@@ -27,7 +29,8 @@ from plotline.log import LOG_FORMAT
 # A developer's .env may say LLM_MODE=live; tests never reach a model unless they inject one.
 os.environ["LLM_MODE"] = "off"
 
-LOG_DIR = Path(__file__).resolve().parent.parent / "test_logs"
+TESTS_DIR = Path(__file__).resolve().parent
+LOG_DIR = TESTS_DIR.parent / "test_logs"
 _summary: list[str] = []
 
 
@@ -69,7 +72,7 @@ def _safe(text: str) -> str:
 @pytest.fixture(autouse=True)
 def _capture_logs(request):
     node = request.node
-    module = Path(str(node.fspath)).stem
+    module = Path(str(node.fspath)).resolve().relative_to(TESTS_DIR).with_suffix("")
     name = _safe(node.nodeid.split("::", 1)[1].replace("::", "."))
     folder = LOG_DIR / module
     folder.mkdir(parents=True, exist_ok=True)

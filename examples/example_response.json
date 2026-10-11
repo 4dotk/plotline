@@ -1,0 +1,1105 @@
+{
+  "status": "ok",
+  "error": null,
+  "criteria_in": {
+    "localities": null,
+    "window_end": "2015-02",
+    "bhk": null,
+    "price_band": null,
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "effective_criteria": {
+    "localities": null,
+    "window_end": "2015-02",
+    "bhk": null,
+    "price_band": null,
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "price_unit": "inr",
+  "records": [
+    {
+      "month": "2014-03",
+      "region_key": "ALL",
+      "listing_count": 24,
+      "n_in_bucket": 24,
+      "median_price": 12440755.0,
+      "median_price_per_sqft": 8070.312066507398,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "Anna Nagar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 13695970.0,
+      "median_price_per_sqft": 8122.108508014797,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "Chrompet",
+      "listing_count": 10,
+      "n_in_bucket": 10,
+      "median_price": 9261335.0,
+      "median_price_per_sqft": 8777.567925194071,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "T Nagar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 14047140.0,
+      "median_price_per_sqft": 7911.721817162086,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-03",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "ALL",
+      "listing_count": 22,
+      "n_in_bucket": 22,
+      "median_price": 12020615.0,
+      "median_price_per_sqft": 8630.72764331722,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.06944162408980459
+    },
+    {
+      "month": "2014-04",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "Anna Nagar",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 12627015.0,
+      "median_price_per_sqft": 7365.413030386543,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "Chrompet",
+      "listing_count": 11,
+      "n_in_bucket": 11,
+      "median_price": 9315520.0,
+      "median_price_per_sqft": 9301.404958677685,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "T Nagar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 13654950.0,
+      "median_price_per_sqft": 7850.366323907455,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-04",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "ALL",
+      "listing_count": 34,
+      "n_in_bucket": 34,
+      "median_price": 12308475.0,
+      "median_price_per_sqft": 8650.14418850009,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.0022496996760064114
+    },
+    {
+      "month": "2014-05",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "Anna Nagar",
+      "listing_count": 11,
+      "n_in_bucket": 11,
+      "median_price": 14409230.0,
+      "median_price_per_sqft": 7732.277019937041,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "Chrompet",
+      "listing_count": 19,
+      "n_in_bucket": 19,
+      "median_price": 9732220.0,
+      "median_price_per_sqft": 9267.650103519669,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "T Nagar",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 12736615.0,
+      "median_price_per_sqft": 7375.310753820807,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-05",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "ALL",
+      "listing_count": 31,
+      "n_in_bucket": 31,
+      "median_price": 11216030.0,
+      "median_price_per_sqft": 8628.894736842105,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.0024565430581185987
+    },
+    {
+      "month": "2014-06",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "Anna Nagar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 13551295.0,
+      "median_price_per_sqft": 7999.355489561856,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "Chrompet",
+      "listing_count": 18,
+      "n_in_bucket": 18,
+      "median_price": 9194950.0,
+      "median_price_per_sqft": 8742.509268563113,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "T Nagar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 19359180.0,
+      "median_price_per_sqft": 11461.661442006269,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-06",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "ALL",
+      "listing_count": 31,
+      "n_in_bucket": 31,
+      "median_price": 12026900.0,
+      "median_price_per_sqft": 8656.234991423671,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.00316845383045794
+    },
+    {
+      "month": "2014-07",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "Anna Nagar",
+      "listing_count": 5,
+      "n_in_bucket": 5,
+      "median_price": 13460520.0,
+      "median_price_per_sqft": 7568.595696489241,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "Chrompet",
+      "listing_count": 20,
+      "n_in_bucket": 20,
+      "median_price": 9718350.0,
+      "median_price_per_sqft": 10624.391647251341,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "T Nagar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 14073420.0,
+      "median_price_per_sqft": 7855.8608783015625,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-07",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "ALL",
+      "listing_count": 28,
+      "n_in_bucket": 28,
+      "median_price": 12691755.0,
+      "median_price_per_sqft": 9480.94064494149,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.09527302046847286
+    },
+    {
+      "month": "2014-08",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "Anna Nagar",
+      "listing_count": 10,
+      "n_in_bucket": 10,
+      "median_price": 14326665.0,
+      "median_price_per_sqft": 7560.172262422454,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "Chrompet",
+      "listing_count": 15,
+      "n_in_bucket": 15,
+      "median_price": 8987500.0,
+      "median_price_per_sqft": 10547.94952681388,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "T Nagar",
+      "listing_count": 3,
+      "n_in_bucket": 3,
+      "median_price": 13715380.0,
+      "median_price_per_sqft": 7662.223463687151,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-08",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "ALL",
+      "listing_count": 25,
+      "n_in_bucket": 25,
+      "median_price": 12368280.0,
+      "median_price_per_sqft": 8885.39029535865,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.06281553401566675
+    },
+    {
+      "month": "2014-09",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "Anna Nagar",
+      "listing_count": 8,
+      "n_in_bucket": 8,
+      "median_price": 13897095.0,
+      "median_price_per_sqft": 7846.344518414055,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "Chrompet",
+      "listing_count": 13,
+      "n_in_bucket": 13,
+      "median_price": 9991510.0,
+      "median_price_per_sqft": 10123.434739941118,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "T Nagar",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 15314365.0,
+      "median_price_per_sqft": 8243.088125359734,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-09",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "ALL",
+      "listing_count": 25,
+      "n_in_bucket": 25,
+      "median_price": 10676410.0,
+      "median_price_per_sqft": 9095.651658767772,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.023663717227925707
+    },
+    {
+      "month": "2014-10",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "Anna Nagar",
+      "listing_count": 9,
+      "n_in_bucket": 9,
+      "median_price": 14620220.0,
+      "median_price_per_sqft": 8659.001196172248,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "Chrompet",
+      "listing_count": 13,
+      "n_in_bucket": 13,
+      "median_price": 8721550.0,
+      "median_price_per_sqft": 9651.240694789081,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "T Nagar",
+      "listing_count": 3,
+      "n_in_bucket": 3,
+      "median_price": 14049650.0,
+      "median_price_per_sqft": 7457.351380042463,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-10",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "ALL",
+      "listing_count": 35,
+      "n_in_bucket": 35,
+      "median_price": 12123360.0,
+      "median_price_per_sqft": 9110.533333333333,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.001636130661536006
+    },
+    {
+      "month": "2014-11",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "Anna Nagar",
+      "listing_count": 16,
+      "n_in_bucket": 16,
+      "median_price": 18004455.0,
+      "median_price_per_sqft": 10224.862841857868,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "Chrompet",
+      "listing_count": 17,
+      "n_in_bucket": 17,
+      "median_price": 9833270.0,
+      "median_price_per_sqft": 9053.033175355451,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "T Nagar",
+      "listing_count": 2,
+      "n_in_bucket": 2,
+      "median_price": 12175430.0,
+      "median_price_per_sqft": 7342.939616228229,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-11",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "ALL",
+      "listing_count": 32,
+      "n_in_bucket": 32,
+      "median_price": 11722730.0,
+      "median_price_per_sqft": 10459.209431323932,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.14803481296271714
+    },
+    {
+      "month": "2014-12",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "Anna Nagar",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 16457455.0,
+      "median_price_per_sqft": 9639.578453029842,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "Chrompet",
+      "listing_count": 20,
+      "n_in_bucket": 20,
+      "median_price": 10448255.0,
+      "median_price_per_sqft": 10757.357413958644,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "T Nagar",
+      "listing_count": 8,
+      "n_in_bucket": 8,
+      "median_price": 12271930.0,
+      "median_price_per_sqft": 7336.500133155792,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2014-12",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "ALL",
+      "listing_count": 28,
+      "n_in_bucket": 28,
+      "median_price": 11950775.0,
+      "median_price_per_sqft": 8919.11716171617,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.1472474836382367
+    },
+    {
+      "month": "2015-01",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "Anna Nagar",
+      "listing_count": 10,
+      "n_in_bucket": 10,
+      "median_price": 19653480.0,
+      "median_price_per_sqft": 11313.253251486985,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "Chrompet",
+      "listing_count": 15,
+      "n_in_bucket": 15,
+      "median_price": 8901800.0,
+      "median_price_per_sqft": 8893.234323432343,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "T Nagar",
+      "listing_count": 3,
+      "n_in_bucket": 3,
+      "median_price": 14844750.0,
+      "median_price_per_sqft": 7879.37898089172,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-01",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "ALL",
+      "listing_count": 23,
+      "n_in_bucket": 23,
+      "median_price": 11412420.0,
+      "median_price_per_sqft": 8508.576779026218,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.04602926222924053
+    },
+    {
+      "month": "2015-02",
+      "region_key": "Adyar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "Anna Nagar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 14848675.0,
+      "median_price_per_sqft": 7649.549446885691,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "Chrompet",
+      "listing_count": 15,
+      "n_in_bucket": 15,
+      "median_price": 8350550.0,
+      "median_price_per_sqft": 8875.639204545454,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "KK Nagar",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "Karapakkam",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "T Nagar",
+      "listing_count": 2,
+      "n_in_bucket": 2,
+      "median_price": 17064090.0,
+      "median_price_per_sqft": 8782.377160633281,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2015-02",
+      "region_key": "Velachery",
+      "listing_count": 0,
+      "n_in_bucket": 0,
+      "median_price": null,
+      "median_price_per_sqft": null,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    }
+  ],
+  "summary": {
+    "n_rows": 338,
+    "price": {
+      "start": 12303430.0,
+      "end": 11618510.0,
+      "change_pct": -5.566902888056424,
+      "direction": "down"
+    },
+    "price_per_sqft": {
+      "start": 8491.884578936817,
+      "end": 8945.0,
+      "change_pct": 5.335864104736965,
+      "direction": "up"
+    }
+  },
+  "coverage_score": 1.0,
+  "anomaly_flags": [
+    {
+      "month": "2014-12",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": 0.14803481296271714,
+      "threshold": 0.12,
+      "reason": "median price per sqft rose 14.8% vs 2014-11"
+    },
+    {
+      "month": "2015-01",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": -0.1472474836382367,
+      "threshold": 0.12,
+      "reason": "median price per sqft fell 14.7% vs 2014-12"
+    }
+  ],
+  "diagnostics": [
+    {
+      "month": "2014-12",
+      "text": "median price per sqft rose 14.8% vs 2014-11",
+      "source": "template"
+    },
+    {
+      "month": "2015-01",
+      "text": "median price per sqft fell 14.7% vs 2014-12",
+      "source": "template"
+    }
+  ],
+  "trace": [
+    {
+      "i": 0,
+      "agent": "planner",
+      "kind": "decision",
+      "loop": null,
+      "msg": "topology=parallel (7 localities >= 3)",
+      "data": {}
+    },
+    {
+      "i": 1,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "7 scanner(s), parallel: 338 rows",
+      "data": {}
+    },
+    {
+      "i": 2,
+      "agent": "aggregator",
+      "kind": "step",
+      "loop": null,
+      "msg": "96 buckets (12 months x 8 regions)",
+      "data": {}
+    },
+    {
+      "i": 3,
+      "agent": "validator",
+      "kind": "step",
+      "loop": null,
+      "msg": "coverage 12/12 meets 9/12; no widening needed",
+      "data": {}
+    },
+    {
+      "i": 4,
+      "agent": "anomaly",
+      "kind": "step",
+      "loop": null,
+      "msg": "2 anomaly flag(s) on the ALL series",
+      "data": {}
+    },
+    {
+      "i": 5,
+      "agent": "diagnostic",
+      "kind": "step",
+      "loop": null,
+      "msg": "template text for 2 flag(s) (LLM_MODE=off)",
+      "data": {}
+    },
+    {
+      "i": 6,
+      "agent": "reporter",
+      "kind": "step",
+      "loop": null,
+      "msg": "report assembled",
+      "data": {}
+    }
+  ],
+  "metadata": {
+    "contract_version": "1.1.0",
+    "logic_version": "abc1234",
+    "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+    "seed": 0,
+    "llm_mode": "off",
+    "topology": "parallel",
+    "n_scanners": 7,
+    "loops_enabled": true,
+    "loop_counters": {
+      "L1_repairs": 0,
+      "L2_attempts": 0
+    },
+    "partial_last_month": true,
+    "llm": null
+  }
+}

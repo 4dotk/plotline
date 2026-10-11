@@ -8,7 +8,7 @@ from plotline.llm_client import LlmClient
 from plotline.orchestrator import Engine
 from plotline.state import DataInfo, Failure, L1Request
 from plotline.trace import TraceLog
-from helpers import SNAPSHOT_SHA, FakeChat, llm_config, small_df
+from tests.support import SNAPSHOT_SHA, FakeChat, llm_config, small_df
 
 INFO = DataInfo(first_month="2004-01", latest_month="2015-02")
 SMALL_INFO = DataInfo(first_month="2014-01", latest_month="2015-02")  # small_df(): valid ends 2014-12 .. 2015-02

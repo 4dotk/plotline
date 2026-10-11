@@ -282,7 +282,7 @@ Mode A is deterministic: one run per base with `seed = 0` plus the determinism s
 
 ### 9.5 Oracle, logs, process
 
-`tests/oracle.py` is an independent plain-pandas implementation of 6.2–6.3 and MUST NOT import application logic; check it against `golden.md` first, then the application against it on every base, and fix any mismatch before MRs run. Pre-register predictions in `NOTEBOOK.md`; diagnose the 3 most-violated MRs with the 5-step protocol; log every violation to `results/violations.csv` and tag `v0-results` before fixing anything. All in `testing.md` §2, §9, §10.
+`tests/mt/oracle.py` is an independent plain-pandas implementation of 6.2–6.3 and MUST NOT import application logic; check it against `golden.md` first, then the application against it on every base, and fix any mismatch before MRs run. Pre-register predictions in `NOTEBOOK.md`; diagnose the 3 most-violated MRs with the 5-step protocol; log every violation to `results/violations.csv` and tag `v0-results` before fixing anything. All in `testing.md` §2, §9, §10.
 
 ---
 
@@ -303,12 +303,13 @@ data/raw/Chennai_Housing_Sale.csv   data/chennai_snapshot.csv   data/SNAPSHOT.sh
 scripts/freeze_snapshot.py          scripts/golden_vectors.py
 app/   contract.py (constants + pydantic models), orchestrator.py, agents/, llm_client.py, prompts/   (S; K owns llm_client.py)
 api/  ui/                                                                                          (S)
-tests/  oracle.py, generator.py, mrs/, stats.py, run.py, reproduce.py                              (K)
+tests/  unit/ (app unit tests), mt/ (oracle.py, generator.py, stats.py, harness.py, mrs/, run.py, reproduce.py),
+        mt_selftests/ (tests of mt/)                                                                (K)
 cache/llm_replay.jsonl     results/ (violations.csv, headline_table.md, run_manifest.json)
 docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 ```
 
-**One-command reproduction:** `python -m tests.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`, with no GPU and no network. It fails loudly on a snapshot hash mismatch or a replay-cache miss. State in the report that a live run may drift.
+**One-command reproduction:** `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`, with no GPU and no network. It fails loudly on a snapshot hash mismatch or a replay-cache miss. State in the report that a live run may drift.
 
 ---
 
@@ -328,5 +329,6 @@ docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 |---|---|---|---|
 | 1.0.0 | 2026-10-10 | draft | First full contract, built from the dataset verification. |
 | 1.1.0 | 2026-10-10 | draft | (a) D11: the Validator may use the model for the L2 widen/stop choice (I-LLM, 7.1, 7.3, 7.4 `decided_by`, 8). (b) 7.1 gets a Kind column. (c) Fixes promoted from subcontract clarifications: MR3 skip also covers a pooled first-3 / last-3 count in {3, 4}; MR4 means "all fields equal except `pct_change` at m+1". (d) `app/contract.py`; `logic_version`; `FLAT_BAND_PCT` used in 6.2. (e) Size: sections 4, 8, 9 summarised; MR table, cleaning table and appendices moved to subcontracts (`golden.md` is new); `agents.md` sharded into `contracts/agents/`; section 1 added, other numbering unchanged. |
+| — | 2026-10-11 | K | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. Version bump pending S's agreement. |
 | | | S: ☐ agreed | |
 | | | K: ☐ agreed | |

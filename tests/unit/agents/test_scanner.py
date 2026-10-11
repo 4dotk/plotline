@@ -8,7 +8,7 @@ from plotline.contract import Criteria, RunOptions
 from plotline.state import DataInfo, PlanResult
 from plotline.trace import TraceLog
 
-SNAPSHOT = Path(__file__).resolve().parent.parent / "data" / "chennai_snapshot.csv"
+SNAPSHOT = Path(__file__).resolve().parents[3] / "data" / "chennai_snapshot.csv"
 INFO = DataInfo(first_month="2014-01", latest_month="2015-02")
 
 

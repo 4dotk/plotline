@@ -14,9 +14,9 @@ from plotline.llm_client import (
     extract_json,
     prompt_hash,
 )
-from helpers import FakeChat, llm_config
+from tests.support import FakeChat, llm_config
 
-SRC = Path(__file__).resolve().parent.parent / "src" / "plotline"
+SRC = Path(__file__).resolve().parents[2] / "src" / "plotline"
 GOOD = '{"localities": ["Adyar"], "window_end": "2015-02", "bhk": [1], "price_band": null, "sqft_range": null, "sale_cond": null, "price_unit": "inr"}'
 
 

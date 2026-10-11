@@ -6,7 +6,7 @@ from plotline.agents import aggregator
 from plotline.contract import Criteria, window_months
 from plotline.state import DataInfo, Failure, L1Request
 from plotline.trace import TraceLog
-from helpers import small_df
+from tests.support import small_df
 
 INFO = DataInfo(first_month="2014-01", latest_month="2015-02")
 

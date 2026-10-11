@@ -9,10 +9,10 @@ import pandas as pd
 
 from plotline.contract import REL_TOL, Criteria, window_months
 from plotline.orchestrator import Engine
-from tests.oracle import oracle
-from helpers import A1, SNAPSHOT_SHA
+from tests.mt.oracle import oracle
+from tests.support import A1, SNAPSHOT_SHA
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 SNAPSHOT = ROOT / "data" / "chennai_snapshot.csv"
 NO_FILTERS = dict(localities=None, bhk=None, price_band=None, sqft_range=None, sale_cond=None, price_unit="inr")
 
@@ -27,7 +27,7 @@ def all_series(result: dict) -> list[dict]:
 
 class Independence(unittest.TestCase):
     def test_oracle_imports_only_the_contract_module(self):  # Testing.md 2.1
-        tree = ast.parse((ROOT / "tests" / "oracle.py").read_text())
+        tree = ast.parse((ROOT / "tests" / "mt" / "oracle.py").read_text())
         modules = {n.module for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)}
         modules |= {a.name for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names}
         self.assertEqual({m for m in modules if m.startswith("plotline")}, {"plotline.contract"})

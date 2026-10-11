@@ -1,0 +1,87 @@
+{
+  "status": "error",
+  "error": {
+    "code": "E_INVALID_CRITERIA",
+    "message": "invalid localities: no close match"
+  },
+  "criteria_in": {
+    "localities": [
+      "Velacheri-X"
+    ],
+    "window_end": "2015-02",
+    "bhk": null,
+    "price_band": null,
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "effective_criteria": {
+    "localities": [
+      "Velacheri-X"
+    ],
+    "window_end": "2015-02",
+    "bhk": null,
+    "price_band": null,
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "price_unit": "inr",
+  "records": [],
+  "summary": null,
+  "coverage_score": 0.0,
+  "anomaly_flags": [],
+  "diagnostics": [],
+  "trace": [
+    {
+      "i": 0,
+      "agent": "planner",
+      "kind": "decision",
+      "loop": null,
+      "msg": "topology=consolidated (1 locality < 3)",
+      "data": {}
+    },
+    {
+      "i": 1,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "1 scanner(s), consolidated: 0 rows",
+      "data": {}
+    },
+    {
+      "i": 2,
+      "agent": "aggregator",
+      "kind": "warning",
+      "loop": null,
+      "msg": "invalid localities: locality_unknown; asking the planner to repair (L1)",
+      "data": {}
+    },
+    {
+      "i": 3,
+      "agent": "planner",
+      "kind": "error",
+      "loop": null,
+      "msg": "E_INVALID_CRITERIA: invalid localities: no close match",
+      "data": {
+        "code": "E_INVALID_CRITERIA"
+      }
+    }
+  ],
+  "metadata": {
+    "contract_version": "1.1.0",
+    "logic_version": "abc1234",
+    "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+    "seed": 0,
+    "llm_mode": "off",
+    "topology": "consolidated",
+    "n_scanners": 1,
+    "loops_enabled": true,
+    "loop_counters": {
+      "L1_repairs": 0,
+      "L2_attempts": 0
+    },
+    "partial_last_month": false,
+    "llm": null
+  }
+}

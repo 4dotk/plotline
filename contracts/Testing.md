@@ -20,7 +20,7 @@ Where this file adds a detail the global contract leaves open, the line is marke
 
 ## 2. Oracle rules
 
-`tests/oracle.py` is an independent plain-pandas implementation of every formula in global 6.2–6.3.
+`tests/mt/oracle.py` is an independent plain-pandas implementation of every formula in global 6.2–6.3.
 
 1. **Independence.** It MUST NOT import any application logic (`app/`). It may share only the snapshot file and the constants module `app/contract.py`, so thresholds cannot drift. **[clarification]** (constants import is the only allowed `app` import; see section 12)
 2. **What it computes:** the dense grid keys (I-DENSE); `listing_count`, `n_in_bucket`, `median_price`, `median_price_per_sqft`, `low_sample`; `pct_change_price_per_sqft`; `anomaly_flags` (`price_jump`, `count_drop`); the summary (pooled first-3 vs last-3 months, `change_pct`, `direction`); `coverage_score`. Medians use numpy `median` semantics on the same rows; no rounding.
@@ -48,7 +48,7 @@ Where this file adds a detail the global contract leaves open, the line is marke
 ## 4. Base inputs
 
 * **One base input = one distinct `Criteria`** (canonical JSON: keys sorted, lists sorted, numbers as written). Distinct bases are the unit for counting, confidence intervals and independence. The 3 seeds on one base are not independent; say so in threats to validity.
-* **Generator** (`tests/generator.py`, seeded by `GEN_SEED`). For each draw:
+* **Generator** (`tests/mt/generator.py`, seeded by `GEN_SEED`). For each draw:
   1. `window_end` sampled uniformly over the 123 valid ends (never the default);
   2. `localities`: a random subset of those with ≥ 30 sales in that window;
   3. `bhk`: null half the time, else 1–2 values each with ≥ 10 sales;
@@ -155,7 +155,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 * **95 % interval:** Wilson score interval (z = 1.96). When the violation count is 0 or equals n, use Clopper–Pearson.
 * For 0 violations in n bases the two-sided upper bound is `1 − 0.025^(1/n)`: n = 30 → 11.6 %, n = 100 → 3.6 %.
 * Report per MR: seed list, base count, number evaluated, number skipped (by reason), violation count and rate, CI and the method used, and (Mode B) the per-pair rate.
-* `tests/stats.py` is tested on known cases (T24): Wilson on a non-boundary count, Clopper–Pearson at 0 and at n, and the two upper bounds above.
+* `tests/mt/stats.py` is tested on known cases (T24): Wilson on a non-boundary count, Clopper–Pearson at 0 and at n, and the two upper bounds above.
 * Threats to validity to state in the report: seeds on one base are not independent; Mode A seeds add nothing; the conditioned table excludes skipped bases; the generator draws only price bands (no `sqft_range` or `sale_cond`), so those soft filters are untested; MR1–MR10 cover only the contract's MRs.
 
 ## 9. Result logging
@@ -178,7 +178,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
    4. check by hand against the oracle;
    5. classify as **agent fault**, **data artifact**, **ill-conceived MR**, or **tests bug**, with the evidence.
 5. The final headline run is tagged `final-results`.
-6. **One-command reproduction:** `python -m tests.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch or a replay-cache miss. The report states that a live (non-replay) run may drift.
+6. **One-command reproduction:** `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch or a replay-cache miss. The report states that a live (non-replay) run may drift.
 
 ## 11. Harness self-tests (what must exist)
 

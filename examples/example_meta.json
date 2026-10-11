@@ -1,0 +1,1816 @@
+{
+  "localities": [
+    "Adyar",
+    "Anna Nagar",
+    "Chrompet",
+    "KK Nagar",
+    "Karapakkam",
+    "T Nagar",
+    "Velachery"
+  ],
+  "bhk_values": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "sale_conds": [
+    "AbNormal",
+    "AdjLand",
+    "Family",
+    "Normal Sale",
+    "Partial"
+  ],
+  "first_month": "2004-01",
+  "latest_month": "2015-02",
+  "window_end_min": "2004-12",
+  "window_end_max": "2015-02",
+  "default_window_end": "2015-02",
+  "sales_per_month": [
+    {
+      "month": "2004-01",
+      "count": 6
+    },
+    {
+      "month": "2004-02",
+      "count": 6
+    },
+    {
+      "month": "2004-03",
+      "count": 7
+    },
+    {
+      "month": "2004-04",
+      "count": 10
+    },
+    {
+      "month": "2004-05",
+      "count": 9
+    },
+    {
+      "month": "2004-06",
+      "count": 13
+    },
+    {
+      "month": "2004-07",
+      "count": 11
+    },
+    {
+      "month": "2004-08",
+      "count": 14
+    },
+    {
+      "month": "2004-09",
+      "count": 4
+    },
+    {
+      "month": "2004-10",
+      "count": 11
+    },
+    {
+      "month": "2004-11",
+      "count": 13
+    },
+    {
+      "month": "2004-12",
+      "count": 12
+    },
+    {
+      "month": "2005-01",
+      "count": 11
+    },
+    {
+      "month": "2005-02",
+      "count": 6
+    },
+    {
+      "month": "2005-03",
+      "count": 7
+    },
+    {
+      "month": "2005-04",
+      "count": 11
+    },
+    {
+      "month": "2005-05",
+      "count": 9
+    },
+    {
+      "month": "2005-06",
+      "count": 6
+    },
+    {
+      "month": "2005-07",
+      "count": 9
+    },
+    {
+      "month": "2005-08",
+      "count": 13
+    },
+    {
+      "month": "2005-09",
+      "count": 12
+    },
+    {
+      "month": "2005-10",
+      "count": 12
+    },
+    {
+      "month": "2005-11",
+      "count": 5
+    },
+    {
+      "month": "2005-12",
+      "count": 6
+    },
+    {
+      "month": "2006-01",
+      "count": 12
+    },
+    {
+      "month": "2006-02",
+      "count": 11
+    },
+    {
+      "month": "2006-03",
+      "count": 11
+    },
+    {
+      "month": "2006-04",
+      "count": 17
+    },
+    {
+      "month": "2006-05",
+      "count": 10
+    },
+    {
+      "month": "2006-06",
+      "count": 10
+    },
+    {
+      "month": "2006-07",
+      "count": 12
+    },
+    {
+      "month": "2006-08",
+      "count": 9
+    },
+    {
+      "month": "2006-09",
+      "count": 18
+    },
+    {
+      "month": "2006-10",
+      "count": 44
+    },
+    {
+      "month": "2006-11",
+      "count": 38
+    },
+    {
+      "month": "2006-12",
+      "count": 61
+    },
+    {
+      "month": "2007-01",
+      "count": 59
+    },
+    {
+      "month": "2007-02",
+      "count": 57
+    },
+    {
+      "month": "2007-03",
+      "count": 55
+    },
+    {
+      "month": "2007-04",
+      "count": 50
+    },
+    {
+      "month": "2007-05",
+      "count": 63
+    },
+    {
+      "month": "2007-06",
+      "count": 48
+    },
+    {
+      "month": "2007-07",
+      "count": 42
+    },
+    {
+      "month": "2007-08",
+      "count": 57
+    },
+    {
+      "month": "2007-09",
+      "count": 62
+    },
+    {
+      "month": "2007-10",
+      "count": 60
+    },
+    {
+      "month": "2007-11",
+      "count": 44
+    },
+    {
+      "month": "2007-12",
+      "count": 54
+    },
+    {
+      "month": "2008-01",
+      "count": 57
+    },
+    {
+      "month": "2008-02",
+      "count": 57
+    },
+    {
+      "month": "2008-03",
+      "count": 68
+    },
+    {
+      "month": "2008-04",
+      "count": 53
+    },
+    {
+      "month": "2008-05",
+      "count": 77
+    },
+    {
+      "month": "2008-06",
+      "count": 58
+    },
+    {
+      "month": "2008-07",
+      "count": 78
+    },
+    {
+      "month": "2008-08",
+      "count": 72
+    },
+    {
+      "month": "2008-09",
+      "count": 91
+    },
+    {
+      "month": "2008-10",
+      "count": 75
+    },
+    {
+      "month": "2008-11",
+      "count": 57
+    },
+    {
+      "month": "2008-12",
+      "count": 71
+    },
+    {
+      "month": "2009-01",
+      "count": 71
+    },
+    {
+      "month": "2009-02",
+      "count": 57
+    },
+    {
+      "month": "2009-03",
+      "count": 77
+    },
+    {
+      "month": "2009-04",
+      "count": 84
+    },
+    {
+      "month": "2009-05",
+      "count": 86
+    },
+    {
+      "month": "2009-06",
+      "count": 79
+    },
+    {
+      "month": "2009-07",
+      "count": 100
+    },
+    {
+      "month": "2009-08",
+      "count": 94
+    },
+    {
+      "month": "2009-09",
+      "count": 103
+    },
+    {
+      "month": "2009-10",
+      "count": 136
+    },
+    {
+      "month": "2009-11",
+      "count": 111
+    },
+    {
+      "month": "2009-12",
+      "count": 124
+    },
+    {
+      "month": "2010-01",
+      "count": 120
+    },
+    {
+      "month": "2010-02",
+      "count": 121
+    },
+    {
+      "month": "2010-03",
+      "count": 116
+    },
+    {
+      "month": "2010-04",
+      "count": 121
+    },
+    {
+      "month": "2010-05",
+      "count": 117
+    },
+    {
+      "month": "2010-06",
+      "count": 104
+    },
+    {
+      "month": "2010-07",
+      "count": 125
+    },
+    {
+      "month": "2010-08",
+      "count": 123
+    },
+    {
+      "month": "2010-09",
+      "count": 92
+    },
+    {
+      "month": "2010-10",
+      "count": 103
+    },
+    {
+      "month": "2010-11",
+      "count": 102
+    },
+    {
+      "month": "2010-12",
+      "count": 97
+    },
+    {
+      "month": "2011-01",
+      "count": 118
+    },
+    {
+      "month": "2011-02",
+      "count": 86
+    },
+    {
+      "month": "2011-03",
+      "count": 96
+    },
+    {
+      "month": "2011-04",
+      "count": 127
+    },
+    {
+      "month": "2011-05",
+      "count": 116
+    },
+    {
+      "month": "2011-06",
+      "count": 112
+    },
+    {
+      "month": "2011-07",
+      "count": 100
+    },
+    {
+      "month": "2011-08",
+      "count": 109
+    },
+    {
+      "month": "2011-09",
+      "count": 116
+    },
+    {
+      "month": "2011-10",
+      "count": 125
+    },
+    {
+      "month": "2011-11",
+      "count": 93
+    },
+    {
+      "month": "2011-12",
+      "count": 102
+    },
+    {
+      "month": "2012-01",
+      "count": 124
+    },
+    {
+      "month": "2012-02",
+      "count": 123
+    },
+    {
+      "month": "2012-03",
+      "count": 121
+    },
+    {
+      "month": "2012-04",
+      "count": 36
+    },
+    {
+      "month": "2012-05",
+      "count": 31
+    },
+    {
+      "month": "2012-06",
+      "count": 21
+    },
+    {
+      "month": "2012-07",
+      "count": 24
+    },
+    {
+      "month": "2012-08",
+      "count": 34
+    },
+    {
+      "month": "2012-09",
+      "count": 28
+    },
+    {
+      "month": "2012-10",
+      "count": 32
+    },
+    {
+      "month": "2012-11",
+      "count": 45
+    },
+    {
+      "month": "2012-12",
+      "count": 35
+    },
+    {
+      "month": "2013-01",
+      "count": 39
+    },
+    {
+      "month": "2013-02",
+      "count": 23
+    },
+    {
+      "month": "2013-03",
+      "count": 25
+    },
+    {
+      "month": "2013-04",
+      "count": 31
+    },
+    {
+      "month": "2013-05",
+      "count": 36
+    },
+    {
+      "month": "2013-06",
+      "count": 39
+    },
+    {
+      "month": "2013-07",
+      "count": 28
+    },
+    {
+      "month": "2013-08",
+      "count": 30
+    },
+    {
+      "month": "2013-09",
+      "count": 17
+    },
+    {
+      "month": "2013-10",
+      "count": 30
+    },
+    {
+      "month": "2013-11",
+      "count": 39
+    },
+    {
+      "month": "2013-12",
+      "count": 27
+    },
+    {
+      "month": "2014-01",
+      "count": 24
+    },
+    {
+      "month": "2014-02",
+      "count": 24
+    },
+    {
+      "month": "2014-03",
+      "count": 24
+    },
+    {
+      "month": "2014-04",
+      "count": 22
+    },
+    {
+      "month": "2014-05",
+      "count": 34
+    },
+    {
+      "month": "2014-06",
+      "count": 31
+    },
+    {
+      "month": "2014-07",
+      "count": 31
+    },
+    {
+      "month": "2014-08",
+      "count": 28
+    },
+    {
+      "month": "2014-09",
+      "count": 25
+    },
+    {
+      "month": "2014-10",
+      "count": 25
+    },
+    {
+      "month": "2014-11",
+      "count": 35
+    },
+    {
+      "month": "2014-12",
+      "count": 32
+    },
+    {
+      "month": "2015-01",
+      "count": 28
+    },
+    {
+      "month": "2015-02",
+      "count": 23
+    }
+  ],
+  "localities_active_by_month": [
+    {
+      "month": "2004-01",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-02",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-03",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-04",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-05",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-06",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-07",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-08",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-09",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-10",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-11",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2004-12",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-01",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-02",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-03",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-04",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-05",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-06",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-07",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-08",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-09",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-10",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-11",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2005-12",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-01",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-02",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-03",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-04",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-05",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-06",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-07",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-08",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-09",
+      "localities": [
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2006-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-06",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-07",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-08",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-09",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2007-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-06",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-07",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-08",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-09",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2008-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-06",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-07",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-08",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-09",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2009-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-06",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-07",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-08",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-09",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2010-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-06",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-07",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-08",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-09",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-10",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-11",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2011-12",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2012-01",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2012-02",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2012-03",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2012-04",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "KK Nagar",
+        "Karapakkam",
+        "T Nagar",
+        "Velachery"
+      ]
+    },
+    {
+      "month": "2012-05",
+      "localities": [
+        "Adyar",
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-06",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-07",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-08",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-09",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-10",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-11",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2012-12",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-01",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-02",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-03",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-04",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-05",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-06",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-07",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-08",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-09",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-10",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-11",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2013-12",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-01",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-02",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-03",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-04",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-05",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-06",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-07",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-08",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-09",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-10",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-11",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2014-12",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2015-01",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    },
+    {
+      "month": "2015-02",
+      "localities": [
+        "Anna Nagar",
+        "Chrompet",
+        "T Nagar"
+      ]
+    }
+  ],
+  "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+  "constants": {
+    "contract_version": "1.1.0",
+    "window_months": 12,
+    "min_bucket_n": 5,
+    "coverage_min_months": 9,
+    "anomaly_pct": 0.12,
+    "count_drop": 0.5,
+    "flat_band_pct": 1.0,
+    "l1_cap": 2,
+    "l2_cap": 3,
+    "l2_widen": [
+      0.2,
+      0.5,
+      "drop"
+    ],
+    "topology_parallel_min_localities": 3
+  },
+  "partial_months": [
+    "2004-01",
+    "2015-02"
+  ]
+}

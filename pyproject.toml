@@ -8,10 +8,12 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "fastapi>=0.143.0",
     "langchain-openai>=1.7.0",
     "pandas>=3.0.6",
     "pydantic>=2.14.0",
     "python-dotenv>=1.2.4",
+    "uvicorn>=0.54.0",
 ]
 
 [project.scripts]
@@ -23,6 +25,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "httpx>=0.28.1",
     "pytest>=9.1.1",
     "scipy>=1.18.1",
 ]
