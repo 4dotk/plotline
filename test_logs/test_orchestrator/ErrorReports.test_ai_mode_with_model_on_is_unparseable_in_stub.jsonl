@@ -1,0 +1,7 @@
+{"time": "2026-10-11T15:05:42.130", "level": "INFO", "logger": "plotline.orchestrator", "message": "run start: seed=0 llm_mode=replay loops_enabled=True input_rows=3 query='rents in Adyar'"}
+{"time": "2026-10-11T15:05:42.132", "level": "INFO", "logger": "plotline.orchestrator", "message": "[planner] plan: start"}
+{"time": "2026-10-11T15:05:42.133", "level": "WARNING", "logger": "plotline.orchestrator", "message": "[planner] plan: done in 0.0 ms -> FAILURE E_NL_UNPARSEABLE: stub planner cannot parse a sentence"}
+{"time": "2026-10-11T15:05:42.134", "level": "DEBUG", "logger": "plotline.orchestrator", "message": "[planner] plan: full output -> {\"error\":{\"code\":\"E_NL_UNPARSEABLE\",\"message\":\"stub planner cannot parse a sentence\"}}"}
+{"time": "2026-10-11T15:05:42.134", "level": "ERROR", "logger": "plotline.trace", "message": "#0 [planner] error | E_NL_UNPARSEABLE: stub planner cannot parse a sentence | data={\"code\":\"E_NL_UNPARSEABLE\"}"}
+{"time": "2026-10-11T15:05:42.134", "level": "ERROR", "logger": "plotline.orchestrator", "message": "run end: status=error error=E_NL_UNPARSEABLE records=0 flags=0 trace_events=1 L1=0 L2=0"}
+{"time": "2026-10-11T15:05:42.146", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 7.8 ms"}

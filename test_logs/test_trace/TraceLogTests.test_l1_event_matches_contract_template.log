@@ -1,0 +1,2 @@
+2026-10-11 15:05:42,727 INFO    plotline.trace        #0 [planner] loop:L1 | L1 fired: band_inverted; [9,1] -> [1,9]; repair 1 of 2 | data={"after":[1,9],"before":[9,1],"cap":2,"issue":"band_inverted","repair_no":1}
+2026-10-11 15:05:42,742 INFO    plotline              RESULT: PASSED in 2.3 ms

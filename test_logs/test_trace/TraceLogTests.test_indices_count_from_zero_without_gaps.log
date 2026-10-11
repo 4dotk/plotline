@@ -1,0 +1,5 @@
+2026-10-11 15:05:42,710 INFO    plotline.trace        #0 [planner] step | a | data={}
+2026-10-11 15:05:42,711 INFO    plotline.trace        #1 [planner] decision | b | data={}
+2026-10-11 15:05:42,712 WARNING plotline.trace        #2 [scanner] warning | c | data={}
+2026-10-11 15:05:42,712 ERROR   plotline.trace        #3 [reporter] error | d | data={}
+2026-10-11 15:05:42,722 INFO    plotline              RESULT: PASSED in 4.8 ms

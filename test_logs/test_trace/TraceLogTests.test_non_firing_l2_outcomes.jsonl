@@ -1,0 +1,4 @@
+{"time": "2026-10-11T15:05:42.765", "level": "INFO", "logger": "plotline.trace", "message": "#0 [validator] decision | L2 skipped: nothing to widen | data={}"}
+{"time": "2026-10-11T15:05:42.767", "level": "WARNING", "logger": "plotline.trace", "message": "#1 [validator] warning | L2 disabled | data={}"}
+{"time": "2026-10-11T15:05:42.767", "level": "INFO", "logger": "plotline.trace", "message": "#2 [validator] decision | L2 stopped by model: coverage 4/12, need 9/12 | data={}"}
+{"time": "2026-10-11T15:05:42.777", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 3.9 ms"}

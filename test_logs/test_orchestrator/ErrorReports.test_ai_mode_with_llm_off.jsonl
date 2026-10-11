@@ -1,0 +1,7 @@
+{"time": "2026-10-11T15:05:42.105", "level": "INFO", "logger": "plotline.orchestrator", "message": "run start: seed=0 llm_mode=off loops_enabled=True input_rows=3 query='rents in Adyar last year'"}
+{"time": "2026-10-11T15:05:42.107", "level": "INFO", "logger": "plotline.orchestrator", "message": "[planner] plan: start"}
+{"time": "2026-10-11T15:05:42.107", "level": "WARNING", "logger": "plotline.orchestrator", "message": "[planner] plan: done in 0.0 ms -> FAILURE E_LLM_OFF: AI mode requested with LLM_MODE=off"}
+{"time": "2026-10-11T15:05:42.108", "level": "DEBUG", "logger": "plotline.orchestrator", "message": "[planner] plan: full output -> {\"error\":{\"code\":\"E_LLM_OFF\",\"message\":\"AI mode requested with LLM_MODE=off\"}}"}
+{"time": "2026-10-11T15:05:42.109", "level": "ERROR", "logger": "plotline.trace", "message": "#0 [planner] error | E_LLM_OFF: AI mode requested with LLM_MODE=off | data={\"code\":\"E_LLM_OFF\"}"}
+{"time": "2026-10-11T15:05:42.110", "level": "ERROR", "logger": "plotline.orchestrator", "message": "run end: status=error error=E_LLM_OFF records=0 flags=0 trace_events=1 L1=0 L2=0"}
+{"time": "2026-10-11T15:05:42.124", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 7.6 ms"}

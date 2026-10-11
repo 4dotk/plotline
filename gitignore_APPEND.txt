@@ -1,0 +1,4 @@
+
+# test and run logs
+test_logs/
+*.log

@@ -1,0 +1,18 @@
+2026-10-11 15:05:42,570 INFO    plotline.orchestrator run start: seed=0 llm_mode=off loops_enabled=True input_rows=3 query={"localities":["Xyz"],"window_end":null,"bhk":null,"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 15:05:42,572 INFO    plotline.orchestrator [planner] plan: start
+2026-10-11 15:05:42,573 INFO    plotline.trace        #0 [planner] decision | topology=consolidated (1 localities < 3) | data={}
+2026-10-11 15:05:42,573 INFO    plotline.orchestrator [planner] plan: done in 0.7 ms -> plan topology=consolidated n_scanners=1 effective={"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2015-02"}
+2026-10-11 15:05:42,574 DEBUG   plotline.orchestrator [planner] plan: full output -> {"criteria_in":{"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":null},"effective":{"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2015-02"},"n_scanners":1,"topology":"consolidated"}
+2026-10-11 15:05:42,574 INFO    plotline.orchestrator [scanner] scan: start
+2026-10-11 15:05:42,574 INFO    plotline.trace        #1 [scanner] step | 1 scanner(s), consolidated: 0 rows (stub) | data={}
+2026-10-11 15:05:42,575 INFO    plotline.orchestrator [scanner] scan: done in 0.5 ms -> rows=0 cols=['listing_id', 'locality', 'sqft', 'sale_date', 'bhk', 'sale_cond', 'price']
+2026-10-11 15:05:42,576 DEBUG   plotline.orchestrator [scanner] scan: full output -> []
+2026-10-11 15:05:42,576 INFO    plotline.orchestrator [aggregator] aggregate: start
+2026-10-11 15:05:42,576 WARNING plotline.orchestrator [aggregator] aggregate: done in 0.0 ms -> L1 request: fields=['localities'] issues=['locality_unknown']
+2026-10-11 15:05:42,577 DEBUG   plotline.orchestrator [aggregator] aggregate: full output -> {"fields":["localities"],"issues":["locality_unknown"]}
+2026-10-11 15:05:42,577 INFO    plotline.orchestrator [planner] repair: start
+2026-10-11 15:05:42,577 WARNING plotline.orchestrator [planner] repair: done in 0.0 ms -> FAILURE E_INVALID_CRITERIA: invalid localities: no close match
+2026-10-11 15:05:42,578 DEBUG   plotline.orchestrator [planner] repair: full output -> {"error":{"code":"E_INVALID_CRITERIA","message":"invalid localities: no close match"}}
+2026-10-11 15:05:42,578 ERROR   plotline.trace        #2 [planner] error | E_INVALID_CRITERIA: invalid localities: no close match | data={"code":"E_INVALID_CRITERIA"}
+2026-10-11 15:05:42,579 ERROR   plotline.orchestrator run end: status=error error=E_INVALID_CRITERIA records=0 flags=0 trace_events=3 L1=0 L2=0
+2026-10-11 15:05:42,591 INFO    plotline              RESULT: PASSED in 11.8 ms

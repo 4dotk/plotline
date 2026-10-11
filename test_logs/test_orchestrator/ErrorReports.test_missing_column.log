@@ -1,0 +1,4 @@
+2026-10-11 15:05:42,182 INFO    plotline.orchestrator run start: seed=0 llm_mode=off loops_enabled=True input_rows=3 query={"localities":null,"window_end":null,"bhk":null,"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 15:05:42,184 ERROR   plotline.trace        #0 [aggregator] error | E_SCHEMA: listings_df is missing columns: ['price'] | data={"code":"E_SCHEMA"}
+2026-10-11 15:05:42,184 ERROR   plotline.orchestrator run end: status=error error=E_SCHEMA records=0 flags=0 trace_events=1 L1=0 L2=0
+2026-10-11 15:05:42,195 INFO    plotline              RESULT: PASSED in 8.8 ms
