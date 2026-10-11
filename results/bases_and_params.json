@@ -1,0 +1,4188 @@
+{
+ "bases": [
+  {
+   "base_id": 0,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[9318600,11554330],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9318600,
+     11554330
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-10"
+   },
+   "n_rows": 45,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1662057958
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2005-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 1,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-04\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-04"
+   },
+   "n_rows": 804,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1627981025
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-09"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "KK Nagar",
+      "T Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 2,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-06\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-06"
+   },
+   "n_rows": 424,
+   "params": {
+    "MR1": {
+     "permutation_seed": 709091226
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-01"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "Chrompet",
+      "KK Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 3,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-02"
+   },
+   "n_rows": 86,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1465647934
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2013-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 4,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\"],\"price_band\":[7226100,14001530],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar"
+    ],
+    "price_band": [
+     7226100,
+     14001530
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-11"
+   },
+   "n_rows": 392,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1642822537
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-07"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 5,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-11"
+   },
+   "n_rows": 113,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1200888233
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 6,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-10"
+   },
+   "n_rows": 429,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1421454891
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 7,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2015-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2015-02"
+   },
+   "n_rows": 282,
+   "params": {
+    "MR1": {
+     "permutation_seed": 227939461
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2014-12"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 8,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":[7945255,11690990],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     7945255,
+     11690990
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-08"
+   },
+   "n_rows": 420,
+   "params": {
+    "MR1": {
+     "permutation_seed": 786544956
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-02"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 9,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-08"
+   },
+   "n_rows": 411,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1511897337
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-05"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 10,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"T Nagar\",\"Velachery\"],\"price_band\":[8319100,14019480],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     8319100,
+     14019480
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-11"
+   },
+   "n_rows": 329,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1689825801
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 11,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":[4943680,22053480],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-04\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": [
+     4943680,
+     22053480
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-04"
+   },
+   "n_rows": 505,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1680911101
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-05"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 12,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Karapakkam\",\"Velachery\"],\"price_band\":[6054750,9516250],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Karapakkam",
+     "Velachery"
+    ],
+    "price_band": [
+     6054750,
+     9516250
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-10"
+   },
+   "n_rows": 358,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1774448395
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2011-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 13,
+   "canonical": "{\"bhk\":[3],\"localities\":[\"Adyar\",\"T Nagar\",\"Velachery\"],\"price_band\":[7478460,17797530],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-01\"}",
+   "criteria": {
+    "bhk": [
+     3
+    ],
+    "localities": [
+     "Adyar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     7478460,
+     17797530
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-01"
+   },
+   "n_rows": 32,
+   "params": {
+    "MR1": {
+     "permutation_seed": 80342852
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-08"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 14,
+   "canonical": "{\"bhk\":[1,3],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-02\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     3
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-02"
+   },
+   "n_rows": 413,
+   "params": {
+    "MR1": {
+     "permutation_seed": 325429550
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2007-04"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 15,
+   "canonical": "{\"bhk\":null,\"localities\":[\"T Nagar\"],\"price_band\":[11918620,14477820],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-01\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "T Nagar"
+    ],
+    "price_band": [
+     11918620,
+     14477820
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-01"
+   },
+   "n_rows": 34,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1603718478
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-11"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 16,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Chrompet\",\"Karapakkam\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-07\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Chrompet",
+     "Karapakkam"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-07"
+   },
+   "n_rows": 548,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2143248507
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-11"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Karapakkam"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 17,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Karapakkam\",\"T Nagar\"],\"price_band\":[6434750,11329800],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-01\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Karapakkam",
+     "T Nagar"
+    ],
+    "price_band": [
+     6434750,
+     11329800
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-01"
+   },
+   "n_rows": 269,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1536325112
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Karapakkam",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 18,
+   "canonical": "{\"bhk\":null,\"localities\":[\"KK Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-05\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "KK Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-05"
+   },
+   "n_rows": 261,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1991925410
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2008-11"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 19,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Velachery\"],\"price_band\":[8372550,15773770],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2004-12\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8372550,
+     15773770
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2004-12"
+   },
+   "n_rows": 86,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1818874729
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2004-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 20,
+   "canonical": "{\"bhk\":null,\"localities\":[\"T Nagar\"],\"price_band\":[13267610,22181670],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-06\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "T Nagar"
+    ],
+    "price_band": [
+     13267610,
+     22181670
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-06"
+   },
+   "n_rows": 49,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1617814391
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-10"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 21,
+   "canonical": "{\"bhk\":[1],\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-04\"}",
+   "criteria": {
+    "bhk": [
+     1
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-04"
+   },
+   "n_rows": 261,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1977769029
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-06"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 22,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-11"
+   },
+   "n_rows": 341,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1784546222
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 23,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-11"
+   },
+   "n_rows": 1177,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2037620261
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2011-03"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 24,
+   "canonical": "{\"bhk\":[4],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":[12763380,19635040],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-09\"}",
+   "criteria": {
+    "bhk": [
+     4
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     12763380,
+     19635040
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-09"
+   },
+   "n_rows": 26,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1104285205
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2008-08"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet",
+      "KK Nagar",
+      "T Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 25,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"KK Nagar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-12"
+   },
+   "n_rows": 208,
+   "params": {
+    "MR1": {
+     "permutation_seed": 499440144
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2012-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 26,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-06\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-06"
+   },
+   "n_rows": 82,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1149837455
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-05"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 27,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"Velachery\"],\"price_band\":[7359840,14139590],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2006-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": [
+     7359840,
+     14139590
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2006-12"
+   },
+   "n_rows": 179,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2045501997
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2006-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 28,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\"],\"price_band\":[9540150,17733960],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-04\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": [
+     9540150,
+     17733960
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-04"
+   },
+   "n_rows": 424,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1999814588
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-06"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "KK Nagar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 29,
+   "canonical": "{\"bhk\":null,\"localities\":[\"KK Nagar\"],\"price_band\":[10822220,13938120],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-04\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "KK Nagar"
+    ],
+    "price_band": [
+     10822220,
+     13938120
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-04"
+   },
+   "n_rows": 96,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1412750647
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 30,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Chrompet\",\"Karapakkam\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-06\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Chrompet",
+     "Karapakkam"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-06"
+   },
+   "n_rows": 645,
+   "params": {
+    "MR1": {
+     "permutation_seed": 185239393
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-01"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 31,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Chrompet\"],\"price_band\":[8799300,15195150],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-11\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Chrompet"
+    ],
+    "price_band": [
+     8799300,
+     15195150
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-11"
+   },
+   "n_rows": 29,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1885350885
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-01"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 32,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Karapakkam\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Karapakkam"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-12"
+   },
+   "n_rows": 495,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1551740407
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2010-06"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 33,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Chrompet\",\"Velachery\"],\"price_band\":[7352150,14341940],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-08\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": [
+     7352150,
+     14341940
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-08"
+   },
+   "n_rows": 341,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1429686407
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2008-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 34,
+   "canonical": "{\"bhk\":[1,3],\"localities\":[\"Adyar\",\"Chrompet\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":[3250250,8737670],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-07\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     3
+    ],
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     3250250,
+     8737670
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-07"
+   },
+   "n_rows": 376,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1760895470
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-07"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 35,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"T Nagar\"],\"price_band\":[13098030,16051580],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-05\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "T Nagar"
+    ],
+    "price_band": [
+     13098030,
+     16051580
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-05"
+   },
+   "n_rows": 33,
+   "params": {
+    "MR1": {
+     "permutation_seed": 979669931
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2006-07"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 36,
+   "canonical": "{\"bhk\":[1],\"localities\":[\"Adyar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-02\"}",
+   "criteria": {
+    "bhk": [
+     1
+    ],
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-02"
+   },
+   "n_rows": 560,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1122174305
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-11"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 37,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[9409960,12415670],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-06\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9409960,
+     12415670
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-06"
+   },
+   "n_rows": 27,
+   "params": {
+    "MR1": {
+     "permutation_seed": 797052560
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-04"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 38,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":[8149800,14477850],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-12\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": [
+     8149800,
+     14477850
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-12"
+   },
+   "n_rows": 196,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1154373713
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2014-04"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 39,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-07\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-07"
+   },
+   "n_rows": 76,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1018269592
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2013-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 40,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[9000960,13050750],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9000960,
+     13050750
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-11"
+   },
+   "n_rows": 59,
+   "params": {
+    "MR1": {
+     "permutation_seed": 654348154
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-04"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 41,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-08"
+   },
+   "n_rows": 273,
+   "params": {
+    "MR1": {
+     "permutation_seed": 317665332
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 42,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":[7638750,13087480],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-09\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     7638750,
+     13087480
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-09"
+   },
+   "n_rows": 265,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1574947229
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2010-01"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "KK Nagar",
+      "Karapakkam",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 43,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"Velachery\"],\"price_band\":[6802150,13161500],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": [
+     6802150,
+     13161500
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-02"
+   },
+   "n_rows": 290,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1569333844
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 44,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-01\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-01"
+   },
+   "n_rows": 121,
+   "params": {
+    "MR1": {
+     "permutation_seed": 799425641
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2004-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 45,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"T Nagar\"],\"price_band\":[8599095,12207750],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": [
+     8599095,
+     12207750
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-02"
+   },
+   "n_rows": 200,
+   "params": {
+    "MR1": {
+     "permutation_seed": 23037442
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 46,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Karapakkam\"],\"price_band\":[8358250,12801500],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-09\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Karapakkam"
+    ],
+    "price_band": [
+     8358250,
+     12801500
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-09"
+   },
+   "n_rows": 53,
+   "params": {
+    "MR1": {
+     "permutation_seed": 962600124
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Karapakkam"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 47,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-06\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-06"
+   },
+   "n_rows": 391,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2020185388
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 48,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-11\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-11"
+   },
+   "n_rows": 213,
+   "params": {
+    "MR1": {
+     "permutation_seed": 180636305
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2007-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 49,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"Velachery\"],\"price_band\":[6614250,14395000],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "Velachery"
+    ],
+    "price_band": [
+     6614250,
+     14395000
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-08"
+   },
+   "n_rows": 876,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1953248570
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-04"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "KK Nagar",
+      "Karapakkam"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 50,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Chrompet\",\"T Nagar\",\"Velachery\"],\"price_band\":[8707750,12111940],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Chrompet",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     8707750,
+     12111940
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-11"
+   },
+   "n_rows": 158,
+   "params": {
+    "MR1": {
+     "permutation_seed": 727686936
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2008-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 51,
+   "canonical": "{\"bhk\":[3,4],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-02\"}",
+   "criteria": {
+    "bhk": [
+     3,
+     4
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-02"
+   },
+   "n_rows": 170,
+   "params": {
+    "MR1": {
+     "permutation_seed": 159295758
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet",
+      "KK Nagar",
+      "Karapakkam",
+      "T Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 52,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\"],\"price_band\":[10186950,14042030],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-06\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": [
+     10186950,
+     14042030
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-06"
+   },
+   "n_rows": 289,
+   "params": {
+    "MR1": {
+     "permutation_seed": 639471744
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-01"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 53,
+   "canonical": "{\"bhk\":[1,4],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-12\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     4
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-12"
+   },
+   "n_rows": 644,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1531710313
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-10"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "Chrompet",
+      "Karapakkam",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 54,
+   "canonical": "{\"bhk\":[1],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-07\"}",
+   "criteria": {
+    "bhk": [
+     1
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-07"
+   },
+   "n_rows": 574,
+   "params": {
+    "MR1": {
+     "permutation_seed": 510367449
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2012-06"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet",
+      "Karapakkam",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 55,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-11"
+   },
+   "n_rows": 650,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1541118334
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2012-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 56,
+   "canonical": "{\"bhk\":[3,4],\"localities\":[\"Chrompet\",\"KK Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-06\"}",
+   "criteria": {
+    "bhk": [
+     3,
+     4
+    ],
+    "localities": [
+     "Chrompet",
+     "KK Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-06"
+   },
+   "n_rows": 184,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1067120264
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 57,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-10"
+   },
+   "n_rows": 121,
+   "params": {
+    "MR1": {
+     "permutation_seed": 144239323
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-04"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 58,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-12\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-12"
+   },
+   "n_rows": 305,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1926285957
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 59,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-01\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-01"
+   },
+   "n_rows": 349,
+   "params": {
+    "MR1": {
+     "permutation_seed": 692547042
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-03"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 60,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[7950320,13384340],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2004-12\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     7950320,
+     13384340
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2004-12"
+   },
+   "n_rows": 41,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1700752127
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2004-12"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 61,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"T Nagar\",\"Velachery\"],\"price_band\":[9689440,14017800],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-07\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     9689440,
+     14017800
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-07"
+   },
+   "n_rows": 232,
+   "params": {
+    "MR1": {
+     "permutation_seed": 630609647
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2006-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Chrompet",
+      "T Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 62,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[8168160,11047570],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8168160,
+     11047570
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-08"
+   },
+   "n_rows": 57,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1829625764
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-04"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 63,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-07\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-07"
+   },
+   "n_rows": 68,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1053366713
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2004-10"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 64,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[6307030,14102650],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2004-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     6307030,
+     14102650
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2004-12"
+   },
+   "n_rows": 94,
+   "params": {
+    "MR1": {
+     "permutation_seed": 590210480
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2004-01"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 65,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-05\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-05"
+   },
+   "n_rows": 640,
+   "params": {
+    "MR1": {
+     "permutation_seed": 530144334
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2008-11"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 66,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-08"
+   },
+   "n_rows": 942,
+   "params": {
+    "MR1": {
+     "permutation_seed": 518915605
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-03"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Karapakkam",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 67,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"Velachery\"],\"price_band\":[6811400,13321150],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "Velachery"
+    ],
+    "price_band": [
+     6811400,
+     13321150
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-12"
+   },
+   "n_rows": 825,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1716297970
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2011-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "Chrompet",
+      "Karapakkam",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 68,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"KK Nagar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-03\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-03"
+   },
+   "n_rows": 407,
+   "params": {
+    "MR1": {
+     "permutation_seed": 355382253
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-12"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 69,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":[6951120,14917160],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-01\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     6951120,
+     14917160
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-01"
+   },
+   "n_rows": 330,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2129819469
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-02"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 70,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-08"
+   },
+   "n_rows": 1421,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2097466613
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-11"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Chrompet",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 71,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"T Nagar\"],\"price_band\":[12567340,18642910],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-01\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "T Nagar"
+    ],
+    "price_band": [
+     12567340,
+     18642910
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-01"
+   },
+   "n_rows": 83,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1455179509
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2010-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 72,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-08\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-08"
+   },
+   "n_rows": 184,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1910522617
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2007-01"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 73,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Chrompet\",\"Velachery\"],\"price_band\":[8990700,10774250],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-09\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": [
+     8990700,
+     10774250
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-09"
+   },
+   "n_rows": 100,
+   "params": {
+    "MR1": {
+     "permutation_seed": 735812601
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-08"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 74,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":[7358650,20656530],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-12\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": [
+     7358650,
+     20656530
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-12"
+   },
+   "n_rows": 282,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1502143631
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2013-11"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 75,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[6590550,16627610],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     6590550,
+     16627610
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-12"
+   },
+   "n_rows": 107,
+   "params": {
+    "MR1": {
+     "permutation_seed": 2121761890
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 76,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":[9860400,13511250],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-01\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": [
+     9860400,
+     13511250
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-01"
+   },
+   "n_rows": 121,
+   "params": {
+    "MR1": {
+     "permutation_seed": 145346883
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-06"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 77,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2008-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2008-12"
+   },
+   "n_rows": 700,
+   "params": {
+    "MR1": {
+     "permutation_seed": 738342909
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2008-06"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 78,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2006-10\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2006-10"
+   },
+   "n_rows": 78,
+   "params": {
+    "MR1": {
+     "permutation_seed": 274809869
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-11"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 79,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-09\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-09"
+   },
+   "n_rows": 198,
+   "params": {
+    "MR1": {
+     "permutation_seed": 502579080
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-11"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 80,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[8420300,13495120],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-02\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8420300,
+     13495120
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-02"
+   },
+   "n_rows": 39,
+   "params": {
+    "MR1": {
+     "permutation_seed": 208258430
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2008-04"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 81,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-07\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-07"
+   },
+   "n_rows": 199,
+   "params": {
+    "MR1": {
+     "permutation_seed": 869419415
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-05"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 82,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[7419410,12456680],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-05\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     7419410,
+     12456680
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-05"
+   },
+   "n_rows": 49,
+   "params": {
+    "MR1": {
+     "permutation_seed": 259105364
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-04"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 83,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-08\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-08"
+   },
+   "n_rows": 417,
+   "params": {
+    "MR1": {
+     "permutation_seed": 715301852
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-12"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 84,
+   "canonical": "{\"bhk\":[1],\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\"],\"price_band\":[7022890,13088850],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-07\"}",
+   "criteria": {
+    "bhk": [
+     1
+    ],
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam"
+    ],
+    "price_band": [
+     7022890,
+     13088850
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-07"
+   },
+   "n_rows": 210,
+   "params": {
+    "MR1": {
+     "permutation_seed": 543709801
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2008-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 85,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[8543280,13120960],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2006-07\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8543280,
+     13120960
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2006-07"
+   },
+   "n_rows": 76,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1968916963
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2006-02"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 86,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-07\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-07"
+   },
+   "n_rows": 395,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1200767697
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2013-07"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 87,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"KK Nagar\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-01\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "KK Nagar",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-01"
+   },
+   "n_rows": 215,
+   "params": {
+    "MR1": {
+     "permutation_seed": 603220395
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 88,
+   "canonical": "{\"bhk\":[1],\"localities\":[\"Chrompet\"],\"price_band\":[7710860,12894500],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2013-02\"}",
+   "criteria": {
+    "bhk": [
+     1
+    ],
+    "localities": [
+     "Chrompet"
+    ],
+    "price_band": [
+     7710860,
+     12894500
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2013-02"
+   },
+   "n_rows": 132,
+   "params": {
+    "MR1": {
+     "permutation_seed": 843805148
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 89,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Anna Nagar\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":[9637350,22744800],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-08\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     9637350,
+     22744800
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-08"
+   },
+   "n_rows": 329,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1417330013
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2010-12"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 90,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Chrompet\",\"KK Nagar\",\"Karapakkam\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-03\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-03"
+   },
+   "n_rows": 345,
+   "params": {
+    "MR1": {
+     "permutation_seed": 735217727
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-08"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 91,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[5613270,12150830],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-07\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     5613270,
+     12150830
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-07"
+   },
+   "n_rows": 69,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1407713624
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2006-10"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 92,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-07\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-07"
+   },
+   "n_rows": 333,
+   "params": {
+    "MR1": {
+     "permutation_seed": 603666705
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2014-06"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar",
+      "T Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 93,
+   "canonical": "{\"bhk\":[1,2],\"localities\":[\"Adyar\",\"Chrompet\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2006-12\"}",
+   "criteria": {
+    "bhk": [
+     1,
+     2
+    ],
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2006-12"
+   },
+   "n_rows": 170,
+   "params": {
+    "MR1": {
+     "permutation_seed": 858297964
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2006-09"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 94,
+   "canonical": "{\"bhk\":[3],\"localities\":[\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":[9566290,15023650],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-05\"}",
+   "criteria": {
+    "bhk": [
+     3
+    ],
+    "localities": [
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     9566290,
+     15023650
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-05"
+   },
+   "n_rows": 22,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1301848854
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-01"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Karapakkam",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 95,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[8899780,12337670],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2011-05\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8899780,
+     12337670
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2011-05"
+   },
+   "n_rows": 29,
+   "params": {
+    "MR1": {
+     "permutation_seed": 581178121
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 96,
+   "canonical": "{\"bhk\":[2],\"localities\":[\"Velachery\"],\"price_band\":[9741970,13098030],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2010-01\"}",
+   "criteria": {
+    "bhk": [
+     2
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9741970,
+     13098030
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2010-01"
+   },
+   "n_rows": 24,
+   "params": {
+    "MR1": {
+     "permutation_seed": 637753927
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-04"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 97,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Velachery\"],\"price_band\":[9616360,13759280],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-06\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9616360,
+     13759280
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-06"
+   },
+   "n_rows": 52,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1691065794
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2004-10"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 98,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Velachery\"],\"price_band\":[8988830,12009700],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-06\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     8988830,
+     12009700
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-06"
+   },
+   "n_rows": 46,
+   "params": {
+    "MR1": {
+     "permutation_seed": 82768313
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-03"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 99,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\"],\"price_band\":[11960070,19494670],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-12\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar"
+    ],
+    "price_band": [
+     11960070,
+     19494670
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-12"
+   },
+   "n_rows": 58,
+   "params": {
+    "MR1": {
+     "permutation_seed": 516923941
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-01"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    }
+   },
+   "stratum": "thin"
+  }
+ ],
+ "gen_seed": 42,
+ "n_bases": 100,
+ "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+ "strata": {
+  "broad": 80,
+  "thin": 20
+ }
+}
