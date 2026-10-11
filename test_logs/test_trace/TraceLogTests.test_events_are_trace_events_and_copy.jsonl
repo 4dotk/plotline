@@ -1,2 +1,0 @@
-{"time": "2026-10-11T15:05:42.694", "level": "INFO", "logger": "plotline.trace", "message": "#0 [planner] step | x | data={}"}
-{"time": "2026-10-11T15:05:42.705", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 2.8 ms"}

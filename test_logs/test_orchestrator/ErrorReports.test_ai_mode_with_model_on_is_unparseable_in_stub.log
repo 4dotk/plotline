@@ -1,7 +1,0 @@
-2026-10-11 15:05:42,130 INFO    plotline.orchestrator run start: seed=0 llm_mode=replay loops_enabled=True input_rows=3 query='rents in Adyar'
-2026-10-11 15:05:42,132 INFO    plotline.orchestrator [planner] plan: start
-2026-10-11 15:05:42,133 WARNING plotline.orchestrator [planner] plan: done in 0.0 ms -> FAILURE E_NL_UNPARSEABLE: stub planner cannot parse a sentence
-2026-10-11 15:05:42,134 DEBUG   plotline.orchestrator [planner] plan: full output -> {"error":{"code":"E_NL_UNPARSEABLE","message":"stub planner cannot parse a sentence"}}
-2026-10-11 15:05:42,134 ERROR   plotline.trace        #0 [planner] error | E_NL_UNPARSEABLE: stub planner cannot parse a sentence | data={"code":"E_NL_UNPARSEABLE"}
-2026-10-11 15:05:42,134 ERROR   plotline.orchestrator run end: status=error error=E_NL_UNPARSEABLE records=0 flags=0 trace_events=1 L1=0 L2=0
-2026-10-11 15:05:42,146 INFO    plotline              RESULT: PASSED in 7.8 ms

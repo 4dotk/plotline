@@ -1,4 +1,0 @@
-2026-10-11 15:05:42,765 INFO    plotline.trace        #0 [validator] decision | L2 skipped: nothing to widen | data={}
-2026-10-11 15:05:42,767 WARNING plotline.trace        #1 [validator] warning | L2 disabled | data={}
-2026-10-11 15:05:42,767 INFO    plotline.trace        #2 [validator] decision | L2 stopped by model: coverage 4/12, need 9/12 | data={}
-2026-10-11 15:05:42,777 INFO    plotline              RESULT: PASSED in 3.9 ms
