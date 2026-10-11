@@ -16,7 +16,8 @@ Rules:
 - The latest month in the data is "{latest_month}". If no month is named, use window_end null.
 - "last year", "past year", "last 12 months" and "this year" mean window_end "{latest_month}".
 - A named month such as "12 months ending March 2011" means window_end "2011-03".
-- Money words are converted to INR: 1 lakh = 100000 INR; 1 crore = 10000000 INR. Use price_unit "inr".
+- Money words are converted to INR: 1 lakh = 100000 INR; 1 crore = 10000000 INR.
+- price_unit is always "inr", never null.
 - "below X" or "under X" means price_band [0, X]. A one-sided "above X" cannot be represented: use price_band null.
 - Locality, BHK and window are hard filters. Do not add constraints the sentence does not state.
-- Use null for every filter the sentence does not mention.
+- Use null for every filter the sentence does not mention (localities, window_end, bhk, price_band, sqft_range, sale_cond).
