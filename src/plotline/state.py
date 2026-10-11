@@ -9,7 +9,7 @@ replaced by the real agent one at a time.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Callable, Protocol, Union
+from typing import TYPE_CHECKING, Protocol, Union
 
 import pandas as pd
 
@@ -23,8 +23,13 @@ from plotline.contract import (
     Summary,
     Topology,
     TrendRecord,
+    WINDOW_MONTHS,
+    month_add,
 )
 from plotline.trace import TraceLog
+
+if TYPE_CHECKING:
+    from plotline.llm_client import LlmSession
 
 SNAPSHOT_COLUMNS = ("listing_id", "locality", "sqft", "sale_date", "bhk", "sale_cond", "price")
 
@@ -35,6 +40,11 @@ class DataInfo:
 
     first_month: str
     latest_month: str
+
+    @property
+    def first_valid_end(self) -> str:
+        """Earliest ``window_end`` with a full 12-month window inside the data (4.4)."""
+        return month_add(self.first_month, WINDOW_MONTHS - 1)
 
 
 @dataclass
@@ -77,7 +87,7 @@ class Analysis:
 class PlanFn(Protocol):
     def __call__(
         self, query: Union[Criteria, str], info: DataInfo, options: RunOptions,
-        seed: int, llm_mode: LlmMode, trace: TraceLog,
+        seed: int, llm_mode: LlmMode, trace: TraceLog, llm: "LlmSession",
     ) -> Union[PlanResult, Failure]: ...
 
 

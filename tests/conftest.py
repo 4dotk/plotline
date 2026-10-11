@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
 import shutil
 import time
@@ -22,6 +23,9 @@ from pathlib import Path
 import pytest
 
 from plotline.log import LOG_FORMAT
+
+# A developer's .env may say LLM_MODE=live; tests never reach a model unless they inject one.
+os.environ["LLM_MODE"] = "off"
 
 LOG_DIR = Path(__file__).resolve().parent.parent / "test_logs"
 _summary: list[str] = []

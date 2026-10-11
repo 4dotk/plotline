@@ -93,3 +93,34 @@ def a1_report_dict() -> dict:
 
 def a1_report() -> TrendReport:
     return TrendReport.model_validate(a1_report_dict())
+
+
+class FakeChat:
+    """Stand-in for the live model: returns scripted answers in order and records calls."""
+
+    def __init__(self, *answers: str) -> None:
+        self.answers = list(answers)
+        self.calls: list[tuple[str, str, int]] = []
+
+    def __call__(self, system: str, user: str, seed: int, schema: dict) -> str:
+        self.calls.append((system, user, seed))
+        answer = self.answers.pop(0) if len(self.answers) > 1 else self.answers[0]
+        if isinstance(answer, BaseException):
+            raise answer
+        return answer
+
+
+def llm_config(mode: str = "live", cache_path=None, **kw):
+    """A complete live/replay configuration for tests (never reaches a server)."""
+    from pathlib import Path
+
+    from plotline.llm_client import LlmConfig
+
+    values = dict(
+        mode=mode, model_tag="test-model-q4", base_url="http://127.0.0.1:1/v1", model="server-name",
+        cache_path=Path(cache_path) if cache_path else Path("/nonexistent/llm_replay.jsonl"),
+        backend="llama serve", build="b0000", launch_flags="--ctx 4096", gguf_sha256="a" * 64,
+        quant="Q4_K_M", ctx=4096,
+    )
+    values.update(kw)
+    return LlmConfig(**values)

@@ -5,7 +5,8 @@ run end to end before the real agents exist. A stub is replaced by passing its
 real counterpart in ``AgentSet``; nothing else changes.
 
 What the stubs do (and do not do):
-  A plan      : real defaults and topology rule; no sentence parsing, no L1 repair.
+  A plan      : real defaults and topology rule (shared with the planner); no sentence
+                parsing, no L1 repair.
   B scan      : returns no rows (empty copy of the input).
   C aggregate : real dense grid (all buckets empty); real L1 issue detection.
   D validate  : real coverage count; never fires L2 (logs why).
@@ -19,12 +20,12 @@ from typing import Union
 
 import pandas as pd
 
+from plotline.agents.planner import with_topology
 from plotline.contract import (
     ALL_REGION,
     CANONICAL_LOCALITIES,
     COVERAGE_MIN_MONTHS,
     MIN_BUCKET_N,
-    TOPOLOGY_PARALLEL_MIN_LOCALITIES,
     WINDOW_MONTHS,
     AnomalyFlag,
     Criteria,
@@ -34,7 +35,6 @@ from plotline.contract import (
     RunOptions,
     Summary,
     TrendRecord,
-    month_add,
     window_months,
 )
 from plotline.state import (
@@ -61,7 +61,7 @@ _ISSUE_FIELD = {
 # -- A: Query Planner ---------------------------------------------------------
 
 
-def plan(query, info: DataInfo, options: RunOptions, seed: int, llm_mode: LlmMode, trace: TraceLog):
+def plan(query, info: DataInfo, options: RunOptions, seed: int, llm_mode: LlmMode, trace: TraceLog, llm=None):
     if isinstance(query, str):  # AI mode: the stub cannot parse a sentence
         if llm_mode == "off":
             return Failure(ErrorInfo(code="E_LLM_OFF", message="AI mode requested with LLM_MODE=off"))
@@ -71,21 +71,7 @@ def plan(query, info: DataInfo, options: RunOptions, seed: int, llm_mode: LlmMod
     effective = query.model_copy(deep=True)
     if effective.window_end is None:
         effective.window_end = info.latest_month  # D2: default = latest month
-    return _with_topology(effective, query, options, trace)
-
-
-def _with_topology(effective: Criteria, criteria_in: Criteria, options: RunOptions, trace: TraceLog) -> PlanResult:
-    n_loc = len(set(effective.localities)) if effective.localities is not None else len(CANONICAL_LOCALITIES)
-    if options.force_topology is not None:
-        topology = options.force_topology
-        why = "forced"
-    elif effective.localities is None or n_loc >= TOPOLOGY_PARALLEL_MIN_LOCALITIES:
-        topology, why = "parallel", f"{n_loc} localities >= {TOPOLOGY_PARALLEL_MIN_LOCALITIES}"
-    else:
-        topology, why = "consolidated", f"{n_loc} localities < {TOPOLOGY_PARALLEL_MIN_LOCALITIES}"
-    n_scanners = n_loc if topology == "parallel" else 1
-    trace.decision("planner", f"topology={topology} ({why})")
-    return PlanResult(effective=effective, topology=topology, n_scanners=n_scanners, criteria_in=criteria_in)
+    return with_topology(effective, query, options, trace)
 
 
 def repair(plan_: PlanResult, request: L1Request, info: DataInfo, options: RunOptions, l1_repairs: int, trace: TraceLog):
@@ -113,8 +99,7 @@ def aggregate(effective: Criteria, rows: pd.DataFrame, df: pd.DataFrame, info: D
 
     issues = list(effective.domain_violations())
     assert effective.window_end is not None
-    first_valid_end = month_add(info.first_month, WINDOW_MONTHS - 1)
-    if not first_valid_end <= effective.window_end <= info.latest_month:
+    if not info.first_valid_end <= effective.window_end <= info.latest_month:
         issues.append("window_out_of_range")
     if issues:
         return L1Request(issues=issues, fields=[_ISSUE_FIELD[i] for i in issues])

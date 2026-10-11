@@ -17,6 +17,9 @@ from helpers import SNAPSHOT_SHA, small_df
 
 
 def engine(**kw) -> Engine:
+    """These tests check the orchestration itself, so they pin the stub agents
+    unless a test passes its own (the real agents have their own test files)."""
+    kw.setdefault("agents", stubs.stub_agents())
     return Engine(SNAPSHOT_SHA, logic_version="abc1234", **kw)
 
 
