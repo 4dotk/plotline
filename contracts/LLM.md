@@ -1,9 +1,9 @@
 # LLM SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T78 · **Parent:** `CONTRACT.md` v1.0.0 (the global contract)
+**Task:** T78 · **Parent:** `CONTRACT.md` v1.1.0 (the global contract)
 **Scope:** model configuration, modes (live, replay, off), cache, seeds and settings, output validation, retries, fallbacks, and logging.
 
-This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 5.4, 6.4, 6.5, 7.1, 7.2 and 8 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants come from `app/contracts.py` (global section 3). Numbers quoted below are for reading only.
+This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 5.4, 6.4, 6.5, 7.1, 7.2, 7.3 and 8 (D11) and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants come from `app/contract.py` (global section 3). Numbers quoted below are for reading only.
 
 Where this file adds a detail the global contract leaves open, the line is marked **[clarification]** and listed in section 12 for the T79 contract check.
 
@@ -11,14 +11,14 @@ Where this file adds a detail the global contract leaves open, the line is marke
 
 ## 1. Where the model is used and what it may change
 
-* The model is used in **two places only**: the Query Planner in AI mode (sentence → `Criteria`) and the Diagnostic agent (text for each anomaly flag). No other agent calls it.
-* **I-LLM:** the model can change only (a) which `Criteria` the Planner produces in AI mode and (b) the text in `diagnostics`. **Every number in the report comes from code.** Once the Planner has produced a `Criteria`, everything downstream is deterministic.
-* Structured mode (a `Criteria` as input) makes no Planner call. A run with no anomaly flags makes no Diagnostic call.
+* The model is used in **three places only** (D11): the Query Planner in AI mode (sentence → `Criteria`), the Coverage Validator (the L2 choice `widen` or `stop`), and the Diagnostic agent (text for each anomaly flag). No other agent calls it.
+* **I-LLM:** the model can change only (a) which `Criteria` the Planner produces in AI mode, (b) whether L2 widens or stops, and (c) the text in `diagnostics`. **Every number in the report comes from code**; (b) changes which criteria are computed, never how. With `LLM_MODE` ∈ {off, replay} everything is deterministic.
+* Structured mode (a `Criteria` as input) makes no Planner call. A run with no anomaly flags makes no Diagnostic call. The Validator is called **only when L2 could fire** (coverage test failed, loops on, soft filters exist, attempts below the cap); otherwise there is no call.
 
 ## 2. One module, one function
 
 * Exactly **one module**, `app/llm_client.py`, may talk to a model. No other module imports an HTTP library, an LLM SDK, or LangChain for this purpose. This is checked by a test (section 11).
-* The client exposes one call that takes: a purpose (`planner` or `diagnostic`), a system prompt, a user prompt, a response schema, and a seed. It returns either schema-valid JSON or a failure result that the caller handles (section 8).
+* The client exposes one call that takes: a purpose (`planner`, `validator` or `diagnostic`), a system prompt, a user prompt, a response schema, and a seed. It returns either schema-valid JSON or a failure result that the caller handles (section 8).
 * The same call works in all three modes and against any backend (`llama serve`, LM Studio). **Callers see no difference.** No server name, address or model name appears in code.
 * LangChain, if used, is an implementation detail inside this module only.
 
@@ -48,6 +48,7 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 | Model or network call | never | never | yes |
 | Planner, AI mode | `E_LLM_OFF` | answer from cache | call the model |
 | Planner, structured mode | no call | no call | no call |
+| Validator (L2 decision) | the rule: `widen` | answer from cache | call the model |
 | Diagnostic | template text, `source = "template"` | answer from cache | call the model |
 | Cache miss | not applicable | `E_REPLAY_MISS`, **never** a silent live call | not applicable (the call is made) |
 | Report bytes | identical for identical input (I-DET) | identical for identical input (I-DET) | may drift |
@@ -81,12 +82,14 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 * Prompts live in `app/prompts/*.md`, one file per purpose.
 * `metadata.llm.prompt_hash` is the SHA256 of the contents of all prompt files, concatenated in sorted filename order. **[clarification]**
 * A prompt contains only data passed in from code (the sentence, or the flag and its figures). Nothing in a prompt asks the model to compute a number that ends up in the report.
+* **The Validator prompt holds counts and names only:** `coverage_months`, `need_months`, `attempt`, `cap`, the names of the soft filters that are set, and the next widening `factor`. It never contains a price, sqft, rupee or locality value, so shuffling rows (MR1) or scaling prices (MR2, MR8) leaves the prompt, and so the cache key, unchanged.
 
 ## 7. Output validation
 
 * Output is JSON checked with **pydantic** against the response schema. Output is **malformed** when it is not parseable JSON or fails the schema (wrong type, missing field, extra field).
 * **Planner schema:** exactly the fields of `Criteria` (global 5.2) and nothing else. Extra fields are malformed.
 * **Diagnostic schema:** one JSON object with a single non-empty `text` string (one call per flag).
+* **Validator schema:** exactly `{"action": "widen" | "stop"}` and nothing else. Anything else is malformed.
 * **Schema validity is not criteria validity.** A well-formed `Criteria` with an unknown locality, an inverted band or an out-of-range window is **not** malformed: it goes to the L1 repair loop (global 7.3), not to the retry path here.
 * **Constrained output.** Where the server supports a JSON-schema response format, the client uses it. If `llama serve` does not expose it (global section 8, not yet verified), the client falls back to "prompt for JSON, validate, retry". Callers see no difference.
 
@@ -97,6 +100,7 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 | Malformed output | One `warning` trace event for that attempt, then retry. At most **2 retries** (3 attempts in all). |
 | Still malformed after the retries, Planner | Fall back to the **rule-based Planner**. Fallback logged. If the rule-based parser fails too → `E_NL_UNPARSEABLE`. |
 | Still malformed after the retries, Diagnostic | Use the **template** text for that flag, `source = "template"`. Fallback logged. |
+| Still malformed after the retries, Validator | Use the **rule** (`widen`). Fallback logged. |
 | Connection error or timeout (live) | Counts as a failed attempt (not cached); same retry and fallback path. **[clarification]** |
 | `LLM_MODE=off`, Planner in AI mode | `E_LLM_OFF` |
 | `LLM_MODE=replay`, key not in the cache | `E_REPLAY_MISS`. Never a live call. This applies to the Diagnostic as well as the Planner. **[clarification]** |
@@ -136,6 +140,8 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 | Retry replay | A recorded retry chain replays to the same fallback with no live call |
 | Determinism | Two replay runs of the same input give byte-identical JSON, including `metadata.llm` |
 | I-LLM | Between modes, only `diagnostics` (and, in AI mode, `effective_criteria`) may differ |
+| Validator decision | `off` → `widen` with no client call; model `stop` → a `decision` trace event, **not** a loop firing, `loop_counters` unchanged; model `widen` → normal L2 event with `decided_by = "llm"`; malformed ×3 → rule, `decided_by = "rule"`; no call when coverage passes, no soft filters, loops off, or at the cap |
+| Validator prompt invariance | The Validator prompt is byte-identical after a row shuffle (MR1), a price scaling (MR2, MR8), and contains no price, sqft or locality value |
 | Prompt hash | Editing any prompt file changes `prompt_hash` and causes a replay miss |
 | Config | `.env` is ignored by version control; `.env.example` lists every key; `LLM_TEMPERATURE` ≠ 0 is rejected; `off` runs with only `LLM_MODE` set |
 
@@ -154,11 +160,14 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 | 9 | `prompt_hash` | SHA256 over all prompt files, concatenated in sorted filename order | Global says only "their hash" |
 | 10 | `metadata.llm` in replay | Taken from the cache entry | Needed for I-DET to hold across machines; global does not say |
 
+| 11 | Validator decision shape | Model picks only `widen` or `stop`; it cannot pick a factor, a filter or exceed the cap; `stop` is a `decision` event, not a loop firing | New in v1.1.0 (D11); a richer choice (which soft filter to widen first) is possible later but widens the MR interactions |
+| 12 | `E_REPLAY_MISS` in the Validator | Fails the whole report, like the Planner and Diagnostic | Could instead fall back to the rule `widen`; same open question as #8 |
+
 ## 13. Traceability to the global contract
 
 | This file | Global contract |
 |---|---|
-| §1 Use and limits | 7.1, I-LLM |
+| §1 Use and limits | 7.1, 7.3, I-LLM, D11 |
 | §2 One module | 8 |
 | §3 Configuration | 8 (`.env` keys), 5.1, D10 |
 | §4 Modes | 5.4, 6.5 (`E_LLM_OFF`, `E_REPLAY_MISS`), 7.2 (I-DET), 8 |
@@ -170,4 +179,4 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 | §10 Logging and metadata | 6.4, 8, 11 |
 | §11 Tests | 9, 8 |
 
-*Version: 1.0.0 (tracks `CONTRACT.md` v1.0.0). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.1.0 (tracks `CONTRACT.md` v1.1.0). Status: draft, pending agreement at the contract check (T79).*

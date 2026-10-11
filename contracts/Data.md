@@ -1,9 +1,9 @@
 # DATA SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T75 · **Parent:** `CONTRACT.md` v1.0.0 (the global contract)
+**Task:** T75 · **Parent:** `CONTRACT.md` v1.1.0 (the global contract)
 **Scope:** data source, cleaning, frozen snapshot, and data-boundary requirements.
 
-This is a **subcontract**, not a separate global or shared contract. It adds detail to sections 3, 4 and 5 of `CONTRACT.md` and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect (global "Change rule"). Constants are never defined here; they are imported from `app/contracts.py` (global section 3).
+This is a **subcontract**, not a separate global or shared contract. It adds detail to sections 3, 4 and 5 of `CONTRACT.md` and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect (global "Change rule"). Constants are never defined here; they are imported from `app/contract.py` (global section 3).
 
 ---
 
@@ -96,7 +96,7 @@ At start-up the application logic MUST recompute the SHA256 of `data/chennai_sna
 | RC3 | Row count after freeze | 7,108 |
 | RC4 | Snapshot contents | 7 localities, 5 sale conditions, unique `listing_id`, `bhk` ∈ {1–4}, price > 0, sqft > 0, no nulls |
 | RC5 | Cleaning counts | R1 = 38, R2 = 15, R3 = 1, R4 = 0 failures |
-| RC6 | Golden vectors: `python scripts/golden_vectors.py data/chennai_snapshot.csv 2015-02 2011-12` | Reproduces Appendix A1 (338 rows for 2015-02; 1,300 rows for 2011-12) and the L2 example A3 (38 → 49 → 71 rows; covered months 3 → 6 → 9) |
+| RC6 | Golden vectors: `python scripts/golden_vectors.py data/chennai_snapshot.csv 2015-02 2011-12` | Reproduces `golden.md` A1 (338 rows for 2015-02; 1,300 rows for 2011-12) and the L2 example `golden.md` A3 (38 → 49 → 71 rows; covered months 3 → 6 → 9) |
 | RC7 | `python -m tests.reproduce` | Fails loudly on a snapshot hash mismatch; needs no GPU and no network |
 
 A change to the raw file, the freeze script, or any rule in section 2 changes the snapshot hash. That requires a changelog line in `CONTRACT.md` section 12, a version bump, and agreement of both parties before anything else proceeds. After the `v0-results` tag, any such change must also explain what was wrong.
@@ -113,4 +113,4 @@ A change to the raw file, the freeze script, or any rule in section 2 changes th
 | §6 Startup check | 4.1, 6.5 (`E_SNAPSHOT_HASH`), I-ERR |
 | §7 Reproducibility | 4.1, 9.5, 11, Appendix A |
 
-*Version: 1.0.0 (tracks `CONTRACT.md` v1.0.0). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.1.0 (tracks `CONTRACT.md` v1.1.0). Status: draft, pending agreement at the contract check (T79).*

@@ -1,9 +1,9 @@
 # TESTING SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T76 · **Parent:** `CONTRACT.md` v1.0.0 (the global contract)
+**Task:** T76 · **Parent:** `CONTRACT.md` v1.1.0 (the global contract)
 **Scope:** oracle rules, metamorphic relations (MRs) with input subdomains and tolerances, test inputs, seeds, statistics, and result logging.
 
-This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 6, 7.2 and 9 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants (tolerances, seeds, thresholds) are never given new values here; they come from `app/contracts.py` (global section 3). Numbers quoted below are for reading only.
+This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 6, 7.2 and 9 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants (tolerances, seeds, thresholds) are never given new values here; they come from `app/contract.py` (global section 3). Numbers quoted below are for reading only.
 
 Where this file adds a detail the global contract leaves open, the line is marked **[clarification]** and listed in section 12 for the T79 contract check.
 
@@ -22,13 +22,13 @@ Where this file adds a detail the global contract leaves open, the line is marke
 
 `tests/oracle.py` is an independent plain-pandas implementation of every formula in global 6.2–6.3.
 
-1. **Independence.** It MUST NOT import any application logic (`app/`). It may share only the snapshot file and the constants module `app/contracts.py`, so thresholds cannot drift. **[clarification]** (constants import is the only allowed `app` import; see section 12)
+1. **Independence.** It MUST NOT import any application logic (`app/`). It may share only the snapshot file and the constants module `app/contract.py`, so thresholds cannot drift. **[clarification]** (constants import is the only allowed `app` import; see section 12)
 2. **What it computes:** the dense grid keys (I-DENSE); `listing_count`, `n_in_bucket`, `median_price`, `median_price_per_sqft`, `low_sample`; `pct_change_price_per_sqft`; `anomaly_flags` (`price_jump`, `count_drop`); the summary (pooled first-3 vs last-3 months, `change_pct`, `direction`); `coverage_score`. Medians use numpy `median` semantics on the same rows; no rounding.
 3. **Order of use:**
-   1. Check the oracle against the golden vectors (global Appendix A1 for 2015-02, A2 for 2011-12) and against three hand calculations (T23).
+   1. Check the oracle against the golden vectors (`golden.md` A1 for 2015-02, A2 for 2011-12) and against three hand calculations (T23).
    2. Check the application against the oracle on **every** base input.
    3. Any mismatch is a bug in the application, the oracle, or the contract. **Fix it before any MR run.**
-4. **Which criteria the oracle is run on.** The oracle computes from the report's `effective_criteria`, so L1 repairs and L2 widening are covered without the oracle re-implementing the loops. **[clarification]** The loops themselves are tested by the L2 worked example (Appendix A3: 38 → 49 → 71 rows, 3 → 6 → 9 covered months, `L2_attempts` = 2) and by section 11.
+4. **Which criteria the oracle is run on.** The oracle computes from the report's `effective_criteria`, so L1 repairs and L2 widening are covered without the oracle re-implementing the loops. **[clarification]** The loops themselves are tested by the L2 worked example (`golden.md` A3: 38 → 49 → 71 rows, 3 → 6 → 9 covered months, `L2_attempts` = 2) and by section 11.
 5. **Free invariant checks on every base** (global 7.2): I-DET (run the same input twice → identical bytes), I-PURE (dataframe and `Criteria` hashed before and after the run), I-DENSE (the application's record key set equals the oracle's key set from `effective_criteria`).
 
 ## 3. Comparators and tolerances
@@ -93,7 +93,7 @@ MR7 is labelled Directional because the assignment table does; in substance it i
 | 1 | Whole report except `trace`, `diagnostics`, `metadata`: **bit-exact** floats | — |
 | 2 | Counts, flags, `coverage_score`, `direction`: EXACT. `median_price`, `median_price_per_sqft`, `summary.start/end` equal source ÷ 100,000 (REL_TOL). `pct_change`, `change_pct` equal (ABS_TOL / ABS_TOL_PCT) | `price_unit` string |
 | 3a, 3b | Counts (`listing_count`, `n_in_bucket`, `summary.n_rows`) ×2 EXACT. Medians, `pct_change`, `summary.start/end/change_pct`, flags equal. 3b violation means the application dedups, which breaks D3 and I-NODEDUPE | `low_sample` |
-| 4 | Month m: `median_price` = source + X (REL_TOL), counts EXACT, for every region. Every month ≠ m: all record fields equal. No month's `median_price` decreases | Month m `median_price_per_sqft`; `pct_change` and flags for months m and m+1; `summary` |
+| 4 | Month m: `median_price` = source + X (REL_TOL), counts EXACT, for every region. Every month ≠ m: all record fields equal, **except `pct_change` at month m+1**. No month's `median_price` decreases | Month m `median_price_per_sqft`; `pct_change` and flags for months m and m+1; `summary` |
 | 5 | `listing_count` in follow-up ≥ source for every (month, region) | medians |
 | 6 | `ALL.listing_count(S) ≤ ALL.listing_count(L)` per month. Locality records for l ∈ S equal in both runs (EXACT / REL_TOL) | `coverage_score` |
 | 7 | The 11 overlapping months: all record fields equal for every region. `pct_change` and flags compared only for the 10 overlap months after the first overlap month | `coverage_score`, `summary`, `n_rows` |
@@ -103,7 +103,7 @@ MR7 is labelled Directional because the assignment table does; in substance it i
 | X1 | Whole report except `metadata.topology` and `metadata.n_scanners` | — |
 
 Notes on application of the table:
-* MR4: "every month ≠ m: all record fields equal" is read together with the "do not assert" column, so `pct_change` at month m+1 and flags for months m and m+1 are excluded. **[clarification]**
+* MR4: `pct_change` at month m+1 depends on month m, so it is excluded together with the flags of months m and m+1 (global v1.1.0).
 * MR7: with source window months m1…m12 and follow-up m2…m13, `pct_change` and flags are compared for m3…m12.
 * MR9: the source phrasing is the canonical sentence; each other phrasing is a follow-up and forms its own pair. A base violates if any pair violates.
 * If the **source** report has `status ≠ "ok"` on a generated base, stop: that is a generator, oracle or contract bug, not an MR result. If the **follow-up** has `status ≠ "ok"` while the source is ok, log a violation on field `status`. **[clarification]**
@@ -116,7 +116,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 |---|---|---|
 | 1 | never | Order-dependent aggregation; non-deterministic worker merges |
 | 2 | flag margin: any \|\|pct\| − `ANOMALY_PCT`\| < 1e-9 | Hard-coded unit assumptions; absolute thresholds in anomaly detection |
-| 3a | any `ALL` month with `n_in_bucket` ∈ {3, 4}; `L2_attempts` > 0 | Silent dedup errors; count-weighted median corruption; the `MIN_BUCKET_N` gate |
+| 3a | any `ALL` month with `n_in_bucket` ∈ {3, 4}; the pooled first-3-months or last-3-months valid-row count ∈ {3, 4} (the summary gate); `L2_attempts` > 0 | Silent dedup errors; count-weighted median corruption; the `MIN_BUCKET_N` gate |
 | 3b | same as 3a | Dedup by `listing_id` (breaks D3) |
 | 4 | `price_band` is set; `ALL` `n_in_bucket(m)` < `MIN_BUCKET_N` | Cross-bucket record leakage in monthly aggregation |
 | 5 | `price_band` null; `L2_attempts` > 0 in either run | Filter boundary defects; loop pruning dropping rows |
@@ -139,7 +139,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | | Mode A | Mode B |
 |---|---|---|
 | `LLM_MODE` | `off` | `live` on the canonical machine, then `replay` |
-| MRs | all 10 (+ X1 if built) | MR9; MR1 and MR3 in AI mode (sentence queries) |
+| MRs | all 10 (+ X1 if built) | MR9; MR1 and MR3 in AI mode (sentence queries), with the Validator's widen/stop decision live |
 | Bases | ≥ 100 per MR | ≥ 30 (50 target) per MR |
 | Seeds | run each base once with `seed = 0` | all `SEEDS` = (101, 202, 303) |
 
@@ -196,14 +196,14 @@ Skip rules are written only in terms of report fields so they can be checked aut
 
 | # | Point | What this file says | Why it needs a look |
 |---|---|---|---|
-| 1 | Oracle may import `app/contracts.py` | Only the constants, nothing else from `app/` | Global 9.5 says the oracle "must not import application logic code"; constants are not logic, but this should be confirmed |
+| 1 | Oracle may import `app/contract.py` | Only the constants, nothing else from `app/` | Global 9.5 says the oracle "must not import application logic code"; constants are not logic, but this should be confirmed |
 | 2 | Oracle and L1 / L2 | Oracle runs on `effective_criteria` from the report | The oracle then cannot catch a wrong repair or widening; the L2 example and loop probe cover it |
 | 3 | What "≥ 100 bases per MR" counts | Evaluated (non-skipped) bases, so the generator draws enough to reach it | MR4 and MR10 need `price_band` null, MR5 needs it set; skips can cut a pool quickly |
-| 4 | MR3 summary gate | Not in the global skip rule: the pooled first-3 or last-3 valid-row count ∈ {3, 4} also crosses `MIN_BUCKET_N` when doubled (summary null → non-null) | Global MR3 skip only covers monthly `n_in_bucket` ∈ {3, 4} |
+| 4 | MR3 summary gate | **Resolved in global v1.1.0:** the pooled first-3 / last-3 count ∈ {3, 4} is now an MR3 skip rule (section 5.3) | — |
 | 5 | "Last year" paraphrase vs uniform `window_end` | Mode B reserves a share of bases with `window_end` = 2015-02 | Global 9.3 samples `window_end` uniformly (1 in 123 is the default month) yet MR9 requires a "last year" phrasing |
 | 6 | Unconditioned column | Waives only report-field skips, never skips that make the transformation undefined | Global 9.2 does not say which skips are waived |
 | 7 | `status` handling | Source not ok → stop; follow-up not ok → violation on `status` | Global table is silent on error reports inside an MR |
-| 8 | MR4 month m+1 | `pct_change` and flags for months m and m+1 excluded | Global "all fields equal" and "do not assert" lines overlap |
+| 8 | MR4 month m+1 | **Resolved in global v1.1.0:** MR4 now reads "all fields equal except `pct_change` at m+1" | — |
 | 9 | Results file for bases, parameters, skips | `results/bases_and_params.json` | Not in the global repository layout |
 | 10 | Mode B phrasings | Committed templates, not LLM-generated | Keeps the base list reproducible from `GEN_SEED` |
 
@@ -222,4 +222,4 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | §9 Result logging | 9.2 notes, 9.5, 11 |
 | §10 Process | 9.5, 11 |
 
-*Version: 1.0.0 (tracks `CONTRACT.md` v1.0.0). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.1.0 (tracks `CONTRACT.md` v1.1.0). Status: draft, pending agreement at the contract check (T79).*
