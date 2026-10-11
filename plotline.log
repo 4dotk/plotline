@@ -1,0 +1,18 @@
+2026-10-11 18:59:32,459 INFO    plotline.api          api ready: data_dir=data rows=7108 llm_mode=live snapshot_ok=True sha=18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209
+2026-10-11 18:59:32,829 INFO    uvicorn.error         Started server process [11108]
+2026-10-11 18:59:32,830 INFO    uvicorn.error         Waiting for application startup.
+2026-10-11 18:59:32,836 INFO    uvicorn.error         Application startup complete.
+2026-10-11 18:59:32,837 INFO    uvicorn.error         Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-10-11 19:04:34,896 INFO    uvicorn.error         Shutting down
+2026-10-11 19:04:35,012 INFO    uvicorn.error         Waiting for application shutdown.
+2026-10-11 19:04:35,014 INFO    uvicorn.error         Application shutdown complete.
+2026-10-11 19:04:35,014 INFO    uvicorn.error         Finished server process [11108]
+2026-10-11 19:04:49,821 INFO    plotline.api          api ready: data_dir=data rows=7108 llm_mode=live snapshot_ok=True sha=18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209
+2026-10-11 19:04:49,877 INFO    uvicorn.error         Started server process [6860]
+2026-10-11 19:04:49,877 INFO    uvicorn.error         Waiting for application startup.
+2026-10-11 19:04:49,879 INFO    uvicorn.error         Application startup complete.
+2026-10-11 19:04:49,879 INFO    uvicorn.error         Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-10-11 19:05:45,763 INFO    uvicorn.error         Shutting down
+2026-10-11 19:05:45,864 INFO    uvicorn.error         Waiting for application shutdown.
+2026-10-11 19:05:45,864 INFO    uvicorn.error         Application shutdown complete.
+2026-10-11 19:05:45,865 INFO    uvicorn.error         Finished server process [6860]

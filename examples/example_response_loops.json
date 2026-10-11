@@ -1,0 +1,580 @@
+{
+  "status": "ok",
+  "error": null,
+  "criteria_in": {
+    "localities": [
+      "Adyar"
+    ],
+    "window_end": "2010-12",
+    "bhk": [
+      1
+    ],
+    "price_band": [
+      9000000,
+      7000000
+    ],
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "effective_criteria": {
+    "localities": [
+      "Adyar"
+    ],
+    "window_end": "2010-12",
+    "bhk": [
+      1
+    ],
+    "price_band": [
+      6000000,
+      10000000
+    ],
+    "sqft_range": null,
+    "sale_cond": null,
+    "price_unit": "inr"
+  },
+  "price_unit": "inr",
+  "records": [
+    {
+      "month": "2010-01",
+      "region_key": "ALL",
+      "listing_count": 1,
+      "n_in_bucket": 1,
+      "median_price": 7656640.0,
+      "median_price_per_sqft": 9213.766546329723,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-01",
+      "region_key": "Adyar",
+      "listing_count": 1,
+      "n_in_bucket": 1,
+      "median_price": 7656640.0,
+      "median_price_per_sqft": 9213.766546329723,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-02",
+      "region_key": "ALL",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 7887730.0,
+      "median_price_per_sqft": 10998.335832083958,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-02",
+      "region_key": "Adyar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 7887730.0,
+      "median_price_per_sqft": 10998.335832083958,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-03",
+      "region_key": "ALL",
+      "listing_count": 9,
+      "n_in_bucket": 9,
+      "median_price": 7238630.0,
+      "median_price_per_sqft": 9068.141025641025,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.17549880599319723
+    },
+    {
+      "month": "2010-03",
+      "region_key": "Adyar",
+      "listing_count": 9,
+      "n_in_bucket": 9,
+      "median_price": 7238630.0,
+      "median_price_per_sqft": 9068.141025641025,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-04",
+      "region_key": "ALL",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 6342227.5,
+      "median_price_per_sqft": 8126.562272049147,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.10383371309835998
+    },
+    {
+      "month": "2010-04",
+      "region_key": "Adyar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 6342227.5,
+      "median_price_per_sqft": 8126.562272049147,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-05",
+      "region_key": "ALL",
+      "listing_count": 5,
+      "n_in_bucket": 5,
+      "median_price": 8547835.0,
+      "median_price_per_sqft": 11363.973042362002,
+      "low_sample": false,
+      "pct_change_price_per_sqft": 0.39837395714639956
+    },
+    {
+      "month": "2010-05",
+      "region_key": "Adyar",
+      "listing_count": 5,
+      "n_in_bucket": 5,
+      "median_price": 8547835.0,
+      "median_price_per_sqft": 11363.973042362002,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-06",
+      "region_key": "ALL",
+      "listing_count": 9,
+      "n_in_bucket": 9,
+      "median_price": 8136645.0,
+      "median_price_per_sqft": 8666.484806629835,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.2373719319534301
+    },
+    {
+      "month": "2010-06",
+      "region_key": "Adyar",
+      "listing_count": 9,
+      "n_in_bucket": 9,
+      "median_price": 8136645.0,
+      "median_price_per_sqft": 8666.484806629835,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-07",
+      "region_key": "ALL",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 8825472.5,
+      "median_price_per_sqft": 10862.457359401813,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-07",
+      "region_key": "Adyar",
+      "listing_count": 4,
+      "n_in_bucket": 4,
+      "median_price": 8825472.5,
+      "median_price_per_sqft": 10862.457359401813,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-08",
+      "region_key": "ALL",
+      "listing_count": 10,
+      "n_in_bucket": 10,
+      "median_price": 7605075.0,
+      "median_price_per_sqft": 9513.7854991853,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-08",
+      "region_key": "Adyar",
+      "listing_count": 10,
+      "n_in_bucket": 10,
+      "median_price": 7605075.0,
+      "median_price_per_sqft": 9513.7854991853,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-09",
+      "region_key": "ALL",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 8848105.0,
+      "median_price_per_sqft": 8275.279866332497,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.13018010895440735
+    },
+    {
+      "month": "2010-09",
+      "region_key": "Adyar",
+      "listing_count": 7,
+      "n_in_bucket": 7,
+      "median_price": 8848105.0,
+      "median_price_per_sqft": 8275.279866332497,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-10",
+      "region_key": "ALL",
+      "listing_count": 1,
+      "n_in_bucket": 1,
+      "median_price": 9552295.0,
+      "median_price_per_sqft": 10002.403141361257,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-10",
+      "region_key": "Adyar",
+      "listing_count": 1,
+      "n_in_bucket": 1,
+      "median_price": 9552295.0,
+      "median_price_per_sqft": 10002.403141361257,
+      "low_sample": true,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-11",
+      "region_key": "ALL",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 7517390.0,
+      "median_price_per_sqft": 9777.908589729912,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-11",
+      "region_key": "Adyar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 7517390.0,
+      "median_price_per_sqft": 9777.908589729912,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    },
+    {
+      "month": "2010-12",
+      "region_key": "ALL",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 6712602.5,
+      "median_price_per_sqft": 7627.508047682923,
+      "low_sample": false,
+      "pct_change_price_per_sqft": -0.21992438590657637
+    },
+    {
+      "month": "2010-12",
+      "region_key": "Adyar",
+      "listing_count": 6,
+      "n_in_bucket": 6,
+      "median_price": 6712602.5,
+      "median_price_per_sqft": 7627.508047682923,
+      "low_sample": false,
+      "pct_change_price_per_sqft": null
+    }
+  ],
+  "summary": {
+    "n_rows": 71,
+    "price": {
+      "start": 7365020.0,
+      "end": 7375400.0,
+      "change_pct": 0.1409364808242275,
+      "direction": "flat"
+    },
+    "price_per_sqft": {
+      "start": 9213.766546329723,
+      "end": 9007.204142011835,
+      "change_pct": -2.241888844038187,
+      "direction": "down"
+    }
+  },
+  "coverage_score": 0.75,
+  "anomaly_flags": [
+    {
+      "month": "2010-03",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": -0.17549880599319723,
+      "threshold": 0.12,
+      "reason": "median price per sqft fell 17.5% vs 2010-02"
+    },
+    {
+      "month": "2010-05",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": 0.39837395714639956,
+      "threshold": 0.12,
+      "reason": "median price per sqft rose 39.8% vs 2010-04"
+    },
+    {
+      "month": "2010-06",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": -0.2373719319534301,
+      "threshold": 0.12,
+      "reason": "median price per sqft fell 23.7% vs 2010-05"
+    },
+    {
+      "month": "2010-07",
+      "region_key": "ALL",
+      "kind": "count_drop",
+      "value": 0.4444444444444444,
+      "threshold": 0.5,
+      "reason": "listings fell to 44% of 2010-06 (4 vs 9)"
+    },
+    {
+      "month": "2010-09",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": -0.13018010895440735,
+      "threshold": 0.12,
+      "reason": "median price per sqft fell 13.0% vs 2010-08"
+    },
+    {
+      "month": "2010-10",
+      "region_key": "ALL",
+      "kind": "count_drop",
+      "value": 0.14285714285714285,
+      "threshold": 0.5,
+      "reason": "listings fell to 14% of 2010-09 (1 vs 7)"
+    },
+    {
+      "month": "2010-12",
+      "region_key": "ALL",
+      "kind": "price_jump",
+      "value": -0.21992438590657637,
+      "threshold": 0.12,
+      "reason": "median price per sqft fell 22.0% vs 2010-11"
+    }
+  ],
+  "diagnostics": [
+    {
+      "month": "2010-03",
+      "text": "median price per sqft fell 17.5% vs 2010-02",
+      "source": "template"
+    },
+    {
+      "month": "2010-05",
+      "text": "median price per sqft rose 39.8% vs 2010-04",
+      "source": "template"
+    },
+    {
+      "month": "2010-06",
+      "text": "median price per sqft fell 23.7% vs 2010-05",
+      "source": "template"
+    },
+    {
+      "month": "2010-07",
+      "text": "listings fell to 44% of 2010-06 (4 vs 9)",
+      "source": "template"
+    },
+    {
+      "month": "2010-09",
+      "text": "median price per sqft fell 13.0% vs 2010-08",
+      "source": "template"
+    },
+    {
+      "month": "2010-10",
+      "text": "listings fell to 14% of 2010-09 (1 vs 7)",
+      "source": "template"
+    },
+    {
+      "month": "2010-12",
+      "text": "median price per sqft fell 22.0% vs 2010-11",
+      "source": "template"
+    }
+  ],
+  "trace": [
+    {
+      "i": 0,
+      "agent": "planner",
+      "kind": "decision",
+      "loop": null,
+      "msg": "topology=consolidated (1 locality < 3)",
+      "data": {}
+    },
+    {
+      "i": 1,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "1 scanner(s), consolidated: scan on the criteria as received",
+      "data": {}
+    },
+    {
+      "i": 2,
+      "agent": "aggregator",
+      "kind": "warning",
+      "loop": null,
+      "msg": "invalid price_band: band_inverted; asking the planner to repair (L1)",
+      "data": {}
+    },
+    {
+      "i": 3,
+      "agent": "planner",
+      "kind": "loop",
+      "loop": "L1",
+      "msg": "L1 fired: band_inverted; [9000000,7000000] -> [7000000,9000000]; repair 1 of 2",
+      "data": {
+        "issue": "band_inverted",
+        "before": [
+          9000000,
+          7000000
+        ],
+        "after": [
+          7000000,
+          9000000
+        ],
+        "repair_no": 1,
+        "cap": 2
+      }
+    },
+    {
+      "i": 4,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "1 scanner(s), consolidated: 38 rows",
+      "data": {}
+    },
+    {
+      "i": 5,
+      "agent": "aggregator",
+      "kind": "step",
+      "loop": null,
+      "msg": "24 buckets (12 months x ALL + Adyar)",
+      "data": {}
+    },
+    {
+      "i": 6,
+      "agent": "validator",
+      "kind": "step",
+      "loop": null,
+      "msg": "coverage 3/12 on 38 rows",
+      "data": {}
+    },
+    {
+      "i": 7,
+      "agent": "validator",
+      "kind": "loop",
+      "loop": "L2",
+      "msg": "L2 fired: coverage 3/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3",
+      "data": {
+        "coverage_months": 3,
+        "need_months": 9,
+        "action": "widen soft ranges by 20%",
+        "factor": 0.2,
+        "attempt": 1,
+        "cap": 3,
+        "effective_price_band": [
+          6600000,
+          9400000
+        ],
+        "decided_by": "rule"
+      }
+    },
+    {
+      "i": 8,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "1 scanner(s), consolidated: 49 rows after widening",
+      "data": {}
+    },
+    {
+      "i": 9,
+      "agent": "validator",
+      "kind": "step",
+      "loop": null,
+      "msg": "coverage 6/12 on 49 rows",
+      "data": {}
+    },
+    {
+      "i": 10,
+      "agent": "validator",
+      "kind": "loop",
+      "loop": "L2",
+      "msg": "L2 fired: coverage 6/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3",
+      "data": {
+        "coverage_months": 6,
+        "need_months": 9,
+        "action": "widen soft ranges by 50%",
+        "factor": 0.5,
+        "attempt": 2,
+        "cap": 3,
+        "effective_price_band": [
+          6000000,
+          10000000
+        ],
+        "decided_by": "rule"
+      }
+    },
+    {
+      "i": 11,
+      "agent": "scanner",
+      "kind": "step",
+      "loop": null,
+      "msg": "1 scanner(s), consolidated: 71 rows after widening",
+      "data": {}
+    },
+    {
+      "i": 12,
+      "agent": "validator",
+      "kind": "step",
+      "loop": null,
+      "msg": "coverage 9/12 on 71 rows",
+      "data": {}
+    },
+    {
+      "i": 13,
+      "agent": "validator",
+      "kind": "step",
+      "loop": null,
+      "msg": "coverage 9/12 meets 9/12; stop",
+      "data": {}
+    },
+    {
+      "i": 14,
+      "agent": "anomaly",
+      "kind": "step",
+      "loop": null,
+      "msg": "7 anomaly flag(s) on the ALL series",
+      "data": {}
+    },
+    {
+      "i": 15,
+      "agent": "diagnostic",
+      "kind": "step",
+      "loop": null,
+      "msg": "template text for 7 flag(s) (LLM_MODE=off)",
+      "data": {}
+    },
+    {
+      "i": 16,
+      "agent": "reporter",
+      "kind": "step",
+      "loop": null,
+      "msg": "report assembled",
+      "data": {}
+    }
+  ],
+  "metadata": {
+    "contract_version": "1.1.0",
+    "logic_version": "abc1234",
+    "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+    "seed": 0,
+    "llm_mode": "off",
+    "topology": "consolidated",
+    "n_scanners": 1,
+    "loops_enabled": true,
+    "loop_counters": {
+      "L1_repairs": 1,
+      "L2_attempts": 2
+    },
+    "partial_last_month": false,
+    "llm": null
+  }
+}

@@ -1,0 +1,28 @@
+2026-10-11 19:04:45,415 INFO    plotline.api          run request: seed=5 options={"loops_enabled":true,"force_topology":"consolidated"} query={"localities":["Adyar","T Nagar"],"window_end":"2014-06","bhk":[2],"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 19:04:45,416 INFO    plotline.orchestrator run start: seed=5 llm_mode=off loops_enabled=True input_rows=7108 query={"localities":["Adyar","T Nagar"],"window_end":"2014-06","bhk":[2],"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 19:04:45,421 INFO    plotline.orchestrator [planner] plan: start
+2026-10-11 19:04:45,423 INFO    plotline.trace        #0 [planner] decision | topology=consolidated (forced) | data={}
+2026-10-11 19:04:45,423 INFO    plotline.orchestrator [planner] plan: done in 0.6 ms -> plan topology=consolidated n_scanners=1 effective={"bhk":[2],"localities":["Adyar","T Nagar"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2014-06"}
+2026-10-11 19:04:45,424 DEBUG   plotline.orchestrator [planner] plan: full output -> {"criteria_in":{"bhk":[2],"localities":["Adyar","T Nagar"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2014-06"},"effective":{"bhk":[2],"localities":["Adyar","T Nagar"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2014-06"},"n_scanners":1,"topology":"consolidated"}
+2026-10-11 19:04:45,424 INFO    plotline.orchestrator [scanner] scan: start
+2026-10-11 19:04:45,424 INFO    plotline.trace        #1 [scanner] step | 1 scanner(s), consolidated: 0 rows (stub) | data={}
+2026-10-11 19:04:45,425 INFO    plotline.orchestrator [scanner] scan: done in 1.0 ms -> rows=0 cols=['listing_id', 'locality', 'sqft', 'sale_date', 'bhk', 'sale_cond', 'price']
+2026-10-11 19:04:45,427 DEBUG   plotline.orchestrator [scanner] scan: full output -> []
+2026-10-11 19:04:45,428 INFO    plotline.orchestrator [aggregator] aggregate: start
+2026-10-11 19:04:45,429 INFO    plotline.trace        #2 [aggregator] step | 36 buckets (dense grid, stub counts) | data={}
+2026-10-11 19:04:45,429 INFO    plotline.orchestrator [aggregator] aggregate: done in 1.1 ms -> 36 item(s)
+2026-10-11 19:04:45,430 DEBUG   plotline.orchestrator [aggregator] aggregate: full output -> {"first_5":[{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"ALL"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"Adyar"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"T Nagar"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-08","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"ALL"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-08","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"Adyar"}],"total":36}
+2026-10-11 19:04:45,430 INFO    plotline.orchestrator [validator] validate: start
+2026-10-11 19:04:45,431 INFO    plotline.trace        #3 [validator] decision | L2 skipped: nothing to widen | data={}
+2026-10-11 19:04:45,431 INFO    plotline.orchestrator [validator] validate: done in 0.5 ms -> coverage_months=0 coverage_score=0.0 widen_to=None
+2026-10-11 19:04:45,432 DEBUG   plotline.orchestrator [validator] validate: full output -> {"coverage_months":0,"coverage_score":0.0,"widen_to":null}
+2026-10-11 19:04:45,432 INFO    plotline.orchestrator [anomaly] analyse: start
+2026-10-11 19:04:45,432 INFO    plotline.trace        #4 [anomaly] step | no anomaly analysis (stub) | data={}
+2026-10-11 19:04:45,433 INFO    plotline.orchestrator [anomaly] analyse: done in 0.4 ms -> records=36 flags=0 summary={"n_rows":0,"price":null,"price_per_sqft":null}
+2026-10-11 19:04:45,433 DEBUG   plotline.orchestrator [anomaly] analyse: full output -> {"flags":[],"records":{"first_5":[{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"ALL"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"Adyar"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-07","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"T Nagar"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-08","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"ALL"},{"listing_count":0,"low_sample":true,"median_price":null,"median_price_per_sqft":null,"month":"2013-08","n_in_bucket":0,"pct_change_price_per_sqft":null,"region_key":"Adyar"}],"total":36},"summary":{"n_rows":0,"price":null,"price_per_sqft":null}}
+2026-10-11 19:04:45,433 INFO    plotline.orchestrator [diagnostic] diagnose: start
+2026-10-11 19:04:45,434 INFO    plotline.orchestrator [diagnostic] diagnose: done in 0.0 ms -> 0 item(s)
+2026-10-11 19:04:45,434 DEBUG   plotline.orchestrator [diagnostic] diagnose: full output -> []
+2026-10-11 19:04:45,435 INFO    plotline.orchestrator run end: status=ok error=None records=36 flags=0 trace_events=5 L1=0 L2=0
+2026-10-11 19:04:45,436 INFO    plotline.api          POST /api/run -> 200 in 21.9 ms
+2026-10-11 19:04:45,450 INFO    plotline              RESULT: PASSED in 28.7 ms

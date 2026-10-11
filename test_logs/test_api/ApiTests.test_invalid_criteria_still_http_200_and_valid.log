@@ -1,0 +1,20 @@
+2026-10-11 19:04:45,103 INFO    plotline.api          run request: seed=0 options={"loops_enabled":true,"force_topology":null} query={"localities":["Xyz"],"window_end":null,"bhk":null,"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 19:04:45,104 INFO    plotline.orchestrator run start: seed=0 llm_mode=off loops_enabled=True input_rows=7108 query={"localities":["Xyz"],"window_end":null,"bhk":null,"price_band":null,"sqft_range":null,"sale_cond":null,"price_unit":"inr"}
+2026-10-11 19:04:45,108 INFO    plotline.orchestrator [planner] plan: start
+2026-10-11 19:04:45,109 INFO    plotline.trace        #0 [planner] decision | topology=consolidated (1 localities < 3) | data={}
+2026-10-11 19:04:45,109 INFO    plotline.orchestrator [planner] plan: done in 0.6 ms -> plan topology=consolidated n_scanners=1 effective={"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2015-02"}
+2026-10-11 19:04:45,110 DEBUG   plotline.orchestrator [planner] plan: full output -> {"criteria_in":{"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":null},"effective":{"bhk":null,"localities":["Xyz"],"price_band":null,"price_unit":"inr","sale_cond":null,"sqft_range":null,"window_end":"2015-02"},"n_scanners":1,"topology":"consolidated"}
+2026-10-11 19:04:45,110 INFO    plotline.orchestrator [scanner] scan: start
+2026-10-11 19:04:45,111 INFO    plotline.trace        #1 [scanner] step | 1 scanner(s), consolidated: 0 rows (stub) | data={}
+2026-10-11 19:04:45,112 INFO    plotline.orchestrator [scanner] scan: done in 1.3 ms -> rows=0 cols=['listing_id', 'locality', 'sqft', 'sale_date', 'bhk', 'sale_cond', 'price']
+2026-10-11 19:04:45,113 DEBUG   plotline.orchestrator [scanner] scan: full output -> []
+2026-10-11 19:04:45,114 INFO    plotline.orchestrator [aggregator] aggregate: start
+2026-10-11 19:04:45,114 WARNING plotline.orchestrator [aggregator] aggregate: done in 0.1 ms -> L1 request: fields=['localities'] issues=['locality_unknown']
+2026-10-11 19:04:45,115 DEBUG   plotline.orchestrator [aggregator] aggregate: full output -> {"fields":["localities"],"issues":["locality_unknown"]}
+2026-10-11 19:04:45,115 INFO    plotline.orchestrator [planner] repair: start
+2026-10-11 19:04:45,115 WARNING plotline.orchestrator [planner] repair: done in 0.0 ms -> FAILURE E_INVALID_CRITERIA: invalid localities: ['locality_unknown'] (stub planner does not repair)
+2026-10-11 19:04:45,116 DEBUG   plotline.orchestrator [planner] repair: full output -> {"error":{"code":"E_INVALID_CRITERIA","message":"invalid localities: ['locality_unknown'] (stub planner does not repair)"}}
+2026-10-11 19:04:45,116 ERROR   plotline.trace        #2 [planner] error | E_INVALID_CRITERIA: invalid localities: ['locality_unknown'] (stub planner does not repair) | data={"code":"E_INVALID_CRITERIA"}
+2026-10-11 19:04:45,117 ERROR   plotline.orchestrator run end: status=error error=E_INVALID_CRITERIA records=0 flags=0 trace_events=3 L1=0 L2=0
+2026-10-11 19:04:45,118 INFO    plotline.api          POST /api/run -> 200 in 16.6 ms
+2026-10-11 19:04:45,131 INFO    plotline              RESULT: PASSED in 23.6 ms

@@ -1,0 +1,5 @@
+{"time": "2026-10-11T19:04:45.139", "level": "INFO", "logger": "plotline.api", "message": "POST /api/run -> 422 in 1.2 ms"}
+{"time": "2026-10-11T19:04:45.146", "level": "INFO", "logger": "plotline.api", "message": "POST /api/run -> 422 in 1.6 ms"}
+{"time": "2026-10-11T19:04:45.163", "level": "INFO", "logger": "plotline.api", "message": "POST /api/run -> 422 in 1.5 ms"}
+{"time": "2026-10-11T19:04:45.179", "level": "INFO", "logger": "plotline.api", "message": "POST /api/run -> 422 in 1.5 ms"}
+{"time": "2026-10-11T19:04:45.205", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 54.3 ms"}

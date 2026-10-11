@@ -1,0 +1,2 @@
+{"time": "2026-10-11T19:04:45.080", "level": "INFO", "logger": "plotline.api", "message": "GET /api/health -> 200 in 2.3 ms"}
+{"time": "2026-10-11T19:04:45.092", "level": "INFO", "logger": "plotline", "message": "RESULT: PASSED in 10.3 ms"}

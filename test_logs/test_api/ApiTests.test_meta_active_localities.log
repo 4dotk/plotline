@@ -1,0 +1,2 @@
+2026-10-11 19:04:45,228 INFO    plotline.api          GET /api/meta -> 200 in 1.4 ms
+2026-10-11 19:04:45,245 INFO    plotline              RESULT: PASSED in 12.2 ms

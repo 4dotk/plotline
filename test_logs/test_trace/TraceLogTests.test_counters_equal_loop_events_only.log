@@ -1,7 +1,7 @@
-2026-10-11 15:05:42,675 INFO    plotline.trace        #0 [planner] loop:L1 | L1 fired: band_inverted; [9,1] -> [1,9]; repair 1 of 2 | data={"after":[1,9],"before":[9,1],"cap":2,"issue":"band_inverted","repair_no":1}
-2026-10-11 15:05:42,676 INFO    plotline.trace        #1 [validator] loop:L2 | L2 fired: coverage 3/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3 | data={"action":"widen soft ranges by 20%","attempt":1,"cap":3,"coverage_months":3,"decided_by":"rule","effective_price_band":null,"factor":0.2,"need_months":9}
-2026-10-11 15:05:42,677 INFO    plotline.trace        #2 [validator] loop:L2 | L2 fired: coverage 5/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3 | data={"action":"widen soft ranges by 50%","attempt":2,"cap":3,"coverage_months":5,"decided_by":"rule","effective_price_band":null,"factor":0.5,"need_months":9}
-2026-10-11 15:05:42,677 INFO    plotline.trace        #3 [validator] decision | L2 skipped: nothing to widen | data={}
-2026-10-11 15:05:42,678 WARNING plotline.trace        #4 [validator] warning | L2 disabled | data={}
-2026-10-11 15:05:42,678 INFO    plotline.trace        #5 [validator] decision | L2 stopped by model: coverage 5/12, need 9/12 | data={}
-2026-10-11 15:05:42,689 INFO    plotline              RESULT: PASSED in 5.0 ms
+2026-10-11 19:04:47,209 INFO    plotline.trace        #0 [planner] loop:L1 | L1 fired: band_inverted; [9,1] -> [1,9]; repair 1 of 2 | data={"after":[1,9],"before":[9,1],"cap":2,"issue":"band_inverted","repair_no":1}
+2026-10-11 19:04:47,211 INFO    plotline.trace        #1 [validator] loop:L2 | L2 fired: coverage 3/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3 | data={"action":"widen soft ranges by 20%","attempt":1,"cap":3,"coverage_months":3,"decided_by":"rule","effective_price_band":null,"factor":0.2,"need_months":9}
+2026-10-11 19:04:47,212 INFO    plotline.trace        #2 [validator] loop:L2 | L2 fired: coverage 5/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3 | data={"action":"widen soft ranges by 50%","attempt":2,"cap":3,"coverage_months":5,"decided_by":"rule","effective_price_band":null,"factor":0.5,"need_months":9}
+2026-10-11 19:04:47,213 INFO    plotline.trace        #3 [validator] decision | L2 skipped: nothing to widen | data={}
+2026-10-11 19:04:47,213 WARNING plotline.trace        #4 [validator] warning | L2 disabled | data={}
+2026-10-11 19:04:47,214 INFO    plotline.trace        #5 [validator] decision | L2 stopped by model: coverage 5/12, need 9/12 | data={}
+2026-10-11 19:04:47,226 INFO    plotline              RESULT: PASSED in 6.7 ms
