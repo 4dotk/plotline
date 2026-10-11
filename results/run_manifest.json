@@ -1,7 +1,7 @@
 {
- "contract_version": "1.1.0",
+ "contract_version": "1.1.1",
  "gen_seed": 42,
- "git_commit": "98a1b9b",
+ "git_commit": "6b47b76",
  "invariant_violations": [],
  "llm": null,
  "llm_mode": "off",

@@ -1,6 +1,6 @@
 # TESTING SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T76 · **Parent:** `CONTRACT.md` v1.1.0 (the global contract)
+**Task:** T76 · **Parent:** `CONTRACT.md` v1.1.1 (the global contract)
 **Scope:** oracle rules, metamorphic relations (MRs) with input subdomains and tolerances, test inputs, seeds, statistics, and result logging.
 
 This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 6, 7.2 and 9 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants (tolerances, seeds, thresholds) are never given new values here; they come from `app/contract.py` (global section 3). Numbers quoted below are for reading only.
@@ -222,4 +222,4 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | §9 Result logging | 9.2 notes, 9.5, 11 |
 | §10 Process | 9.5, 11 |
 
-*Version: 1.1.0 (tracks `CONTRACT.md` v1.1.0). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.1.1 (tracks `CONTRACT.md` v1.1.1). Status: draft, pending agreement at the contract check (T79).*

@@ -85,7 +85,7 @@ def a1_report_dict() -> dict:
         ],
         trace=[dict(i=0, agent="planner", kind="decision", loop=None,
                     msg="topology=parallel (7 localities >= 3)", data={})],
-        metadata=dict(contract_version="1.1.0", logic_version="abc1234", snapshot_sha256=SNAPSHOT_SHA,
+        metadata=dict(contract_version="1.1.1", logic_version="abc1234", snapshot_sha256=SNAPSHOT_SHA,
                       seed=0, llm_mode="off", topology="parallel", n_scanners=7, loops_enabled=True,
                       loop_counters=dict(L1_repairs=0, L2_attempts=0), partial_last_month=True, llm=None),
     )

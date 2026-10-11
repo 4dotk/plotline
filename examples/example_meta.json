@@ -1793,7 +1793,7 @@
   ],
   "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
   "constants": {
-    "contract_version": "1.1.0",
+    "contract_version": "1.1.1",
     "window_months": 12,
     "min_bucket_n": 5,
     "coverage_min_months": 9,

@@ -1,4 +1,4 @@
-# GLOBAL CONTRACT — Chennai Housing-Trends Application (v1.1.0)
+# GLOBAL CONTRACT — Chennai Housing-Trends Application (v1.1.1)
 
 The single source of truth for project requirements. The application logic, API, UI, test suite, report and every subcontract must comply with this file. If code or a subcontract disagrees with it, that is a defect: fix the code or subcontract, not this file, unless S and K formally approve a global change.
 
@@ -329,6 +329,6 @@ docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 |---|---|---|---|
 | 1.0.0 | 2026-10-10 | draft | First full contract, built from the dataset verification. |
 | 1.1.0 | 2026-10-10 | draft | (a) D11: the Validator may use the model for the L2 widen/stop choice (I-LLM, 7.1, 7.3, 7.4 `decided_by`, 8). (b) 7.1 gets a Kind column. (c) Fixes promoted from subcontract clarifications: MR3 skip also covers a pooled first-3 / last-3 count in {3, 4}; MR4 means "all fields equal except `pct_change` at m+1". (d) `app/contract.py`; `logic_version`; `FLAT_BAND_PCT` used in 6.2. (e) Size: sections 4, 8, 9 summarised; MR table, cleaning table and appendices moved to subcontracts (`golden.md` is new); `agents.md` sharded into `contracts/agents/`; section 1 added, other numbering unchanged. |
-| — | 2026-10-11 | K | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. Version bump pending S's agreement. |
+| 1.1.1 | 2026-10-11 | K, S | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. |
 | | | S: ☐ agreed | |
 | | | K: ☐ agreed | |

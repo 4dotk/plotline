@@ -1,6 +1,6 @@
 # DATA SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T75 · **Parent:** `CONTRACT.md` v1.1.0 (the global contract)
+**Task:** T75 · **Parent:** `CONTRACT.md` v1.1.1 (the global contract)
 **Scope:** data source, cleaning, frozen snapshot, and data-boundary requirements.
 
 This is a **subcontract**, not a separate global or shared contract. It adds detail to sections 3, 4 and 5 of `CONTRACT.md` and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect (global "Change rule"). Constants are never defined here; they are imported from `app/contract.py` (global section 3).
@@ -113,4 +113,4 @@ A change to the raw file, the freeze script, or any rule in section 2 changes th
 | §6 Startup check | 4.1, 6.5 (`E_SNAPSHOT_HASH`), I-ERR |
 | §7 Reproducibility | 4.1, 9.5, 11, Appendix A |
 
-*Version: 1.1.0 (tracks `CONTRACT.md` v1.1.0). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.1.1 (tracks `CONTRACT.md` v1.1.1). Status: draft, pending agreement at the contract check (T79).*

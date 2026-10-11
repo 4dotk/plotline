@@ -46,7 +46,7 @@ from pydantic import (
 # Section 3: constants. No other file may contain these numbers.
 # ---------------------------------------------------------------------------
 
-CONTRACT_VERSION = "1.1.0"
+CONTRACT_VERSION = "1.1.1"
 
 WINDOW_MONTHS = 12
 DEFAULT_WINDOW_END = "latest"  # resolves to the snapshot's latest month (2015-02), D2

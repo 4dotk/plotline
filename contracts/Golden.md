@@ -63,7 +63,7 @@ The application must reproduce those three numbers. Use it as the first test of 
   "diagnostics": [{"month": "2014-12", "text": "...", "source": "template"}],
   "trace": [{"i": 0, "agent": "planner", "kind": "decision", "loop": null,
              "msg": "topology=parallel (7 localities >= 3)", "data": {}}],
-  "metadata": {"contract_version": "1.1.0", "logic_version": "abc1234", "topology": "parallel", "n_scanners": 7, "seed": 0,
+  "metadata": {"contract_version": "1.1.1", "logic_version": "abc1234", "topology": "parallel", "n_scanners": 7, "seed": 0,
                "loop_counters": {"L1_repairs": 0, "L2_attempts": 0}, "partial_last_month": true,
                "snapshot_sha256": "18487b6f...", "llm_mode": "off", "llm": null}
 }
