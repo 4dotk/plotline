@@ -120,7 +120,7 @@ def aggregate(effective: Criteria, rows: pd.DataFrame, df: pd.DataFrame, info: D
 # -- D: Coverage Validator ----------------------------------------------------
 
 
-def validate(records, effective, original, options, l2_attempts, llm_mode, seed, trace: TraceLog):
+def validate(records, effective, original, options, l2_attempts, llm_mode, seed, trace: TraceLog, llm=None):
     covered = sum(1 for r in records if r.region_key == ALL_REGION and r.n_in_bucket >= MIN_BUCKET_N)
     decision = CoverageDecision(coverage_months=covered, coverage_score=covered / WINDOW_MONTHS)
     if covered >= COVERAGE_MIN_MONTHS:

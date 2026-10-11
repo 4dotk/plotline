@@ -177,7 +177,7 @@ class Engine:
         while True:
             decision = self.agents.validate(
                 st.records, st.plan.effective, st.validated, options, st.l2_attempts,
-                self.llm_mode, seed, st.trace,
+                self.llm_mode, seed, st.trace, llm,
             )
             if isinstance(decision, Failure):
                 return self._error(st, llm, options, seed, criteria_in, st.plan, "validator", decision.error)
@@ -250,5 +250,5 @@ def run(
     seed: int = 0,
     options: RunOptions = RunOptions(),
 ) -> TrendReport:
-    """Entry point of CONTRACT.md 5.1, on the default engine (real A and B, stubs for the rest)."""
+    """Entry point of CONTRACT.md 5.1, on the default engine (real A-E, template Diagnostic)."""
     return _default_engine().run(query, listings_df, seed, options)

@@ -113,6 +113,7 @@ class ValidateFn(Protocol):
     def __call__(
         self, records: list[TrendRecord], effective: Criteria, original: Criteria,
         options: RunOptions, l2_attempts: int, llm_mode: LlmMode, seed: int, trace: TraceLog,
+        llm: "LlmSession",
     ) -> Union[CoverageDecision, Failure]: ...
 
 

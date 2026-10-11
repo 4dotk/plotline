@@ -109,8 +109,12 @@ class ThroughEngine(unittest.TestCase):
     def test_inverted_band_is_repaired(self):
         r = engine().run(Criteria(price_band=[9000000, 1000000]), small_df())
         self.assertEqual(r.status, "ok")
-        self.assertEqual((r.effective_criteria.price_band, r.criteria_in.price_band), ([1000000, 9000000], [9000000, 1000000]))
+        self.assertEqual(r.criteria_in.price_band, [9000000, 1000000])
+        (l1,) = [e for e in r.trace if e.loop == "L1"]
+        self.assertEqual((l1.data["before"], l1.data["after"]), ([9000000, 1000000], [1000000, 9000000]))
         self.assertEqual(r.metadata.loop_counters.L1_repairs, 1)
+        # small_df has almost no coverage, so L2 then widens the repaired band up to the cap
+        self.assertEqual((r.metadata.loop_counters.L2_attempts, r.effective_criteria.price_band), (3, None))
 
     def test_window_is_clamped_to_the_data(self):
         r = engine().run(Criteria(window_end="2012-01"), small_df())

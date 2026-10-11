@@ -191,7 +191,7 @@ class Loops(unittest.TestCase):
     # ---- L2 -------------------------------------------------------------
     def widening_validate(self, max_attempts):
         bands = [[6600000, 9400000], [6000000, 10000000]]  # golden.md A3
-        def validate(records, effective, original, options, l2_attempts, llm_mode, seed, trace):
+        def validate(records, effective, original, options, l2_attempts, llm_mode, seed, trace, llm=None):
             if l2_attempts < max_attempts:
                 band = bands[l2_attempts] if l2_attempts < 2 else None
                 if l2_attempts < 3:  # the trace logger itself refuses a 4th firing
@@ -220,7 +220,7 @@ class Loops(unittest.TestCase):
             engine(agents=self.agents(validate=self.widening_validate(99))).run(crit, small_df())
 
     def test_unlogged_loop_firing_is_a_bug(self):  # I-CAP
-        def silent(records, effective, original, options, l2_attempts, llm_mode, seed, trace):
+        def silent(records, effective, original, options, l2_attempts, llm_mode, seed, trace, llm=None):
             return CoverageDecision(3, 0.25, widen_to=effective.model_copy(update={"price_band": None})) if l2_attempts == 0 else CoverageDecision(0, 0.0)
         with self.assertRaises(RuntimeError):
             engine(agents=self.agents(validate=silent)).run(Criteria(), small_df())
