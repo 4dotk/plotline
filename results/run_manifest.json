@@ -1,0 +1,37 @@
+{
+ "contract_version": "1.1.0",
+ "gen_seed": 42,
+ "git_commit": "98a1b9b",
+ "invariant_violations": [],
+ "llm": null,
+ "llm_mode": "off",
+ "mode": "A",
+ "mrs": {
+  "MR1": {
+   "evaluated": 100,
+   "skipped": 0,
+   "violations": 0
+  }
+ },
+ "n_bases": 100,
+ "oracle_mismatches": {
+  "count": 0,
+  "first": []
+ },
+ "seed_registry_entries": 200,
+ "seeds": [
+  0
+ ],
+ "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+ "strata": {
+  "broad": 80,
+  "thin": 20
+ },
+ "versions": {
+  "numpy": "2.5.3",
+  "pandas": "3.0.6",
+  "pydantic": "2.14.0",
+  "python": "3.14.8",
+  "scipy": "1.18.1"
+ }
+}
