@@ -74,6 +74,17 @@ class Repair(unittest.TestCase):
                 self.assertEqual((loops[0].data["issue"], loops[0].data["after"], loops[0].data["repair_no"]),
                                  (issue, expected, 1))
 
+    def test_locality_spelling_ignores_case_and_edge_spaces(self):
+        for bad, good in [("tnagar", "T Nagar"), ("adyar", "Adyar"), (" Velchery ", "Velachery"), ("KKNagar", "KK Nagar")]:
+            with self.subTest(bad=bad):
+                out, loops = self.repair(Criteria(localities=[bad]), ["locality_unknown"])
+                self.assertEqual(out.effective.localities, [good])
+                self.assertEqual(len(loops), 1)
+
+    def test_two_spellings_of_one_place_collapse(self):
+        out, _ = self.repair(Criteria(localities=["Adyar", "Adyr"]), ["locality_unknown"])
+        self.assertEqual(out.effective.localities, ["Adyar"])
+
     def test_several_issues_are_one_repair(self):
         out, loops = self.repair(Criteria(price_band=[9, 1], bhk=[2, 9]), ["band_inverted", "bhk_out_of_range"], 1)
         self.assertEqual((out.effective.price_band, out.effective.bhk), ([1, 9], [2]))

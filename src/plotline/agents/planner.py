@@ -143,10 +143,13 @@ def _repair_one(issue: str, eff: Criteria, info: DataInfo) -> Any:
             if name in CANONICAL_LOCALITIES:
                 fixed.append(name)
                 continue
-            match = difflib.get_close_matches(name, CANONICAL_LOCALITIES, n=1, cutoff=LOCALITY_MATCH_CUTOFF)
+            # Case and edge spaces are not spelling: compare folded, return the canonical name.
+            folded = {c.lower(): c for c in CANONICAL_LOCALITIES}
+            match = difflib.get_close_matches(name.strip().lower(), list(folded), n=1, cutoff=LOCALITY_MATCH_CUTOFF)
             if not match:
                 return _invalid("localities", f"no canonical locality close to {name!r}")
-            fixed.append(match[0])
+            if folded[match[0]] not in fixed:  # two spellings of one place collapse to one entry
+                fixed.append(folded[match[0]])
         return fixed
     if issue == "window_out_of_range":
         assert eff.window_end is not None
