@@ -1,174 +1,174 @@
 MR,base_id,seed,reason
 MR10,0,0,L2_attempts > 0
-MR10,4,0,L2_attempts > 0
-MR10,8,0,L2_attempts > 0
-MR10,10,0,L2_attempts > 0
+MR10,4,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,8,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,10,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,11,0,soft filter set (price_band)
-MR10,12,0,L2_attempts > 0
+MR10,12,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,13,0,L2_attempts > 0
 MR10,15,0,L2_attempts > 0
-MR10,17,0,L2_attempts > 0
-MR10,19,0,L2_attempts > 0
+MR10,17,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,19,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,20,0,L2_attempts > 0
 MR10,24,0,L2_attempts > 0
-MR10,27,0,L2_attempts > 0
-MR10,28,0,L2_attempts > 0
-MR10,29,0,L2_attempts > 0
+MR10,27,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,28,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,29,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,31,0,L2_attempts > 0
 MR10,33,0,soft filter set (price_band)
-MR10,34,0,L2_attempts > 0
+MR10,34,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,35,0,L2_attempts > 0
 MR10,37,0,L2_attempts > 0
-MR10,38,0,L2_attempts > 0
-MR10,40,0,L2_attempts > 0
+MR10,38,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,40,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,42,0,soft filter set (price_band)
-MR10,43,0,L2_attempts > 0
-MR10,45,0,L2_attempts > 0
+MR10,43,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,45,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,46,0,L2_attempts > 0
-MR10,49,0,L2_attempts > 0
-MR10,50,0,L2_attempts > 0
-MR10,52,0,L2_attempts > 0
+MR10,49,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,50,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,52,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,60,0,L2_attempts > 0
-MR10,61,0,L2_attempts > 0
+MR10,61,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,62,0,L2_attempts > 0
-MR10,64,0,L2_attempts > 0
-MR10,67,0,L2_attempts > 0
-MR10,69,0,L2_attempts > 0
-MR10,71,0,L2_attempts > 0
-MR10,73,0,L2_attempts > 0
-MR10,74,0,L2_attempts > 0
-MR10,75,0,L2_attempts > 0
-MR10,76,0,L2_attempts > 0
-MR10,80,0,L2_attempts > 0
+MR10,64,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,67,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,69,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,71,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,73,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,74,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,75,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,76,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,80,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,82,0,L2_attempts > 0
 MR10,84,0,soft filter set (price_band)
-MR10,85,0,L2_attempts > 0
+MR10,85,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,88,0,soft filter set (price_band)
 MR10,89,0,soft filter set (price_band)
-MR10,91,0,L2_attempts > 0
-MR10,98,0,L2_attempts > 0
-MR10,99,0,L2_attempts > 0
-MR10,100,0,L2_attempts > 0
-MR10,101,0,L2_attempts > 0
-MR10,104,0,L2_attempts > 0
-MR10,105,0,L2_attempts > 0
-MR10,106,0,L2_attempts > 0
+MR10,91,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,98,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,99,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,100,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,101,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,104,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,105,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,106,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,108,0,soft filter set (price_band)
-MR10,112,0,L2_attempts > 0
-MR10,114,0,L2_attempts > 0
+MR10,112,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,114,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,116,0,L2_attempts > 0
 MR10,119,0,L2_attempts > 0
-MR10,120,0,L2_attempts > 0
-MR10,125,0,L2_attempts > 0
-MR10,127,0,L2_attempts > 0
-MR10,129,0,L2_attempts > 0
-MR10,131,0,L2_attempts > 0
-MR10,134,0,L2_attempts > 0
-MR10,136,0,L2_attempts > 0
-MR10,138,0,L2_attempts > 0
+MR10,120,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,125,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,127,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,129,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,131,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,134,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,136,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,138,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,139,0,soft filter set (price_band)
 MR10,144,0,soft filter set (price_band)
-MR10,150,0,L2_attempts > 0
-MR10,152,0,L2_attempts > 0
-MR10,153,0,L2_attempts > 0
-MR10,155,0,L2_attempts > 0
-MR10,157,0,L2_attempts > 0
-MR10,158,0,L2_attempts > 0
-MR10,160,0,L2_attempts > 0
-MR10,163,0,L2_attempts > 0
-MR10,169,0,L2_attempts > 0
-MR10,170,0,L2_attempts > 0
+MR10,150,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,152,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,153,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,155,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,157,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,158,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,160,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,163,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,169,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,170,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,171,0,L2_attempts > 0
-MR10,173,0,L2_attempts > 0
-MR10,175,0,L2_attempts > 0
-MR10,177,0,L2_attempts > 0
+MR10,173,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,175,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,177,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,178,0,soft filter set (price_band)
-MR10,179,0,L2_attempts > 0
+MR10,179,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,180,0,L2_attempts > 0
-MR10,186,0,L2_attempts > 0
-MR10,187,0,L2_attempts > 0
+MR10,186,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,187,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,190,0,soft filter set (price_band)
 MR10,192,0,soft filter set (price_band)
-MR10,195,0,L2_attempts > 0
+MR10,195,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,197,0,soft filter set (price_band)
-MR10,198,0,L2_attempts > 0
-MR10,199,0,L2_attempts > 0
+MR10,198,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,199,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,200,0,L2_attempts > 0
-MR10,202,0,L2_attempts > 0
-MR10,203,0,L2_attempts > 0
+MR10,202,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,203,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,205,0,soft filter set (price_band)
-MR10,206,0,L2_attempts > 0
-MR10,207,0,L2_attempts > 0
-MR10,208,0,L2_attempts > 0
-MR10,209,0,L2_attempts > 0
-MR10,211,0,L2_attempts > 0
-MR10,212,0,L2_attempts > 0
-MR10,213,0,L2_attempts > 0
+MR10,206,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,207,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,208,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,209,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,211,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,212,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,213,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,214,0,L2_attempts > 0
-MR10,217,0,L2_attempts > 0
-MR10,218,0,L2_attempts > 0
-MR10,220,0,L2_attempts > 0
+MR10,217,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,218,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,220,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,221,0,L2_attempts > 0
-MR10,223,0,L2_attempts > 0
+MR10,223,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,225,0,L2_attempts > 0
-MR10,226,0,L2_attempts > 0
-MR10,228,0,L2_attempts > 0
-MR10,229,0,L2_attempts > 0
-MR10,233,0,L2_attempts > 0
-MR10,234,0,L2_attempts > 0
+MR10,226,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,228,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,229,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,233,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,234,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,237,0,soft filter set (price_band)
 MR10,238,0,L2_attempts > 0
-MR10,239,0,L2_attempts > 0
+MR10,239,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,241,0,soft filter set (price_band)
 MR10,242,0,L2_attempts > 0
-MR10,243,0,L2_attempts > 0
-MR10,244,0,L2_attempts > 0
-MR10,246,0,L2_attempts > 0
-MR10,249,0,L2_attempts > 0
+MR10,243,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,244,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,246,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,249,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,250,0,L2_attempts > 0
-MR10,251,0,L2_attempts > 0
+MR10,251,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,252,0,soft filter set (price_band)
-MR10,255,0,L2_attempts > 0
-MR10,258,0,L2_attempts > 0
-MR10,260,0,L2_attempts > 0
-MR10,261,0,L2_attempts > 0
+MR10,255,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,258,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,260,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,261,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,262,0,soft filter set (price_band)
-MR10,264,0,L2_attempts > 0
-MR10,267,0,L2_attempts > 0
-MR10,269,0,L2_attempts > 0
-MR10,270,0,L2_attempts > 0
-MR10,271,0,L2_attempts > 0
+MR10,264,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,267,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,269,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,270,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,271,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,273,0,L2_attempts > 0
 MR10,274,0,soft filter set (price_band)
-MR10,276,0,L2_attempts > 0
-MR10,277,0,L2_attempts > 0
+MR10,276,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,277,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,278,0,L2_attempts > 0
-MR10,282,0,L2_attempts > 0
-MR10,284,0,L2_attempts > 0
-MR10,287,0,L2_attempts > 0
-MR10,288,0,L2_attempts > 0
-MR10,293,0,L2_attempts > 0
-MR10,298,0,L2_attempts > 0
+MR10,282,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,284,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,287,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,288,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,293,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,298,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,299,0,soft filter set (price_band)
 MR10,301,0,L2_attempts > 0
 MR10,302,0,soft filter set (price_band)
 MR10,303,0,L2_attempts > 0
-MR10,304,0,L2_attempts > 0
-MR10,305,0,L2_attempts > 0
-MR10,306,0,L2_attempts > 0
-MR10,307,0,L2_attempts > 0
-MR10,309,0,L2_attempts > 0
+MR10,304,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,305,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,306,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,307,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,309,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,310,0,soft filter set (price_band)
-MR10,312,0,L2_attempts > 0
+MR10,312,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,314,0,L2_attempts > 0
-MR10,316,0,L2_attempts > 0
+MR10,316,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,317,0,L2_attempts > 0
 MR10,318,0,L2_attempts > 0
 MR10,319,0,L2_attempts > 0
 MR10,320,0,L2_attempts > 0
-MR10,321,0,L2_attempts > 0
+MR10,321,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,322,0,L2_attempts > 0
-MR10,323,0,L2_attempts > 0
+MR10,323,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,324,0,L2_attempts > 0
 MR10,325,0,L2_attempts > 0
 MR10,326,0,L2_attempts > 0
@@ -177,81 +177,81 @@ MR10,328,0,L2_attempts > 0
 MR10,329,0,L2_attempts > 0
 MR10,330,0,L2_attempts > 0
 MR10,331,0,L2_attempts > 0
-MR10,332,0,L2_attempts > 0
-MR10,333,0,L2_attempts > 0
+MR10,332,0,L2_attempts > 0 + soft filter set (price_band)
+MR10,333,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,334,0,L2_attempts > 0
-MR10,335,0,L2_attempts > 0
+MR10,335,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,336,0,L2_attempts > 0
 MR10,337,0,L2_attempts > 0
 MR10,338,0,L2_attempts > 0
 MR10,339,0,L2_attempts > 0
-MR10,340,0,L2_attempts > 0
+MR10,340,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,341,0,L2_attempts > 0
-MR10,342,0,L2_attempts > 0
+MR10,342,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,343,0,L2_attempts > 0
 MR10,344,0,L2_attempts > 0
 MR10,345,0,L2_attempts > 0
-MR10,346,0,L2_attempts > 0
+MR10,346,0,L2_attempts > 0 + soft filter set (price_band)
 MR10,347,0,L2_attempts > 0
 MR10,348,0,L2_attempts > 0
-MR10,349,0,L2_attempts > 0
-MR3a,0,0,"ALL n_in_bucket in {3,4}"
+MR10,349,0,L2_attempts > 0 + soft filter set (price_band)
+MR3a,0,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,3,0,"ALL n_in_bucket in {3,4}"
-MR3a,13,0,"ALL n_in_bucket in {3,4}"
-MR3a,15,0,"ALL n_in_bucket in {3,4}"
+MR3a,13,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,15,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,17,0,"ALL n_in_bucket in {3,4}"
 MR3a,19,0,"ALL n_in_bucket in {3,4}"
-MR3a,20,0,"ALL n_in_bucket in {3,4}"
-MR3a,24,0,"ALL n_in_bucket in {3,4}"
+MR3a,20,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,24,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,26,0,"ALL n_in_bucket in {3,4}"
 MR3a,29,0,"ALL n_in_bucket in {3,4}"
-MR3a,31,0,"ALL n_in_bucket in {3,4}"
+MR3a,31,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,35,0,L2_attempts > 0
-MR3a,37,0,"ALL n_in_bucket in {3,4}"
+MR3a,37,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,39,0,"ALL n_in_bucket in {3,4}"
-MR3a,40,0,"ALL n_in_bucket in {3,4}"
+MR3a,40,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,44,0,"ALL n_in_bucket in {3,4}"
-MR3a,46,0,"ALL n_in_bucket in {3,4}"
-MR3a,60,0,"ALL n_in_bucket in {3,4}"
-MR3a,62,0,"ALL n_in_bucket in {3,4}"
+MR3a,46,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,60,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,62,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,63,0,"ALL n_in_bucket in {3,4}"
 MR3a,64,0,"ALL n_in_bucket in {3,4}"
 MR3a,71,0,"ALL n_in_bucket in {3,4}"
-MR3a,80,0,"ALL n_in_bucket in {3,4}"
-MR3a,82,0,"ALL n_in_bucket in {3,4}"
+MR3a,80,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,82,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,85,0,"ALL n_in_bucket in {3,4}"
 MR3a,91,0,L2_attempts > 0
 MR3a,95,0,"ALL n_in_bucket in {3,4}"
 MR3a,97,0,"ALL n_in_bucket in {3,4}"
 MR3a,99,0,"ALL n_in_bucket in {3,4}"
-MR3a,100,0,"ALL n_in_bucket in {3,4}"
-MR3a,101,0,"ALL n_in_bucket in {3,4}"
-MR3a,104,0,"ALL n_in_bucket in {3,4}"
+MR3a,100,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,101,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,104,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,107,0,"ALL n_in_bucket in {3,4}"
 MR3a,115,0,"ALL n_in_bucket in {3,4}"
-MR3a,116,0,"ALL n_in_bucket in {3,4}"
-MR3a,119,0,"ALL n_in_bucket in {3,4}"
+MR3a,116,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,119,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,120,0,"ALL n_in_bucket in {3,4}"
-MR3a,125,0,"ALL n_in_bucket in {3,4}"
+MR3a,125,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,127,0,"ALL n_in_bucket in {3,4}"
 MR3a,129,0,"ALL n_in_bucket in {3,4}"
-MR3a,131,0,"ALL n_in_bucket in {3,4}"
+MR3a,131,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,134,0,"ALL n_in_bucket in {3,4}"
 MR3a,139,0,"ALL n_in_bucket in {3,4}"
 MR3a,146,0,"ALL n_in_bucket in {3,4}"
-MR3a,152,0,"ALL n_in_bucket in {3,4}"
+MR3a,152,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,153,0,"ALL n_in_bucket in {3,4}"
 MR3a,156,0,"ALL n_in_bucket in {3,4}"
 MR3a,160,0,"ALL n_in_bucket in {3,4}"
 MR3a,165,0,"ALL n_in_bucket in {3,4}"
 MR3a,166,0,"ALL n_in_bucket in {3,4}"
-MR3a,169,0,"ALL n_in_bucket in {3,4}"
-MR3a,171,0,"ALL n_in_bucket in {3,4}"
+MR3a,169,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,171,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,175,0,"ALL n_in_bucket in {3,4}"
 MR3a,176,0,"ALL n_in_bucket in {3,4}"
 MR3a,177,0,L2_attempts > 0
 MR3a,178,0,"ALL n_in_bucket in {3,4}"
-MR3a,180,0,"ALL n_in_bucket in {3,4}"
+MR3a,180,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,182,0,"ALL n_in_bucket in {3,4}"
 MR3a,183,0,"ALL n_in_bucket in {3,4}"
 MR3a,185,0,"ALL n_in_bucket in {3,4}"
@@ -260,40 +260,40 @@ MR3a,191,0,"ALL n_in_bucket in {3,4}"
 MR3a,196,0,"ALL n_in_bucket in {3,4}"
 MR3a,197,0,"ALL n_in_bucket in {3,4}"
 MR3a,199,0,"ALL n_in_bucket in {3,4}"
-MR3a,200,0,"ALL n_in_bucket in {3,4}"
+MR3a,200,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,202,0,"ALL n_in_bucket in {3,4}"
-MR3a,203,0,"ALL n_in_bucket in {3,4}"
+MR3a,203,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,205,0,"ALL n_in_bucket in {3,4}"
-MR3a,207,0,"ALL n_in_bucket in {3,4}"
+MR3a,207,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,208,0,"ALL n_in_bucket in {3,4}"
 MR3a,209,0,"ALL n_in_bucket in {3,4}"
-MR3a,212,0,"ALL n_in_bucket in {3,4}"
-MR3a,214,0,"ALL n_in_bucket in {3,4}"
-MR3a,217,0,"ALL n_in_bucket in {3,4}"
+MR3a,212,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,214,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,217,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,218,0,"ALL n_in_bucket in {3,4}"
-MR3a,221,0,"ALL n_in_bucket in {3,4}"
+MR3a,221,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,223,0,"ALL n_in_bucket in {3,4}"
-MR3a,225,0,"ALL n_in_bucket in {3,4}"
+MR3a,225,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,232,0,"ALL n_in_bucket in {3,4}"
-MR3a,234,0,"ALL n_in_bucket in {3,4}"
-MR3a,238,0,"ALL n_in_bucket in {3,4}"
+MR3a,234,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,238,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,239,0,"ALL n_in_bucket in {3,4}"
-MR3a,242,0,"ALL n_in_bucket in {3,4}"
-MR3a,244,0,"ALL n_in_bucket in {3,4}"
+MR3a,242,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,244,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,246,0,"ALL n_in_bucket in {3,4}"
 MR3a,247,0,"ALL n_in_bucket in {3,4}"
 MR3a,249,0,"ALL n_in_bucket in {3,4}"
-MR3a,250,0,"ALL n_in_bucket in {3,4}"
+MR3a,250,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,254,0,"ALL n_in_bucket in {3,4}"
 MR3a,256,0,"ALL n_in_bucket in {3,4}"
 MR3a,257,0,"ALL n_in_bucket in {3,4}"
-MR3a,260,0,"ALL n_in_bucket in {3,4}"
+MR3a,260,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,269,0,"ALL n_in_bucket in {3,4}"
 MR3a,271,0,"ALL n_in_bucket in {3,4}"
 MR3a,272,0,"ALL n_in_bucket in {3,4}"
-MR3a,273,0,"ALL n_in_bucket in {3,4}"
+MR3a,273,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,274,0,"ALL n_in_bucket in {3,4}"
-MR3a,278,0,"ALL n_in_bucket in {3,4}"
+MR3a,278,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,280,0,"ALL n_in_bucket in {3,4}"
 MR3a,281,0,"ALL n_in_bucket in {3,4}"
 MR3a,282,0,"ALL n_in_bucket in {3,4}"
@@ -301,105 +301,105 @@ MR3a,283,0,"ALL n_in_bucket in {3,4}"
 MR3a,284,0,"ALL n_in_bucket in {3,4}"
 MR3a,285,0,"ALL n_in_bucket in {3,4}"
 MR3a,286,0,"ALL n_in_bucket in {3,4}"
-MR3a,288,0,"ALL n_in_bucket in {3,4}"
+MR3a,288,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,290,0,"ALL n_in_bucket in {3,4}"
 MR3a,293,0,"ALL n_in_bucket in {3,4}"
 MR3a,298,0,"ALL n_in_bucket in {3,4}"
-MR3a,301,0,"ALL n_in_bucket in {3,4}"
-MR3a,303,0,"ALL n_in_bucket in {3,4}"
-MR3a,307,0,"ALL n_in_bucket in {3,4}"
-MR3a,312,0,"ALL n_in_bucket in {3,4}"
-MR3a,314,0,"ALL n_in_bucket in {3,4}"
-MR3a,317,0,"ALL n_in_bucket in {3,4}"
-MR3a,318,0,"ALL n_in_bucket in {3,4}"
-MR3a,319,0,"ALL n_in_bucket in {3,4}"
-MR3a,320,0,"ALL n_in_bucket in {3,4}"
-MR3a,321,0,"ALL n_in_bucket in {3,4}"
-MR3a,322,0,"ALL n_in_bucket in {3,4}"
-MR3a,323,0,"ALL n_in_bucket in {3,4}"
-MR3a,324,0,"ALL n_in_bucket in {3,4}"
-MR3a,325,0,"ALL n_in_bucket in {3,4}"
-MR3a,326,0,"ALL n_in_bucket in {3,4}"
+MR3a,301,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,303,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,307,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,312,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,314,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,317,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,318,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,319,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,320,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,321,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,322,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,323,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,324,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,325,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,326,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3a,327,0,L2_attempts > 0
-MR3a,328,0,"ALL n_in_bucket in {3,4}"
-MR3a,329,0,"ALL n_in_bucket in {3,4}"
-MR3a,330,0,"ALL n_in_bucket in {3,4}"
-MR3a,331,0,"ALL n_in_bucket in {3,4}"
-MR3a,332,0,"ALL n_in_bucket in {3,4}"
-MR3a,333,0,"ALL n_in_bucket in {3,4}"
-MR3a,334,0,"ALL n_in_bucket in {3,4}"
-MR3a,335,0,"ALL n_in_bucket in {3,4}"
-MR3a,336,0,"ALL n_in_bucket in {3,4}"
-MR3a,337,0,"ALL n_in_bucket in {3,4}"
-MR3a,338,0,"ALL n_in_bucket in {3,4}"
-MR3a,339,0,"ALL n_in_bucket in {3,4}"
-MR3a,340,0,"ALL n_in_bucket in {3,4}"
-MR3a,341,0,"ALL n_in_bucket in {3,4}"
-MR3a,342,0,"ALL n_in_bucket in {3,4}"
-MR3a,343,0,"ALL n_in_bucket in {3,4}"
-MR3a,344,0,"ALL n_in_bucket in {3,4}"
-MR3a,345,0,"ALL n_in_bucket in {3,4}"
-MR3a,346,0,"ALL n_in_bucket in {3,4}"
-MR3a,347,0,"ALL n_in_bucket in {3,4}"
-MR3a,348,0,"ALL n_in_bucket in {3,4}"
-MR3a,349,0,"ALL n_in_bucket in {3,4}"
-MR3b,0,0,"ALL n_in_bucket in {3,4}"
+MR3a,328,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,329,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,330,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,331,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,332,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,333,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,334,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,335,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,336,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,337,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,338,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,339,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,340,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,341,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,342,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,343,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,344,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,345,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,346,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,347,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,348,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3a,349,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,0,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,3,0,"ALL n_in_bucket in {3,4}"
-MR3b,13,0,"ALL n_in_bucket in {3,4}"
-MR3b,15,0,"ALL n_in_bucket in {3,4}"
+MR3b,13,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,15,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,17,0,"ALL n_in_bucket in {3,4}"
 MR3b,19,0,"ALL n_in_bucket in {3,4}"
-MR3b,20,0,"ALL n_in_bucket in {3,4}"
-MR3b,24,0,"ALL n_in_bucket in {3,4}"
+MR3b,20,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,24,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,26,0,"ALL n_in_bucket in {3,4}"
 MR3b,29,0,"ALL n_in_bucket in {3,4}"
-MR3b,31,0,"ALL n_in_bucket in {3,4}"
+MR3b,31,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,35,0,L2_attempts > 0
-MR3b,37,0,"ALL n_in_bucket in {3,4}"
+MR3b,37,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,39,0,"ALL n_in_bucket in {3,4}"
-MR3b,40,0,"ALL n_in_bucket in {3,4}"
+MR3b,40,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,44,0,"ALL n_in_bucket in {3,4}"
-MR3b,46,0,"ALL n_in_bucket in {3,4}"
-MR3b,60,0,"ALL n_in_bucket in {3,4}"
-MR3b,62,0,"ALL n_in_bucket in {3,4}"
+MR3b,46,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,60,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,62,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,63,0,"ALL n_in_bucket in {3,4}"
 MR3b,64,0,"ALL n_in_bucket in {3,4}"
 MR3b,71,0,"ALL n_in_bucket in {3,4}"
-MR3b,80,0,"ALL n_in_bucket in {3,4}"
-MR3b,82,0,"ALL n_in_bucket in {3,4}"
+MR3b,80,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,82,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,85,0,"ALL n_in_bucket in {3,4}"
 MR3b,91,0,L2_attempts > 0
 MR3b,95,0,"ALL n_in_bucket in {3,4}"
 MR3b,97,0,"ALL n_in_bucket in {3,4}"
 MR3b,99,0,"ALL n_in_bucket in {3,4}"
-MR3b,100,0,"ALL n_in_bucket in {3,4}"
-MR3b,101,0,"ALL n_in_bucket in {3,4}"
-MR3b,104,0,"ALL n_in_bucket in {3,4}"
+MR3b,100,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,101,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,104,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,107,0,"ALL n_in_bucket in {3,4}"
 MR3b,115,0,"ALL n_in_bucket in {3,4}"
-MR3b,116,0,"ALL n_in_bucket in {3,4}"
-MR3b,119,0,"ALL n_in_bucket in {3,4}"
+MR3b,116,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,119,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,120,0,"ALL n_in_bucket in {3,4}"
-MR3b,125,0,"ALL n_in_bucket in {3,4}"
+MR3b,125,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,127,0,"ALL n_in_bucket in {3,4}"
 MR3b,129,0,"ALL n_in_bucket in {3,4}"
-MR3b,131,0,"ALL n_in_bucket in {3,4}"
+MR3b,131,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,134,0,"ALL n_in_bucket in {3,4}"
 MR3b,139,0,"ALL n_in_bucket in {3,4}"
 MR3b,146,0,"ALL n_in_bucket in {3,4}"
-MR3b,152,0,"ALL n_in_bucket in {3,4}"
+MR3b,152,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,153,0,"ALL n_in_bucket in {3,4}"
 MR3b,156,0,"ALL n_in_bucket in {3,4}"
 MR3b,160,0,"ALL n_in_bucket in {3,4}"
 MR3b,165,0,"ALL n_in_bucket in {3,4}"
 MR3b,166,0,"ALL n_in_bucket in {3,4}"
-MR3b,169,0,"ALL n_in_bucket in {3,4}"
-MR3b,171,0,"ALL n_in_bucket in {3,4}"
+MR3b,169,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,171,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,175,0,"ALL n_in_bucket in {3,4}"
 MR3b,176,0,"ALL n_in_bucket in {3,4}"
 MR3b,177,0,L2_attempts > 0
 MR3b,178,0,"ALL n_in_bucket in {3,4}"
-MR3b,180,0,"ALL n_in_bucket in {3,4}"
+MR3b,180,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,182,0,"ALL n_in_bucket in {3,4}"
 MR3b,183,0,"ALL n_in_bucket in {3,4}"
 MR3b,185,0,"ALL n_in_bucket in {3,4}"
@@ -408,40 +408,40 @@ MR3b,191,0,"ALL n_in_bucket in {3,4}"
 MR3b,196,0,"ALL n_in_bucket in {3,4}"
 MR3b,197,0,"ALL n_in_bucket in {3,4}"
 MR3b,199,0,"ALL n_in_bucket in {3,4}"
-MR3b,200,0,"ALL n_in_bucket in {3,4}"
+MR3b,200,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,202,0,"ALL n_in_bucket in {3,4}"
-MR3b,203,0,"ALL n_in_bucket in {3,4}"
+MR3b,203,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,205,0,"ALL n_in_bucket in {3,4}"
-MR3b,207,0,"ALL n_in_bucket in {3,4}"
+MR3b,207,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,208,0,"ALL n_in_bucket in {3,4}"
 MR3b,209,0,"ALL n_in_bucket in {3,4}"
-MR3b,212,0,"ALL n_in_bucket in {3,4}"
-MR3b,214,0,"ALL n_in_bucket in {3,4}"
-MR3b,217,0,"ALL n_in_bucket in {3,4}"
+MR3b,212,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,214,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,217,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,218,0,"ALL n_in_bucket in {3,4}"
-MR3b,221,0,"ALL n_in_bucket in {3,4}"
+MR3b,221,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,223,0,"ALL n_in_bucket in {3,4}"
-MR3b,225,0,"ALL n_in_bucket in {3,4}"
+MR3b,225,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,232,0,"ALL n_in_bucket in {3,4}"
-MR3b,234,0,"ALL n_in_bucket in {3,4}"
-MR3b,238,0,"ALL n_in_bucket in {3,4}"
+MR3b,234,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,238,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,239,0,"ALL n_in_bucket in {3,4}"
-MR3b,242,0,"ALL n_in_bucket in {3,4}"
-MR3b,244,0,"ALL n_in_bucket in {3,4}"
+MR3b,242,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,244,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,246,0,"ALL n_in_bucket in {3,4}"
 MR3b,247,0,"ALL n_in_bucket in {3,4}"
 MR3b,249,0,"ALL n_in_bucket in {3,4}"
-MR3b,250,0,"ALL n_in_bucket in {3,4}"
+MR3b,250,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,254,0,"ALL n_in_bucket in {3,4}"
 MR3b,256,0,"ALL n_in_bucket in {3,4}"
 MR3b,257,0,"ALL n_in_bucket in {3,4}"
-MR3b,260,0,"ALL n_in_bucket in {3,4}"
+MR3b,260,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,269,0,"ALL n_in_bucket in {3,4}"
 MR3b,271,0,"ALL n_in_bucket in {3,4}"
 MR3b,272,0,"ALL n_in_bucket in {3,4}"
-MR3b,273,0,"ALL n_in_bucket in {3,4}"
+MR3b,273,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,274,0,"ALL n_in_bucket in {3,4}"
-MR3b,278,0,"ALL n_in_bucket in {3,4}"
+MR3b,278,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,280,0,"ALL n_in_bucket in {3,4}"
 MR3b,281,0,"ALL n_in_bucket in {3,4}"
 MR3b,282,0,"ALL n_in_bucket in {3,4}"
@@ -449,48 +449,48 @@ MR3b,283,0,"ALL n_in_bucket in {3,4}"
 MR3b,284,0,"ALL n_in_bucket in {3,4}"
 MR3b,285,0,"ALL n_in_bucket in {3,4}"
 MR3b,286,0,"ALL n_in_bucket in {3,4}"
-MR3b,288,0,"ALL n_in_bucket in {3,4}"
+MR3b,288,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,290,0,"ALL n_in_bucket in {3,4}"
 MR3b,293,0,"ALL n_in_bucket in {3,4}"
 MR3b,298,0,"ALL n_in_bucket in {3,4}"
-MR3b,301,0,"ALL n_in_bucket in {3,4}"
-MR3b,303,0,"ALL n_in_bucket in {3,4}"
-MR3b,307,0,"ALL n_in_bucket in {3,4}"
-MR3b,312,0,"ALL n_in_bucket in {3,4}"
-MR3b,314,0,"ALL n_in_bucket in {3,4}"
-MR3b,317,0,"ALL n_in_bucket in {3,4}"
-MR3b,318,0,"ALL n_in_bucket in {3,4}"
-MR3b,319,0,"ALL n_in_bucket in {3,4}"
-MR3b,320,0,"ALL n_in_bucket in {3,4}"
-MR3b,321,0,"ALL n_in_bucket in {3,4}"
-MR3b,322,0,"ALL n_in_bucket in {3,4}"
-MR3b,323,0,"ALL n_in_bucket in {3,4}"
-MR3b,324,0,"ALL n_in_bucket in {3,4}"
-MR3b,325,0,"ALL n_in_bucket in {3,4}"
-MR3b,326,0,"ALL n_in_bucket in {3,4}"
+MR3b,301,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,303,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,307,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,312,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,314,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,317,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,318,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,319,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,320,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,321,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,322,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,323,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,324,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,325,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,326,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR3b,327,0,L2_attempts > 0
-MR3b,328,0,"ALL n_in_bucket in {3,4}"
-MR3b,329,0,"ALL n_in_bucket in {3,4}"
-MR3b,330,0,"ALL n_in_bucket in {3,4}"
-MR3b,331,0,"ALL n_in_bucket in {3,4}"
-MR3b,332,0,"ALL n_in_bucket in {3,4}"
-MR3b,333,0,"ALL n_in_bucket in {3,4}"
-MR3b,334,0,"ALL n_in_bucket in {3,4}"
-MR3b,335,0,"ALL n_in_bucket in {3,4}"
-MR3b,336,0,"ALL n_in_bucket in {3,4}"
-MR3b,337,0,"ALL n_in_bucket in {3,4}"
-MR3b,338,0,"ALL n_in_bucket in {3,4}"
-MR3b,339,0,"ALL n_in_bucket in {3,4}"
-MR3b,340,0,"ALL n_in_bucket in {3,4}"
-MR3b,341,0,"ALL n_in_bucket in {3,4}"
-MR3b,342,0,"ALL n_in_bucket in {3,4}"
-MR3b,343,0,"ALL n_in_bucket in {3,4}"
-MR3b,344,0,"ALL n_in_bucket in {3,4}"
-MR3b,345,0,"ALL n_in_bucket in {3,4}"
-MR3b,346,0,"ALL n_in_bucket in {3,4}"
-MR3b,347,0,"ALL n_in_bucket in {3,4}"
-MR3b,348,0,"ALL n_in_bucket in {3,4}"
-MR3b,349,0,"ALL n_in_bucket in {3,4}"
+MR3b,328,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,329,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,330,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,331,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,332,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,333,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,334,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,335,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,336,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,337,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,338,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,339,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,340,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,341,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,342,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,343,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,344,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,345,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,346,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,347,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,348,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
+MR3b,349,0,"ALL n_in_bucket in {3,4} + L2_attempts > 0"
 MR4,4,0,price_band set
 MR4,8,0,price_band set
 MR4,10,0,price_band set
