@@ -227,6 +227,17 @@ class RuleParser(unittest.TestCase):
         self.assertEqual(self.parse("homes under 1 crore").price_unit, "inr")
         self.assertIsNone(self.parse("homes above 1 crore").price_band)
 
+    def test_money_edges_are_exact(self):
+        """F1: a float conversion moved both edges off the whole rupee, so a row priced at the edge was dropped."""
+        for s, band in [("flats 1.1 to 140.1948 lakh", [110000, 14019480]),
+                        ("flats 0.29 to 0.57 lakh", [29000, 57000]),
+                        ("flats 1.1 to 2.3 crore", [11000000, 23000000])]:
+            with self.subTest(s):
+                got = self.parse(s).price_band
+                self.assertEqual(got, band)
+                self.assertTrue(all(isinstance(x, int) for x in got))
+        self.assertEqual(self.parse("flats 1.234567 to 2 lakh").price_band, [123456.7, 200000])  # sub-rupee stays exact
+
     def test_localities_bhk_sqft_and_sale_condition(self):
         c = self.parse("1 and 2 BHK in T Nagar or Chrompt, 1000-1500 sqft, partial sales")
         self.assertEqual(c.localities, ["Chrompet", "T Nagar"])

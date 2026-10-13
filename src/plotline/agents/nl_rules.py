@@ -9,6 +9,7 @@ valid (an inverted band, an out-of-range month) is passed on for the L1 loop.
 from __future__ import annotations
 
 import re
+from decimal import Decimal
 
 from plotline.contract import CANONICAL_LOCALITIES, Criteria
 from plotline.state import DataInfo
@@ -59,8 +60,9 @@ def _unit_factor(word: str) -> int:
 
 
 def _money(value: str, unit: str) -> int | float:
-    inr = float(value) * _unit_factor(unit)
-    return int(inr) if inr.is_integer() else inr
+    # Decimal, not float: float("140.1948") * 100000 is 14019479.999999998, which drops a row priced at the edge.
+    inr = Decimal(value) * _unit_factor(unit)
+    return int(inr) if inr == inr.to_integral_value() else float(inr)
 
 
 def _localities(text: str) -> list[str] | None:
