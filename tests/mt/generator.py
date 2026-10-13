@@ -127,10 +127,11 @@ def _draw_params(rng: np.random.Generator, criteria: dict) -> dict:
     }
 
 
-def generate(df: pd.DataFrame, n: int, seed: int = GEN_SEED) -> list[Base]:
-    """``n`` distinct bases, about ``THIN_SHARE`` of them thin, in generator order."""
+def generate(df: pd.DataFrame, n: int, seed: int = GEN_SEED, ends: list[str] | None = None) -> list[Base]:
+    """``n`` distinct bases, about ``THIN_SHARE`` of them thin, in generator order.
+    ``ends`` restricts ``window_end`` (MR9 reserves bases at the latest month, Testing.md 7)."""
     rng = np.random.default_rng(seed)
-    ends = valid_window_ends(df)
+    ends = ends or valid_window_ends(df)
     n_thin = round(n * THIN_SHARE)
     quota = {"thin": n_thin, "broad": n - n_thin}
     bases: list[Base] = []

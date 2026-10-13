@@ -190,14 +190,21 @@ class FollowUp:
 @dataclass(frozen=True)
 class MR:
     """One metamorphic relation. ``transform`` builds a new frame and never
-    touches the source (I-PURE); ``check`` returns the violated fields."""
+    touches the source (I-PURE); ``check`` returns the violated fields.
+
+    When ``transform`` returns a list (MR9 phrasings, MR10 one run per BHK),
+    ``check`` and ``skip`` get the list of follow-up reports in the same order."""
 
     name: str
     family: str
-    transform: Callable[[Base, pd.DataFrame], FollowUp]
-    check: Callable[[dict, dict, Base], list[Diff]]
-    precondition: Callable[[Base], str | None] = lambda base: None
-    skip: Callable[[dict, dict, Base], str | None] = lambda src, fu, base: None
+    transform: Callable[[Base, pd.DataFrame], Union[FollowUp, list[FollowUp]]]
+    check: Callable[[dict, Any, Base], list[Diff]]
+    precondition: Callable[[Base, pd.DataFrame], str | None] = lambda base, df: None
+    skip: Callable[[dict, Any, Base], str | None] = lambda src, fu, base: None
+    source: Callable[[Base], Union[Criteria, str]] = Base.to_criteria  # the source query
+    # a skip rule decidable on the source report alone, checked before the "source not ok" stop
+    # (MR9: a sentence query is E_LLM_OFF by design when LLM_MODE=off, and its rule skips it)
+    source_skip: Callable[[dict], str | None] = lambda src: None
 
 
 @dataclass
@@ -233,6 +240,12 @@ class MRRun:
         return [dict(MR=self.mr.name, base_id=p.base_id, seed=p.seed, field=d.field,
                      source_value=d.source_value, follow_up_value=d.follow_up_value)
                 for p in self.pairs if p.outcome == "violation" for d in p.diffs]
+
+    def waived_rows(self) -> list[dict]:
+        """Diffs inside report-field skips (the unconditioned column), with the skip reason."""
+        return [dict(MR=self.mr.name, base_id=p.base_id, seed=p.seed, field=d.field, source_value=d.source_value,
+                     follow_up_value=d.follow_up_value, reason=p.reason)
+                for p in self.pairs if p.outcome == "skip" for d in p.diffs]
 
     def skip_rows(self) -> list[dict]:
         return [dict(MR=self.mr.name, base_id=p.base_id, seed=p.seed, reason=p.reason)
@@ -288,15 +301,19 @@ def run_mr(
     df_hash = frame_hash(df)
 
     for base in bases:
-        pre = mr.precondition(base)
+        pre = mr.precondition(base, df)
         for seed in seeds:
             if pre is not None:
                 out.pairs.append(PairOutcome(base.base_id, seed, "skip", PRECONDITION + pre))
                 continue
             registry.record("run", base.base_id, seed)
-            criteria = base.to_criteria()
-            crit_json = canonical_criteria_json(criteria)
+            criteria = mr.source(base)
+            crit_json = criteria if isinstance(criteria, str) else canonical_criteria_json(criteria)
             src = runner(criteria, df, seed, RunOptions())
+            early = mr.source_skip(report_dict(src))
+            if early is not None:
+                out.pairs.append(PairOutcome(base.base_id, seed, "skip", early))
+                continue
             if src.status != "ok":
                 raise HarnessError(f"{mr.name} base {base.base_id}: source report is "
                                    f"{src.status} ({src.error.code if src.error else None})")
@@ -305,7 +322,8 @@ def run_mr(
             if check_invariants:
                 if report_to_json(runner(criteria, df, seed, RunOptions())) != report_to_json(src):
                     out.invariant_violations.append(dict(invariant="I-DET", base_id=base.base_id, seed=seed))
-                if frame_hash(df) != df_hash or canonical_criteria_json(criteria) != crit_json:
+                if frame_hash(df) != df_hash or (
+                        not isinstance(criteria, str) and canonical_criteria_json(criteria) != crit_json):
                     out.invariant_violations.append(dict(invariant="I-PURE", base_id=base.base_id, seed=seed))
             if check_oracle and seed == seeds[0]:
                 out.oracle_mismatches += [
@@ -313,16 +331,22 @@ def run_mr(
                     for d in oracle_diffs(src_d, df)
                 ]
 
-            fu = mr.transform(base, df)
-            if fu.df is df or frame_hash(df) != df_hash:
+            made = mr.transform(base, df)
+            fus = made if isinstance(made, list) else [made]
+            if any(fu.df is df for fu in fus) or frame_hash(df) != df_hash:
                 raise HarnessError(f"{mr.name}: a transformation must return a new frame and keep the source")
-            for purpose, s in fu.seeds.items():
-                registry.record(f"{mr.name} {purpose}", base.base_id, s)
-            fu_d = report_dict(runner(fu.query, fu.df, seed, fu.options))
+            for fu in fus:
+                for purpose, s in fu.seeds.items():
+                    registry.record(f"{mr.name} {purpose}", base.base_id, s)
+            fu_ds = [report_dict(runner(fu.query, fu.df, seed, fu.options)) for fu in fus]
 
-            if fu_d["status"] != "ok":
-                diffs, reason = [Diff("status", src_d["status"], fu_d["status"])], None
+            not_ok = [(i, d) for i, d in enumerate(fu_ds) if d["status"] != "ok"]
+            if not_ok:
+                diffs = [Diff(f"follow_up[{i}].status" if isinstance(made, list) else "status",
+                              src_d["status"], d["status"]) for i, d in not_ok]
+                reason = None
             else:
+                fu_d = fu_ds if isinstance(made, list) else fu_ds[0]
                 diffs, reason = mr.check(src_d, fu_d, base), mr.skip(src_d, fu_d, base)
             outcome = "skip" if reason is not None else ("violation" if diffs else "pass")
             out.pairs.append(PairOutcome(base.base_id, seed, outcome, reason, diffs))
@@ -338,15 +362,15 @@ def _cell(v: Any) -> str:
     return v if isinstance(v, str) else json.dumps(v, separators=(",", ":"), sort_keys=True)
 
 
-def write_violations(rows: list[dict], path: str | Path) -> Path:
-    """``results/violations.csv`` with exactly the contract's columns."""
+def write_violations(rows: list[dict], path: str | Path, extra: tuple[str, ...] = ()) -> Path:
+    """``results/violations.csv`` with exactly the contract's columns (plus ``extra`` for raw logs)."""
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
     with open(p, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=VIOLATION_COLUMNS)
+        w = csv.DictWriter(f, fieldnames=VIOLATION_COLUMNS + extra)
         w.writeheader()
         for r in rows:
-            w.writerow({k: _cell(r[k]) for k in VIOLATION_COLUMNS})
+            w.writerow({k: _cell(r[k]) for k in VIOLATION_COLUMNS + extra})
     return p
 
 

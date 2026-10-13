@@ -10,6 +10,7 @@ checked against the oracle on every base. The bases regenerate from
 
     violations.csv        MR, base_id, seed, field, source_value, follow_up_value
     skips.csv             MR, base_id, seed, reason (a skip is not a pass)
+    violations_unconditioned.csv  diffs inside report-field skips, + reason (raw log)
     headline_table.md     one row per MR (stats.headline_table)
     bases_and_params.json the bases and every MR's drawn parameters
     run_manifest.json     snapshot hash, versions, seeds, counts, invariant and oracle results
@@ -38,6 +39,7 @@ from plotline.snapshot import check_snapshot
 from tests.mt.generator import ROOT, SNAPSHOT, generate, save_bases
 from tests.mt.harness import SeedRegistry, run_mr, write_json, write_violations
 from tests.mt.mrs import MRS
+from tests.mt.mrs.mr09_paraphrase import with_phrasings
 from tests.mt.stats import write_headline_table
 
 RESULTS = ROOT / "results"
@@ -72,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"E_SNAPSHOT_HASH: {err}", file=sys.stderr)
         return 1
     df = pd.read_csv(SNAPSHOT)
-    bases = generate(df, args.bases)
+    bases = with_phrasings(generate(df, args.bases), df)  # MR9 sentences are stored with the bases
     save_bases(bases, args.out / "bases_and_params.json", snapshot_sha256=sha)
     engine = mode_a_engine()
     registry = SeedRegistry()
@@ -84,6 +86,8 @@ def main(argv: list[str] | None = None) -> int:
 
     write_violations([row for r in runs for row in r.violation_rows()], args.out / "violations.csv")
     write_skips([row for r in runs for row in r.skip_rows()], args.out / "skips.csv")
+    write_violations([row for r in runs for row in r.waived_rows()], args.out / "violations_unconditioned.csv",
+                     extra=("reason",))
     results = [r.result() for r in runs]
     write_headline_table(results, args.out / "headline_table.md", title="Headline results (Mode A, LLM_MODE=off)")
     invariants = [v | {"MR": r.mr.name} for r in runs for v in r.invariant_violations]

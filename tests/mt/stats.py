@@ -92,7 +92,8 @@ def headline_table(results: list[MRResult], title: str = "Headline results") -> 
     for r in results:
         skipped = "; ".join(f"{reason}: {n}" for reason, n in sorted(r.skipped.items())) or "none"
         pair = _rate(r.pair_violations, r.pairs) if r.pairs is not None and r.pair_violations is not None else "-"
-        uncond = _rate(*r.unconditioned) if r.mr in UNCONDITIONED_MRS and r.unconditioned else "-"
+        uncond = (_rate(*r.unconditioned) if r.mr.removeprefix("MR") in UNCONDITIONED_MRS
+                  and r.unconditioned else "-")
         row = [r.mr, r.family, ", ".join(map(str, r.seeds)), str(r.n_bases), str(r.evaluated),
                f"{r.n_skipped} ({skipped})", _rate(r.violations, r.evaluated), pair, uncond]
         lines.append("| " + " | ".join(row) + " |")

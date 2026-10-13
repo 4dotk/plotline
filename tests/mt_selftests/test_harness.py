@@ -107,7 +107,7 @@ class SkipsAndErrors(unittest.TestCase):
         def always_differs(src, fu, b):
             return [Diff("y", 1, 2)]
         mr = MR("dummy-skip", "monotonic", copy_frame, always_differs,
-                precondition=lambda b: "no localities" if b.criteria["localities"] is None else None,
+                precondition=lambda b, df: "no localities" if b.criteria["localities"] is None else None,
                 skip=lambda src, fu, b: "bhk set" if b.criteria["bhk"] else None)
         bases = [base(0), base(1, localities=["Adyar"]), base(2, localities=["T Nagar"], bhk=[1])]
         run = run_mr(mr, bases, frame(), RUN, check_invariants=False)
