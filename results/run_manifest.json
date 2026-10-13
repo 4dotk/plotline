@@ -1,31 +1,81 @@
 {
  "contract_version": "1.1.1",
  "gen_seed": 42,
- "git_commit": "6b47b76",
+ "git_commit": "a5941f6",
  "invariant_violations": [],
  "llm": null,
  "llm_mode": "off",
  "mode": "A",
  "mrs": {
   "MR1": {
-   "evaluated": 100,
+   "evaluated": 350,
    "skipped": 0,
+   "violations": 0
+  },
+  "MR10": {
+   "evaluated": 154,
+   "skipped": 196,
+   "violations": 0
+  },
+  "MR2": {
+   "evaluated": 350,
+   "skipped": 0,
+   "violations": 0
+  },
+  "MR3a": {
+   "evaluated": 202,
+   "skipped": 148,
+   "violations": 0
+  },
+  "MR3b": {
+   "evaluated": 202,
+   "skipped": 148,
+   "violations": 0
+  },
+  "MR4": {
+   "evaluated": 173,
+   "skipped": 177,
+   "violations": 0
+  },
+  "MR5": {
+   "evaluated": 114,
+   "skipped": 236,
+   "violations": 0
+  },
+  "MR6": {
+   "evaluated": 169,
+   "skipped": 181,
+   "violations": 0
+  },
+  "MR7": {
+   "evaluated": 266,
+   "skipped": 84,
+   "violations": 0
+  },
+  "MR8": {
+   "evaluated": 350,
+   "skipped": 0,
+   "violations": 0
+  },
+  "MR9": {
+   "evaluated": 0,
+   "skipped": 350,
    "violations": 0
   }
  },
- "n_bases": 100,
+ "n_bases": 350,
  "oracle_mismatches": {
   "count": 0,
   "first": []
  },
- "seed_registry_entries": 200,
+ "seed_registry_entries": 3920,
  "seeds": [
   0
  ],
  "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
  "strata": {
-  "broad": 80,
-  "thin": 20
+  "broad": 280,
+  "thin": 70
  },
  "versions": {
   "numpy": "2.5.3",
