@@ -19,7 +19,7 @@ import pandas as pd
 from plotline.contract import Criteria
 from tests.mt.generator import Base
 from tests.mt.harness import MR, Diff, FollowUp, diff, exact
-from tests.mt.mrs.common import RECORD_CMP, compare_flags, compare_records, compare_summary, first, flag_margin
+from tests.mt.mrs.common import RECORD_CMP, all_reasons, compare_flags, compare_records, compare_summary, flag_margin
 
 INR_PER_LAKH = 100_000  # contract 5.2 (a unit, not a tolerance)
 
@@ -40,7 +40,7 @@ def scale_check(factor: Callable[[Base], float]) -> Callable[[dict, dict, Base],
 
 
 def flag_margin_skip(src: dict, fu: dict, base: Base) -> str | None:
-    return first(flag_margin(src), flag_margin(fu))
+    return all_reasons(flag_margin(src), flag_margin(fu))
 
 
 def transform(base: Base, df: pd.DataFrame) -> FollowUp:

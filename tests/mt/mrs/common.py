@@ -118,8 +118,11 @@ def l2_skip(*reports: dict) -> str | None:
     return "L2_attempts > 0" if any(l2_attempts(r) > 0 for r in reports) else None
 
 
-def first(*reasons: str | None) -> str | None:
-    return next((r for r in reasons if r is not None), None)
+def all_reasons(*reasons: str | None) -> str | None:
+    """Every reason that applies, deduplicated, in order and joined with `` + ``; None if none.
+    All of them are recorded so a base that trips two skips (e.g. the gate and L2) counts under both."""
+    found = list(dict.fromkeys(r for r in reasons if r is not None))
+    return " + ".join(found) or None
 
 
 def gate_margin(n: int) -> bool:

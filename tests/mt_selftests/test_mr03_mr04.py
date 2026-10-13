@@ -11,7 +11,7 @@ from plotline.orchestrator import Engine
 from tests.mt.generator import SNAPSHOT, generate
 from tests.mt.harness import frame_hash, run_mr
 from tests.mt.mrs import MR3a, MR3b, MR4
-from tests.mt.mrs.mr03_duplicate import gate_skip
+from tests.mt.mrs.mr03_duplicate import gate_skip, skip as mr3_skip
 from tests.support import SNAPSHOT_SHA
 
 LEAK_FROM_DAY = "28"  # planted fault parameter: sales from this day on land in the next month
@@ -61,6 +61,17 @@ class MR3MR4Tests(unittest.TestCase):
         self.assertIsNone(gate_skip(series([big] * 12)))
         self.assertIsNotNone(gate_skip(series([big] * 5 + [MIN_BUCKET_N - 1] + [big] * 6)))  # one ALL month
         self.assertIsNotNone(gate_skip(series([1, 1, 1] + [big] * 9)))  # pooled first-3 = 3
+
+    def test_mr3_skip_records_every_reason(self):
+        """A base that trips the gate and L2 is recorded under both, not just the first."""
+        big = 2 * MIN_BUCKET_N
+        gate = series([big] * 5 + [MIN_BUCKET_N - 1] + [big] * 6)
+        l2 = {"metadata": {"loop_counters": {"L2_attempts": 1}}}
+        quiet = {"metadata": {"loop_counters": {"L2_attempts": 0}}}
+        both = mr3_skip(gate | l2, gate | quiet, self.bases[0])
+        self.assertEqual(both, "ALL n_in_bucket in {3,4} + L2_attempts > 0")  # gate reason once, deduplicated
+        self.assertEqual(mr3_skip(series([big] * 12) | l2, series([big] * 12) | quiet, self.bases[0]),
+                         "L2_attempts > 0")
 
     def test_mr4_transformation(self):
         base = self.bases[0]

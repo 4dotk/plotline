@@ -16,7 +16,7 @@ import pandas as pd
 from plotline.contract import BHK_VALUES, Criteria
 from tests.mt.generator import Base
 from tests.mt.harness import MR, Diff, FollowUp
-from tests.mt.mrs.common import first, l2_skip, records
+from tests.mt.mrs.common import all_reasons, l2_skip, records
 
 SOFT = ("price_band", "sqft_range", "sale_cond")
 
@@ -45,7 +45,7 @@ def check(src: dict, fus: list[dict], base: Base) -> list[Diff]:
 
 def skip(src: dict, fus: list[dict], base: Base) -> str | None:
     soft = next((f for r in (src, *fus) for f in SOFT if r["effective_criteria"][f] is not None), None)
-    return first(l2_skip(src, *fus), None if soft is None else f"soft filter set ({soft})")
+    return all_reasons(l2_skip(src, *fus), None if soft is None else f"soft filter set ({soft})")
 
 
 MR10 = MR(name="MR10", family="monotonic", transform=transform, check=check, skip=skip)

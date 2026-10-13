@@ -97,7 +97,8 @@ def headline_table(results: list[MRResult], title: str = "Headline results") -> 
         row = [r.mr, r.family, ", ".join(map(str, r.seeds)), str(r.n_bases), str(r.evaluated),
                f"{r.n_skipped} ({skipped})", _rate(r.violations, r.evaluated), pair, uncond]
         lines.append("| " + " | ".join(row) + " |")
-    lines += ["", "A skip is not a pass. Wilson score interval, or Clopper-Pearson when the "
+    lines += ["", "A skip is not a pass. A reason joined with `+` means every one of those applied to the base. "
+                  "Wilson score interval, or Clopper-Pearson when the "
                   "violation count is 0 or n (contracts/Testing.md 8)."]
     return "\n".join(lines) + "\n"
 

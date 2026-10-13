@@ -19,7 +19,7 @@ import pandas as pd
 from plotline.contract import MIN_BUCKET_N, month_add
 from tests.mt.generator import Base
 from tests.mt.harness import MR, Diff, FollowUp, exact, rel_tol
-from tests.mt.mrs.common import ALL, PCT, RECORD_CMP, compare_flags, compare_records, first, month_of, records
+from tests.mt.mrs.common import ALL, PCT, RECORD_CMP, all_reasons, compare_flags, compare_records, month_of, records
 
 
 def params(base: Base) -> tuple[int, str]:
@@ -61,7 +61,7 @@ def skip(src: dict, fu: dict, base: Base) -> str | None:
             return "ALL n_in_bucket(m) < MIN_BUCKET_N"
         return None
 
-    return first(one(src), one(fu))
+    return all_reasons(one(src), one(fu))
 
 
 MR4 = MR(name="MR4", family="monotonic", transform=transform, check=check, skip=skip)

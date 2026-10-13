@@ -18,8 +18,8 @@ import pandas as pd
 
 from tests.mt.generator import Base
 from tests.mt.harness import MR, Diff, FollowUp, abs_tol, exact, rel_tol
-from tests.mt.mrs.common import MEDIANS, PCT, all_series, compare_flags, compare_records, compare_summary, first, \
-    gate_margin, l2_skip
+from tests.mt.mrs.common import MEDIANS, PCT, all_reasons, all_series, compare_flags, compare_records, \
+    compare_summary, gate_margin, l2_skip
 
 POOLED_MONTHS = 3  # Testing.md 5.3 / global 6.3: the summary pools the first 3 and last 3 months
 TWICE = lambda n: 2 * n
@@ -52,7 +52,7 @@ def gate_skip(report: dict) -> str | None:
 
 
 def skip(src: dict, fu: dict, base: Base) -> str | None:
-    return first(gate_skip(src), gate_skip(fu), l2_skip(src, fu))
+    return all_reasons(gate_skip(src), gate_skip(fu), l2_skip(src, fu))
 
 
 MR3a = MR(name="MR3a", family="invariance", transform=duplicate(new_ids=True), check=check, skip=skip)
