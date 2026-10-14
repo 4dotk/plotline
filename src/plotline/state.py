@@ -126,7 +126,7 @@ class AnalyseFn(Protocol):
 class DiagnoseFn(Protocol):
     def __call__(
         self, flags: list[AnomalyFlag], records: list[TrendRecord], llm_mode: LlmMode,
-        seed: int, trace: TraceLog,
+        seed: int, trace: TraceLog, llm: "LlmSession | None" = None,
     ) -> Union[list[Diagnostic], Failure]: ...
 
 

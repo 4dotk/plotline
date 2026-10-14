@@ -198,7 +198,7 @@ class Engine:
 
         # ---- E, G, F -------------------------------------------------------
         analysis = self.agents.analyse(st.records, st.rows, st.plan.effective, st.trace)
-        diags = self.agents.diagnose(analysis.flags, analysis.records, self.llm_mode, seed, st.trace)
+        diags = self.agents.diagnose(analysis.flags, analysis.records, self.llm_mode, seed, st.trace, llm)
         if isinstance(diags, Failure):
             return self._error(st, llm, options, seed, criteria_in, st.plan, "diagnostic", diags.error)
 

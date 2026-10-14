@@ -1,0 +1,63 @@
+--- a/src/plotline/agents/__init__.py	2026-10-13 13:05:36.000000000 +0530
++++ b/src/plotline/agents/__init__.py	2026-10-14 15:17:50.377584657 +0530
+@@ -1,13 +1,13 @@
+ from dataclasses import replace
+ 
+-from plotline.agents import aggregator, anomaly, planner, scanner, validator
++from plotline.agents import aggregator, anomaly, diagnostic, planner, scanner, validator
+ from plotline.agents.stubs import stub_agents  # noqa: F401
+ from plotline.state import AgentSet
+ 
+ 
+ def default_agents() -> AgentSet:
+-    """The real agents A-E; the Diagnostic (G) is still the template stub."""
++    """The real agents A-E and G (the Diagnostic: model text in live/replay, template when off)."""
+     return replace(
+         stub_agents(), plan=planner.plan, repair=planner.repair, scan=scanner.scan,
+-        aggregate=aggregator.aggregate, validate=validator.validate, analyse=anomaly.analyse,
++        aggregate=aggregator.aggregate, validate=validator.validate, analyse=anomaly.analyse, diagnose=diagnostic.diagnose,
+     )
+--- a/src/plotline/agents/stubs.py	2026-10-13 13:05:36.000000000 +0530
++++ b/src/plotline/agents/stubs.py	2026-10-14 15:17:50.376874613 +0530
+@@ -147,7 +147,7 @@
+ # -- G: Diagnostic ------------------------------------------------------------
+ 
+ 
+-def diagnose(flags: list[AnomalyFlag], records, llm_mode: LlmMode, seed: int, trace: TraceLog):
++def diagnose(flags: list[AnomalyFlag], records, llm_mode: LlmMode, seed: int, trace: TraceLog, llm=None):
+     return [Diagnostic(month=f.month, text=f.reason, source="template") for f in flags]
+ 
+ 
+--- a/src/plotline/orchestrator.py	2026-10-13 13:05:36.000000000 +0530
++++ b/src/plotline/orchestrator.py	2026-10-14 15:17:50.376588282 +0530
+@@ -198,7 +198,7 @@
+ 
+         # ---- E, G, F -------------------------------------------------------
+         analysis = self.agents.analyse(st.records, st.rows, st.plan.effective, st.trace)
+-        diags = self.agents.diagnose(analysis.flags, analysis.records, self.llm_mode, seed, st.trace)
++        diags = self.agents.diagnose(analysis.flags, analysis.records, self.llm_mode, seed, st.trace, llm)
+         if isinstance(diags, Failure):
+             return self._error(st, llm, options, seed, criteria_in, st.plan, "diagnostic", diags.error)
+ 
+--- a/src/plotline/state.py	2026-10-13 13:05:36.000000000 +0530
++++ b/src/plotline/state.py	2026-10-14 15:17:50.376150583 +0530
+@@ -126,7 +126,7 @@
+ class DiagnoseFn(Protocol):
+     def __call__(
+         self, flags: list[AnomalyFlag], records: list[TrendRecord], llm_mode: LlmMode,
+-        seed: int, trace: TraceLog,
++        seed: int, trace: TraceLog, llm: "LlmSession | None" = None,
+     ) -> Union[list[Diagnostic], Failure]: ...
+ 
+ 
+--- a/tests/unit/test_orchestrator.py	2026-10-13 13:05:36.000000000 +0530
++++ b/tests/unit/test_orchestrator.py	2026-10-14 15:17:50.377835729 +0530
+@@ -244,7 +244,7 @@
+     # ---- later agents ---------------------------------------------------
+     def test_diagnostic_replay_miss_fails_the_report(self):
+         from plotline.contract import ErrorInfo
+-        def miss(flags, records, llm_mode, seed, trace):
++        def miss(flags, records, llm_mode, seed, trace, llm=None):
+             return Failure(ErrorInfo(code="E_REPLAY_MISS", message="not in cache"))
+         r = engine(agents=self.agents(diagnose=miss)).run(Criteria(), small_df())
+         self.assertEqual((r.status, r.error.code), ("error", "E_REPLAY_MISS"))

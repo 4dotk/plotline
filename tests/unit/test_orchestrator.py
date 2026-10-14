@@ -244,7 +244,7 @@ class Loops(unittest.TestCase):
     # ---- later agents ---------------------------------------------------
     def test_diagnostic_replay_miss_fails_the_report(self):
         from plotline.contract import ErrorInfo
-        def miss(flags, records, llm_mode, seed, trace):
+        def miss(flags, records, llm_mode, seed, trace, llm=None):
             return Failure(ErrorInfo(code="E_REPLAY_MISS", message="not in cache"))
         r = engine(agents=self.agents(diagnose=miss)).run(Criteria(), small_df())
         self.assertEqual((r.status, r.error.code), ("error", "E_REPLAY_MISS"))

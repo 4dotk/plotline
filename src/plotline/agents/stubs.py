@@ -147,7 +147,7 @@ def analyse(records, rows, effective, trace: TraceLog) -> Analysis:
 # -- G: Diagnostic ------------------------------------------------------------
 
 
-def diagnose(flags: list[AnomalyFlag], records, llm_mode: LlmMode, seed: int, trace: TraceLog):
+def diagnose(flags: list[AnomalyFlag], records, llm_mode: LlmMode, seed: int, trace: TraceLog, llm=None):
     return [Diagnostic(month=f.month, text=f.reason, source="template") for f in flags]
 
 
