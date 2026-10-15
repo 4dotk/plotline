@@ -64,11 +64,12 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 
 **Key** = SHA256 of the canonical JSON of:
 
-`{ LLM_MODEL_TAG, system prompt, user prompt, response schema, temperature, max tokens, seed }`
+`{ LLM_MODEL_TAG, system prompt, user prompt, response schema, temperature, max tokens, seed, thinking }`
 
 * Canonical JSON: keys sorted at every level, no whitespace, UTF-8, numbers in shortest round-trip form. **[clarification]**
 * The server address and the server's model name are **not** in the key (D10).
-* Changing any one of the seven fields gives a different key.
+* Changing any one of the eight fields gives a different key.
+* `thinking` is fixed per use in `llm_client.THINKING` (Planner on, Validator and Diagnostic off) and sent with every request as `chat_template_kwargs.enable_thinking`, so no server preset is needed. **[v1.1.2]**
 
 **Entry** (one JSON object per line) holds the `key`, the model's **raw response text**, and the recorded `llm` metadata of the live call that produced it (section 10). **[clarification]**
 
@@ -131,7 +132,7 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 |---|---|
 | Same call in three modes | Returns the same shape in `off`, `replay`, `live`; no server name in code |
 | No other module talks to a model | Static check: only `app/llm_client.py` imports an HTTP library, SDK, or LangChain |
-| Cache key content | Changing `LLM_BASE_URL` or `LLM_MODEL` keeps the same key (hit). Changing `LLM_MODEL_TAG`, either prompt, the schema, temperature, max tokens or seed changes the key |
+| Cache key content | Changing `LLM_BASE_URL` or `LLM_MODEL` keeps the same key (hit). Changing `LLM_MODEL_TAG`, either prompt, the schema, temperature, max tokens, seed or thinking changes the key |
 | Canonical JSON | Same fields in a different order give the same key |
 | Replay miss | `E_REPLAY_MISS`; sockets blocked in the test prove no network call |
 | Off mode | No client call; AI mode → `E_LLM_OFF`; Diagnostic uses the template |

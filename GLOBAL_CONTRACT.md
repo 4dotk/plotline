@@ -1,10 +1,10 @@
-# GLOBAL CONTRACT — Chennai Housing-Trends Application (v1.1.1)
+# GLOBAL CONTRACT — Chennai Housing-Trends Application (v1.1.2)
 
-The single source of truth for project requirements. The application logic, API, UI, test suite, report and every subcontract must comply with this file. If code or a subcontract disagrees with it, that is a defect: fix the code or subcontract, not this file, unless S and K formally approve a global change.
+The single source of truth for project requirements. The application logic, API, UI, test suite, report and every subcontract must comply with this file. If code or a subcontract disagrees with it, that is a defect: fix the code or subcontract, not this file, unless the team formally approves a global change.
 
 **Words:** MUST = no exceptions. SHOULD = do it unless you write down why not. "Application" = the orchestrator plus its agents, called as a Python function. "Test suite" = the metamorphic test code that calls it.
 
-**Change rule:** nobody edits sections 3 to 9 alone. Add a changelog line (section 12), both agree, bump the version, tell the other person. After the `v0-results` tag, a change needs a changelog line that says what was wrong (the report must explain every change).
+**Change rule:** nobody edits sections 3 to 9 alone. Add a changelog line (section 12), the whole team agrees, bump the version, tell the team. After the `v0-results` tag, a change needs a changelog line that says what was wrong (the report must explain every change).
 
 ## 1. Structure and how to read it
 
@@ -254,9 +254,10 @@ The worked L2 example (Adyar, 1 BHK, ₹70–90 lakh, 2010-12: rows 38 → 49 �
 
 ## 8. LLM contract (detail: `contracts/llm.md`)
 
-* Only **one module** (`app/llm_client.py`, owner K) may talk to a model. Three uses (D11): Planner (AI mode), Validator (L2 decision), Diagnostic. Temperature 0; JSON checked with pydantic; malformed output → one `warning` trace event, up to 2 retries, then the fallback (rule-based parser / the rule `widen` / the template), logged.
+* Only **one module** (`app/llm_client.py`) may talk to a model. Three uses (D11): Planner (AI mode), Validator (L2 decision), Diagnostic. Temperature 0; JSON checked with pydantic; malformed output → one `warning` trace event, up to 2 retries, then the fallback (rule-based parser / the rule `widen` / the template), logged.
 * `LLM_MODE`: `live`, `replay` (default for reproduction, answers from the committed cache) or `off`. Settings come from `.env` only; commit `.env.example`, never `.env`.
-* **Cache key** = SHA256 of canonical JSON of {`LLM_MODEL_TAG`, system prompt, user prompt, response schema, temperature, max tokens, seed}; server address and server model name are not in it (D10). Only machine K writes `cache/llm_replay.jsonl`. A replay miss is `E_REPLAY_MISS`, never a silent live call.
+* **Thinking** is fixed per use and sent with every request (`chat_template_kwargs.enable_thinking`): on for the Planner, off for the Validator and Diagnostic.
+* **Cache key** = SHA256 of canonical JSON of {`LLM_MODEL_TAG`, system prompt, user prompt, response schema, temperature, max tokens, seed, thinking}; server address and server model name are not in it (D10). Only the canonical machine writes `cache/llm_replay.jsonl`. A replay miss is `E_REPLAY_MISS`, never a silent live call.
 * Prompts live in `app/prompts/*.md` (hash in `metadata.llm.prompt_hash`). The Validator prompt holds counts and names only.
 * Every live run records backend and build, launch flags, GGUF SHA256, quantisation, context size, sampling settings and seed.
 * **Not yet verified (Day 1):** that `llama serve` exposes `/v1/chat/completions` with JSON-schema output; if not, the client falls back to "prompt for JSON, validate, retry". Freeze the llama build after Day 1.
@@ -286,7 +287,7 @@ Mode A is deterministic: one run per base with `seed = 0` plus the determinism s
 
 ---
 
-## 10. API contract (S)
+## 10. API contract
 
 JSON, CORS on. Domain errors are HTTP 200 with a report whose `status` is `"error"`; HTTP 500 is a crash (a bug). `GET /api/meta` returns `localities`, `bhk_values`, `sale_conds`, `first_month`, `latest_month`, `window_end_min`, `window_end_max`, `default_window_end`, `sales_per_month`, `localities_active_by_month`, `snapshot_sha256`, `constants`, `partial_months`. `POST /api/run` takes `{ "criteria": Criteria }` or `{ "nl_query": str }` plus optional `seed`, `options`, and returns a `TrendReport`. `GET /api/health` returns `{ "status": "ok", "llm_mode", "snapshot_sha256", "logic_version", "contract_version" }`.
 
@@ -301,10 +302,10 @@ CONTRACT.md  NOTEBOOK.md  AI_USE.md  README.md  .env.example
 contracts/   data.md  llm.md  testing.md  golden.md  agents/ (_common.md, A_…F_*.md, _review.md)
 data/raw/Chennai_Housing_Sale.csv   data/chennai_snapshot.csv   data/SNAPSHOT.sha256
 scripts/freeze_snapshot.py          scripts/golden_vectors.py
-app/   contract.py (constants + pydantic models), orchestrator.py, agents/, llm_client.py, prompts/   (S; K owns llm_client.py)
-api/  ui/                                                                                          (S)
+app/   contract.py (constants + pydantic models), orchestrator.py, agents/, llm_client.py, prompts/
+api/  ui/
 tests/  unit/ (app unit tests), mt/ (oracle.py, generator.py, stats.py, harness.py, mrs/, run.py, reproduce.py),
-        mt_selftests/ (tests of mt/)                                                                (K)
+        mt_selftests/ (tests of mt/)
 cache/llm_replay.jsonl     results/ (violations.csv, headline_table.md, run_manifest.json)
 docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 ```
@@ -316,19 +317,18 @@ docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 ## 12. Open items and changelog
 
 **Open items:**
-1. Both confirm D1–D11, or change them (S, K, before Gate 1).
-2. Verify that `llama serve` exposes an OpenAI-compatible endpoint with JSON-schema output; record version, flags, GGUF hash; confirm the same GGUF on both machines (K, Day 1).
-3. Check the Kaggle licence wording and add the citation (K, Day 1).
+1. Both confirm D1–D11, or change them (before Gate 1).
+2. Verify that `llama serve` exposes an OpenAI-compatible endpoint with JSON-schema output; record version, flags, GGUF hash; confirm the same GGUF on both machines (Day 1).
+3. Check the Kaggle licence wording and add the citation (Day 1).
 4. Project name is undecided (not needed by the contract).
-5. Write `example_response.json` from section 6 using the golden numbers (S, Day 1).
-6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (S, Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.
-7. Review the **[clarification]** rows in `contracts/agents/_review.md`, `llm.md` §12 and `testing.md` §12 (S, K, at T79).
+5. Write `example_response.json` from section 6 using the golden numbers (Day 1).
+6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.
+7. Review the **[clarification]** rows in `contracts/agents/_review.md`, `llm.md` §12 and `testing.md` §12 (at T79).
 8. Write the ½-page reflection (what an LLM could have produced without running the system, and what it could not) for the report.
 
-| Version | Date | Who | Change |
+| Version | Date | Change | Agreed |
 |---|---|---|---|
-| 1.0.0 | 2026-10-10 | draft | First full contract, built from the dataset verification. |
-| 1.1.0 | 2026-10-10 | draft | (a) D11: the Validator may use the model for the L2 widen/stop choice (I-LLM, 7.1, 7.3, 7.4 `decided_by`, 8). (b) 7.1 gets a Kind column. (c) Fixes promoted from subcontract clarifications: MR3 skip also covers a pooled first-3 / last-3 count in {3, 4}; MR4 means "all fields equal except `pct_change` at m+1". (d) `app/contract.py`; `logic_version`; `FLAT_BAND_PCT` used in 6.2. (e) Size: sections 4, 8, 9 summarised; MR table, cleaning table and appendices moved to subcontracts (`golden.md` is new); `agents.md` sharded into `contracts/agents/`; section 1 added, other numbering unchanged. |
-| 1.1.1 | 2026-10-11 | K, S | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. |
-| | | S: ☐ agreed | |
-| | | K: ☐ agreed | |
+| 1.0.0 | 2026-10-10 | First full contract, built from the dataset verification. | draft |
+| 1.1.0 | 2026-10-10 | (a) D11: the Validator may use the model for the L2 widen/stop choice (I-LLM, 7.1, 7.3, 7.4 `decided_by`, 8). (b) 7.1 gets a Kind column. (c) Fixes promoted from subcontract clarifications: MR3 skip also covers a pooled first-3 / last-3 count in {3, 4}; MR4 means "all fields equal except `pct_change` at m+1". (d) `app/contract.py`; `logic_version`; `FLAT_BAND_PCT` used in 6.2. (e) Size: sections 4, 8, 9 summarised; MR table, cleaning table and appendices moved to subcontracts (`golden.md` is new); `agents.md` sharded into `contracts/agents/`; section 1 added, other numbering unchanged. | draft |
+| 1.1.1 | 2026-10-11 | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. | ☐ all team members |
+| 1.1.2 | 2026-10-15 | Model thinking per use (8, `llm.md` 5). What was wrong: thinking was left to the server default (on), so every Validator and Diagnostic call took about 65–120 s on the canonical machine and a 3-flag run took several minutes; the setting also changed answers without being in the cache key. Now on for the Planner (measured 10/10 vs 9/10 on 10 sentences), off for the Validator and Diagnostic (about 13 s per call), sent in each request, and `thinking` is an eighth cache-key field. Cache entries recorded before this no longer match. | ☐ all team members |

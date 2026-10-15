@@ -1087,7 +1087,7 @@
     }
   ],
   "metadata": {
-    "contract_version": "1.1.1",
+    "contract_version": "1.1.2",
     "logic_version": "abc1234",
     "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
     "seed": 0,

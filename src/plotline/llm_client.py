@@ -14,7 +14,8 @@ Modes (LLM.md 4):
           cache only when ``LLM_CACHE_WRITE=1`` (the canonical machine).
 
 The cache key covers the logical model tag, both prompts, the response schema,
-temperature, max tokens and seed; not the server address or model name (D10).
+temperature, max tokens, seed and the thinking switch; not the server address or
+model name (D10).
 """
 
 from __future__ import annotations
@@ -36,9 +37,12 @@ _LIVE_KEYS = ("LLM_BASE_URL", "LLM_MODEL", "LLM_BACKEND", "LLM_BUILD", "LLM_LAUN
               "LLM_GGUF_SHA256", "LLM_QUANT", "LLM_CTX")
 
 Purpose = Literal["planner", "validator", "diagnostic"]
-# (system, user, seed, response JSON schema) -> raw text. Transport failures
-# raise ConnectionError or TimeoutError; they count as failed attempts.
-ChatFn = Callable[[str, str, int, dict], str]
+# Model reasoning per use, sent with every request (LLM.md 5). The Planner gains
+# accuracy from it; the Validator and Diagnostic answers are short and do not.
+THINKING: dict[str, bool] = {"planner": True, "validator": False, "diagnostic": False}
+# (system, user, seed, response JSON schema, thinking) -> raw text. Transport
+# failures raise ConnectionError or TimeoutError; they count as failed attempts.
+ChatFn = Callable[[str, str, int, dict, bool], str]
 
 
 class LlmConfigError(ValueError):
@@ -173,11 +177,12 @@ class LlmClient:
 
     # -- cache ----------------------------------------------------------------
 
-    def cache_key(self, system: str, user: str, schema: dict, seed: int) -> str:
+    def cache_key(self, system: str, user: str, schema: dict, seed: int, thinking: bool) -> str:
         c = self.config
         payload = {
             "model_tag": c.model_tag, "system": system, "user": user, "schema": schema,
             "temperature": c.temperature, "max_tokens": c.max_tokens, "seed": seed,
+            "thinking": thinking,
         }
         return hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
 
@@ -211,10 +216,12 @@ class LlmClient:
             seed=seed, prompt_hash=self.prompt_hash,
         )
 
-    def raw_answer(self, system: str, user: str, schema: dict, seed: int) -> tuple[str, LLMInfo] | None:
+    def raw_answer(
+        self, system: str, user: str, schema: dict, seed: int, thinking: bool,
+    ) -> tuple[str, LLMInfo] | None:
         """Raw response text and its run record; None on a replay miss.
         Raises ConnectionError / TimeoutError when a live call fails."""
-        key = self.cache_key(system, user, schema, seed)
+        key = self.cache_key(system, user, schema, seed, thinking)
         if self.mode == "replay":
             entry = self._entries().get(key)
             if entry is None:
@@ -222,7 +229,7 @@ class LlmClient:
             return entry["raw"], LLMInfo.model_validate(entry["llm"])
         if self._chat is None:
             self._chat = langchain_chat(self.config)
-        raw = self._chat(system, user, seed, schema)
+        raw = self._chat(system, user, seed, schema, thinking)
         info = self.live_info(seed)
         self._record(key, raw, info)
         return raw, info
@@ -248,7 +255,7 @@ class LlmSession:
         prompt = user
         for attempt in range(1, MAX_ATTEMPTS + 1):
             try:
-                got = self.client.raw_answer(system, prompt, json_schema, self.seed)
+                got = self.client.raw_answer(system, prompt, json_schema, self.seed, THINKING[purpose])
             except (ConnectionError, TimeoutError) as exc:  # not cached; counts as an attempt
                 error = f"{purpose} call failed: {_short_error(exc)}"
             else:
@@ -280,18 +287,20 @@ def langchain_chat(config: LlmConfig) -> ChatFn:
     )
     use_schema = [True]
 
-    def chat(system: str, user: str, seed: int, schema: dict) -> str:
+    def chat(system: str, user: str, seed: int, schema: dict, thinking: bool) -> str:
         messages = [("system", system), ("human", user)]
+        # llama serve hands this to the chat template; servers without it ignore the field
+        extra = {"chat_template_kwargs": {"enable_thinking": thinking}}
         try:
             if use_schema[0]:
                 fmt = {"type": "json_schema", "json_schema": {"name": "response", "schema": schema}}
                 try:
-                    resp = llm.invoke(messages, seed=seed, response_format=fmt)
+                    resp = llm.invoke(messages, seed=seed, response_format=fmt, extra_body=extra)
                 except openai.BadRequestError:
                     use_schema[0] = False  # server has no JSON-schema output: prompt only
-                    resp = llm.invoke(messages, seed=seed)
+                    resp = llm.invoke(messages, seed=seed, extra_body=extra)
             else:
-                resp = llm.invoke(messages, seed=seed)
+                resp = llm.invoke(messages, seed=seed, extra_body=extra)
         except openai.APITimeoutError as exc:
             raise TimeoutError(str(exc)) from exc
         except openai.APIConnectionError as exc:

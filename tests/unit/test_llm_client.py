@@ -37,8 +37,8 @@ class _NoNetwork:
 
 
 class CacheKey(unittest.TestCase):
-    def key(self, cfg=None, system="S", user="U", schema=None, seed=0):
-        return LlmClient(cfg or llm_config()).cache_key(system, user, schema or {"a": 1, "b": 2}, seed)
+    def key(self, cfg=None, system="S", user="U", schema=None, seed=0, thinking=False):
+        return LlmClient(cfg or llm_config()).cache_key(system, user, schema or {"a": 1, "b": 2}, seed, thinking)
 
     def test_server_address_and_model_name_are_not_in_the_key(self):  # D10
         base = self.key()
@@ -50,6 +50,7 @@ class CacheKey(unittest.TestCase):
             self.key(replace(llm_config(), model_tag="other-tag")),
             self.key(replace(llm_config(), max_tokens=512)),
             self.key(system="S2"), self.key(user="U2"), self.key(schema={"a": 1}), self.key(seed=101),
+            self.key(thinking=True),
         ]
         self.assertEqual(len({base, *changed}), 1 + len(changed))
 
@@ -104,6 +105,13 @@ class Calls(unittest.TestCase):
         self.assertEqual(out.value, Criteria(localities=["Adyar"], window_end="2015-02", bhk=[1]))
         self.assertEqual((out.failures, chat.calls[0][2]), ([], 7))
         self.assertEqual((s.info.seed, s.info.prompt_hash, s.info.temperature), (7, prompt_hash(), 0.0))
+
+    def test_thinking_is_set_per_use(self):  # LLM.md 5, v1.1.2
+        client, chat = self.live(GOOD)
+        s = client.session(0)
+        for purpose in ("planner", "validator", "diagnostic"):
+            s.call(purpose, "S", f"U-{purpose}", Criteria)
+        self.assertEqual(chat.thinking, [True, False, False])
 
     def test_malformed_kinds(self):
         bad = {
