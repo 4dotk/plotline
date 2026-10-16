@@ -23,6 +23,7 @@ from typing import Union
 
 import pandas as pd
 
+from plotline.agents import inspector
 from plotline.agents.reporter import build_report
 from plotline.agents import default_agents
 from plotline.contract import (
@@ -141,30 +142,32 @@ class Engine:
         if missing:  # C's rule, applied up front because A needs the month range
             return self._error(st, llm, options, seed, criteria_in, None, "aggregator",
                                ErrorInfo(code="E_SCHEMA", message=f"listings_df is missing columns: {missing}"))
-        months = listings_df["sale_date"].str[:7]
-        info = DataInfo(first_month=str(months.min()), latest_month=str(months.max()))
+        info = DataInfo.from_df(listings_df)  # month range + what each locality holds (1.2.0)
 
         # ---- A: plan -------------------------------------------------------
         res = self.agents.plan(query, info, options, seed, self.llm_mode, st.trace, llm)
         if isinstance(res, Failure):
-            return self._error(st, llm, options, seed, criteria_in, None, "planner", res.error)
+            return self._error(st, llm, options, seed, criteria_in, None, "planner", res.error, info)
         st.plan = res
         criteria_in = res.criteria_in
 
         # ---- B -> C with loop L1 (C -> A) ----------------------------------
         while True:
-            st.rows = self.agents.scan(st.plan, listings_df, st.trace)
-            out = self.agents.aggregate(st.plan.effective, st.rows, listings_df, info, st.trace)
+            # H checks the request against what the data holds, before anything is scanned (1.2.0)
+            out = inspector.inspect(st.plan.effective, info, st.trace)
+            if out is None:
+                st.rows = self.agents.scan(st.plan, listings_df, st.trace)
+                out = self.agents.aggregate(st.plan.effective, st.rows, listings_df, info, st.trace)
             if isinstance(out, Failure):
-                return self._error(st, llm, options, seed, criteria_in, st.plan, "aggregator", out.error)
+                return self._error(st, llm, options, seed, criteria_in, st.plan, "inspector", out.error, info)
             if isinstance(out, L1Request):
                 if not options.loops_enabled or st.l1_repairs >= L1_CAP:
                     msg = f"invalid {out.fields[0]}: {out.issues}"
-                    return self._error(st, llm, options, seed, criteria_in, st.plan, "aggregator",
-                                       ErrorInfo(code="E_INVALID_CRITERIA", message=msg))
+                    return self._error(st, llm, options, seed, criteria_in, st.plan, "inspector",
+                                       ErrorInfo(code="E_INVALID_CRITERIA", message=msg), info)
                 fixed = self.agents.repair(st.plan, out, info, options, st.l1_repairs, st.trace)
                 if isinstance(fixed, Failure):
-                    return self._error(st, llm, options, seed, criteria_in, st.plan, "planner", fixed.error)
+                    return self._error(st, llm, options, seed, criteria_in, st.plan, "planner", fixed.error, info)
                 st.l1_repairs += 1
                 self._check_counter(st, "L1")
                 st.plan = fixed
@@ -202,10 +205,14 @@ class Engine:
         if isinstance(diags, Failure):
             return self._error(st, llm, options, seed, criteria_in, st.plan, "diagnostic", diags.error)
 
+        told = inspector.notices(st.trace.events, info, st.plan.effective, st.plan.criteria_in, listings_df, None)
+        for n in told:
+            if n.kind == "no_sales":
+                st.trace.warning("inspector", n.text)
         return build_report(
             error=None, criteria_in=criteria_in, effective=st.plan.effective,
             records=analysis.records, summary=analysis.summary,
-            coverage_score=decision.coverage_score, flags=analysis.flags, diagnostics=diags,
+            coverage_score=decision.coverage_score, flags=analysis.flags, diagnostics=diags, notices=told,
             trace=st.trace.events, loop_counters=st.trace.loop_counters(), seed=seed,
             llm_mode=self.llm_mode, logic_version=self.logic_version,
             snapshot_sha256=self.snapshot_sha256, loops_enabled=options.loops_enabled,
@@ -224,11 +231,12 @@ class Engine:
             raise RuntimeError(f"{loop} fired {want} time(s) but the trace has {got} loop event(s)")
 
     def _error(self, st: RunState, llm: LlmSession, options: RunOptions, seed: int, criteria_in, plan,
-               agent: str, error: ErrorInfo) -> TrendReport:
+               agent: str, error: ErrorInfo, info: DataInfo | None = None) -> TrendReport:
         st.trace.error(agent, f"{error.code}: {error.message}", code=error.code)
+        told = inspector.notices(st.trace.events, info, None, None, None, error) if info is not None else []
         return build_report(
             error=error, criteria_in=criteria_in, effective=plan.effective if plan else None,
-            records=[], summary=None, coverage_score=0, flags=[], diagnostics=[],
+            records=[], summary=None, coverage_score=0, flags=[], diagnostics=[], notices=told,
             trace=st.trace.events, loop_counters=st.trace.loop_counters(), seed=seed,
             llm_mode=self.llm_mode, logic_version=self.logic_version,
             snapshot_sha256=self.snapshot_sha256 or _NO_SHA, loops_enabled=options.loops_enabled,

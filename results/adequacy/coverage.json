@@ -1,0 +1,392 @@
+{
+ "mt": {
+  "modules": {
+   "__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 1,
+    "stmts": 4
+   },
+   "agents/__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 6
+   },
+   "agents/aggregator.py": {
+    "branch_miss": 4,
+    "branches": 14,
+    "miss": 4,
+    "stmts": 50
+   },
+   "agents/anomaly.py": {
+    "branch_miss": 0,
+    "branches": 10,
+    "miss": 0,
+    "stmts": 48
+   },
+   "agents/diagnostic.py": {
+    "branch_miss": 3,
+    "branches": 16,
+    "miss": 3,
+    "stmts": 44
+   },
+   "agents/inspector.py": {
+    "branch_miss": 10,
+    "branches": 44,
+    "miss": 13,
+    "stmts": 97
+   },
+   "agents/nl_rules.py": {
+    "branch_miss": 17,
+    "branches": 52,
+    "miss": 20,
+    "stmts": 134
+   },
+   "agents/planner.py": {
+    "branch_miss": 15,
+    "branches": 46,
+    "miss": 18,
+    "stmts": 101
+   },
+   "agents/reporter.py": {
+    "branch_miss": 1,
+    "branches": 2,
+    "miss": 1,
+    "stmts": 7
+   },
+   "agents/scanner.py": {
+    "branch_miss": 2,
+    "branches": 12,
+    "miss": 2,
+    "stmts": 36
+   },
+   "agents/stubs.py": {
+    "branch_miss": 18,
+    "branches": 18,
+    "miss": 40,
+    "stmts": 57
+   },
+   "agents/validator.py": {
+    "branch_miss": 2,
+    "branches": 20,
+    "miss": 3,
+    "stmts": 61
+   },
+   "api.py": {
+    "branch_miss": 16,
+    "branches": 16,
+    "miss": 102,
+    "stmts": 102
+   },
+   "contract.py": {
+    "branch_miss": 57,
+    "branches": 140,
+    "miss": 57,
+    "stmts": 368
+   },
+   "llm_client.py": {
+    "branch_miss": 20,
+    "branches": 52,
+    "miss": 30,
+    "stmts": 196
+   },
+   "log.py": {
+    "branch_miss": 21,
+    "branches": 36,
+    "miss": 29,
+    "stmts": 86
+   },
+   "orchestrator.py": {
+    "branch_miss": 15,
+    "branches": 42,
+    "miss": 23,
+    "stmts": 133
+   },
+   "snapshot.py": {
+    "branch_miss": 1,
+    "branches": 4,
+    "miss": 1,
+    "stmts": 15
+   },
+   "state.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 77
+   },
+   "trace.py": {
+    "branch_miss": 1,
+    "branches": 4,
+    "miss": 3,
+    "stmts": 56
+   }
+  },
+  "total": {
+   "branch_miss": 203,
+   "branches": 528,
+   "miss": 350,
+   "stmts": 1678
+  }
+ },
+ "selftests": {
+  "modules": {
+   "__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 1,
+    "stmts": 4
+   },
+   "agents/__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 6
+   },
+   "agents/aggregator.py": {
+    "branch_miss": 4,
+    "branches": 14,
+    "miss": 4,
+    "stmts": 50
+   },
+   "agents/anomaly.py": {
+    "branch_miss": 0,
+    "branches": 10,
+    "miss": 0,
+    "stmts": 48
+   },
+   "agents/diagnostic.py": {
+    "branch_miss": 13,
+    "branches": 16,
+    "miss": 22,
+    "stmts": 44
+   },
+   "agents/inspector.py": {
+    "branch_miss": 7,
+    "branches": 44,
+    "miss": 8,
+    "stmts": 97
+   },
+   "agents/nl_rules.py": {
+    "branch_miss": 21,
+    "branches": 52,
+    "miss": 27,
+    "stmts": 134
+   },
+   "agents/planner.py": {
+    "branch_miss": 18,
+    "branches": 46,
+    "miss": 28,
+    "stmts": 101
+   },
+   "agents/reporter.py": {
+    "branch_miss": 0,
+    "branches": 2,
+    "miss": 0,
+    "stmts": 7
+   },
+   "agents/scanner.py": {
+    "branch_miss": 0,
+    "branches": 12,
+    "miss": 0,
+    "stmts": 36
+   },
+   "agents/stubs.py": {
+    "branch_miss": 18,
+    "branches": 18,
+    "miss": 40,
+    "stmts": 57
+   },
+   "agents/validator.py": {
+    "branch_miss": 9,
+    "branches": 20,
+    "miss": 14,
+    "stmts": 61
+   },
+   "api.py": {
+    "branch_miss": 16,
+    "branches": 16,
+    "miss": 102,
+    "stmts": 102
+   },
+   "contract.py": {
+    "branch_miss": 52,
+    "branches": 140,
+    "miss": 52,
+    "stmts": 368
+   },
+   "llm_client.py": {
+    "branch_miss": 47,
+    "branches": 52,
+    "miss": 118,
+    "stmts": 196
+   },
+   "log.py": {
+    "branch_miss": 6,
+    "branches": 36,
+    "miss": 11,
+    "stmts": 86
+   },
+   "orchestrator.py": {
+    "branch_miss": 16,
+    "branches": 42,
+    "miss": 26,
+    "stmts": 133
+   },
+   "snapshot.py": {
+    "branch_miss": 4,
+    "branches": 4,
+    "miss": 10,
+    "stmts": 15
+   },
+   "state.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 77
+   },
+   "trace.py": {
+    "branch_miss": 1,
+    "branches": 4,
+    "miss": 4,
+    "stmts": 56
+   }
+  },
+  "total": {
+   "branch_miss": 232,
+   "branches": 528,
+   "miss": 467,
+   "stmts": 1678
+  }
+ },
+ "unit": {
+  "modules": {
+   "__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 1,
+    "stmts": 4
+   },
+   "agents/__init__.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 6
+   },
+   "agents/aggregator.py": {
+    "branch_miss": 0,
+    "branches": 14,
+    "miss": 0,
+    "stmts": 50
+   },
+   "agents/anomaly.py": {
+    "branch_miss": 0,
+    "branches": 10,
+    "miss": 0,
+    "stmts": 48
+   },
+   "agents/diagnostic.py": {
+    "branch_miss": 0,
+    "branches": 16,
+    "miss": 0,
+    "stmts": 44
+   },
+   "agents/inspector.py": {
+    "branch_miss": 3,
+    "branches": 44,
+    "miss": 2,
+    "stmts": 97
+   },
+   "agents/nl_rules.py": {
+    "branch_miss": 0,
+    "branches": 52,
+    "miss": 0,
+    "stmts": 134
+   },
+   "agents/planner.py": {
+    "branch_miss": 1,
+    "branches": 46,
+    "miss": 1,
+    "stmts": 101
+   },
+   "agents/reporter.py": {
+    "branch_miss": 0,
+    "branches": 2,
+    "miss": 0,
+    "stmts": 7
+   },
+   "agents/scanner.py": {
+    "branch_miss": 0,
+    "branches": 12,
+    "miss": 0,
+    "stmts": 36
+   },
+   "agents/stubs.py": {
+    "branch_miss": 4,
+    "branches": 18,
+    "miss": 4,
+    "stmts": 57
+   },
+   "agents/validator.py": {
+    "branch_miss": 0,
+    "branches": 20,
+    "miss": 0,
+    "stmts": 61
+   },
+   "api.py": {
+    "branch_miss": 6,
+    "branches": 16,
+    "miss": 14,
+    "stmts": 102
+   },
+   "contract.py": {
+    "branch_miss": 22,
+    "branches": 140,
+    "miss": 22,
+    "stmts": 368
+   },
+   "llm_client.py": {
+    "branch_miss": 10,
+    "branches": 52,
+    "miss": 30,
+    "stmts": 196
+   },
+   "log.py": {
+    "branch_miss": 4,
+    "branches": 36,
+    "miss": 10,
+    "stmts": 86
+   },
+   "orchestrator.py": {
+    "branch_miss": 5,
+    "branches": 42,
+    "miss": 7,
+    "stmts": 133
+   },
+   "snapshot.py": {
+    "branch_miss": 0,
+    "branches": 4,
+    "miss": 0,
+    "stmts": 15
+   },
+   "state.py": {
+    "branch_miss": 0,
+    "branches": 0,
+    "miss": 0,
+    "stmts": 77
+   },
+   "trace.py": {
+    "branch_miss": 0,
+    "branches": 4,
+    "miss": 0,
+    "stmts": 56
+   }
+  },
+  "total": {
+   "branch_miss": 55,
+   "branches": 528,
+   "miss": 91,
+   "stmts": 1678
+  }
+ }
+}

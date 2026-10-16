@@ -46,7 +46,7 @@ from pydantic import (
 # Section 3: constants. No other file may contain these numbers.
 # ---------------------------------------------------------------------------
 
-CONTRACT_VERSION = "1.1.2"
+CONTRACT_VERSION = "1.2.0"
 
 WINDOW_MONTHS = 12
 DEFAULT_WINDOW_END = "latest"  # resolves to the snapshot's latest month (2015-02), D2
@@ -102,7 +102,14 @@ AnomalyKind = Literal["price_jump", "count_drop"]  # 6.3
 Direction = Literal["up", "down", "flat"]  # 6.2
 DiagnosticSource = Literal["llm", "template"]  # 6.2
 TraceAgent = Literal[  # 7.4
-    "planner", "scanner", "aggregator", "validator", "anomaly", "diagnostic", "reporter"
+    "planner", "inspector", "scanner", "aggregator", "validator", "anomaly", "diagnostic", "reporter"
+]
+NoticeKind = Literal[  # 6.2 (1.2.0): what the user must be told about how the question was answered
+    "repaired",      # L1 changed the request (window clamped, band swapped, BHK dropped, place matched)
+    "out_of_scope",  # the request asks for something the data does not hold; it could not be answered
+    "no_sales",      # valid, but no sales match the hard filters (locality, window, BHK) somewhere
+    "widened",       # L2 widened or dropped the soft filters
+    "not_read",      # the sentence mentions a filter the criteria do not contain (parse audit)
 ]
 TraceKind = Literal["step", "decision", "loop", "warning", "error"]  # 7.4
 LoopName = Literal["L1", "L2"]  # 7.4
@@ -313,6 +320,13 @@ class ErrorInfo(_Model):
     message: StrictStr
 
 
+class Notice(_Model):
+    """A plain sentence telling the user how the question was answered (1.2.0)."""
+
+    kind: NoticeKind
+    text: StrictStr
+
+
 class Diagnostic(_Model):
     month: Month
     text: StrictStr
@@ -488,6 +502,7 @@ class TrendReport(_Model):
     coverage_score: Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
     anomaly_flags: list[AnomalyFlag]
     diagnostics: list[Diagnostic]
+    notices: list[Notice] = Field(default_factory=list)  # 1.2.0; also on error reports
     trace: list[TraceEvent]
     metadata: Metadata
 

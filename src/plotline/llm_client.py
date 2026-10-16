@@ -275,6 +275,18 @@ class LlmSession:
         return out
 
 
+def request_extra(base_url: str, thinking: bool) -> dict:
+    """The per-request thinking switch (LLM.md 5) in the form the server understands.
+
+    llama serve reads ``chat_template_kwargs``; OpenRouter ignores that and reads its own
+    ``reasoning`` field (found 10-16: without it every hosted call reasoned, including the
+    Validator and Diagnostic calls the contract sets to off, at about 9x the latency)."""
+    extra: dict = {"chat_template_kwargs": {"enable_thinking": thinking}}
+    if "openrouter.ai" in base_url:
+        extra["reasoning"] = {"enabled": thinking}
+    return extra
+
+
 def langchain_chat(config: LlmConfig) -> ChatFn:
     """Live backend: an OpenAI-compatible server (llama serve, LM Studio) via LangChain.
     Uses a JSON-schema response format when the server accepts it, else plain prompting."""
@@ -289,8 +301,7 @@ def langchain_chat(config: LlmConfig) -> ChatFn:
 
     def chat(system: str, user: str, seed: int, schema: dict, thinking: bool) -> str:
         messages = [("system", system), ("human", user)]
-        # llama serve hands this to the chat template; servers without it ignore the field
-        extra = {"chat_template_kwargs": {"enable_thinking": thinking}}
+        extra = request_extra(config.base_url, thinking)
         try:
             if use_schema[0]:
                 fmt = {"type": "json_schema", "json_schema": {"name": "response", "schema": schema}}

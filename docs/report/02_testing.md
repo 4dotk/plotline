@@ -93,7 +93,21 @@ Five bugs were planted at runtime in the Aggregator and Validator with `unittest
 * **MR1 catches M2 because of row order, not because of the mean.** `np.mean` sums in row order, so after a shuffle the result differs in its last bits, and MR1 compares bit-exactly. No MR that scales (MR2, MR8) or duplicates (MR3) can see a mean used in place of a median, because a mean scales and duplicates the same way a median does. Only the oracle detects the wrong statistic itself.
 * **M5 escapes every MR and the oracle.** The oracle recomputes from the report's own `effective_criteria`, so a wrongly widened band looks correct to it (`contracts/Testing.md` clarification 2). Every MR that would notice (MR5, MR6, MR7, MR10, MR3) skips bases where `L2_attempts > 0`. Only the validator's unit tests (`test_steps_measured_from_the_original`, `test_floor_at_zero_and_sqft_and_sale_cond`) catch it. This is the clearest blind spot of the MR suite: **L2 itself is tested only by unit tests.**
 
-## 6. Threats to validity
+## 6. Free-text evaluation (added 10-16)
+
+The MT campaign runs only structured, valid criteria with the model off (Mode A). The path a user actually takes, a sentence → Planner (model, with the rule parser as fallback) → L1, was covered by 20 hand-written sentences, and the live check passed any *valid* reading. A live query from the UI exposed this: "5bhk flats from 90 to 70 lakhs" came back `ok` for every BHK (F2, `NOTEBOOK.md`).
+
+`tests/nl_eval_queries.py` adds 34 sentences in 7 categories: BHK forms, money forms, inverted ranges, time, places (misspelt, unknown, negated), size and sale condition, and noise or instructions in the text. Each has an expected reading, or an expected error where the contract or a marked POLICY choice says so. A run is classed as **right**, **flagged** (wrong, but the parse audit warned), **silent** (wrong, `ok`, no warning) or **error**. Run with `scripts/smoke_20_queries.py --queries tests.nl_eval_queries [--rules-only]`.
+
+| Parser | Right | Flagged | Silent | Error | Source |
+|---|---|---|---|---|---|
+| Rules only, before the F2 fixes | 26/34 | 2 | 6 | 0 | `results/nl_eval/rules_before_fixes.jsonl` |
+| Rules only, after the F2 fixes | 32/34 | 1 | 1 | 0 | `results/nl_eval/rules_after_fixes.jsonl` |
+| Model (gemma-4-e4b, live) | `TODO(number)` | | | | `results/nl_eval/model_live.jsonl` |
+
+Still silent after the fixes: a place outside the data ("homes in Mylapore") is answered for all 7 localities.
+
+## 7. Threats to validity
 
 From `contracts/Testing.md` §8:
 * seeds on one base are not independent;
@@ -106,3 +120,8 @@ Added by this round:
 * **The oracle cannot see a wrong L2 widening.** It recomputes from the report's own `effective_criteria` (`Testing.md` clarification 2). Mutant M5 (one-sided widening) changes reports, but no MR and not the oracle catches it (section 5).
 * **The skip rules that make the relations sound also hide L2.** Every MR that skips on `L2_attempts > 0` is blind to faults that occur only when L2 fires. A loops-off variant (as used in the diagnosis) would test MR6 on 57 more bases, and MR10 on its 196 soft-filter bases if its soft-filter skip were dropped for that variant (all 350 have 0 diffs with the loops off).
 * **Mode B (live LLM) has not been run**, so MR9 and the model's widen/stop decision are untested.
+* **What the MT results cover.** "0 violations" holds for the aggregation pipeline on valid, structured queries with the model off. It says nothing about the sentence path, which is the one users take (section 6).
+* **L1 is not reached by MT.** It fired in 0 of 7,059 Mode A runs: the generator draws only valid criteria, and no MR makes them invalid. L1 is exercised by unit tests and by free text (section 6), not by the MR campaign.
+* **No adequacy criterion was fixed in advance.** Nothing signalled that the suite never touched L1, the sentence path or the Planner. The suite was declared complete on its own pass rate. Mutants were planted only in the Aggregator and Validator, not in the Planner, where F2 was.
+* **Test inputs written by the same people (and tools) as the parser.** All 20 original sentences wrote "2 bhk" with a space, the same assumption the parser made. The live check passed any valid reading, so it could not fail on a wrong one (F2).
+* **Model availability.** The model server serves one request at a time on CPU. With a 120 s timeout and 3 attempts, a busy server sends the Planner to the rule fallback without the user being told, other than in the trace.

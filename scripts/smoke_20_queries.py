@@ -10,13 +10,23 @@ Each sentence goes through the real code path: llm_client -> Planner (fallback t
 rule-based parser when the model's output stays unusable) -> Scanner -> Aggregator
 (the same validation as for manual filters; L1 repairs what it can).
 
-A query PASSES when the run is ``ok`` and the criteria it computed are valid.
-MATCH (informational) says whether the parsed filters equal the expected ones in
-tests/smoke_queries.py. Exit code 0 only if all 20 pass.
+A query PASSES only when it is read RIGHT: the filters equal the expected ones in
+the query set, or the run fails with the expected error code. Being valid is not
+enough (until 10-16 it was, so a wrong reading still passed). Each query is also
+classed as:
+    right      as expected
+    flagged    wrong, but the planner's parse audit warned about it in the trace
+    SILENT     wrong, status ok, no warning: the worst case (the user gets an answer
+               to a question they did not ask)
+    error      an error report that was not expected
+Exit code 0 only if every query passes.
+
+    uv run python scripts/smoke_20_queries.py --queries tests.nl_eval_queries   # the larger set
 """
 from __future__ import annotations
 
 import argparse
+import importlib
 import json
 import logging
 import sys
@@ -28,12 +38,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))  # so `tests.smoke_queries` imports when run as a script
 
-from plotline.agents import nl_rules  # noqa: E402
-from plotline.contract import Criteria  # noqa: E402
 from plotline.llm_client import LlmClient, LlmConfig  # noqa: E402
 from plotline.orchestrator import Engine  # noqa: E402
-from plotline.state import DataInfo  # noqa: E402
-from tests.smoke_queries import HARD, QUERIES, SOFT  # noqa: E402
+from tests.smoke_queries import HARD, SOFT  # noqa: E402
+from tests.support import FakeChat, llm_config  # noqa: E402
 
 
 def source_of(report) -> str:
@@ -45,9 +53,38 @@ def source_of(report) -> str:
     return "rules"
 
 
+RANGES = ("price_band", "sqft_range")  # [hi, lo] and [lo, hi] are the same request; L1 swaps the first
+
+
+def ordered(filters: dict) -> dict:
+    return {k: (sorted(v) if k in RANGES and v is not None else v) for k, v in filters.items()}
+
+
 def got_filters(report) -> dict:
     eff, cin = report.effective_criteria, report.criteria_in
-    return {**{k: getattr(eff, k) for k in HARD}, **{k: getattr(cin, k) for k in SOFT}}
+    return ordered({**{k: getattr(eff, k) for k in HARD}, **{k: getattr(cin, k) for k in SOFT}})
+
+
+def judge(report, expected) -> tuple[bool, bool, str, int, dict]:
+    """(passed, matched, class, L1 repairs, diff) of one report against its expected reading."""
+    audited = any(e.msg.startswith("parse audit") for e in report.trace)
+
+    if report.status != "ok":
+        err = f"{report.error.code}: {report.error.message}"
+        match = isinstance(expected, str) and report.error.code == expected
+        valid, l1, diff = match, report.metadata.loop_counters.L1_repairs, ({} if match else {"error": err})
+        klass = "right" if match else "error"
+    elif isinstance(expected, str):  # an error was expected, an answer came back
+        valid, match, l1 = False, False, report.metadata.loop_counters.L1_repairs
+        diff = {"status": {"got": "ok", "expected": expected}, **{"effective": report.effective_criteria.model_dump(mode="json")}}
+        klass = "flagged" if audited else "SILENT"
+    else:
+        got = got_filters(report)
+        diff = {k: {"got": got[k], "expected": v} for k, v in ordered(expected).items() if got[k] != v}
+        match, l1 = not diff, report.metadata.loop_counters.L1_repairs
+        valid = match and not report.effective_criteria.domain_violations()
+        klass = "right" if match else ("flagged" if audited else "SILENT")
+    return valid, match, klass, l1, diff
 
 
 def main() -> int:
@@ -57,16 +94,18 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", help="write one JSON line per query to this file")
     ap.add_argument("-v", "--verbose", action="store_true", help="show the planner trace of every query")
+    ap.add_argument("--queries", default="tests.smoke_queries", help="module with QUERIES (default: the 20)")
     args = ap.parse_args()
     logging.disable(logging.CRITICAL)
+    QUERIES = importlib.import_module(args.queries).QUERIES
 
     df = pd.read_csv(ROOT / "data" / "chennai_snapshot.csv")
-    months = df["sale_date"].str[:7]
-    info = DataInfo(first_month=str(months.min()), latest_month=str(months.max()))
 
     if args.rules_only:
-        engine = Engine.from_data_dir(ROOT / "data", llm_mode="off")
-        print("Mode: rule-based parser only (no model)\n")
+        # the real AI-mode path with a model that never answers usefully: the planner falls back to
+        # the rule-based parser exactly as it does live, and its parse audit runs
+        engine = Engine.from_data_dir(ROOT / "data", llm_client=LlmClient(llm_config("live"), chat=FakeChat("not json")))
+        print("Mode: rule-based parser only (model stubbed to fail)\n")
     else:
         config = LlmConfig.from_env()
         if config.mode == "off":
@@ -78,27 +117,16 @@ def main() -> int:
         print(f"Mode: {config.mode}  model: {config.model}  endpoint: {config.base_url}\n")
 
     results, n_pass, n_match = [], 0, 0
-    print(f"{'#':>2}  {'source':<15} {'L1':>2}  {'pass':<5} {'match':<5}  query")
+    classes: dict[str, int] = {}
+    print(f"{'#':>2}  {'source':<15} {'L1':>2}  {'pass':<5} {'class':<8} query")
     for n, (sentence, expected, _min_l1) in enumerate(QUERIES, 1):
-        if args.rules_only:
-            parsed = nl_rules.parse(sentence, info)
-            report = engine.run(parsed, df, args.seed) if parsed is not None else None
-            source = "rules"
-        else:
-            report = engine.run(sentence, df, args.seed)
-            source = source_of(report)
-
-        if report is None or report.status != "ok":
-            err = (report.error.code + ": " + report.error.message) if report else "unparseable"
-            valid, match, l1, diff = False, False, 0, {"error": err}
-        else:
-            valid = not report.effective_criteria.domain_violations()
-            got = got_filters(report)
-            diff = {k: {"got": got[k], "expected": v} for k, v in expected.items() if got[k] != v}
-            match, l1 = not diff, report.metadata.loop_counters.L1_repairs
+        report = engine.run(sentence, df, args.seed)
+        source = source_of(report)
+        valid, match, klass, l1, diff = judge(report, expected)
         n_pass += valid
         n_match += match
-        print(f"{n:>2}  {source:<15} {l1:>2}  {'PASS' if valid else 'FAIL':<5} {'yes' if match else 'NO':<5}  {sentence}")
+        classes[klass] = classes.get(klass, 0) + 1
+        print(f"{n:>2}  {source:<15} {l1:>2}  {'PASS' if valid else 'FAIL':<5} {klass:<8} {sentence}")
         for k, d in diff.items():
             print(f"        - {k}: {d}")
         if report is not None and (args.verbose or not valid):
@@ -106,18 +134,19 @@ def main() -> int:
                 if e.agent in ("planner", "aggregator") and (args.verbose or e.kind in ("warning", "error")):
                     print(f"        [{e.agent}] {e.kind}: {e.msg[:200]}")
         results.append({
-            "n": n, "query": sentence, "source": source, "pass": valid, "match": match, "l1_repairs": l1,
-            "status": report.status if report else "error",
-            "criteria_in": report.criteria_in.model_dump(mode="json") if report and report.criteria_in else None,
-            "effective": report.effective_criteria.model_dump(mode="json") if report and report.effective_criteria else None,
+            "n": n, "query": sentence, "source": source, "pass": valid, "match": match, "class": klass,
+            "l1_repairs": l1, "status": report.status,
+            "criteria_in": report.criteria_in.model_dump(mode="json") if report.criteria_in else None,
+            "effective": report.effective_criteria.model_dump(mode="json") if report.effective_criteria else None,
             "diff": diff,
-            "planner_warnings": [e.msg for e in report.trace if e.agent == "planner" and e.kind == "warning"] if report else [],
+            "planner_warnings": [e.msg for e in report.trace if e.agent == "planner" and e.kind == "warning"],
+            "notices": [n.model_dump(mode="json") for n in report.notices],  # what the user is told (1.2.0)
         })
 
     by_source: dict[str, int] = {}
     for r in results:
         by_source[r["source"]] = by_source.get(r["source"], 0) + 1
-    print(f"\nvalid: {n_pass}/{len(QUERIES)}   matched expected: {n_match}/{len(QUERIES)}   sources: {by_source}")
+    print(f"\npassed (read right): {n_pass}/{len(QUERIES)}   classes: {classes}   sources: {by_source}")
     if args.out:
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in results) + "\n")

@@ -22,6 +22,21 @@
 | 10-16 | mutant script aborted on the first mutant the schema rejected (M1); fixed to record the failure as a result |
 | 10-16 | report draft described UI features it had not checked; removed, now `TODO(ui)` |
 | 10-16 | wrote MR7 had the "second-lowest" unconditioned rate (it is the lowest), and that the MR3 diagnosis "corrected" the earlier L2 finding (it confirms it for counts); both caught on re-reading the sources |
+| 10-16 | Live UI query "5bhk flats from 90 to 70 lakhs": model timed out (a second job was using the same model server), rules fallback dropped "5bhk", run answered `ok` for every BHK. L1 swapped the band: first L1 firing seen outside unit tests |
+| 10-16 | Free-text set `tests/nl_eval_queries.py` (34 sentences, 7 categories); smoke check now passes only when the reading is right (was: valid) |
+| 10-16 | F2 fixes in `nl_rules` (BHK without a space, "at least N", close spellings, "except", "family" only with "sale", "80 lakh max") + parse audit in the planner; rules-only 26/34 → 32/34 right, silent-wrong 6 → 1 |
+| 10-16 | smoke run started against the model server while the UI was in use; the UI request timed out 3 × 120 s and fell back to rules |
+| 10-16 | the live smoke check counted any *valid* reading as a pass, so it could never fail on a wrong reading; not caught until a live query |
+| 10-16 | Contract 1.2.0: agent H Inspector checks every request against what the data holds (each locality's months and BHK) before the scan, owns L1, and every repair, refusal, widening and empty locality becomes a notice in the report; planner prompt now passes stated values through |
+| 10-16 | Adequacy measured (`docs/report/03_adequacy.md`): MT covers 64 % / 39 % (statements / branches), never fires L1, kills 2/16 mutants; free-text set 9/16; unit tests 15/16; final Mode A sweep identical to `v0-results` |
+| 10-17 | MR11 repair invariance added (first MR on the L1 path; L1 in MT 0 → 100 of 2,718 runs) with a planted-fault selftest; MR9 runs in Mode A through the rule parser (model stubbed) and in Mode B with `--live`; final sweep: all 12 relations hold (0 violations, 0 oracle mismatches) |
+| 10-17 | Mode B on OpenRouter (nvidia/nemotron-3-super-120b-a12b:free): the per-agent thinking switch was ignored by the hosted API, so every call reasoned (17.5 s vs 2.0 s); fixed by sending OpenRouter's `reasoning` field, with a unit test |
+| 10-17 | Mutation score per layer (16 mutants): unit 15/16, free text 9/16, MT 4/16 (was 2/16 before MR11), any 15/16; MR9 via the rule parser killed none of the parser mutants (its templates use the parser's own wording) |
+| 10-16 | an edit the user had rejected was nevertheless in the file (studio, "down to", K.K. Nagar, Thyagaraya); a later edit then duplicated the studio code; found by grep, duplicates removed |
+| 10-16 | mutant M10 used a fuzzy cutoff of 1.01, which difflib rejects: every run crashed and looked like 91 unit failures; caught by the implausible count, fixed to 1.0 and rerun |
+| 10-17 | parallel mutant workers ran pytest at once; the test conftest recreates one shared log directory per session, so workers deleted each other's logs and pytest crashed (INTERNALERROR), giving false zeros in the unit column; caught by comparing with the sequential run; each worker now has its own log directory, only the clean run is reported |
+| 10-17 | coverage script forced LLM_MODE=off for every step; `.env` does not override existing variables, so the "Mode B" step would silently have run with the model off; caught before use and fixed |
+| 10-17 | first OpenRouter model (nemotron-3.5-lightning:free) and the first Mode B run were too slow to finish (reasoning on, free-tier limits); stopped and rerun on 10 bases after the reasoning fix |
 
 ## Predictions (before the first full sweep)
 
@@ -58,3 +73,4 @@ Not blind: development probes (100–150 bases) showed 0 violations.
 - **MR10** (108/350): ill-conceived MR under L2; each per-BHK run widens its band further. Loops off: 0 diffs on all 350 bases. [docs/diagnosis/MR10.md](docs/diagnosis/MR10.md)
 - **MR6** (37/226): ill-conceived MR under L2; the subset widens further than the full set. Loops off: 226 evaluated, 0 violations. [docs/diagnosis/MR6.md](docs/diagnosis/MR6.md)
 - **Mutants:** L2's widening is invisible to every MR (they skip on `L2_attempts > 0`) and to the oracle (it reads `effective_criteria`); only unit tests catch M5. [results/mutants/detection_table.md](results/mutants/detection_table.md)
+- **F2** free text is read wrong without a warning (found 10-16, live UI query). The rule parser dropped "2bhk"/"5bhk" (no space), misspellings outside the alias list ("Anna Nagr" → all 7 localities), "except X" (→ only X), "at least 3 bhk" (→ 3 only) and read "for my family" as sale condition Family; every such run is `ok`. The live smoke check could not see it: it passed any *valid* reading. Fixed in `nl_rules` with tests; the planner now warns in the trace when a mentioned filter is missing from the criteria (parse audit). Still open: a place not in the data ("Mylapore") becomes all 7 localities. Evidence: `results/nl_eval/`.

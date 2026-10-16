@@ -53,6 +53,16 @@ def mode_a_engine() -> Engine:
                                 logic_version=detect_logic_version())
 
 
+def rules_engine() -> Engine:
+    """Mode A for sentences (10-16): the model is stubbed to answer nothing usable, so the
+    Planner reads every sentence with its rule-based parser, the Validator uses its rule
+    and the Diagnostic its template, exactly as in production when the model fails.
+    Deterministic; used for MR9 only, which otherwise skips every base with the model off."""
+    from tests.support import FakeChat, llm_config
+    return Engine.from_data_dir(ROOT / "data", llm_client=LlmClient(llm_config("live"), chat=FakeChat("not json")),
+                                logic_version=detect_logic_version())
+
+
 def write_skips(rows: list[dict], path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
@@ -67,6 +77,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--mr", action="append", choices=sorted(MRS), help="MR to run (repeatable; default: all)")
     ap.add_argument("--bases", type=int, default=100, help="number of bases (default 100)")
     ap.add_argument("--out", type=Path, default=RESULTS, help="results directory")
+    ap.add_argument("--live", action="store_true",
+                    help="Mode B for MR9: read the sentences with the model configured in .env (live)")
     args = ap.parse_args(argv)
 
     sha, err = check_snapshot(SNAPSHOT, ROOT / "data" / "SNAPSHOT.sha256")
@@ -77,23 +89,29 @@ def main(argv: list[str] | None = None) -> int:
     bases = with_phrasings(generate(df, args.bases), df)  # MR9 sentences are stored with the bases
     save_bases(bases, args.out / "bases_and_params.json", snapshot_sha256=sha)
     engine = mode_a_engine()
+    # MR9: the sentences are read by the rule parser (model stubbed), or by the live model (--live, Mode B)
+    rules = Engine.from_data_dir(ROOT / "data", logic_version=detect_logic_version()) if args.live else rules_engine()
     registry = SeedRegistry()
 
     runs = []
     for name in args.mr or sorted(MRS):
         print(f"{name}: {len(bases)} bases ...", flush=True)
-        runs.append(run_mr(MRS[name], bases, df, engine.run, MODE_A_SEEDS, registry, check_oracle=True))
+        runner = rules.run if name == "MR9" else engine.run
+        runs.append(run_mr(MRS[name], bases, df, runner, MODE_A_SEEDS, registry, check_oracle=True))
 
     write_violations([row for r in runs for row in r.violation_rows()], args.out / "violations.csv")
     write_skips([row for r in runs for row in r.skip_rows()], args.out / "skips.csv")
     write_violations([row for r in runs for row in r.waived_rows()], args.out / "violations_unconditioned.csv",
                      extra=("reason",))
     results = [r.result() for r in runs]
-    write_headline_table(results, args.out / "headline_table.md", title="Headline results (Mode A, LLM_MODE=off)")
+    write_headline_table(results, args.out / "headline_table.md", title=("Headline results (Mode B for MR9: live model from .env; others Mode A)" if args.live
+                                else "Headline results (Mode A, LLM_MODE=off; MR9 via the rule parser, model stubbed)"))
     invariants = [v | {"MR": r.mr.name} for r in runs for v in r.invariant_violations]
     mismatches = [m | {"MR": r.mr.name} for r in runs for m in r.oracle_mismatches]
     write_json({
-        "mode": "A", "llm_mode": "off", "llm": None,
+        "mode": "B (MR9 live)" if args.live else "A", "llm_mode": "off (MR9: live)" if args.live else "off (MR9: rule parser)",
+        "llm": ({k: v for k, v in vars(rules.llm_client.config).items() if k in ("model", "model_tag", "base_url")}
+                if args.live else None),
         "snapshot_sha256": sha, "contract_version": CONTRACT_VERSION, "git_commit": engine.logic_version,
         "gen_seed": GEN_SEED, "seeds": list(MODE_A_SEEDS), "n_bases": len(bases),
         "strata": {s: sum(b.stratum == s for b in bases) for s in ("broad", "thin")},

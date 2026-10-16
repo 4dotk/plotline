@@ -181,6 +181,28 @@ class AiMode(unittest.TestCase):
         r = e.run("hello there", small_df())
         self.assertEqual((r.status, r.error.code), ("error", "E_NL_UNPARSEABLE"))
 
+    def test_five_bhk_is_an_error_not_any_bhk(self):
+        """F2, seen live 10-16: "5bhk" was dropped and the run answered for every BHK, status ok.
+        Read as [5], L1 drops the value, nothing is left, so the request cannot be answered."""
+        e, _ = live_engine("not json")
+        r = e.run("5bhk flats from 90 to 70 lakhs", small_df())
+        self.assertEqual((r.status, r.error.code), ("error", "E_INVALID_CRITERIA"))
+        self.assertIn("bhk", r.error.message)
+
+    def test_a_filter_the_model_leaves_out_is_a_warning(self):
+        """Parse audit: the model's answer has no BHK although the sentence names one."""
+        e, _ = live_engine(GOOD.replace('"bhk": [1]', '"bhk": null'))
+        r = e.run("Adyar 1bhk houses", small_df())
+        self.assertEqual(r.status, "ok")
+        audit = [ev for ev in r.trace if ev.kind == "warning" and ev.msg.startswith("parse audit")]
+        self.assertEqual(len(audit), 1)
+        self.assertIn("bhk", audit[0].msg)
+
+    def test_no_audit_warning_when_everything_was_read(self):
+        e, _ = live_engine(GOOD)
+        r = e.run("Adyar 1 BHK houses", small_df())
+        self.assertFalse([ev for ev in r.trace if ev.msg.startswith("parse audit")])
+
     def test_bad_values_from_the_model_go_to_l1(self):
         e, _ = live_engine(GOOD.replace('"Adyar"', '"Adyr"'))
         r = e.run("Adyr 1 BHK", small_df())
@@ -226,6 +248,87 @@ class RuleParser(unittest.TestCase):
         self.assertEqual(self.parse("between 1.5 crore and 2 crore").price_band, [15000000, 20000000])
         self.assertEqual(self.parse("homes under 1 crore").price_unit, "inr")
         self.assertIsNone(self.parse("homes above 1 crore").price_band)
+
+    def test_bhk_written_without_a_space(self):
+        """F2: "5bhk" / "2bhk" were dropped (no word boundary between digit and "bhk"), so the
+        run answered for every BHK. Out-of-range values are read as written; L1 deals with them."""
+        for s, bhk in [("2bhk flats in adyar", [2]), ("2BHK in Adyar", [2]), ("2-bhk homes", [2]),
+                       ("5bhk flats from 90 to 70 lakhs", [5]), ("2 or 3bhk", [2, 3]), ("3bhk and 4bhk", [3, 4]),
+                       ("2br apartments", [2]), ("two bhk in velachery", [2]), ("three bedroom houses", [3]),
+                       ("2 bhk flats in adyar", [2])]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).bhk, bhk)
+
+    def test_bhk_does_not_read_digits_of_other_numbers(self):
+        self.assertIsNone(self.parse("prices in 2012").bhk)
+        self.assertEqual(self.parse("in 2012 3bhk under 80 lakh").bhk, [3])
+        self.assertIsNone(self.parse("12bhk mansion in Adyar").bhk)
+
+    def test_at_least_bhk_is_a_range(self):
+        for s in ["at least 3 bhk in Adyar", "3+ bhk in Adyar", "3 bhk or more in Adyar"]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).bhk, [3, 4])
+
+    def test_misspelt_localities_are_matched_not_dropped(self):
+        """Found by the free-text set (10-16): a spelling outside the alias list became "all 7"."""
+        for s, locs in [("2 bhk in Anna Nagr", ["Anna Nagar"]), ("velacherry 3 bhk last year", ["Velachery"]),
+                        ("T.Nagar houses", ["T Nagar"]), ("Adyaar flats", ["Adyar"])]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).localities, locs)
+        self.assertEqual(self.parse("homes in Mylapore").localities, ["Mylapore"])  # not guessed: kept, refused by H
+
+    def test_except_removes_the_locality(self):
+        self.assertEqual(self.parse("everywhere except Adyar").localities,
+                         ["Anna Nagar", "Chrompet", "KK Nagar", "Karapakkam", "T Nagar", "Velachery"])
+        self.assertEqual(self.parse("Adyar and T Nagar but not Adyar").localities, ["T Nagar"])
+
+    def test_family_is_a_sale_condition_only_with_sale(self):
+        """Found by the free-text set: "for my family" became sale_cond Family, a filter nobody asked for."""
+        self.assertIsNone(self.parse("a 2bhk for my family in adyar").sale_cond)
+        self.assertEqual(self.parse("family sales in Anna Nagar").sale_cond, ["Family"])
+
+    def test_upper_limit_written_after_the_amount(self):
+        for s in ["2bhk in adyar, budget 80 lakh max", "adyar flats 80 lakh or less", "adyar 80 lakh maximum"]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).price_band, [0, 8000000])
+
+    def test_local_names_for_the_localities(self):
+        for s, locs in [("3 BHK in K.K. Nagar", ["KK Nagar"]), ("Thyagaraya Nagar prices", ["T Nagar"])]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).localities, locs)
+
+    def test_studio_is_read_so_l1_can_reject_it(self):
+        """A studio / 1RK is not 1-4 BHK: read as 0, L1 drops it, nothing is left -> E_INVALID_CRITERIA."""
+        for s in ["Studio apartments near Chrompet", "1RK flats in Adyar", "1 rk in Adyar"]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).bhk, [0])
+
+    def test_budget_said_top_down(self):
+        self.assertEqual(self.parse("from 1.5 cr down to 90 lakhs in T Nagar").price_band, [15000000, 9000000])
+
+    def test_places_outside_the_data_are_kept_so_the_inspector_can_say_so(self):
+        """1.2.0: "Hyderabad trends" used to become every Chennai locality, silently."""
+        for s, locs in [("Hyderabad housing trends", ["Hyderabad"]), ("2 bhk flats in Mylapore", ["Mylapore"]),
+                        ("Adyar and Besant Nagar prices", ["Adyar", "Besant Nagar"]),
+                        ("Chennai housing prices", None)]:  # the city the data covers is not a locality
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).localities, locs)
+
+    def test_studio_is_read_so_it_can_be_rejected(self):
+        """A studio / 1RK is not 1-4 BHK: read as 0, so the request is refused with a reason."""
+        for s in ["Studio apartments near Chrompet", "1RK flats in Adyar"]:
+            with self.subTest(s):
+                self.assertEqual(self.parse(s).bhk, [0])
+
+    def test_unread_mentions_are_reported(self):
+        """Parse audit: a filter the sentence mentions but the criteria lack is named, never dropped silently."""
+        c = Criteria()
+        self.assertEqual(nl_rules.unread("5 bedroom villas", c), ["bhk"])
+        self.assertEqual(nl_rules.unread("flats for 80 lakh", c), ["price_band"])
+        self.assertEqual(nl_rules.unread("sales in 2012", c), ["window_end"])
+        self.assertEqual(nl_rules.unread("1200 sqft homes", c), ["sqft_range"])
+        self.assertEqual(nl_rules.unread("homes above 1 crore", c), [])  # one-sided "above" is null by rule
+        self.assertEqual(nl_rules.unread("2 bhk under 80 lakh", Criteria(bhk=[2], price_band=[0, 8000000])), [])
 
     def test_money_edges_are_exact(self):
         """F1: a float conversion moved both edges off the whole rupee, so a row priced at the edge was dropped."""

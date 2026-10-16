@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+"""Statement and branch coverage of src/plotline, per test layer.
+
+    uv run --with coverage python scripts/coverage_by_layer.py [--bases 100]
+
+Three test categories, each run on its own so their coverage can be compared:
+    unit        example-based tests: pytest tests/unit, plus the three sentence sets
+                (tests/smoke_queries, tests/nl_eval_queries, tests/nl_l1_scenarios) through
+                the real AI-mode path with the model stubbed (rule-based parser)
+    selftests   pytest tests/mt_selftests (planted-fault tests of the MR harness)
+    mt          the MT campaign: the Mode A MR sweep (python -m tests.mt.run --bases N; MR9 via
+                the rule parser), plus, with --live-bases K, MR9 in Mode B on the model in .env
+                (python -m tests.mt.run --mr MR9 --live --bases K)
+
+    --measure-only   rebuild the tables from the existing .coverage.* files without running anything
+
+Writes results/adequacy/coverage.md (one row per module, one column pair per layer)
+and results/adequacy/coverage.json.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+import coverage
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "results" / "adequacy"
+SRC = ROOT / "src" / "plotline"
+PY = [sys.executable, "-m", "coverage", "run", "--branch", f"--source={SRC}"]
+
+
+def layers(bases: int, live_bases: int = 0) -> dict[str, list[list[str]]]:
+    smoke = ROOT / "scripts" / "smoke_20_queries.py"
+    return {
+        "unit": [PY + ["-m", "pytest", "-q", "-p", "no:logging", "tests/unit"]]
+                + [PY + ["--append", str(smoke), "--rules-only", "--queries", q]
+                   for q in ("tests.smoke_queries", "tests.nl_eval_queries", "tests.nl_l1_scenarios")],
+        "selftests": [PY + ["-m", "pytest", "-q", "-p", "no:logging", "tests/mt_selftests"]],
+        "mt": [PY + ["-m", "tests.mt.run", "--bases", str(bases), "--out", str(OUT / "mt_run")]]
+              + ([PY + ["--append", "-m", "tests.mt.run", "--mr", "MR9", "--live", "--bases", str(live_bases),
+                        "--out", str(ROOT / "results" / "mode_b")]] if live_bases else []),
+    }
+
+
+def measure(data_file: Path) -> dict:
+    """Per-module numbers from ``coverage json`` (the stable report format)."""
+    out = data_file.with_suffix(".json")
+    subprocess.run([sys.executable, "-m", "coverage", "json", "-q", "-o", str(out)], cwd=ROOT,
+                   env={**os.environ, "COVERAGE_FILE": str(data_file)}, check=True)
+    files = json.loads(out.read_text())["files"]
+    per_module, tot = {}, dict(stmts=0, miss=0, branches=0, branch_miss=0)
+    for path, d in sorted(files.items()):
+        s = d["summary"]
+        row = dict(stmts=s["num_statements"], miss=s["missing_lines"],
+                   branches=s.get("num_branches", 0), branch_miss=s.get("missing_branches", 0))
+        per_module[str(Path(path).resolve().relative_to(SRC))] = row
+        for k in tot:
+            tot[k] += row[k]
+    return {"modules": per_module, "total": tot}
+
+
+def pct(hit: int, n: int) -> str:
+    return f"{100 * hit / n:.0f}%" if n else "–"
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.add_argument("--bases", type=int, default=100, help="bases in the MT layer (default 100)")
+    ap.add_argument("--live-bases", type=int, default=0, help="also run MR9 in Mode B on this many bases")
+    ap.add_argument("--measure-only", action="store_true", help="only rebuild the tables")
+    args = ap.parse_args()
+    OUT.mkdir(parents=True, exist_ok=True)
+    env = {**os.environ, "LLM_MODE": "off", "PYTHONPATH": str(ROOT)}
+    files = {}
+    for name, cmds in layers(args.bases, args.live_bases).items():
+        data = OUT / f".coverage.{name}"
+        files[name] = data
+        if args.measure_only:
+            continue
+        data.unlink(missing_ok=True)
+        for cmd in cmds:
+            print(f"[{name}] {' '.join(cmd[3:])}", flush=True)
+            run_env = {**env, "COVERAGE_FILE": str(data)}
+            if "--live" in cmd:  # Mode B: the model and mode come from .env
+                run_env.pop("LLM_MODE", None)
+            subprocess.run(cmd, cwd=ROOT, env=run_env,
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    results = {name: measure(f) for name, f in files.items()}
+    (OUT / "coverage.json").write_text(json.dumps(results, indent=1, sort_keys=True) + "\n")
+
+    names = list(results)
+    modules = sorted({m for r in results.values() for m in r["modules"]})
+    head = "| Module | " + " | ".join(f"{n} stmt | {n} branch" for n in names) + " |"
+    mt_desc = f"{args.bases} bases, Mode A" + (f", plus MR9 in Mode B on {args.live_bases} bases" if args.live_bases else "")
+    lines = [f"# Coverage of src/plotline by test layer (MT layer: {mt_desc})", "",
+             "Statement and branch coverage, `coverage.py --branch`. Generated by "
+             "`scripts/coverage_by_layer.py`. A dash means the layer never imported the module.", "",
+             head, "|---|" + "---|" * (2 * len(names))]
+    for m in modules + ["TOTAL"]:
+        cells = []
+        for n in names:
+            d = results[n]["total"] if m == "TOTAL" else results[n]["modules"].get(m)
+            if d is None:
+                cells += ["–", "–"]
+                continue
+            cells += [pct(d["stmts"] - d["miss"], d["stmts"]), pct(d["branches"] - d["branch_miss"], d["branches"])]
+        lines.append(f"| {'**TOTAL**' if m == 'TOTAL' else m} | " + " | ".join(cells) + " |")
+    (OUT / "coverage.md").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -41,6 +41,8 @@ def _invalid(field: str, why: str) -> Failure:
     return Failure(ErrorInfo(code="E_INVALID_CRITERIA", message=f"invalid {field}: {why}"))
 
 
+
+
 # -- plan -----------------------------------------------------------------------
 
 
@@ -94,14 +96,24 @@ def _parse_sentence(
     if out.value is not None:
         assert isinstance(out.value, Criteria)
         trace.step("planner", "sentence parsed by the model")
-        return out.value
+        return _audit(sentence, out.value, trace)
     trace.warning("planner", "fallback: rule-based parser (model output unusable)")
     parsed = nl_rules.parse(sentence, info)
     if parsed is None:
         return Failure(ErrorInfo(code="E_NL_UNPARSEABLE",
                                  message="neither the model nor the rule parser understood the sentence"))
     trace.step("planner", "sentence parsed by the rule-based parser")
-    return parsed
+    return _audit(sentence, parsed, trace)
+
+
+def _audit(sentence: str, criteria: Criteria, trace: TraceLog) -> Criteria:
+    """Parse audit (F2): a filter the sentence mentions but the criteria lack is a warning in the
+    report, never a silent drop. The criteria are not changed."""
+    missed = nl_rules.unread(sentence, criteria)
+    if missed:
+        trace.warning("planner", f"parse audit: the sentence mentions {', '.join(missed)} "
+                                 "but the criteria leave it out; the result ignores it", fields=missed)
+    return criteria
 
 
 # -- repair (loop L1) -------------------------------------------------------------
@@ -147,7 +159,8 @@ def _repair_one(issue: str, eff: Criteria, info: DataInfo) -> Any:
             folded = {c.lower(): c for c in CANONICAL_LOCALITIES}
             match = difflib.get_close_matches(name.strip().lower(), list(folded), n=1, cutoff=LOCALITY_MATCH_CUTOFF)
             if not match:
-                return _invalid("localities", f"no canonical locality close to {name!r}")
+                return _invalid("localities", f"'{name}' is not in this data. This data covers 7 Chennai "
+                                              f"localities: {', '.join(CANONICAL_LOCALITIES)}.")
             if folded[match[0]] not in fixed:  # two spellings of one place collapse to one entry
                 fixed.append(folded[match[0]])
         return fixed
@@ -156,7 +169,9 @@ def _repair_one(issue: str, eff: Criteria, info: DataInfo) -> Any:
         return min(max(eff.window_end, info.first_valid_end), info.latest_month)
     if issue == "bhk_out_of_range":
         kept = [b for b in eff.bhk or [] if b in BHK_VALUES]
-        return kept if kept else _invalid("bhk", f"no value of {eff.bhk} is in {list(BHK_VALUES)}")
+        return kept if kept else _invalid("bhk", f"This data has {min(BHK_VALUES)}-{max(BHK_VALUES)} BHK homes "
+                                                 f"only; {', '.join(map(str, eff.bhk or []))} BHK cannot be shown.")
     if issue == "sale_cond_unknown":
-        return _invalid("sale_cond", f"{eff.sale_cond} has a value outside {list(CANONICAL_SALE_CONDS)}")
+        return _invalid("sale_cond", f"{', '.join(eff.sale_cond or [])} is not a sale condition in this data; "
+                                     f"it has: {', '.join(CANONICAL_SALE_CONDS)}.")
     return _invalid(_ISSUE_FIELD.get(issue, "criteria"), f"no repair for issue {issue!r}")

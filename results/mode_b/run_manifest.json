@@ -1,0 +1,90 @@
+{
+ "contract_version": "1.2.0",
+ "gen_seed": 42,
+ "git_commit": "2b560f1",
+ "invariant_violations": [
+  {
+   "MR": "MR9",
+   "base_id": 0,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 1,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 2,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 4,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 5,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 6,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 7,
+   "invariant": "I-DET",
+   "seed": 0
+  },
+  {
+   "MR": "MR9",
+   "base_id": 8,
+   "invariant": "I-DET",
+   "seed": 0
+  }
+ ],
+ "llm": {
+  "base_url": "https://openrouter.ai/api/v1",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "model_tag": "nemotron-3-super-120b-openrouter-free"
+ },
+ "llm_mode": "off (MR9: live)",
+ "mode": "B (MR9 live)",
+ "mrs": {
+  "MR9": {
+   "evaluated": 10,
+   "skipped": 0,
+   "violations": 0
+  }
+ },
+ "n_bases": 10,
+ "oracle_mismatches": {
+  "count": 0,
+  "first": []
+ },
+ "seed_registry_entries": 10,
+ "seeds": [
+  0
+ ],
+ "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+ "strata": {
+  "broad": 8,
+  "thin": 2
+ },
+ "versions": {
+  "numpy": "2.5.3",
+  "pandas": "3.0.6",
+  "pydantic": "2.14.0",
+  "python": "3.14.8",
+  "scipy": "1.18.1"
+ }
+}

@@ -37,7 +37,7 @@ class StubEngine(unittest.TestCase):
         self.assertEqual(r.coverage_score, 0.0)
         self.assertEqual((r.summary.n_rows, r.summary.price, r.summary.price_per_sqft), (0, None, None))
         m = r.metadata
-        self.assertEqual((m.contract_version, m.logic_version, m.snapshot_sha256), ("1.1.2", "abc1234", SNAPSHOT_SHA))
+        self.assertEqual((m.contract_version, m.logic_version, m.snapshot_sha256), ("1.2.0", "abc1234", SNAPSHOT_SHA))
         self.assertEqual((m.topology, m.n_scanners, m.partial_last_month, m.llm_mode, m.llm), ("parallel", 7, True, "off", None))
         self.assertEqual((m.loop_counters.L1_repairs, m.loop_counters.L2_attempts), (0, 0))
         self.assertEqual([e.i for e in r.trace], list(range(len(r.trace))))

@@ -12,3 +12,4 @@ cache/*.tmp
 # replay cache: not committed until a clean Mode B recording on the canonical machine;
 # then remove this line and commit cache/llm_replay.jsonl (GLOBAL_CONTRACT 8, 11)
 cache/llm_replay.jsonl
+cache/llm_replay_openrouter.jsonl

@@ -30,7 +30,7 @@ from plotline.log import LOG_FORMAT
 os.environ["LLM_MODE"] = "off"
 
 TESTS_DIR = Path(__file__).resolve().parent
-LOG_DIR = TESTS_DIR.parent / "test_logs"
+LOG_DIR = Path(os.environ.get("PLOTLINE_TEST_LOG_DIR") or TESTS_DIR.parent / "test_logs")  # one per parallel run
 _summary: list[str] = []
 
 

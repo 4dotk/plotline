@@ -1,0 +1,73 @@
+# Design changes since the Day-1 design note
+
+*Draft, 2026-10-16. To be reviewed by the team.*
+
+The Day-1 design note (`TSE Assignment - Design Note.docx`, 10 Oct) is kept **unchanged**. This register lists every place where the system we built differs from it, and why. Quotes in the "Day-1 note said" column are exact: the text, or a label from one of its diagrams.
+
+How to read this register:
+* **Kind**:
+  * **changed**: we changed the design because of a problem we found;
+  * **specified**: the note left it open, and the contract fixed it;
+  * **never built**: the note describes it, but the code never did it;
+  * **pending**: decided to change, not done yet.
+* **Reason**: quoted from the contract (decision table D1–D11, changelog) where one was written down. Where none was written at the time, the row says so, and any explanation is marked *reconstructed afterwards*.
+* **When**: "contract 1.0.0 / 1.1.0" means 10-10, before any code or results. Anything after the `v0-results` tag (10-13) is marked **post-results**.
+* **Effect on results**: whether the change could move any reported number.
+
+## 1. Output contract
+
+| ID | Day-1 note said | Built | Kind | Reason | When | Effect on results |
+|---|---|---|---|---|---|---|
+| C1 | `TrendRecord.median_price_inr` | `median_price` + `price_unit` ∈ {inr, lakh} | changed | D6: "`_inr` in the name; breaks MR2" (the ₹ → ₹ lakh MR) | contract 1.0.0 | none (before results) |
+| C2 | `coverage_score`: "Populated cells divided by expected monthly cells" | Months whose `ALL` record has `n_in_bucket ≥ 5`, divided by 12 (`GLOBAL_CONTRACT` 6.3) | changed | D4: "Per-cell coverage fires L2 almost always" | contract 1.0.0 | none |
+| C3 | `anomaly_flags`: "Outlier flags detected across trend records" | Flags on the `ALL` series only: `price_jump`, `count_drop` | changed | D5: "Per-locality anomalies are too noisy" | contract 1.0.0 | none |
+| C4 | `region_key`: "Standardized locality or consolidated zone" | `ALL` plus each canonical locality; no zones | specified | Not recorded. *Reconstructed:* follows from D4/D5, which run coverage and anomalies on `ALL` | contract 1.0.0 | none |
+| C5 | Fields listed: month … metadata | Added: `pct_change_price_per_sqft`, `low_sample`, `summary`, `effective_criteria`, `trace`, `diagnostics`, `status`/`error` | specified | Needed for the anomaly rules (6.3), the loops (`effective_criteria`, `trace`) and errors as reports (I-ERR) | contract 1.0.0 | none |
+
+## 2. Data
+
+| ID | Day-1 note said | Built | Kind | Reason | When | Effect on results |
+|---|---|---|---|---|---|---|
+| C6 | "7,109 records" | Snapshot of 7,108 rows: the one row with no bedroom count is dropped at freeze | changed | D8: keeping it with `bhk = null` "breaks MR10" | contract 1.0.0 | none |
+| C7 | Scanner: "Load Frozen Snapshot" | The entry point receives `listings_df` (`run(query, listings_df, seed, options)`); the scanner filters what it is given, and the snapshot hash is checked when the engine loads the data directory (`Engine.from_data_dir`) | changed | Not recorded as such. *Reconstructed:* MRs 1–4 and 8 transform the data, so the data has to be an input | contract 1.0.0 | none |
+
+## 3. Control flow and loops
+
+| ID | Day-1 note said | Built | Kind | Reason | When | Effect on results |
+|---|---|---|---|---|---|---|
+| C8 | **L3**: "Mode-Switching Loop L3 (Anomaly Detector → Scanners): Distinguishes data sampling gaps from market shifts, adjusting the scanner's granularity". Anomaly severity "Clean / Moderate / Severe"; Moderate → "Trigger Adaptive Re-scan". Scanner: "Attach Scan Mode". Planner: "Classify Granularity" | Removed. No severity levels, no scan mode, no granularity step. Contract 7.3: "L3 … is stretch and not in this contract" | changed | **Not recorded at the time.** *Reconstructed afterwards:* a re-scan with the same criteria returns the same rows, so the loop could not change the result unless "granularity" was defined, and it never was | contract 1.0.0 | none |
+| C9 | Diagnostic only on "Severe outlier" | The Diagnostic runs for **every** flag | changed | Not recorded. *Reconstructed:* follows from C8 (with no severity levels, there is no "severe") | contract 1.0.0 (open item 6) | none (`diagnostics` is never compared) |
+| C10 | L1 "Criteria malformed or inconsistent"; Aggregator: "Malformed or **Empty**? → Flag Criteria Issue"; L1 "Prevents the system from silently rendering empty, uninformative reports" | Empty is **not** an error (`contracts/Agents.md` B). An empty or thin result goes to **L2** if soft filters are set; otherwise the report is `ok` with a low `coverage_score`. L1 handles invalid criteria only | never built | Not recorded. *Reconstructed:* for valid criteria the rule-based Planner has nothing to repair, so sending an empty result back would return the same query | contract 1.0.0 | none. **Measured 10-16:** L1 fired in **0 of 7,059** runs of the Mode A MR sweep (every source and follow-up run of MR1–8 and MR10), and **0 of 350** bases had an empty `ALL` series |
+| C11 | The Planner has its own "Validate Criteria → Criteria Valid? → Repair Criteria" loop, and the Aggregator also catches malformed input (after building the records) | C validates once, **before** bucketing (`aggregator.validate_criteria`). A only repairs what C sends back (L1, cap 2) | changed | Not recorded. *Reconstructed:* one validator avoids two loops that could disagree, and the contract's L1 is C → A | contract 1.0.0 | none |
+| C12 | L1 examples: "inverted price bands or misspelled localities" | `band_inverted` → swap. An inverted **sqft** range → `E_INVALID_CRITERIA`, with no repair (`Aggregator.md` clarification) | **pending** | No reason for the difference was recorded. Proposed: add `sqft_inverted` → swap | post-results | none possible (the generator never sets `sqft_range`) |
+| C13 | L2: "widening parameters until the iteration ceiling is reached" | Only the **soft** filters are widened (price band, sqft range, sale condition), always from the original values, by 20 % → 50 % → drop, cap 3 | specified | D7: widening everything "silently changes the request" | contract 1.0.0 | none |
+| C14 | Validator: "Coverage Threshold Met? No → Trigger Re-scan" (a fixed rule) | With the model on, the Validator's model chooses `widen` or `stop`; with the model off, the rule is `widen` | changed | Contract 1.1.0 (a), D11. **Why it was added was not recorded** | contract 1.1.0 | none in Mode A (the rule decides) |
+| C15 | Topology: "broad queries spawn N parallel workers per locality, whereas narrow queries run a single consolidated scanner" | Parallel when ≥ 3 localities (or all); otherwise consolidated. Numbers must not depend on it (I-TOPO) | specified | Threshold `TOPOLOGY_PARALLEL_MIN_LOCALITIES = 3` | contract 1.0.0 | none. 350 bases: 172 parallel, 178 consolidated |
+
+## 4. Agents
+
+| ID | Day-1 note said | Built | Kind | Reason | When | Effect on results |
+|---|---|---|---|---|---|---|
+| C16 | Diagnostic: "Retrieve Raw Rows → Cross-check Raw Data → Inspect Supporting Evidence → Determine Likely Cause" | Sees only the `ALL` totals of the flagged month and its predecessor. The model writes text from figures computed by code (D11) | never built, **pending** | Not recorded. Proposed: code computes evidence (locality and BHK mix in t−1 vs t), and the model explains it. This also takes over L3's goal (C8) | post-results | none possible (`diagnostics` is never compared) |
+| C17 | "F · Reporting & UI: Formats final payloads and renders dashboard visuals" | F assembles the `TrendReport`. The UI is a separate app (built with Lovable) calling the FastAPI service | changed | Not recorded | — | none |
+| C22 | Planner: "Parses criteria"; no step checks the parse against the sentence | **Parse audit**: after the model or the rule parser, any BHK, price, year or size the sentence mentions but the criteria lack becomes a `warning` in the trace. The criteria are not changed. The rule parser also reads "2bhk", "at least N", close spellings and "except X" (F2) | changed | F2 (10-16): "5bhk" was dropped and an `ok` report answered for every BHK; no agent downstream can see this, because the criteria are valid | post-results | none in Mode A (sentences are not run there) |
+| C18 | (not in the note) | Model thinking per agent: on for the Planner, off for the Validator and Diagnostic | changed | Contract 1.1.2 changelog: calls took 65–120 s, and the setting changed answers without being in the cache key | 10-15, post-results | none in Mode A |
+
+## 5. Metamorphic relations
+
+| ID | Day-1 note said | Built | Kind | Reason | When | Effect on results |
+|---|---|---|---|---|---|---|
+| C19 | 8 MRs | 10 MRs, with MR3 split into 3a and 3b: **MR9** (paraphrased sentence, the only MR on the LLM Planner), **MR10** (BHK partition), **MR3b** (duplicate with the same `listing_id`, which tests D3, "never deduplicate") | changed | Not recorded per MR. *Reconstructed:* no Day-1 MR exercised the model; D3 and D8 each name the MR they protect | contract 1.0.0 | adds rows to the results |
+| C20 | MR invariants stated without conditions, e.g. MR3 "Medians remain identical", MR6 "Sub-region monthly counts are ≤ aggregate market counts" | Most MRs have **skip rules** (`L2_attempts > 0`; MR3's `n_in_bucket ∈ {3, 4}` gate) and **preconditions** | changed | The Day-1 relations do not hold for the designed system when L2 fires or a bucket crosses `MIN_BUCKET_N`. MR3's gate rule: contract 1.1.0 (c). **Confirmed by measurement 10-16:** the diffs inside these skips are explained by L2 or the gate, and turning the loops off removes the L2 diffs (`docs/diagnosis/`) | contract 1.0.0 / 1.1.0; evidence post-results | Decides which bases are evaluated. The unconditioned column is reported for MR3, 5, 6, 7, 10 |
+| C21 | MR7: "11 overlapping months retain identical statistics" | Records equal on the 11 overlap months, but `pct_change` and flags compared on 10 (m3…m12): m2 has no predecessor in the follow-up | specified | `Testing.md` §5 | contract 1.0.0 | none |
+
+## 6. Consequences found in testing
+
+* **L1 is never exercised by the MT campaign.** It fired in 0 of 7,059 Mode A runs. The generator draws only valid criteria, and no MR transformation makes them invalid. L1 appears only in hand-built inputs (e.g. `examples/example_response_loops.json`). How well the unit tests cover it has not been measured yet, and sentence queries (MR9, Mode B) have not been run.
+* **L2 is invisible to the MRs.** Every MR that L2 could affect skips bases where it fires. The oracle reads `effective_criteria`, so it cannot see a wrong widening either. Mutant M5 (one-sided widening) was caught by unit tests only (`results/mutants/detection_table.md`).
+
+## Open questions for the team
+
+1. C14: why the Validator was given the model. If no one remembers, the row stays "not recorded".
+2. C12, C16: approve the two pending changes. Each one needs its own contract changelog line ("What was wrong").
+3. C10: confirm that the design note is corrected rather than the code changed.

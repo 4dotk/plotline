@@ -35,11 +35,39 @@ SNAPSHOT_COLUMNS = ("listing_id", "locality", "sqft", "sale_date", "bhk", "sale_
 
 
 @dataclass(frozen=True)
+class LocalityProfile:
+    """What the data holds for one locality: its sale months and BHK values."""
+
+    name: str
+    first_month: str
+    last_month: str
+    bhk: tuple[int, ...]
+    n_sales: int
+
+
+@dataclass(frozen=True)
 class DataInfo:
-    """What the Planner may read from ``listings_df`` (month range only)."""
+    """What the agents may know about ``listings_df``: the month range and, per
+    locality, its own month range and BHK values (1.2.0: the Inspector checks
+    every request against this). An empty ``localities`` means "not profiled"."""
 
     first_month: str
     latest_month: str
+    localities: tuple[LocalityProfile, ...] = ()
+
+    @classmethod
+    def from_df(cls, df: pd.DataFrame) -> "DataInfo":
+        months = df["sale_date"].astype(str).str[:7]
+        profiles = tuple(
+            LocalityProfile(name=str(loc), first_month=str(m.min()), last_month=str(m.max()),
+                            bhk=tuple(sorted(int(b) for b in g["bhk"].unique())), n_sales=len(g))
+            for loc, g in df.assign(_m=months).groupby("locality", sort=True)
+            for m in [g["_m"]]
+        )
+        return cls(first_month=str(months.min()), latest_month=str(months.max()), localities=profiles)
+
+    def locality(self, name: str) -> LocalityProfile | None:
+        return next((p for p in self.localities if p.name == name), None)
 
     @property
     def first_valid_end(self) -> str:

@@ -113,6 +113,16 @@ class Calls(unittest.TestCase):
             s.call(purpose, "S", f"U-{purpose}", Criteria)
         self.assertEqual(chat.thinking, [True, False, False])
 
+    def test_thinking_switch_reaches_openrouter_too(self):  # found 10-16: it was ignored there
+        from plotline.llm_client import request_extra
+        local = request_extra("http://127.0.0.1:8088/v1", False)
+        self.assertEqual(local, {"chat_template_kwargs": {"enable_thinking": False}})
+        for thinking in (True, False):
+            with self.subTest(thinking=thinking):
+                hosted = request_extra("https://openrouter.ai/api/v1", thinking)
+                self.assertEqual(hosted["reasoning"], {"enabled": thinking})
+                self.assertEqual(hosted["chat_template_kwargs"], {"enable_thinking": thinking})
+
     def test_malformed_kinds(self):
         bad = {
             "non-JSON": "sure, Adyar!",

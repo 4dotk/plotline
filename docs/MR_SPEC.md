@@ -35,6 +35,7 @@ One entry per MR: the relation, the input subdomain it is evaluated on, the tole
 | **8** | Directional | `price` and `price_band` × k, k ∈ {2, 4, 10}; `price_unit` unchanged | As MR2 with the factor k: counts, flags, `coverage_score`, `direction` unchanged; medians and `summary.start/end` = source × k; `pct_change`, `change_pct` unchanged | Skip: flag margin as in MR2, in either run | As MR2 | Absolute (non-scale-free) thresholds: anomaly cut-offs or price sanity floors in rupees |
 | **9** | Invariance | The canonical sentence → each of ≥ 4 paraphrases from committed templates; bases at the latest month get "last year" / "past 12 months" wordings | **First** `effective_criteria` identical (set semantics). Only then `records`, `summary`, `anomaly_flags`, `coverage_score` identical. Each paraphrase is its own pair; a base violates if any pair does | Skip: `LLM_MODE = off` (`metadata.llm_mode`, any run). In Mode A every base skips: a sentence is `E_LLM_OFF` by design. Mode B query set: `tests/mt/queries/mr9_paraphrases.json` | EXACT, including floats | The Planner (LLM) mapping paraphrases to different criteria: units, month names, "last year", locality order, BHK wording |
 | **10** | Monotonic (additive) | `bhk` null (B = `BHK_VALUES`) or set B → one run per b ∈ B with `bhk = [b]` | Σ over b of `listing_count` = source `listing_count`, per (month, region); same key set in every run. Medians **not** asserted | Skip: `L2_attempts` > 0 in any run; any soft filter (`price_band`, `sqft_range`, `sale_cond`) set in any run's `effective_criteria` | EXACT | Filter or partition defects: rows lost or double-counted across BHK values |
+| **11** *(added 10-16)* | Invariance | Plant every repairable defect the base allows, at once: each locality lower-cased with spaces ("  adyar "), the price band high to low, BHK 7 added | The whole report bit-exact except `trace`, `diagnostics`, `metadata`, `criteria_in`, `notices`; L1 fires exactly once; a `repaired` notice is present | Precondition: no localities, no band and no BHK (nothing to plant) | Bit-exact; EXACT `L1_repairs` | Wrong L1 repairs (band not swapped, locality matched to the wrong place, valid BHK dropped); repairs taking more than one pass; repairs not told to the user |
 
 ## How each MR's power was checked
 
@@ -51,6 +52,7 @@ Each MR has a selftest in `tests/mt_selftests/test_mr*.py`. It plants a fault in
 | 7 | Rows above a window-wide price quantile dropped | record fields on the overlap |
 | 8 | Rows under a fixed rupee price dropped | `records.*.n_in_bucket` |
 | 10 | Single-BHK requests also drop "Partial" sales | `records.*.listing_count` |
+| 11 | L1 does not swap an inverted band; L1 maps a locality to the wrong place (`tests/mt_selftests/test_mr11.py`) | report fields, `effective_criteria` |
 
 MR9 has no planted fault in Mode A, because sentence queries need the LLM there. Its selftests check three things instead: the shape of the query set, that every phrasing is read by the rule parser as the base criteria, and that the criteria comparison comes first.
 
@@ -60,3 +62,9 @@ MR9 has no planted fault in Mode A, because sentence queries need the LLM there.
 - **MR4 and MR10 subdomain:** these only see bases without a band (after skips), and MR5 only bases with one.
 - **Skip-heavy MRs:** MR3, MR5, MR6, MR7 and MR10 skip on `L2_attempts` > 0. That excludes thin bases, which is why the unconditioned column is reported for them.
 - **MR9:** the paraphrases come from templates. They show how robust the Planner is to these wordings, not to free user text.
+
+## Changes after `v0-results` (10-16)
+
+- **MR11 added.** Before it, the MT campaign never ran L1 (0 of 7,059 runs): the generator draws only valid criteria. MR11 is the first relation on the L1 repair path. Added after measuring adequacy; it is not part of the original plan.
+- **MR9 now runs in Mode A, through the rule parser.** With the model off, every MR9 base used to skip. In Mode A the MT run now gives MR9 an engine whose model always fails, so the Planner reads each paraphrase with its rule parser (as in production when the model fails), deterministically. `--live` runs MR9 in Mode B on the model in `.env`. **Limitation measured on 10-16:** the paraphrase templates always write "lakh", "2 BHK" with a space and "last year" only for the latest month, so a parser bug that hits every phrasing the same way leaves the answers equal; three planted parser bugs (crore read as lakh, "last year" not understood, the old BHK pattern) were all missed. MR9 adds coverage of the sentence path, not strong fault detection.
+

@@ -6,6 +6,7 @@
    "change": "no mutant",
    "changed": 0,
    "crash": null,
+   "freetext_failed": [],
    "id": "baseline",
    "idet": 0,
    "mrs": {
@@ -21,6 +22,14 @@
      "evaluated": 31,
      "unconditioned": [
       17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
       60
      ],
      "violations": 0
@@ -88,6 +97,14 @@
       60
      ],
      "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
     }
    },
    "oracle_bases": 0,
@@ -99,6 +116,21 @@
    "change": "`low_sample = n <= MIN_BUCKET_N` (off by one)",
    "changed": null,
    "crash": "ValidationError: 1 validation error for TrendRecord Value error, low_sample must equal n_in_bucket < MIN_BUCKET_N [type=value_error, input_value={'month': '2",
+   "freetext_failed": [
+    "1 BHK in Adyar between 70 and 90 lakh, 12 months ending December 2010",
+    "2 or 3bhk in chrompet",
+    "2-bhk homes in T Nagar",
+    "Anna Nagar homes above 1 crore",
+    "Anna Nagar, Adyar and T Nagar 2 BHK in March 2012",
+    "Anything from 1.5 cr down to 90 lakhs in T Nagar?",
+    "Chennai housing prices",
+    "My parents want a 2BHK in T Nagar, max 80 lakh, what were prices in 2025?",
+    "Price trend in T Nagar for 2011",
+    "T Nagar 12 months ending Aug 2013",
+    "Trends across all localities in the last 12 months",
+    "everywhere except Adyar",
+    "family sales in Anna Nagar in 2013"
+   ],
    "id": "M1",
    "idet": null,
    "mrs": {},
@@ -112,6 +144,10 @@
     "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_explanation_for_the_spiked_month",
     "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_only_diagnostics_differ_between_off_and_live",
     "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_replay_gives_the_same_bytes_as_live",
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_budget_given_high_to_low",
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_some_bedrooms_dropped_is_said",
+    "tests/unit/agents/test_inspector.py::NoSales::test_only_the_empty_locality_is_named",
+    "tests/unit/agents/test_inspector.py::Widened::test_l2_widening_is_said",
     "tests/unit/test_api.py::ApiTests::test_run_default_returns_valid_report",
     "tests/unit/test_api.py::ApiTests::test_run_with_filters",
     "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
@@ -141,6 +177,7 @@
    "change": "mean instead of median for `median_price_per_sqft`",
    "changed": 60,
    "crash": null,
+   "freetext_failed": [],
    "id": "M2",
    "idet": 0,
    "mrs": {
@@ -156,6 +193,14 @@
      "evaluated": 31,
      "unconditioned": [
       17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
       60
      ],
      "violations": 0
@@ -217,6 +262,14 @@
      "violations": 0
     },
     "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
      "evaluated": 60,
      "unconditioned": [
       0,
@@ -240,6 +293,7 @@
    "change": "drops the first value in row order before the median",
    "changed": 60,
    "crash": null,
+   "freetext_failed": [],
    "id": "M3",
    "idet": 0,
    "mrs": {
@@ -255,6 +309,14 @@
      "evaluated": 31,
      "unconditioned": [
       17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
       60
      ],
      "violations": 0
@@ -322,6 +384,14 @@
       60
      ],
      "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
     }
    },
    "oracle_bases": 60,
@@ -335,12 +405,26 @@
    "change": "`n_in_bucket > MIN_BUCKET_N` instead of `>=` (L2 fires too often)",
    "changed": null,
    "crash": "ValidationError: 1 validation error for TrendReport Value error, coverage_score must be 10/12 (months with n_in_bucket >= 5 on the ALL series) [type=value_er",
+   "freetext_failed": [
+    "1 BHK in Adyar between 70 and 90 lakh, 12 months ending December 2010",
+    "2 or 3bhk in chrompet",
+    "2-bhk homes in T Nagar",
+    "Anna Nagar homes above 1 crore",
+    "Anna Nagar, Adyar and T Nagar 2 BHK in March 2012",
+    "My parents want a 2BHK in T Nagar, max 80 lakh, what were prices in 2025?",
+    "Price trend in T Nagar for 2011",
+    "T Nagar 12 months ending Aug 2013",
+    "family sales in Anna Nagar in 2013"
+   ],
    "id": "M4",
    "idet": null,
    "mrs": {},
    "oracle_bases": null,
    "target": "validator.coverage_months",
    "unit_failed": [
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_some_bedrooms_dropped_is_said",
+    "tests/unit/agents/test_inspector.py::NoSales::test_only_the_empty_locality_is_named",
+    "tests/unit/agents/test_inspector.py::Widened::test_l2_widening_is_said",
     "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
     "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
     "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
@@ -368,6 +452,7 @@
    "change": "L2 widens only the upper end of a range",
    "changed": 10,
    "crash": null,
+   "freetext_failed": [],
    "id": "M5",
    "idet": 0,
    "mrs": {
@@ -383,6 +468,14 @@
      "evaluated": 31,
      "unconditioned": [
       16,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
       60
      ],
      "violations": 0
@@ -450,14 +543,1319 @@
       60
      ],
      "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
     }
    },
    "oracle_bases": 0,
    "target": "validator._widen_range",
    "unit_failed": [
+    "tests/unit/agents/test_inspector.py::Widened::test_l2_widening_is_said",
     "tests/unit/agents/test_validator.py::Widening::test_floor_at_zero_and_sqft_and_sale_cond",
     "tests/unit/agents/test_validator.py::Widening::test_steps_measured_from_the_original"
    ]
+  },
+  {
+   "caught_by": [],
+   "change": "BHK needs a space before 'bhk' again (\"2bhk\" dropped, F2)",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "2 or 3bhk in chrompet",
+    "2bhk flats in adyar",
+    "3BHK Velachery",
+    "5bhk flats from 90 to 70 lakhs",
+    "How much were 2BHK flats going for in Adyar in 2023?",
+    "I want to buy a 2bhk for my family in adyar, budget 80 lakh max",
+    "My parents want a 2BHK in T Nagar, max 80 lakh, what were prices in 2025?"
+   ],
+   "id": "M6",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "nl_rules._BHK",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::AiMode::test_five_bhk_is_an_error_not_any_bhk",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_does_not_read_digits_of_other_numbers",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space",
+    "tests/unit/agents/test_planner.py::RuleParser::test_bhk_written_without_a_space"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "a crore is read as a lakh",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "Anything from 1.5 cr down to 90 lakhs in T Nagar?",
+    "Big family home, 4 or 5 bedrooms, in Velachery under 2 crore",
+    "Flats in KK Nagar, budget between 1 crore and 75 lakh",
+    "KK Nagar homes under 1.2 cr",
+    "Looking for 4-5 BHK independent houses in Adyar, budget 3 crore to 2 crore, what did they go for in 2022?",
+    "T Nagar between 1 crore and 2 crore",
+    "between 2 crore and 1 crore in T Nagar",
+    "houses in KK Nagar sold under 1 crore"
+   ],
+   "id": "M7",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "nl_rules._unit_factor",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::RuleParser::test_budget_said_top_down",
+    "tests/unit/agents/test_planner.py::RuleParser::test_money_edges_are_exact",
+    "tests/unit/agents/test_planner.py::RuleParser::test_money_words_become_inr",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "places outside the data are dropped (query becomes all 7)",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "homes in Mylapore"
+   ],
+   "id": "M8",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "nl_rules._OTHER_PLACES",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::RuleParser::test_misspelt_localities_are_matched_not_dropped",
+    "tests/unit/agents/test_planner.py::RuleParser::test_places_outside_the_data_are_kept_so_the_inspector_can_say_so",
+    "tests/unit/agents/test_planner.py::RuleParser::test_places_outside_the_data_are_kept_so_the_inspector_can_say_so",
+    "tests/unit/agents/test_planner.py::RuleParser::test_places_outside_the_data_are_kept_so_the_inspector_can_say_so"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "\"except X\" is ignored",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "everywhere except Adyar"
+   ],
+   "id": "M9",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "nl_rules._EXCLUDE",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::RuleParser::test_except_removes_the_locality"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "close spellings are not matched",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "2 bhk in Anna Nagr",
+    "velacherry 3 bhk last year"
+   ],
+   "id": "M10",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "nl_rules._FUZZY_CUTOFF",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::RuleParser::test_misspelt_localities_are_matched_not_dropped",
+    "tests/unit/agents/test_planner.py::RuleParser::test_misspelt_localities_are_matched_not_dropped",
+    "tests/unit/agents/test_planner.py::RuleParser::test_misspelt_localities_are_matched_not_dropped"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "no parse-audit warning for a filter that was not read",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [],
+   "id": "M11",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "planner._audit",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::AiMode::test_a_filter_the_model_leaves_out_is_a_warning"
+   ]
+  },
+  {
+   "caught_by": [
+    "MR11"
+   ],
+   "change": "L1 does not swap an inverted band",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "2 BHK in Adyar priced 90 to 65 lakh",
+    "Adyar 2 bhk from 90 to 70 lakh",
+    "Anything from 1.5 cr down to 90 lakhs in T Nagar?",
+    "Flats in KK Nagar, budget between 1 crore and 75 lakh",
+    "Looking for 4-5 BHK independent houses in Adyar, budget 3 crore to 2 crore, what did they go for in 2022?",
+    "Velachery between 90 lakh and 50 lakh last year",
+    "between 2 crore and 1 crore in T Nagar"
+   ],
+   "id": "M12",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      29,
+      60
+     ],
+     "violations": 29
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "planner._repair_one",
+   "unit_failed": [
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_budget_given_high_to_low",
+    "tests/unit/agents/test_planner.py::Repair::test_each_repair",
+    "tests/unit/agents/test_planner.py::Repair::test_several_issues_are_one_repair",
+    "tests/unit/agents/test_planner.py::ThroughEngine::test_inverted_band_is_repaired",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "L1 clamps every window to the latest month",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [
+    "Velachery sales in 2003",
+    "What did houses in KK Nagar sell for back in 2002?"
+   ],
+   "id": "M13",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "planner._repair_one",
+   "unit_failed": [
+    "tests/unit/agents/test_planner.py::Repair::test_each_repair",
+    "tests/unit/agents/test_planner.py::ThroughEngine::test_window_is_clamped_to_the_data"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "no notice when a locality has no sales",
+   "changed": 6,
+   "crash": null,
+   "freetext_failed": [],
+   "id": "M14",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "inspector.no_sales",
+   "unit_failed": [
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_a_recent_year_is_repaired_and_said",
+    "tests/unit/agents/test_inspector.py::NoSales::test_a_bhk_the_locality_never_sold",
+    "tests/unit/agents/test_inspector.py::NoSales::test_only_the_empty_locality_is_named"
+   ]
+  },
+  {
+   "caught_by": [
+    "MR11"
+   ],
+   "change": "L1 repairs are not told to the user",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [],
+   "id": "M15",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      60,
+      60
+     ],
+     "violations": 60
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "inspector._repair_notices",
+   "unit_failed": [
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_a_recent_year_is_repaired_and_said",
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_budget_given_high_to_low",
+    "tests/unit/agents/test_inspector.py::OutsideTheData::test_some_bedrooms_dropped_is_said"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "the Inspector ignores the data's month range",
+   "changed": 0,
+   "crash": null,
+   "freetext_failed": [],
+   "id": "M16",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR11": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR9": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "inspector.validate_criteria",
+   "unit_failed": []
   }
  ]
 }

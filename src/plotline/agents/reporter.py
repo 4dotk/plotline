@@ -12,6 +12,7 @@ from plotline.contract import (
     LlmMode,
     LoopCounters,
     Metadata,
+    Notice,
     Summary,
     Topology,
     TraceEvent,
@@ -30,6 +31,7 @@ def build_report(
     coverage_score: float,
     flags: list[AnomalyFlag],
     diagnostics: list[Diagnostic],
+    notices: list[Notice] | None = None,
     trace: list[TraceEvent],
     loop_counters: LoopCounters,
     seed: int,
@@ -58,6 +60,7 @@ def build_report(
         coverage_score=coverage_score,
         anomaly_flags=flags,
         diagnostics=diagnostics,
+        notices=list(notices or []),
         trace=trace,
         metadata=Metadata(
             contract_version=CONTRACT_VERSION,
