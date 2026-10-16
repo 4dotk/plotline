@@ -1,0 +1,463 @@
+{
+ "n_bases": 60,
+ "rows": [
+  {
+   "caught_by": [],
+   "change": "no mutant",
+   "changed": 0,
+   "crash": null,
+   "id": "baseline",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "-",
+   "unit_failed": []
+  },
+  {
+   "caught_by": [],
+   "change": "`low_sample = n <= MIN_BUCKET_N` (off by one)",
+   "changed": null,
+   "crash": "ValidationError: 1 validation error for TrendRecord Value error, low_sample must equal n_in_bucket < MIN_BUCKET_N [type=value_error, input_value={'month': '2",
+   "id": "M1",
+   "idet": null,
+   "mrs": {},
+   "oracle_bases": null,
+   "target": "aggregator._record",
+   "unit_failed": [
+    "tests/unit/agents/test_anomaly_spike.py::InsertedSpike::test_baseline_has_no_flag_in_the_calm_month",
+    "tests/unit/agents/test_anomaly_spike.py::InsertedSpike::test_fake_listing_drop_is_flagged_as_count_drop",
+    "tests/unit/agents/test_anomaly_spike.py::InsertedSpike::test_fake_price_spike_is_flagged_with_a_reason",
+    "tests/unit/agents/test_anomaly_spike.py::InsertedSpike::test_input_is_not_modified",
+    "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_explanation_for_the_spiked_month",
+    "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_only_diagnostics_differ_between_off_and_live",
+    "tests/unit/agents/test_diagnostic.py::ShownForAFlaggedMonth::test_replay_gives_the_same_bytes_as_live",
+    "tests/unit/test_api.py::ApiTests::test_run_default_returns_valid_report",
+    "tests/unit/test_api.py::ApiTests::test_run_with_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct"
+   ]
+  },
+  {
+   "caught_by": [
+    "MR1"
+   ],
+   "change": "mean instead of median for `median_price_per_sqft`",
+   "changed": 60,
+   "crash": null,
+   "id": "M2",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      60,
+      60
+     ],
+     "violations": 60
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 60,
+   "target": "aggregator._record",
+   "unit_failed": [
+    "tests/unit/agents/test_aggregator.py::Grid::test_counts_medians_and_pooled_all"
+   ]
+  },
+  {
+   "caught_by": [
+    "MR1",
+    "MR3a",
+    "MR3b"
+   ],
+   "change": "drops the first value in row order before the median",
+   "changed": 60,
+   "crash": null,
+   "id": "M3",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      60,
+      60
+     ],
+     "violations": 60
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      17,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      60,
+      60
+     ],
+     "violations": 43
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      60,
+      60
+     ],
+     "violations": 43
+    },
+    "MR4": {
+     "evaluated": 34,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      1,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 60,
+   "target": "aggregator._median",
+   "unit_failed": [
+    "tests/unit/agents/test_aggregator.py::Grid::test_counts_medians_and_pooled_all"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "`n_in_bucket > MIN_BUCKET_N` instead of `>=` (L2 fires too often)",
+   "changed": null,
+   "crash": "ValidationError: 1 validation error for TrendReport Value error, coverage_score must be 10/12 (months with n_in_bucket >= 5 on the ALL series) [type=value_er",
+   "id": "M4",
+   "idet": null,
+   "mrs": {},
+   "oracle_bases": null,
+   "target": "validator.coverage_months",
+   "unit_failed": [
+    "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
+    "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
+    "tests/unit/agents/test_validator.py::Coverage::test_integer_threshold_at_8_9_10",
+    "tests/unit/agents/test_validator.py::Widening::test_loop_event",
+    "tests/unit/agents/test_validator.py::Model::test_model_stop_is_a_decision_not_a_firing",
+    "tests/unit/agents/test_validator.py::Model::test_no_call_when_off_or_when_l2_cannot_fire",
+    "tests/unit/agents/test_validator.py::Model::test_prompt_holds_counts_and_names_only",
+    "tests/unit/test_api.py::ApiTests::test_run_with_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_garbage_from_the_model_is_logged_and_falls_back_to_rules",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_model_answers_are_validated_like_manual_filters",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct",
+    "tests/unit/test_smoke_queries.py::SmokeQueries::test_rules_only_all_20_valid_and_correct"
+   ]
+  },
+  {
+   "caught_by": [],
+   "change": "L2 widens only the upper end of a range",
+   "changed": 10,
+   "crash": null,
+   "id": "M5",
+   "idet": 0,
+   "mrs": {
+    "MR1": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR10": {
+     "evaluated": 31,
+     "unconditioned": [
+      16,
+      60
+     ],
+     "violations": 0
+    },
+    "MR2": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3a": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR3b": {
+     "evaluated": 43,
+     "unconditioned": [
+      15,
+      60
+     ],
+     "violations": 0
+    },
+    "MR4": {
+     "evaluated": 35,
+     "unconditioned": [
+      19,
+      60
+     ],
+     "violations": 0
+    },
+    "MR5": {
+     "evaluated": 19,
+     "unconditioned": [
+      2,
+      29
+     ],
+     "violations": 0
+    },
+    "MR6": {
+     "evaluated": 34,
+     "unconditioned": [
+      6,
+      44
+     ],
+     "violations": 0
+    },
+    "MR7": {
+     "evaluated": 49,
+     "unconditioned": [
+      0,
+      59
+     ],
+     "violations": 0
+    },
+    "MR8": {
+     "evaluated": 60,
+     "unconditioned": [
+      0,
+      60
+     ],
+     "violations": 0
+    }
+   },
+   "oracle_bases": 0,
+   "target": "validator._widen_range",
+   "unit_failed": [
+    "tests/unit/agents/test_validator.py::Widening::test_floor_at_zero_and_sqft_and_sale_cond",
+    "tests/unit/agents/test_validator.py::Widening::test_steps_measured_from_the_original"
+   ]
+  }
+ ]
+}
