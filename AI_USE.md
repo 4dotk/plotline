@@ -6,7 +6,7 @@ How we used AI tools to build this project, what each did, how we checked it, an
 
 | Tool | Model | Used for |
 |---|---|---|
-| Claude (Anthropic), in Claude Code | Claude | Code, subcontracts, tests; review and correction of other tools' output |
+| Claude | Sonnet 5.5 | Code, subcontracts, tests; review and correction of other tools' output |
 | pi (agent harness), via OpenRouter | NVIDIA Nemotron Super 120B | Code |
 | Lovable | its base free model | The UI |
 | Gemma 4 E4B-it (4 billion parameters), Q4_K_M GGUF | the model inside the application | Part of the product, not a development tool (section 3) |
