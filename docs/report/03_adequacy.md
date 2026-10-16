@@ -1,14 +1,14 @@
 # Report draft, part 3: how good is the test suite?
 
-*Measured 10-16. Every number names its source file. The criteria below were defined after `v0-results`, so they describe the suite; they were not a gate set in advance.*
+*Measured 10-16 and 10-17; the final numbers are on the frozen 1.2.0 code. Every number names its source file. The criteria below were defined after `v0-results`, so they describe the suite; they were not a gate set in advance.*
 
 The suite has four layers:
 
 | Layer | What it is | Size |
 |---|---|---|
-| Unit tests | `tests/unit`: one file per agent, plus the contract, orchestrator, API and LLM client | 233 tests |
-| Harness self-tests | `tests/mt_selftests`: oracle, statistics, generator, and one planted fault per MR | 68 tests |
-| MT campaign | `tests/mt/run.py`: MR1–MR10 on 350 bases, Mode A (structured criteria, model off) | about 7,000 runs |
+| Unit tests | `tests/unit`: one file per agent, plus the contract, orchestrator, API and LLM client | 234 tests |
+| Harness self-tests | `tests/mt_selftests`: oracle, statistics, generator, and one planted fault per MR | 72 tests |
+| MT campaign | `tests/mt/run.py`: MR1–MR11 on 350 bases, Mode A (structured criteria, model off; MR9 through the rule parser), plus MR9 in Mode B on 10 bases | about 7,000 runs before MR11 |
 | Free-text sets | `tests/smoke_queries.py` (20), `tests/nl_eval_queries.py` (34), `tests/nl_l1_scenarios.py` (18): sentences through the AI-mode path, judged against an expected reading | 72 sentences |
 
 ## 1. Code coverage by layer
@@ -88,7 +88,7 @@ Faults in the application found on 10-16, and the layer that found each one. The
 
 ## 5. How many MRs hold?
 
-Final sweep on the 1.2.0 code (350 bases, seed 0; `results/headline_table.md`). MR1–MR8 and MR10 are byte-identical to `v0-results`. MR9 runs through the rule parser (model stubbed) and MR11 is new.
+Final sweep on the 1.2.0 code (350 bases, seed 0; `results/headline_table.md`). MR1–MR8 and MR10 give the same violations and skips as `v0-results`; only the skip-reason labels differ (all reasons recorded since ab21456). MR9 runs through the rule parser (model stubbed) and MR11 is new.
 
 | MR | Evaluated | Conditioned violations | Unconditioned (diffs inside skips) |
 |---|---|---|---|
@@ -104,11 +104,11 @@ Final sweep on the 1.2.0 code (350 bases, seed 0; `results/headline_table.md`). 
 
 **All 12 relations hold:** 0 violations, 0 oracle mismatches, 0 I-DET and I-PURE failures. Every unconditioned diff is explained by L2 or the `MIN_BUCKET_N` gate (`docs/diagnosis/`). Read with sections 1–3: the relations hold, but MR9 (rules) is weak at finding parser faults, and only MR11 reaches the repair path.
 
-**MR9 in Mode B** (live model, nvidia/nemotron-3-super-120b-a12b:free on OpenRouter; 10 bases × 5 phrasings, seed 0; `results/mode_b/`): 0/10 bases violate. That is a 95 % upper bound of 30.8 % (Clopper–Pearson), so it is indicative only; the contract asks for at least 30 bases and 3 seeds.
+**MR9 in Mode B** (live model, nvidia/nemotron-3-super-120b-a12b:free on OpenRouter; 10 bases × 5 phrasings, seed 0; `results/mode_b/`): 0/10 bases violate. That is a 95 % upper bound of 30.8 % (Clopper–Pearson), so it is indicative only; the contract asks for at least 30 bases and 3 seeds (global open item 9). The harness's determinism check flagged 8 of the 10 bases: two live runs of the same input gave different reports. I-DET covers only `off` and `replay`, so this is expected of a live model; what differed was not examined.
 
 ## 6. What this says about the suite
 
-* **The MT campaign is adequate for the aggregation pipeline and inadequate for the rest.** For C/D/E it shows 0 conditioned violations over about 7,000 runs, kills the order-dependence mutants, and with the oracle cross-checks every number. For the user-facing path it covers 39 % of branches (0 % of the parser), never runs L1, and kills 0 of 11 mutants. This is a design consequence: Mode A sends only valid structured criteria with the model off.
+* **The MT campaign is adequate for the aggregation pipeline and inadequate for the rest.** For C/D/E it shows 0 conditioned violations over about 7,000 runs, kills the order-dependence mutants, and with the oracle cross-checks every number. For the user-facing path, before MR11 and MR9-through-the-parser, it covered 39 % of branches (0 % of the parser), never ran L1, and killed 0 of the 11 Planner, parser and Inspector mutants. This is a design consequence: Mode A sent only valid structured criteria with the model off. With the two additions: 62 % of branches, L1 in 100 of 2,718 runs, 2 of those 11 mutants (both via MR11).
 * **The faults that mattered were found by realistic inputs, not by relations.** Every fault in section 4 came from a sentence someone would actually type. A test set of 72 sentences found more application faults than about 7,000 MT runs, because it reached code the campaign could not reach.
 * **Unit tests are the strongest single layer (95 % / 90 % coverage, 15/16 mutants),** but they did not find F2 either: they tried the inputs their authors thought of. Coverage and mutation score measure the code under test, not the input space.
-* **What we would change:** fix an adequacy criterion before the first run (branch coverage per agent plus a control-flow-edge checklist); run MRs in Mode B on sentences (MR9, plus paraphrase relations such as "2bhk" ≡ "2 BHK"); add the repair-invariance relation so L1 runs on real data; and judge the notices the user reads, not only the criteria.
+* **What we would change:** fix an adequacy criterion before the first run (branch coverage per agent plus a control-flow-edge checklist); run MRs in Mode B on sentences (MR9, plus paraphrase relations such as "2bhk" ≡ "2 BHK"); add the repair-invariance relation from the start (we added MR11 only after measuring) so L1 runs on real data; and judge the notices the user reads, not only the criteria.

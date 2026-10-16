@@ -1,6 +1,6 @@
 # TESTING SUBCONTRACT — Chennai Housing-Trends Application
 
-**Task:** T76 · **Parent:** `CONTRACT.md` v1.1.1 (the global contract)
+**Task:** T76 · **Parent:** `CONTRACT.md` v1.2.0 (the global contract)
 **Scope:** oracle rules, metamorphic relations (MRs) with input subdomains and tolerances, test inputs, seeds, statistics, and result logging.
 
 This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 6, 7.2 and 9 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants (tolerances, seeds, thresholds) are never given new values here; they come from `app/contract.py` (global section 3). Numbers quoted below are for reading only.
@@ -15,7 +15,8 @@ Where this file adds a detail the global contract leaves open, the line is marke
 * It asserts only on fields of the `TrendReport` (global 6.2). It never reaches into agent internals.
 * It never modifies the dataframe or `Criteria` of a source run; every transformed dataset is a **new** dataframe (I-PURE).
 * It reads only the frozen snapshot (`data/chennai_snapshot.csv`, checked against `data/SNAPSHOT.sha256`).
-* Fields it does not compare: `diagnostics` and `trace` are IGNORED; `metadata` is IGNORED except where stated (`loop_counters` drives skip rules and diagnosis; `topology` and `n_scanners` are compared only in MR1 and X1 as stated in section 5).
+* `notices` (1.2.0) is deterministic: compared where the MR compares the whole report (MR1); IGNORED by MR11 except that a `repaired` notice must be present; not compared elsewhere.
+* Fields it does not compare: `diagnostics` and `trace` are IGNORED; `metadata` is IGNORED except where stated (`loop_counters` drives skip rules and diagnosis; `topology` and `n_scanners` were to be compared only in X1, which was cut; MR1 ignores `metadata`).
 * `status` and `error.code` are compared EXACT; `error.message` is ignored.
 
 ## 2. Oracle rules
@@ -65,7 +66,7 @@ Where this file adds a detail the global contract leaves open, the line is marke
 
 ## 5. Metamorphic relations
 
-MRs 1–8 are the assignment's required eight. MR9, MR10 and X1 are extras (task-list "cut order"); if one is cut, update the global contract first (global change rule).
+MRs 1–8 are the assignment's required eight. MR9, MR10, MR11 (1.2.0) and X1 are extras (task-list "cut order"); if one is cut, update the global contract first (global change rule). **X1 was cut in 1.2.0** (global 9.2): its rows below are kept for the record and were never run.
 
 ### 5.1 Transformations
 
@@ -82,6 +83,7 @@ MRs 1–8 are the assignment's required eight. MR9, MR10 and X1 are extras (task
 | 8 | Directional | `price` and `price_band` × k (`price_unit` unchanged) | k ∈ {2, 4, 10} |
 | 9 | Invariance | Paraphrase of the sentence (≥ 4 phrasings per base, including "last year" where it applies) | phrasings |
 | 10 | Monotonic (additive) | `bhk` null (or set B) → one run per value b ∈ B | none |
+| 11 | Invariance (1.2.0) | Plant every repairable defect the base allows, at once: each locality lower-cased with spaces ("  adyar "), `price_band` high to low, BHK 7 added | none |
 | X1 | Invariance (stretch) | `force_topology` flipped | none |
 
 MR7 is labelled Directional because the assignment table does; in substance it is an invariance on the overlap. The MR spec must say so.
@@ -100,6 +102,7 @@ MR7 is labelled Directional because the assignment table does; in substance it i
 | 8 | Counts, flags, `coverage_score`, `direction`: EXACT. Medians and `summary.start/end` equal source × k (REL_TOL). `pct_change`, `change_pct` equal (ABS_TOL / ABS_TOL_PCT) | — |
 | 9 | **First** `effective_criteria` EXACT (set semantics). Then `records`, `summary`, `anomaly_flags`, `coverage_score` EXACT | `diagnostics`, `trace` |
 | 10 | Σ over b of `listing_count` = source `listing_count`, per (month, region), EXACT | medians |
+| 11 | Whole report **bit-exact** except `trace`, `diagnostics`, `metadata`, `criteria_in`, `notices`; follow-up `L1_repairs` = 1 (EXACT; every defect repaired in one pass); a `repaired` notice is present | `notices` text |
 | X1 | Whole report except `metadata.topology` and `metadata.n_scanners` | — |
 
 Notes on application of the table:
@@ -123,8 +126,9 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | 6 | \|L\| < 2; `L2_attempts` > 0 in either run | Topology double-counting between parallel and merged workers |
 | 7 | `L2_attempts` > 0 in either run; `window_end + 1` beyond the snapshot | Temporal boundary conditions; off-by-one window maths; window-wide state (coverage, L2) |
 | 8 | flag margin as in MR2 | Absolute anomaly thresholds firing under scale |
-| 9 | `LLM_MODE = off` | Planner (LLM) not mapping paraphrases to the same criteria |
+| 9 | never in Mode A since 1.2.0 (the model is stubbed to fail, so the rule parser reads every phrasing); before 1.2.0: `LLM_MODE = off` | Planner (LLM, or the rule parser in Mode A) not mapping paraphrases to the same criteria |
 | 10 | `L2_attempts` > 0 in any run; any soft filter set (`price_band`, `sqft_range`, `sale_cond`) | Filter or partition defects; rows lost or double-counted across BHK |
+| 11 | precondition: no `localities`, no `price_band` and no `bhk` (nothing to plant) | Wrong L1 repairs (band not swapped, locality matched to the wrong place, valid BHK dropped); repairs taking more than one pass; repairs not told to the user |
 | X1 | never | Topology leaking into numbers (I-TOPO) |
 
 ## 6. Skips and conditioned / unconditioned reporting
@@ -139,7 +143,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | | Mode A | Mode B |
 |---|---|---|
 | `LLM_MODE` | `off` | `live` on the canonical machine, then `replay` |
-| MRs | all 10 (+ X1 if built) | MR9; MR1 and MR3 in AI mode (sentence queries), with the Validator's widen/stop decision live |
+| MRs | MR1–MR11 (X1 cut); MR9 through the rule parser, the model stubbed to fail (1.2.0) | MR9; MR1 and MR3 in AI mode (sentence queries), with the Validator's widen/stop decision live |
 | Bases | ≥ 100 per MR | ≥ 30 (50 target) per MR |
 | Seeds | run each base once with `seed = 0` | all `SEEDS` = (101, 202, 303) |
 
@@ -147,6 +151,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 * **Mode B:** a source run and its follow-up use the **same** seed value (D9). A **base violates** if **any** seed pair violates (any-seed rule). Also report the per-pair violation rate as a second number.
 * Mode B bases for MR9 must be expressible as a sentence (localities, `window_end`, `bhk`, `price_band`; the generator sets nothing else). The phrasings come from committed templates, not from the LLM, so the base list regenerates from `GEN_SEED`. **[clarification]**
 * The "last year" phrasing means `window_end` = 2015-02, so it applies only to bases with that `window_end`. Uniform sampling over 123 ends will rarely produce it, so Mode B reserves a share of its bases for `window_end` = 2015-02. **[clarification]**
+* **Status at the freeze (1.2.0):** Mode B was run for MR9 only, on 10 bases with seed 0, against a hosted model (OpenRouter, `nvidia/nemotron-3-super-120b-a12b:free`, `python -m tests.mt.run --live`), not on the canonical machine; its cache (`cache/llm_replay_openrouter.jsonl`) is not committed. The ≥ 30 bases, the 3 seeds and MR1/MR3 in AI mode were not met (global open item 9). Results: `results/mode_b/`. The harness's I-DET check logged 8 of the 10 bases: two live runs of the same input differed. I-DET is defined only for `off` and `replay` (global 7.2), so this is expected of a live model, not a violation.
 * After Mode B is recorded live, the cache `cache/llm_replay.jsonl` is committed (only the canonical machine writes it). Reproduction runs in `replay` mode; a cache miss is `E_REPLAY_MISS` and fails the run loudly.
 
 ## 8. Statistics
@@ -156,7 +161,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 * For 0 violations in n bases the two-sided upper bound is `1 − 0.025^(1/n)`: n = 30 → 11.6 %, n = 100 → 3.6 %.
 * Report per MR: seed list, base count, number evaluated, number skipped (by reason), violation count and rate, CI and the method used, and (Mode B) the per-pair rate.
 * `tests/mt/stats.py` is tested on known cases (T24): Wilson on a non-boundary count, Clopper–Pearson at 0 and at n, and the two upper bounds above.
-* Threats to validity to state in the report: seeds on one base are not independent; Mode A seeds add nothing; the conditioned table excludes skipped bases; the generator draws only price bands (no `sqft_range` or `sale_cond`), so those soft filters are untested; MR1–MR10 cover only the contract's MRs.
+* Threats to validity to state in the report: seeds on one base are not independent; Mode A seeds add nothing; the conditioned table excludes skipped bases; the generator draws only price bands (no `sqft_range` or `sale_cond`), so those soft filters are untested; MR1–MR11 cover only the contract's MRs.
 
 ## 9. Result logging
 
@@ -178,7 +183,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
    4. check by hand against the oracle;
    5. classify as **agent fault**, **data artifact**, **ill-conceived MR**, or **tests bug**, with the evidence.
 5. The final headline run is tagged `final-results`.
-6. **One-command reproduction:** `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch or a replay-cache miss. The report states that a live (non-replay) run may drift.
+6. **One-command reproduction** (not built at the freeze, global open item 10; the results are rebuilt with `python -m tests.mt.run --bases 350`): `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch or a replay-cache miss. The report states that a live (non-replay) run may drift.
 
 ## 11. Harness self-tests (what must exist)
 
@@ -222,4 +227,6 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | §9 Result logging | 9.2 notes, 9.5, 11 |
 | §10 Process | 9.5, 11 |
 
-*Version: 1.1.1 (tracks `CONTRACT.md` v1.1.1). Status: draft, pending agreement at the contract check (T79).*
+*Version: 1.2.0 (tracks `CONTRACT.md` v1.2.0: MR11, MR9 in Mode A, X1 cut, `notices`, Mode B status).*
+
+*Earlier: 1.1.1 (tracks `CONTRACT.md` v1.1.1). Status: draft, pending agreement at the contract check (T79).*

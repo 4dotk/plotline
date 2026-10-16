@@ -114,7 +114,7 @@ From `contracts/Testing.md` §8:
 * Mode A seeds add nothing (the application is deterministic, and I-DET is checked on every base);
 * the conditioned table excludes skipped bases;
 * the generator draws only price bands, so `sqft_range` and `sale_cond` are untested;
-* MR1–MR10 cover only the contract's MRs.
+* MR1–MR11 cover only the contract's MRs.
 
 Added by this round:
 * **The oracle cannot see a wrong L2 widening.** It recomputes from the report's own `effective_criteria` (`Testing.md` clarification 2). Mutant M5 (one-sided widening) changes reports, but no MR and not the oracle catches it (section 5).

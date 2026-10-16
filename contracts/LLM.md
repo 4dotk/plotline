@@ -70,6 +70,7 @@ All settings come from `.env` (read once by the config loader). Commit `.env.exa
 * The server address and the server's model name are **not** in the key (D10).
 * Changing any one of the eight fields gives a different key.
 * `thinking` is fixed per use in `llm_client.THINKING` (Planner on, Validator and Diagnostic off) and sent with every request as `chat_template_kwargs.enable_thinking`, so no server preset is needed. **[v1.1.2]**
+* A hosted OpenRouter endpoint ignores `chat_template_kwargs`; for it the client also sends OpenRouter's `reasoning: {enabled}` with the same value (`llm_client.request_extra`). Found 10-17: without it every hosted call reasoned (17.5 s vs 2.0 s). The cache key is unchanged: it holds `thinking`, not the request field. **[v1.2.0]**
 
 **Entry** (one JSON object per line) holds the `key`, the model's **raw response text**, and the recorded `llm` metadata of the live call that produced it (section 10). **[clarification]**
 

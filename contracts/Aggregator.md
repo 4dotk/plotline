@@ -2,7 +2,7 @@
 
 *Shard of `agents.md` v1.1.0. Read **this file and `_common.md` only**. `CONTRACT.md` wins on any conflict.*
 
-**Kind:** worker (plain function; it also validates criteria)
+**Kind:** worker (plain function; it also validates criteria, as a backstop to H since 1.2.0)
 
 **Constants** (reading only; import from `app/contract.py`, never retype): MIN_BUCKET_N = 5 · L1_CAP = 2
 
@@ -17,7 +17,7 @@
 | **Outputs** | `records` (without `pct_change_price_per_sqft`, which E fills), or an L1 request to A. |
 | **May change** | `records`. Nothing else. |
 
-**Validation (before aggregating), L1 issue codes and their repairs (applied by A):**
+**Validation (before aggregating), L1 issue codes and their repairs (applied by A):** since 1.2.0, H runs this same check (`aggregator.validate_criteria`) before the scan, so in a normal run C finds nothing; C keeps it so that aggregation never runs on invalid criteria.
 
 | Issue code | Detected when | Repair |
 |---|---|---|
@@ -25,6 +25,7 @@
 | `locality_unknown` | a locality is not canonical | closest canonical name (`difflib`, cutoff 0.8); no match → cannot repair |
 | `window_out_of_range` | `window_end` outside the valid range | clamp to the nearest valid `window_end` |
 | `bhk_out_of_range` | a value outside 1–4 | drop the bad value; empty list → cannot repair |
+| `sale_cond_unknown` | a sale condition is not canonical | cannot repair |
 
 * A missing column in `listings_df` returns `E_SCHEMA` immediately (no L1).
 * `sqft_range` with `lo > hi` is not in the global repair table. **[clarification]** C treats it as `E_INVALID_CRITERIA` naming the field (listed in `_review.md`).

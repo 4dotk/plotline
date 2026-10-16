@@ -3,6 +3,8 @@
 **Task:** T77 · **Parent:** `CONTRACT.md` v1.0.0 (the global contract)
 **Scope:** each agent's responsibility, inputs, outputs, allowed and forbidden actions, failure behaviour, invariants, and tests.
 
+> **Superseded as the working text (1.2.0 note).** This is the v1.0.0 combined file, kept for the record. The binding per-agent text is in the shards (`_common.md`, `Planner.md`, `Inspector.md`, `Aggregator.md`, `Validator.md`, `Anomaly.md`, `Diagnostic.md`, `Reporter.md`). Since 1.1.0 D may use the model (D11), and since 1.2.0 agent H (Inspector) owns L1 and writes `notices`; where this file says otherwise, the shards and `GLOBAL_CONTRACT.md` win.
+
 This is a **subcontract**, not a separate global or shared contract. It is derived from `CONTRACT.md` sections 5–8 and MUST NOT contradict or redefine them. If this file and `CONTRACT.md` disagree, `CONTRACT.md` wins and this file is the defect. Constants are never written here as numbers of their own; they come from `app/contracts.py` (global section 3). Numbers quoted below are for reading only.
 
 Where this file adds a detail the global contract leaves open, the line is marked **[clarification]** and listed in section 11 for the T79 contract check.

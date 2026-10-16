@@ -4,15 +4,16 @@
 
 ## 1. System
 
-plotline answers a question about Chennai house prices with a 12-month trend. The input is either structured `Criteria` (localities, `window_end`, BHK, price band, sqft range, sale condition) or one English sentence. The output is a `TrendReport` with one record per (month, region): `ALL` plus each selected locality. Each record holds `listing_count`, `n_in_bucket`, the median price, the median price per sqft and the month-on-month change. The report also carries anomaly flags, a first-3 vs last-3 month summary, a `coverage_score`, the full execution `trace` and `metadata` (`GLOBAL_CONTRACT.md` §6).
+plotline answers a question about Chennai house prices with a 12-month trend. The input is either structured `Criteria` (localities, `window_end`, BHK, price band, sqft range, sale condition) or one English sentence. The output is a `TrendReport` with one record per (month, region): `ALL` plus each selected locality. Each record holds `listing_count`, `n_in_bucket`, the median price, the median price per sqft and the month-on-month change. The report also carries anomaly flags, a first-3 vs last-3 month summary, a `coverage_score`, `notices` (plain sentences telling the user how the question was answered: a repair, a widening, a locality with no sales, a request outside the data), the full execution `trace` and `metadata` (`GLOBAL_CONTRACT.md` §6).
 
-Seven agents, run by the orchestrator (`src/plotline/orchestrator.py`; roles from `GLOBAL_CONTRACT.md` §7.1):
+Eight agents, run by the orchestrator (`src/plotline/orchestrator.py`; roles from `GLOBAL_CONTRACT.md` §7.1):
 
 | Agent | Kind | Job | Uses the model |
 |---|---|---|---|
 | A Query Planner (`agents/planner.py`, `nl_rules.py`) | decision-maker | Sentence or criteria → valid `Criteria`; picks the scanner topology; repairs bad criteria (L1) | AI mode only: sentence → `Criteria` |
+| H Inspector (`agents/inspector.py`; added in contract 1.2.0) | worker | Before every scan, checks the request against what the data holds and sends repairable problems to A (L1); at the end, writes the `notices` | No |
 | B Scanners (`agents/scanner.py`) | worker | Return the matching rows; one scanner per locality (parallel) or one for all (consolidated) | No |
-| C Result Aggregator (`agents/aggregator.py`) | worker | Validates the criteria; builds the dense grid of buckets, counts and medians | No |
+| C Result Aggregator (`agents/aggregator.py`) | worker | Builds the dense grid of buckets, counts and medians; keeps the criteria check as a backstop | No |
 | D Coverage Validator (`agents/validator.py`) | decision-maker | Counts the covered months; decides `widen` or `stop` (L2) | `widen` / `stop` only; the rule is `widen` when the model is off |
 | E Anomaly Detector (`agents/anomaly.py`) | worker | `pct_change`, `price_jump` / `count_drop` flags, summary | No |
 | G Diagnostic (`agents/diagnostic.py`) | text writer | A plain-language reason for each flag | Yes (a template when the model is off) |
@@ -48,19 +49,20 @@ From `GLOBAL_CONTRACT.md` §7.3. L3 (Anomaly → Scanners) is out of scope and n
 ```mermaid
 flowchart TD
     IN([criteria or sentence]) --> A[A Planner<br/>criteria + topology]
-    A ==>|topology decides how B scans| B[B Scanners<br/>parallel or consolidated]
-    B --> C[C Aggregator<br/>validate + bucket]
-    C -->|invalid criteria, repairable,<br/>repairs &lt; L1_CAP = 2| A
-    C -->|cannot repair, or cap reached| ERR([E_INVALID_CRITERIA report])
+    A --> H[H Inspector<br/>request vs the data]
+    H -->|outside the data, repairable,<br/>repairs &lt; L1_CAP = 2| A
+    H -->|cannot repair, or cap reached| ERR([E_INVALID_CRITERIA report<br/>+ out_of_scope notice])
+    H ==>|within the data; A's topology decides how B scans| B[B Scanners<br/>parallel or consolidated]
+    B --> C[C Aggregator<br/>bucket; backstop check]
     C --> D{D Validator<br/>covered months &ge; 9?}
     D -->|no, loops on, soft filters set,<br/>attempts &lt; L2_CAP = 3: widen| W[widen the original soft filters<br/>0.20 → 0.50 → drop]
     W --> B
     D -->|yes, or stop, or cap reached,<br/>or nothing to widen| E[E Anomaly<br/>pct_change, flags, summary]
     E --> G[G Diagnostic<br/>text per flag]
-    G --> F[F Reporter] --> OUT([TrendReport])
+    G --> N[H Inspector<br/>notices] --> F[F Reporter] --> OUT([TrendReport])
 ```
 
-* **L1 (C → A), feedback loop.** All repairable issues found in one pass count as one repair: `band_inverted` → swap; `locality_unknown` → the closest canonical name; `window_out_of_range` → clamp; `bhk_out_of_range` → drop the bad value. The cap is `L1_CAP = 2` (`src/plotline/contract.py:58`).
+* **L1 (H → A), feedback loop.** (C → A until contract 1.2.0; C keeps the same check as a backstop.) All repairable issues found in one pass count as one repair: `band_inverted` → swap; `locality_unknown` → the closest canonical name; `window_out_of_range` → clamp; `bhk_out_of_range` → drop the bad value. Each repair is told to the user as a `repaired` notice. Why H was added: `docs/design_changes.md` C23. The cap is `L1_CAP = 2` (`src/plotline/contract.py:58`).
 * **L2 (D → B), conditional retry.** It fires when fewer than `COVERAGE_MIN_MONTHS = 9` of the 12 `ALL` months have `n_in_bucket ≥ MIN_BUCKET_N = 5`. It widens only the soft filters (D7), always starting from the **original** values, by the steps `L2_WIDEN = (0.20, 0.50, "drop")`. The cap is `L2_CAP = 3` (`src/plotline/contract.py:53-60`). With the model on, D may choose `stop`.
 * **Dependency (A ⇒ B).** The topology changes how the scanners work, not the numbers (invariant I-TOPO).
 * `RunOptions.loops_enabled = false` turns both loops off. This test hook is used in the diagnosis.

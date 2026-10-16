@@ -21,6 +21,8 @@ This file is about 8k tokens (estimated): too big to load with code into an 8k c
 
 `app/contract.py` (constants + pydantic models) MUST match sections 3, 5 and 6.
 
+**Paths (1.2.0):** names in this file and the subcontracts are the Day-1 names. In the repository: `CONTRACT.md` = `GLOBAL_CONTRACT.md`; `app/` = `src/plotline/`; `contracts/agents/_common.md` = `contracts/_common.md`; `contracts/agents/<X>_<name>.md` = `contracts/<Name>.md` (e.g. `contracts/Planner.md`, `contracts/Inspector.md`); `contracts/data.md` etc. = `contracts/Data.md` etc.; `api/` = `src/plotline/api.py`. Section 11 shows the real layout.
+
 ## 2. Decisions made in this contract
 
 | ID | Decision | Alternative you could pick |
@@ -36,6 +38,7 @@ This file is about 8k tokens (estimated): too big to load with code into an 8k c
 | D9 | **Same-seed pairs:** a source run and its follow-up use the same seed. | Independent seeds. |
 | D10 | **Replay cache is keyed on a logical model tag** (`LLM_MODEL_TAG`), not the server's model name. | — |
 | D11 | **The model has three jobs and never makes a number:** (a) Planner: sentence → `Criteria`; (b) Validator: choose `widen` or `stop` in L2; (c) Diagnostic: text. With `LLM_MODE=off`, (b) is the rule `widen`. | Keep the model in two places only (v1.0.0). |
+| D12 | **(1.2.0) Every request is checked against what the data holds, before the scan, and the user is told how the question was answered** (agent H, `notices`). A valid request that matches no sales is still `ok`, never an error. | Leave it to C's validation and the trace (v1.1.2): an empty answer is `ok` with no explanation. |
 
 
 ---
@@ -133,7 +136,17 @@ For each month of the window and each region: **listing count, median price, med
 
 ### 6.2 `TrendReport`
 
-Fields: `status` (`"ok"` or `"error"`) · `error` (null or {`code`, `message`}) · `criteria_in` (the request as received) · `effective_criteria` (after L1 repairs and L2 widening: what was actually computed) · `price_unit` (copy of `effective_criteria.price_unit`) · `records` (list of `TrendRecord`, dense grid below) · `summary` (`Summary` or null) · `coverage_score` (float) · `anomaly_flags` (list of `AnomalyFlag`) · `diagnostics` (list of {`month`, `text`, `source`}; model or template text, UI only) · `trace` (7.4) · `metadata` (6.4).
+Fields: `status` (`"ok"` or `"error"`) · `error` (null or {`code`, `message`}) · `criteria_in` (the request as received) · `effective_criteria` (after L1 repairs and L2 widening: what was actually computed) · `price_unit` (copy of `effective_criteria.price_unit`) · `records` (list of `TrendRecord`, dense grid below) · `summary` (`Summary` or null) · `coverage_score` (float) · `anomaly_flags` (list of `AnomalyFlag`) · `diagnostics` (list of {`month`, `text`, `source`}; model or template text, UI only) · `notices` (list of {`kind`, `text`}, 1.2.0; below) · `trace` (7.4) · `metadata` (6.4).
+
+**`notices`** (1.2.0, written by H, present on `ok` **and** `error` reports; deterministic, so MR1 compares it whole, and MR11 requires a `repaired` notice; `testing.md` §1): one plain sentence per thing the user must know about how the question was answered. Every figure in the text is computed by code from the data; the text comes from templates, never from the model.
+
+| `kind` | When |
+|---|---|
+| `repaired` | L1 changed the request (window clamped, band swapped, BHK value dropped, place matched to a canonical locality). One notice per repaired field. |
+| `out_of_scope` | The request asks for something the data does not hold and could not be answered (error report). |
+| `no_sales` | The request is valid, but a requested locality has no sales for the hard filters (locality, window, BHK); says what that locality does hold. |
+| `widened` | L2 widened or dropped the soft filters. |
+| `not_read` | AI mode: the sentence mentions a filter (BHK, price, year, size) the criteria lack (the Planner's parse audit). |
 
 Which comparator tests use for each field (EXACT, REL_TOL, ABS_TOL, bit-exact; `diagnostics`, `trace`, `metadata` ignored by default) is in `testing.md` §3 and §5.
 
@@ -180,7 +193,7 @@ A domain error is **a report with `status = "error"`, never an exception** (I-ER
 | `E_SCHEMA` | `listings_df` is missing a column of 4.3. |
 | `E_SNAPSHOT_HASH` | Snapshot file does not match `data/SNAPSHOT.sha256`. |
 
-On an error: `records = []`, `summary = null`, `coverage_score = 0`, `trace` still filled.
+On an error: `records = []`, `summary = null`, `coverage_score = 0`, `trace` still filled, `notices` filled (1.2.0).
 
 ---
 
@@ -190,9 +203,10 @@ On an error: `records = []`, `summary = null`, `coverage_score = 0`, `trace` sti
 
 | Agent | Kind | One-line job | May use the model? | May change |
 |---|---|---|---|---|
-| A Query Planner | decision-maker | Turns the request into valid `Criteria`; picks scanner topology; repairs bad criteria (L1). | AI mode only: sentence → `Criteria` | `effective_criteria`, topology |
+| A Query Planner | decision-maker | Turns the request into valid `Criteria`; picks scanner topology; repairs bad criteria (L1). Audits the parse in AI mode. | AI mode only: sentence → `Criteria` | `effective_criteria`, topology |
+| H Inspector (1.2.0) | worker | Before each scan, checks `effective_criteria` against the data (valid month range, localities, BHK and sale-condition values, ranges) and sends what A can repair back as L1; at the end, writes `notices` from the trace and the data. | No | `notices` only; never the criteria |
 | B Scanners | worker | Return the rows matching `effective_criteria`; one scanner per locality (parallel) or one for all (consolidated). | No | Row set |
-| C Result Aggregator | worker | Validates criteria and rows; builds the dense grid of buckets, medians, counts. | No | `records` |
+| C Result Aggregator | worker | Builds the dense grid of buckets, medians, counts. Keeps its criteria check as a backstop (1.2.0: H checks first). | No | `records` |
 | D Coverage Validator | decision-maker | Computes `coverage_score`; decides `widen` or `stop` (L2). | Yes: `widen` or `stop` only; the rule is `widen` when the model is off | Triggers L2 |
 | E Anomaly Detector | worker | Computes `pct_change`, `anomaly_flags`, `summary`. | No | Flags, summary |
 | G Diagnostic | text writer | Writes a short plain-language reason for each flag. | Yes (template if off) | `diagnostics` only |
@@ -220,33 +234,36 @@ A **worker** is a plain function of its inputs. The report and design note say p
 ### 7.3 Control flow
 
 ```
-A Planner ══▶ B Scanners ──▶ C Aggregator ──▶ D Validator ──▶ E Anomaly ──▶ G Diagnostic ──▶ F Reporter
-   ▲   (⇒ A's topology         ▲      │              │
-   │    changes what B does)   └──────┼──────────────┘ L2: coverage low → D decides widen/stop; widen → rescan (cap 3)
-   └──────── L1: invalid criteria, repair and restart (cap 2) ──┘ (C sends work back to A)
+A Planner ──▶ H Inspector ══▶ B Scanners ──▶ C Aggregator ──▶ D Validator ──▶ E Anomaly ──▶ G Diagnostic ──▶ H notices ──▶ F Reporter
+   ▲  (⇒ A's topology │          ▲                               │
+   │   changes what B does)      └───────────────────────────────┘ L2: coverage low → D decides widen/stop; widen → rescan (cap 3)
+   └── L1 (H → A): request outside the data, repair and re-inspect (cap 2); C → A only as a backstop
 ```
 
-* **L1 Parameter Repair (C → A), feedback loop.** C finds invalid criteria and sends them to A with a code; A repairs and the pipeline restarts from B. Cap `L1_CAP`. All repairable issues found in one pass count as **one** repair.
+* **L1 Parameter Repair (H → A), feedback loop.** (1.2.0; was C → A.) H checks `effective_criteria` against the data before every scan and sends what is repairable to A with a code; A repairs and the pipeline restarts at H. C runs the same check before aggregating, as a backstop. Cap `L1_CAP`. All repairable issues found in one pass count as **one** repair.
 
-  Repairs: `band_inverted` → swap; `locality_unknown` → closest canonical name (difflib, cutoff 0.8), no match → cannot repair; `window_out_of_range` → clamp to the nearest valid `window_end`; `bhk_out_of_range` → drop the bad value, empty → cannot repair (table in `agents/_common.md`).
-  Cannot repair, or cap reached → `E_INVALID_CRITERIA`.
+  Repairs: `band_inverted` → swap; `locality_unknown` → closest canonical name (difflib, cutoff 0.8), no match → cannot repair; `window_out_of_range` → clamp to the nearest valid `window_end`; `bhk_out_of_range` → drop the bad value, empty → cannot repair; `sale_cond_unknown` → cannot repair (table in `_common.md`). An inverted `sqft_range` is not an L1 issue: `E_INVALID_CRITERIA` at once.
+  Cannot repair, or cap reached → `E_INVALID_CRITERIA`, with an `out_of_scope` notice.
 * **L2 Coverage Retry (D → B), conditional/iterative step.** When (months with `n_in_bucket ≥ MIN_BUCKET_N`) < `COVERAGE_MIN_MONTHS`, loops are on, soft filters exist and attempts < `L2_CAP`, D **decides**:
   * `LLM_MODE=off`: the rule is `widen`. Live or replay: the model chooses `widen` or `stop`. Its prompt holds counts and filter names only, **never a price or sqft value**, so scaling or shuffling the data leaves the prompt unchanged.
   * `widen`: apply the next `L2_WIDEN` step to the **original** soft filters (`[lo − f·(hi−lo), hi + f·(hi−lo)]`, lower end floored at 0; step 3 removes `price_band`, `sqft_range`, `sale_cond`), rescan, re-aggregate, re-check. `effective_criteria` always shows the widened values.
   * `stop`: continue with the low `coverage_score`. A `decision` trace event, **not** a loop firing.
   * Malformed model output after retries → the rule (`widen`). Stop at the cap and continue with the low score.
   * No soft filters: write `L2 skipped: nothing to widen` and continue (not an attempt).
+* **No sales is not an error (D12).** A valid request whose hard filters match no rows in a locality, or anywhere, is `ok` with zero counts; H adds a `no_sales` notice per such locality. L1 is for invalid requests only.
 * **Dependency (A ⇒ B).** The topology A chooses changes what B *does* (how many scanners, how the work is split), not just the data it gets. I-TOPO says the numbers must not change.
 * **L3** (Anomaly → Scanners) is **stretch and not in this contract.** Do not draw it.
 
 ### 7.4 Trace
 
-`trace` is a list of `{i, agent, kind, loop, msg, data}`. `i` counts from 0; `agent` ∈ `planner|scanner|aggregator|validator|anomaly|diagnostic|reporter`; `kind` ∈ `step|decision|loop|warning|error`; `loop` is `L1`, `L2` or null. Every loop firing MUST be a `kind = "loop"` event with these exact templates (the report's execution trace is copied from here):
+`trace` is a list of `{i, agent, kind, loop, msg, data}`. `i` counts from 0; `agent` ∈ `planner|inspector|scanner|aggregator|validator|anomaly|diagnostic|reporter` (`inspector` since 1.2.0); `kind` ∈ `step|decision|loop|warning|error`; `loop` is `L1`, `L2` or null. Every loop firing MUST be a `kind = "loop"` event with these exact templates (the report's execution trace is copied from here):
 
 | Loop | `msg` template | `data` keys |
 |---|---|---|
 | L1 | `L1 fired: {issue}; {before} -> {after}; repair {n} of 2` | `issue`, `before`, `after`, `repair_no`, `cap` |
 | L2 | `L2 fired: coverage {months}/12 below {need}/12; {action}; attempt {n} of 3` | `coverage_months`, `need_months`, `action`, `factor`, `attempt`, `cap`, `effective_price_band`, `decided_by` (`"rule"` or `"llm"`) |
+
+H writes a `step` when the request is within the data, a `warning` naming the issues when it sends L1, and one `warning` per `no_sales` notice. The L1 `loop` event itself is written by A at the moment of repair.
 
 The worked L2 example (Adyar, 1 BHK, ₹70–90 lakh, 2010-12: rows 38 → 49 → 71, covered months 3 → 6 → 9) is in `golden.md` A3. It is the first test of L2.
 
@@ -271,11 +288,11 @@ The worked L2 example (Adyar, 1 BHK, ₹70–90 lakh, 2010-12: rows 38 → 49 �
 The tests call `run(...)` directly (not the API), build each follow-up from its source by **one named transformation**, never reach into agent internals, and assert only on fields of section 6. 
 ### 9.2 The metamorphic relations (assertions, skip rules, tolerances and targeted faults: `testing.md` §5)
 
-**Required by the assignment (1–8):** MR1 shuffle rows · MR2 price ÷ 100,000 with `price_unit = "lakh"` · MR3a/3b duplicate every row (new / same `listing_id`) · MR4 add X to every price in one month · MR5 widen `price_band` · MR6 restrict `localities` to a subset · MR7 `window_end` + 1 month · MR8 scale prices by k. **Extras:** MR9 paraphrase the sentence · MR10 split by BHK, counts add up · X1 flip topology. Families: invariance (1, 2, 3, 9, X1), monotonic (4, 5, 6, 10), directional (7, 8; MR7 is in substance an invariance on the overlap). Source and follow-up are both checked against the skip rules. **A skip is not a pass**; skips are logged and reported.
+**Required by the assignment (1–8):** MR1 shuffle rows · MR2 price ÷ 100,000 with `price_unit = "lakh"` · MR3a/3b duplicate every row (new / same `listing_id`) · MR4 add X to every price in one month · MR5 widen `price_band` · MR6 restrict `localities` to a subset · MR7 `window_end` + 1 month · MR8 scale prices by k. **Extras:** MR9 paraphrase the sentence · MR10 split by BHK, counts add up · MR11 (1.2.0) plant repairable defects, the answer is unchanged (repair invariance; the first relation on the L1 path). X1 (flip topology) was **cut**: not built; I-TOPO is checked only by unit tests (the scanner's two topologies return the same rows; the orchestrator's topology rule and `force_topology`); no MR flips the topology. Families: invariance (1, 2, 3, 9, 11), monotonic (4, 5, 6, 10), directional (7, 8; MR7 is in substance an invariance on the overlap). **MR9 in Mode A (1.2.0):** sentences run through the Planner with the model stubbed to fail, so the rule parser reads them; Mode B runs MR9 on the model. Source and follow-up are both checked against the skip rules. **A skip is not a pass**; skips are logged and reported.
 
 ### 9.3 Base inputs
 
-One **base input** = one distinct `Criteria` (the unit for counting and confidence intervals; the 3 seeds on one base are not independent). A generator seeded by `GEN_SEED` draws them: 80 % broad (≥ 60 matching rows), 20 % thin (20–59 rows with a price band, which exercises L2). **Mode A** (`LLM_MODE=off`): ≥ 100 bases per MR. **Mode B** (live, then replayed): ≥ 30 bases (50 target) for MR9, plus MR1 and MR3 in AI mode. Details: `testing.md` §4.
+One **base input** = one distinct `Criteria` (the unit for counting and confidence intervals; the 3 seeds on one base are not independent). A generator seeded by `GEN_SEED` draws them: 80 % broad (≥ 60 matching rows), 20 % thin (20–59 rows with a price band, which exercises L2). **Mode A** (`LLM_MODE=off`): ≥ 100 bases per MR. **Mode B** (live, then replayed): ≥ 30 bases (50 target) for MR9, plus MR1 and MR3 in AI mode. Details: `testing.md` §4. *Status at the freeze: not met (open item 9).*
 
 ### 9.4 Seeds and statistics
 
@@ -298,17 +315,21 @@ JSON, CORS on. Domain errors are HTTP 200 with a report whose `status` is `"erro
 ## 11. Repository and reproduction contract
 
 ```
-CONTRACT.md  NOTEBOOK.md  AI_USE.md  README.md  .env.example
-contracts/   data.md  llm.md  testing.md  golden.md  agents/ (_common.md, A_…F_*.md, _review.md)
+GLOBAL_CONTRACT.md  NOTEBOOK.md  AI_USE.md  README.md  .env.example
+contracts/   _common.md  Agents.md  Planner.md  Inspector.md  Aggregator.md  Validator.md  Anomaly.md
+             Diagnostic.md  Reporter.md  Data.md  LLM.md  Testing.md  Golden.md
 data/raw/Chennai_Housing_Sale.csv   data/chennai_snapshot.csv   data/SNAPSHOT.sha256
-scripts/freeze_snapshot.py          scripts/golden_vectors.py
-app/   contract.py (constants + pydantic models), orchestrator.py, agents/, llm_client.py, prompts/
-api/  ui/
-tests/  unit/ (app unit tests), mt/ (oracle.py, generator.py, stats.py, harness.py, mrs/, run.py, reproduce.py),
+scripts/   freeze_snapshot.py  golden_vectors.py  (adequacy: coverage_by_layer.py, loop_edges.py, smoke_20_queries.py)
+src/plotline/   contract.py (constants + pydantic models), orchestrator.py, agents/ (incl. inspector.py, nl_rules.py),
+                llm_client.py, prompts/, api.py (FastAPI)
+tests/  unit/ (app unit tests), mt/ (oracle.py, generator.py, stats.py, harness.py, mrs/, run.py, diagnose.py, mutants.py),
         mt_selftests/ (tests of mt/)
-cache/llm_replay.jsonl     results/ (violations.csv, headline_table.md, run_manifest.json)
-docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
+cache/llm_replay.jsonl (not committed yet)
+results/   violations.csv, violations_unconditioned.csv, skips.csv, headline_table.md, run_manifest.json,
+           bases_and_params.json, mode_b/, adequacy/, mutants/, diagnosis/, nl_eval/
+docs/   MR_SPEC.md, design_changes.md, diagnosis/, report/
 ```
+The UI is a separate app (`docs/design_changes.md` C17). `tests/mt/reproduce.py` is not built (open item 10).
 
 **One-command reproduction:** `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`, with no GPU and no network. It fails loudly on a snapshot hash mismatch or a replay-cache miss. State in the report that a live run may drift.
 
@@ -325,6 +346,8 @@ docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.
 7. Review the **[clarification]** rows in `contracts/agents/_review.md`, `llm.md` §12 and `testing.md` §12 (at T79).
 8. Write the ½-page reflection (what an LLM could have produced without running the system, and what it could not) for the report.
+9. **Mode B (9.3) is not met.** Recorded: MR9 only, 10 bases, seed 0, on a hosted model (OpenRouter, `nvidia/nemotron-3-super-120b-a12b:free`), not the canonical machine, and no replay cache committed (`results/mode_b/`). MR1 and MR3 in AI mode were not run.
+10. `tests/mt/reproduce.py` (11) is not built; the results are rebuilt with `python -m tests.mt.run --bases 350`.
 
 | Version | Date | Change | Agreed |
 |---|---|---|---|
@@ -332,4 +355,4 @@ docs/ design_note, MR_SPEC.md, report (includes the ½-page reflection)
 | 1.1.0 | 2026-10-10 | (a) D11: the Validator may use the model for the L2 widen/stop choice (I-LLM, 7.1, 7.3, 7.4 `decided_by`, 8). (b) 7.1 gets a Kind column. (c) Fixes promoted from subcontract clarifications: MR3 skip also covers a pooled first-3 / last-3 count in {3, 4}; MR4 means "all fields equal except `pct_change` at m+1". (d) `app/contract.py`; `logic_version`; `FLAT_BAND_PCT` used in 6.2. (e) Size: sections 4, 8, 9 summarised; MR table, cleaning table and appendices moved to subcontracts (`golden.md` is new); `agents.md` sharded into `contracts/agents/`; section 1 added, other numbering unchanged. | draft |
 | 1.1.1 | 2026-10-11 | Paths only, no rule change: the test suite moved to `tests/unit/` (app unit tests), `tests/mt/` (MR framework: oracle, generator, stats, harness, MRs, run, reproduce) and `tests/mt_selftests/`. Updated in 9.5, 11, `testing.md` and `data.md` RC7. | ☐ all team members |
 | 1.1.2 | 2026-10-15 | Model thinking per use (8, `llm.md` 5). What was wrong: thinking was left to the server default (on), so every Validator and Diagnostic call took about 65–120 s on the canonical machine and a 3-flag run took several minutes; the setting also changed answers without being in the cache key. Now on for the Planner (measured 10/10 vs 9/10 on 10 sentences), off for the Validator and Diagnostic (about 13 s per call), sent in each request, and `thinking` is an eighth cache-key field. Cache entries recorded before this no longer match. | ☐ all team members |
-| 1.2.0 | 2026-10-16 | New agent **H Inspector** (worker) between B and C: checks every request against what the data holds (global month range, each locality's own months and BHK values), sends what A can repair back as L1 (it now owns L1; C keeps its check as a backstop) and refuses the rest. New report field `notices` (6.2: `repaired`, `out_of_scope`, `no_sales`, `widened`, `not_read`), also on error reports; trace agent `inspector` (7.4). The planner prompt passes stated values through instead of dropping them. What was wrong: each locality has its own data range (Adyar ends 2012-05), so "Adyar in 2023", "Adyar 3 BHK" and "Velachery 1 BHK" returned `ok` with 0 rows and no explanation; "Hyderabad" or "5bhk" was silently answered for all localities or all BHK; L1 repairs were visible only in the trace (F2, `NOTEBOOK.md`). Detail: `docs/design_changes.md` C22. Testing (9.2): MR11 repair invariance added (the first relation on the L1 path; the Mode A campaign had fired L1 in 0 of 7,059 runs); MR9 runs in Mode A through the rule parser with the model stubbed, and in Mode B with `--live` (`docs/MR_SPEC.md`). | ☐ all team members |
+| 1.2.0 | 2026-10-16 | New agent **H Inspector** (worker) between A and B (D12, 7.1, 7.3): before every scan it checks the request against what the data holds (valid month range, localities, BHK and sale-condition values, inverted ranges), sends what A can repair back as L1 (it now owns L1; C keeps its check as a backstop) and refuses the rest. At the end it writes the new report field `notices` (6.2: `repaired`, `out_of_scope`, `no_sales`, `widened`, `not_read`), also on error reports, using each locality's own months and BHK values for `no_sales`; trace agent `inspector` (7.4). The Planner audits its parse (`not_read`), and the planner prompt passes stated values through instead of dropping them. What was wrong: each locality has its own data range (Adyar ends 2012-05), so "Adyar in 2023", "Adyar 3 BHK" and "Velachery 1 BHK" returned `ok` with 0 rows and no explanation; "Hyderabad" or "5bhk" was silently answered for all localities or all BHK; L1 repairs were visible only in the trace (F2, `NOTEBOOK.md`). Detail: `docs/design_changes.md` C22–C26. Testing (9.2): MR11 repair invariance added (the first relation on the L1 path; the Mode A campaign had fired L1 in 0 of 7,059 runs); MR9 runs in Mode A through the rule parser with the model stubbed, and in Mode B with `--live` (`docs/MR_SPEC.md`); X1 cut. Also, no rule change: the existing `sale_cond_unknown` issue (cannot repair) added to the L1 table; paths note in 1 and the real layout in 11; open items 9–10. Code frozen at this version (2026-10-17). | ☐ all team members |
