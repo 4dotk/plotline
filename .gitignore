@@ -13,3 +13,6 @@ cache/*.tmp
 # then remove this line and commit cache/llm_replay.jsonl (GLOBAL_CONTRACT 8, 11)
 cache/llm_replay.jsonl
 cache/llm_replay_openrouter.jsonl
+# raw coverage data and the scratch sweep written by scripts/coverage_by_layer.py
+results/adequacy/.coverage*
+results/adequacy/mt_run/
