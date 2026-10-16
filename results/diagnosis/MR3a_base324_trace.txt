@@ -1,0 +1,34 @@
+MR3a base 324 (thin, 21 matching rows), loops on
+base criteria: {'bhk': None, 'localities': ['T Nagar'], 'price_band': [13567150, 18235960], 'price_unit': 'inr', 'sale_cond': None, 'sqft_range': None, 'window_end': '2010-12'}
+MR params: None
+
+== SOURCE: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 3} oracle_mismatches=0
+effective_criteria: {'localities': ['T Nagar'], 'window_end': '2010-12', 'bhk': None, 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 21 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 21 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 34 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 34 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 1/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 52 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 52 rows in the window
+  [ 9] validator  loop     L2  L2 fired: coverage 5/12 below 9/12; drop soft filters; attempt 3 of 3
+  [10] scanner    step         scan: 1 scanner(s), consolidated: 62 rows
+  [11] aggregator step         24 buckets (12 months x 2 regions), 62 rows in the window
+  [12] validator  decision     coverage 9/12 meets 9/12
+  [13] anomaly    step         6 flag(s); summary over 62 rows
+
+== FOLLOW-UP 0: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 2} oracle_mismatches=0
+effective_criteria: {'localities': ['T Nagar'], 'window_end': '2010-12', 'bhk': None, 'price_band': [11232745.0, 20570365.0], 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 42 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 42 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 4/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 68 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 68 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 7/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 104 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 104 rows in the window
+  [ 9] validator  decision     coverage 10/12 meets 9/12
+  [10] anomaly    step         7 flag(s); summary over 104 rows

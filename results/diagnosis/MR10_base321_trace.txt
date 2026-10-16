@@ -1,0 +1,85 @@
+MR10 base 321 (thin, 44 matching rows), loops on
+base criteria: {'bhk': None, 'localities': ['Anna Nagar'], 'price_band': [12401250, 18299980], 'price_unit': 'inr', 'sale_cond': None, 'sqft_range': None, 'window_end': '2014-06'}
+MR params: None
+
+== SOURCE: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 2} oracle_mismatches=0
+effective_criteria: {'localities': ['Anna Nagar'], 'window_end': '2014-06', 'bhk': None, 'price_band': [9451885.0, 21249345.0], 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 44 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 44 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 4/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 61 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 61 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 8/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 73 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 73 rows in the window
+  [ 9] validator  decision     coverage 9/12 meets 9/12
+  [10] anomaly    step         3 flag(s); summary over 73 rows
+
+== FOLLOW-UP 0: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 3} oracle_mismatches=0
+effective_criteria: {'localities': ['Anna Nagar'], 'window_end': '2014-06', 'bhk': [1], 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 29 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 29 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 1/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 45 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 45 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 2/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 53 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 53 rows in the window
+  [ 9] validator  loop     L2  L2 fired: coverage 5/12 below 9/12; drop soft filters; attempt 3 of 3
+  [10] scanner    step         scan: 1 scanner(s), consolidated: 54 rows
+  [11] aggregator step         24 buckets (12 months x 2 regions), 54 rows in the window
+  [12] validator  decision     L2 cap reached: coverage 6/12 after 3 attempts
+  [13] anomaly    step         2 flag(s); summary over 54 rows
+
+== FOLLOW-UP 1: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 3} oracle_mismatches=0
+effective_criteria: {'localities': ['Anna Nagar'], 'window_end': '2014-06', 'bhk': [2], 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 15 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 15 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 1/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 16 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 16 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 1/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 20 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 20 rows in the window
+  [ 9] validator  loop     L2  L2 fired: coverage 1/12 below 9/12; drop soft filters; attempt 3 of 3
+  [10] scanner    step         scan: 1 scanner(s), consolidated: 26 rows
+  [11] aggregator step         24 buckets (12 months x 2 regions), 26 rows in the window
+  [12] validator  decision     L2 cap reached: coverage 2/12 after 3 attempts
+  [13] anomaly    step         2 flag(s); summary over 26 rows
+
+== FOLLOW-UP 2: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 3} oracle_mismatches=0
+effective_criteria: {'localities': ['Anna Nagar'], 'window_end': '2014-06', 'bhk': [3], 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 9] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; drop soft filters; attempt 3 of 3
+  [10] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [11] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [12] validator  decision     L2 cap reached: coverage 0/12 after 3 attempts
+  [13] anomaly    step         0 flag(s); summary over 0 rows
+
+== FOLLOW-UP 3: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 3} oracle_mismatches=0
+effective_criteria: {'localities': ['Anna Nagar'], 'window_end': '2014-06', 'bhk': [4], 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 3] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; widen soft ranges by 20%; attempt 1 of 3
+  [ 4] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 5] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 6] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; widen soft ranges by 50%; attempt 2 of 3
+  [ 7] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [ 8] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [ 9] validator  loop     L2  L2 fired: coverage 0/12 below 9/12; drop soft filters; attempt 3 of 3
+  [10] scanner    step         scan: 1 scanner(s), consolidated: 0 rows
+  [11] aggregator step         24 buckets (12 months x 2 regions), 0 rows in the window
+  [12] validator  decision     L2 cap reached: coverage 0/12 after 3 attempts
+  [13] anomaly    step         0 flag(s); summary over 0 rows

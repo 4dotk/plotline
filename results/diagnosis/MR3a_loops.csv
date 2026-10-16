@@ -1,0 +1,351 @@
+base_id,n_rows,outcome_on,reason_on,n_diffs_on,outcome_off,reason_off,n_diffs_off,l2_src,l2_fu_max,soft_filters_differ
+0,45,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",111,skip,"ALL n_in_bucket in {3,4}",6,3,1,True
+1,804,pass,,0,pass,,0,,,
+2,424,pass,,0,pass,,0,,,
+3,86,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+4,392,pass,,0,pass,,0,,,
+5,113,pass,,0,pass,,0,,,
+6,429,pass,,0,pass,,0,,,
+7,282,pass,,0,pass,,0,,,
+8,420,pass,,0,pass,,0,,,
+9,411,pass,,0,pass,,0,,,
+10,329,pass,,0,pass,,0,,,
+11,505,pass,,0,pass,,0,,,
+12,358,pass,,0,pass,,0,,,
+13,32,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",4,skip,"ALL n_in_bucket in {3,4}",3,3,3,False
+14,413,pass,,0,pass,,0,,,
+15,34,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",9,skip,"ALL n_in_bucket in {3,4}",3,3,3,False
+16,548,pass,,0,pass,,0,,,
+17,269,skip,"ALL n_in_bucket in {3,4}",0,skip,"ALL n_in_bucket in {3,4}",0,,,
+18,261,pass,,0,pass,,0,,,
+19,86,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+20,49,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",85,skip,"ALL n_in_bucket in {3,4}",9,3,0,True
+21,261,pass,,0,pass,,0,,,
+22,341,pass,,0,pass,,0,,,
+23,1177,pass,,0,pass,,0,,,
+24,26,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",3,skip,"ALL n_in_bucket in {3,4}",3,3,3,False
+25,208,pass,,0,pass,,0,,,
+26,82,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+27,179,pass,,0,pass,,0,,,
+28,424,pass,,0,pass,,0,,,
+29,96,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+30,645,pass,,0,pass,,0,,,
+31,29,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",4,skip,"ALL n_in_bucket in {3,4}",6,3,3,False
+32,495,pass,,0,pass,,0,,,
+33,341,pass,,0,pass,,0,,,
+34,376,pass,,0,pass,,0,,,
+35,33,skip,L2_attempts > 0,0,skip,"ALL n_in_bucket in {3,4}",6,,,
+36,560,pass,,0,pass,,0,,,
+37,27,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",88,skip,"ALL n_in_bucket in {3,4}",1,3,2,True
+38,196,pass,,0,pass,,0,,,
+39,76,skip,"ALL n_in_bucket in {3,4}",7,skip,"ALL n_in_bucket in {3,4}",7,0,0,False
+40,59,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",94,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+41,273,pass,,0,pass,,0,,,
+42,265,pass,,0,pass,,0,,,
+43,290,pass,,0,pass,,0,,,
+44,121,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+45,200,pass,,0,pass,,0,,,
+46,53,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",125,skip,"ALL n_in_bucket in {3,4}",2,3,1,True
+47,391,pass,,0,pass,,0,,,
+48,213,pass,,0,pass,,0,,,
+49,876,pass,,0,pass,,0,,,
+50,158,pass,,0,pass,,0,,,
+51,170,pass,,0,pass,,0,,,
+52,289,pass,,0,pass,,0,,,
+53,644,pass,,0,pass,,0,,,
+54,574,pass,,0,pass,,0,,,
+55,650,pass,,0,pass,,0,,,
+56,184,pass,,0,pass,,0,,,
+57,121,pass,,0,pass,,0,,,
+58,305,pass,,0,pass,,0,,,
+59,349,pass,,0,pass,,0,,,
+60,41,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",66,skip,"ALL n_in_bucket in {3,4}",6,3,1,True
+61,232,pass,,0,pass,,0,,,
+62,57,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",114,skip,"ALL n_in_bucket in {3,4}",8,3,0,True
+63,68,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+64,94,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+65,640,pass,,0,pass,,0,,,
+66,942,pass,,0,pass,,0,,,
+67,825,pass,,0,pass,,0,,,
+68,407,pass,,0,pass,,0,,,
+69,330,pass,,0,pass,,0,,,
+70,1421,pass,,0,pass,,0,,,
+71,83,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+72,184,pass,,0,pass,,0,,,
+73,100,pass,,0,pass,,0,,,
+74,282,pass,,0,pass,,0,,,
+75,107,pass,,0,pass,,0,,,
+76,121,pass,,0,pass,,0,,,
+77,700,pass,,0,pass,,0,,,
+78,78,pass,,0,pass,,0,,,
+79,198,pass,,0,pass,,0,,,
+80,39,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",74,skip,"ALL n_in_bucket in {3,4}",5,2,1,True
+81,199,pass,,0,pass,,0,,,
+82,49,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",105,skip,"ALL n_in_bucket in {3,4}",6,3,0,True
+83,417,pass,,0,pass,,0,,,
+84,210,pass,,0,pass,,0,,,
+85,76,skip,"ALL n_in_bucket in {3,4}",7,skip,"ALL n_in_bucket in {3,4}",7,0,0,False
+86,395,pass,,0,pass,,0,,,
+87,215,pass,,0,pass,,0,,,
+88,132,pass,,0,pass,,0,,,
+89,329,pass,,0,pass,,0,,,
+90,345,pass,,0,pass,,0,,,
+91,69,skip,L2_attempts > 0,111,skip,"ALL n_in_bucket in {3,4}",9,2,0,True
+92,333,pass,,0,pass,,0,,,
+93,170,pass,,0,pass,,0,,,
+94,380,pass,,0,pass,,0,,,
+95,121,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+96,114,pass,,0,pass,,0,,,
+97,71,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+98,315,pass,,0,pass,,0,,,
+99,91,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+100,64,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",69,skip,"ALL n_in_bucket in {3,4}",7,1,0,True
+101,52,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",5,skip,"ALL n_in_bucket in {3,4}",3,1,1,False
+102,419,pass,,0,pass,,0,,,
+103,248,pass,,0,pass,,0,,,
+104,60,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",61,skip,"ALL n_in_bucket in {3,4}",2,1,0,True
+105,291,pass,,0,pass,,0,,,
+106,331,pass,,0,pass,,0,,,
+107,67,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+108,98,pass,,0,pass,,0,,,
+109,254,pass,,0,pass,,0,,,
+110,592,pass,,0,pass,,0,,,
+111,242,pass,,0,pass,,0,,,
+112,216,pass,,0,pass,,0,,,
+113,92,pass,,0,pass,,0,,,
+114,236,pass,,0,pass,,0,,,
+115,112,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+116,31,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",71,skip,"ALL n_in_bucket in {3,4}",6,3,1,True
+117,331,pass,,0,pass,,0,,,
+118,128,pass,,0,pass,,0,,,
+119,34,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",8,skip,"ALL n_in_bucket in {3,4}",6,3,3,False
+120,116,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+121,446,pass,,0,pass,,0,,,
+122,738,pass,,0,pass,,0,,,
+123,297,pass,,0,pass,,0,,,
+124,762,pass,,0,pass,,0,,,
+125,61,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",98,skip,"ALL n_in_bucket in {3,4}",9,1,0,True
+126,133,pass,,0,pass,,0,,,
+127,93,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+128,344,pass,,0,pass,,0,,,
+129,79,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+130,208,pass,,0,pass,,0,,,
+131,53,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",102,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+132,441,pass,,0,pass,,0,,,
+133,117,pass,,0,pass,,0,,,
+134,120,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+135,1080,pass,,0,pass,,0,,,
+136,203,pass,,0,pass,,0,,,
+137,121,pass,,0,pass,,0,,,
+138,204,pass,,0,pass,,0,,,
+139,98,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+140,170,pass,,0,pass,,0,,,
+141,187,pass,,0,pass,,0,,,
+142,476,pass,,0,pass,,0,,,
+143,423,pass,,0,pass,,0,,,
+144,142,pass,,0,pass,,0,,,
+145,590,pass,,0,pass,,0,,,
+146,116,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+147,250,pass,,0,pass,,0,,,
+148,782,pass,,0,pass,,0,,,
+149,354,pass,,0,pass,,0,,,
+150,260,pass,,0,pass,,0,,,
+151,321,pass,,0,pass,,0,,,
+152,67,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",101,skip,"ALL n_in_bucket in {3,4}",6,1,0,True
+153,83,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+154,113,pass,,0,pass,,0,,,
+155,628,pass,,0,pass,,0,,,
+156,66,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+157,940,pass,,0,pass,,0,,,
+158,127,pass,,0,pass,,0,,,
+159,518,pass,,0,pass,,0,,,
+160,114,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+161,318,pass,,0,pass,,0,,,
+162,814,pass,,0,pass,,0,,,
+163,224,pass,,0,pass,,0,,,
+164,222,pass,,0,pass,,0,,,
+165,61,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+166,117,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+167,348,pass,,0,pass,,0,,,
+168,307,pass,,0,pass,,0,,,
+169,63,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",105,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+170,236,pass,,0,pass,,0,,,
+171,38,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",90,skip,"ALL n_in_bucket in {3,4}",3,3,1,True
+172,143,pass,,0,pass,,0,,,
+173,213,pass,,0,pass,,0,,,
+174,191,pass,,0,pass,,0,,,
+175,95,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+176,261,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+177,64,skip,L2_attempts > 0,137,skip,"ALL n_in_bucket in {3,4}",10,1,0,True
+178,140,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+179,253,pass,,0,pass,,0,,,
+180,56,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",2,skip,"ALL n_in_bucket in {3,4}",0,3,3,False
+181,293,pass,,0,pass,,0,,,
+182,71,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+183,122,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+184,429,pass,,0,pass,,0,,,
+185,65,skip,"ALL n_in_bucket in {3,4}",7,skip,"ALL n_in_bucket in {3,4}",7,0,0,False
+186,131,pass,,0,pass,,0,,,
+187,260,pass,,0,pass,,0,,,
+188,90,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+189,751,pass,,0,pass,,0,,,
+190,200,pass,,0,pass,,0,,,
+191,114,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+192,464,pass,,0,pass,,0,,,
+193,229,pass,,0,pass,,0,,,
+194,134,pass,,0,pass,,0,,,
+195,323,pass,,0,pass,,0,,,
+196,114,skip,"ALL n_in_bucket in {3,4}",0,skip,"ALL n_in_bucket in {3,4}",0,,,
+197,120,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+198,218,pass,,0,pass,,0,,,
+199,98,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+200,47,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",67,skip,"ALL n_in_bucket in {3,4}",6,3,0,True
+201,1182,pass,,0,pass,,0,,,
+202,310,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+203,100,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",117,skip,"ALL n_in_bucket in {3,4}",7,1,0,True
+204,117,pass,,0,pass,,0,,,
+205,80,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+206,131,pass,,0,pass,,0,,,
+207,46,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",58,skip,"ALL n_in_bucket in {3,4}",2,2,1,True
+208,66,skip,"ALL n_in_bucket in {3,4}",7,skip,"ALL n_in_bucket in {3,4}",7,0,0,False
+209,98,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+210,128,pass,,0,pass,,0,,,
+211,464,pass,,0,pass,,0,,,
+212,59,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",134,skip,"ALL n_in_bucket in {3,4}",5,1,0,True
+213,218,pass,,0,pass,,0,,,
+214,27,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",4,skip,"ALL n_in_bucket in {3,4}",2,3,3,False
+215,349,pass,,0,pass,,0,,,
+216,394,pass,,0,pass,,0,,,
+217,45,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",99,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+218,152,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+219,442,pass,,0,pass,,0,,,
+220,193,pass,,0,pass,,0,,,
+221,49,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",99,skip,"ALL n_in_bucket in {3,4}",7,3,0,True
+222,393,pass,,0,pass,,0,,,
+223,101,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+224,803,pass,,0,pass,,0,,,
+225,46,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",67,skip,"ALL n_in_bucket in {3,4}",7,3,0,True
+226,117,pass,,0,pass,,0,,,
+227,362,pass,,0,pass,,0,,,
+228,738,pass,,0,pass,,0,,,
+229,261,pass,,0,pass,,0,,,
+230,214,pass,,0,pass,,0,,,
+231,434,pass,,0,pass,,0,,,
+232,103,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+233,482,pass,,0,pass,,0,,,
+234,80,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",50,skip,"ALL n_in_bucket in {3,4}",5,1,0,True
+235,436,pass,,0,pass,,0,,,
+236,649,pass,,0,pass,,0,,,
+237,122,pass,,0,pass,,0,,,
+238,24,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",94,skip,"ALL n_in_bucket in {3,4}",3,3,1,True
+239,155,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+240,814,pass,,0,pass,,0,,,
+241,284,pass,,0,pass,,0,,,
+242,52,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",65,skip,"ALL n_in_bucket in {3,4}",8,3,0,True
+243,227,pass,,0,pass,,0,,,
+244,48,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",122,skip,"ALL n_in_bucket in {3,4}",10,1,0,True
+245,203,pass,,0,pass,,0,,,
+246,89,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+247,99,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+248,369,pass,,0,pass,,0,,,
+249,77,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+250,38,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",150,skip,"ALL n_in_bucket in {3,4}",6,3,1,True
+251,363,pass,,0,pass,,0,,,
+252,286,pass,,0,pass,,0,,,
+253,1163,pass,,0,pass,,0,,,
+254,121,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+255,344,pass,,0,pass,,0,,,
+256,124,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+257,134,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+258,158,pass,,0,pass,,0,,,
+259,191,pass,,0,pass,,0,,,
+260,76,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",77,skip,"ALL n_in_bucket in {3,4}",7,1,0,True
+261,190,pass,,0,pass,,0,,,
+262,880,pass,,0,pass,,0,,,
+263,828,pass,,0,pass,,0,,,
+264,216,pass,,0,pass,,0,,,
+265,149,pass,,0,pass,,0,,,
+266,414,pass,,0,pass,,0,,,
+267,502,pass,,0,pass,,0,,,
+268,381,pass,,0,pass,,0,,,
+269,123,skip,"ALL n_in_bucket in {3,4}",4,skip,"ALL n_in_bucket in {3,4}",4,0,0,False
+270,294,pass,,0,pass,,0,,,
+271,121,skip,"ALL n_in_bucket in {3,4}",1,skip,"ALL n_in_bucket in {3,4}",1,0,0,False
+272,158,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+273,51,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",64,skip,"ALL n_in_bucket in {3,4}",5,3,0,True
+274,91,skip,"ALL n_in_bucket in {3,4}",0,skip,"ALL n_in_bucket in {3,4}",0,,,
+275,112,pass,,0,pass,,0,,,
+276,101,pass,,0,pass,,0,,,
+277,260,pass,,0,pass,,0,,,
+278,31,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",57,skip,"ALL n_in_bucket in {3,4}",3,3,1,True
+279,610,pass,,0,pass,,0,,,
+280,78,skip,"ALL n_in_bucket in {3,4}",6,skip,"ALL n_in_bucket in {3,4}",6,0,0,False
+281,122,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+282,110,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+283,112,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+284,107,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+285,115,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+286,117,skip,"ALL n_in_bucket in {3,4}",3,skip,"ALL n_in_bucket in {3,4}",3,0,0,False
+287,323,pass,,0,pass,,0,,,
+288,77,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",87,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+289,1343,pass,,0,pass,,0,,,
+290,185,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+291,203,pass,,0,pass,,0,,,
+292,652,pass,,0,pass,,0,,,
+293,94,skip,"ALL n_in_bucket in {3,4}",5,skip,"ALL n_in_bucket in {3,4}",5,0,0,False
+294,333,pass,,0,pass,,0,,,
+295,135,pass,,0,pass,,0,,,
+296,123,pass,,0,pass,,0,,,
+297,1026,pass,,0,pass,,0,,,
+298,156,skip,"ALL n_in_bucket in {3,4}",2,skip,"ALL n_in_bucket in {3,4}",2,0,0,False
+299,791,pass,,0,pass,,0,,,
+300,376,pass,,0,pass,,0,,,
+301,26,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",69,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+302,157,pass,,0,pass,,0,,,
+303,58,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",95,skip,"ALL n_in_bucket in {3,4}",7,3,0,True
+304,106,pass,,0,pass,,0,,,
+305,507,pass,,0,pass,,0,,,
+306,258,pass,,0,pass,,0,,,
+307,65,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",96,skip,"ALL n_in_bucket in {3,4}",6,1,0,True
+308,164,pass,,0,pass,,0,,,
+309,218,pass,,0,pass,,0,,,
+310,151,pass,,0,pass,,0,,,
+311,113,pass,,0,pass,,0,,,
+312,50,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",95,skip,"ALL n_in_bucket in {3,4}",8,1,0,True
+313,519,pass,,0,pass,,0,,,
+314,45,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",7,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+315,139,pass,,0,pass,,0,,,
+316,180,pass,,0,pass,,0,,,
+317,23,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",5,skip,"ALL n_in_bucket in {3,4}",1,3,3,False
+318,42,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",115,skip,"ALL n_in_bucket in {3,4}",6,3,0,True
+319,23,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",4,skip,"ALL n_in_bucket in {3,4}",0,3,3,False
+320,32,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",39,skip,"ALL n_in_bucket in {3,4}",4,3,1,True
+321,44,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",84,skip,"ALL n_in_bucket in {3,4}",1,2,1,True
+322,40,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",110,skip,"ALL n_in_bucket in {3,4}",6,3,0,True
+323,49,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",93,skip,"ALL n_in_bucket in {3,4}",7,2,0,True
+324,21,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",80,skip,"ALL n_in_bucket in {3,4}",6,3,2,True
+325,31,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",57,skip,"ALL n_in_bucket in {3,4}",5,3,2,True
+326,41,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",113,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+327,20,skip,L2_attempts > 0,0,skip,"ALL n_in_bucket in {3,4}",3,,,
+328,53,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",106,skip,"ALL n_in_bucket in {3,4}",5,3,0,True
+329,41,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",83,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+330,53,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",145,skip,"ALL n_in_bucket in {3,4}",4,3,0,True
+331,30,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",7,skip,"ALL n_in_bucket in {3,4}",1,3,2,True
+332,59,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",80,skip,"ALL n_in_bucket in {3,4}",2,1,0,True
+333,58,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",108,skip,"ALL n_in_bucket in {3,4}",11,1,0,True
+334,40,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",109,skip,"ALL n_in_bucket in {3,4}",7,3,1,True
+335,58,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",100,skip,"ALL n_in_bucket in {3,4}",7,2,0,True
+336,30,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",1,skip,"ALL n_in_bucket in {3,4}",5,3,3,False
+337,48,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",33,skip,"ALL n_in_bucket in {3,4}",4,3,0,True
+338,39,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",82,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+339,28,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",8,skip,"ALL n_in_bucket in {3,4}",5,3,3,False
+340,58,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",97,skip,"ALL n_in_bucket in {3,4}",10,1,0,True
+341,23,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",6,skip,"ALL n_in_bucket in {3,4}",1,3,3,False
+342,57,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",81,skip,"ALL n_in_bucket in {3,4}",5,1,0,True
+343,35,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",5,skip,"ALL n_in_bucket in {3,4}",3,3,3,False
+344,34,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",88,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+345,56,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",112,skip,"ALL n_in_bucket in {3,4}",3,3,0,True
+346,57,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",92,skip,"ALL n_in_bucket in {3,4}",4,1,0,True
+347,46,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",0,skip,"ALL n_in_bucket in {3,4}",0,,,
+348,39,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",157,skip,"ALL n_in_bucket in {3,4}",5,3,1,True
+349,54,skip,"ALL n_in_bucket in {3,4} + L2_attempts > 0",105,skip,"ALL n_in_bucket in {3,4}",8,2,0,True

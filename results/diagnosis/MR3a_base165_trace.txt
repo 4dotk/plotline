@@ -1,0 +1,19 @@
+MR3a base 165 (broad, 61 matching rows), loops on
+base criteria: {'bhk': None, 'localities': ['T Nagar'], 'price_band': None, 'price_unit': 'inr', 'sale_cond': None, 'sqft_range': None, 'window_end': '2011-02'}
+MR params: None
+
+== SOURCE: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 0} oracle_mismatches=0
+effective_criteria: {'localities': ['T Nagar'], 'window_end': '2011-02', 'bhk': None, 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 61 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 61 rows in the window
+  [ 3] validator  decision     L2 skipped: nothing to widen
+  [ 4] anomaly    step         5 flag(s); summary over 61 rows
+
+== FOLLOW-UP 0: status=ok loop_counters={'L1_repairs': 0, 'L2_attempts': 0} oracle_mismatches=0
+effective_criteria: {'localities': ['T Nagar'], 'window_end': '2011-02', 'bhk': None, 'price_band': None, 'sqft_range': None, 'sale_cond': None, 'price_unit': 'inr'}
+  [ 0] planner    decision     topology=consolidated (1 localities < 3)
+  [ 1] scanner    step         scan: 1 scanner(s), consolidated: 122 rows
+  [ 2] aggregator step         24 buckets (12 months x 2 regions), 122 rows in the window
+  [ 3] validator  decision     coverage 11/12 meets 9/12
+  [ 4] anomaly    step         7 flag(s); summary over 122 rows
