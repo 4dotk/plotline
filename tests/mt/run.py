@@ -79,6 +79,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", type=Path, default=RESULTS, help="results directory")
     ap.add_argument("--live", action="store_true",
                     help="Mode B for MR9: read the sentences with the model configured in .env (live)")
+    ap.add_argument("--first-base", type=int, default=0,
+                    help="skip bases before this index (to record more bases without redoing earlier ones)")
+    ap.add_argument("--seeds", type=int, nargs="+", default=list(MODE_A_SEEDS),
+                    help="seeds; each base runs under every seed, source and follow-up share it (D9). "
+                         "Default 0: Mode A is deterministic, so more seeds change nothing")
     args = ap.parse_args(argv)
 
     sha, err = check_snapshot(SNAPSHOT, ROOT / "data" / "SNAPSHOT.sha256")
@@ -86,7 +91,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"E_SNAPSHOT_HASH: {err}", file=sys.stderr)
         return 1
     df = pd.read_csv(SNAPSHOT)
-    bases = with_phrasings(generate(df, args.bases), df)  # MR9 sentences are stored with the bases
+    bases = with_phrasings(generate(df, args.bases), df)[args.first_base:]  # MR9 sentences are stored with the bases
     save_bases(bases, args.out / "bases_and_params.json", snapshot_sha256=sha)
     engine = mode_a_engine()
     # MR9: the sentences are read by the rule parser (model stubbed), or by the live model (--live, Mode B)
@@ -97,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     for name in args.mr or sorted(MRS):
         print(f"{name}: {len(bases)} bases ...", flush=True)
         runner = rules.run if name == "MR9" else engine.run
-        runs.append(run_mr(MRS[name], bases, df, runner, MODE_A_SEEDS, registry, check_oracle=True))
+        runs.append(run_mr(MRS[name], bases, df, runner, tuple(args.seeds), registry, check_oracle=True))
 
     write_violations([row for r in runs for row in r.violation_rows()], args.out / "violations.csv")
     write_skips([row for r in runs for row in r.skip_rows()], args.out / "skips.csv")
@@ -113,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
         "llm": ({k: v for k, v in vars(rules.llm_client.config).items() if k in ("model", "model_tag", "base_url")}
                 if args.live else None),
         "snapshot_sha256": sha, "contract_version": CONTRACT_VERSION, "git_commit": engine.logic_version,
-        "gen_seed": GEN_SEED, "seeds": list(MODE_A_SEEDS), "n_bases": len(bases),
+        "gen_seed": GEN_SEED, "seeds": list(args.seeds), "n_bases": len(bases),
         "strata": {s: sum(b.stratum == s for b in bases) for s in ("broad", "thin")},
         "seed_registry_entries": len(registry.entries),
         "mrs": {r.mr: {"evaluated": r.evaluated, "violations": r.violations, "skipped": r.n_skipped} for r in results},

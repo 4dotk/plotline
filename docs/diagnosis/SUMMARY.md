@@ -18,6 +18,10 @@ How each was checked:
 
 In every case the existing skip rule is exactly what keeps these diffs out of the conditioned table, so the skip rules stand unchanged.
 
+## MR9 in Mode B (2026-10-17)
+
+The only conditioned violations in the campaign: **2/30 bases** on the live model (OpenRouter, 30 bases × seeds 0, 101, 202). **Class: Planner fault on an ambiguous input; not fixed (code frozen).** Both are seed 101 on "… move in the year to 2010-11?". The model read it as the Indian financial year 2010-11 (`window_end` 2011-03) or as no month at all (null, so the latest month). See [MR9.md](MR9.md).
+
 ## Before / after (T60)
 
 **Pre-check on the canonical machine (2026-10-16, branch `diag/day5` at `aeae8d0`):**

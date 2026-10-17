@@ -37,6 +37,7 @@
 | 10-17 | parallel mutant workers ran pytest at once; the test conftest recreates one shared log directory per session, so workers deleted each other's logs and pytest crashed (INTERNALERROR), giving false zeros in the unit column; caught by comparing with the sequential run; each worker now has its own log directory, only the clean run is reported |
 | 10-17 | coverage script forced LLM_MODE=off for every step; `.env` does not override existing variables, so the "Mode B" step would silently have run with the model off; caught before use and fixed |
 | 10-17 | first OpenRouter model (nemotron-3.5-lightning:free) and the first Mode B run were too slow to finish (reasoning on, free-tier limits); stopped and rerun on 10 bases after the reasoning fix |
+| 10-17 | MR9 Mode B on 30 bases × seeds 0, 101, 202 (OpenRouter): 2/30 bases violate, the first conditioned violations; both seed 101 on "the year to 2010-11", read as the financial year (2011-03) or as no month (null → 2015-02); `docs/diagnosis/MR9.md`. Recorded in several sessions within free-tier quotas; every call is kept in the replay cache, and a recorded call is never sent again |
 
 ## Predictions (before the first full sweep)
 

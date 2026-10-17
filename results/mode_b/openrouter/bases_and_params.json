@@ -1,0 +1,518 @@
+{
+ "bases": [
+  {
+   "base_id": 0,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":[9318600,11554330],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": [
+     9318600,
+     11554330
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-10"
+   },
+   "n_rows": 45,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1662057958
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2005-10"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Velachery priced between 93.186 lakh and 115.5433 lakh for the 12 months ending October 2005",
+      "How did flat prices in Velachery in the 93.186 to 115.5433 lakh range move in the year to 2005-10?",
+      "Show the 12-month housing price trend for Velachery, 93.186-115.5433 lakh, window ending Oct 2005",
+      "Velachery: property sale prices priced between 93.186 lakh and 115.5433 lakh, twelve months up to October 2005",
+      "Price trend of apartments sold in Velachery in the 93.186 to 115.5433 lakh range during the year ending 2005-10"
+     ]
+    }
+   },
+   "stratum": "thin"
+  },
+  {
+   "base_id": 1,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-04\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-04"
+   },
+   "n_rows": 804,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1627981025
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2011-09"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "KK Nagar",
+      "T Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery for the 12 months ending April 2012",
+      "How did flat prices in Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar move in the year to 2012-04?",
+      "Show the 12-month housing price trend for Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery, window ending Apr 2012",
+      "Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar: property sale prices, twelve months up to April 2012",
+      "Price trend of apartments sold in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery during the year ending 2012-04"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 2,
+   "canonical": "{\"bhk\":[2,3],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-06\"}",
+   "criteria": {
+    "bhk": [
+     2,
+     3
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-06"
+   },
+   "n_rows": 424,
+   "params": {
+    "MR1": {
+     "permutation_seed": 709091226
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2009-01"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "Anna Nagar",
+      "Chrompet",
+      "KK Nagar",
+      "Velachery"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of 2 or 3 BHK homes in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery for the 12 months ending June 2009",
+      "How did 2 and 3 bedroom flat prices in Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar move in the year to 2009-06?",
+      "Show the 12-month housing price trend for Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery, 2 or 3 BHK window ending Jun 2009",
+      "Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar: 2 and 3 bedroom property sale prices, twelve months up to June 2009",
+      "Price trend of 2 or 3 BHK apartments sold in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery during the year ending 2009-06"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 3,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2014-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2014-02"
+   },
+   "n_rows": 86,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1465647934
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2013-03"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Anna Nagar for the 12 months ending February 2014",
+      "How did flat prices in Anna Nagar move in the year to 2014-02?",
+      "Show the 12-month housing price trend for Anna Nagar, window ending Feb 2014",
+      "Anna Nagar: property sale prices, twelve months up to February 2014",
+      "Price trend of apartments sold in Anna Nagar during the year ending 2014-02"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 4,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\"],\"price_band\":[7226100,14001530],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2012-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar"
+    ],
+    "price_band": [
+     7226100,
+     14001530
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2012-11"
+   },
+   "n_rows": 392,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1642822537
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2012-07"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Anna Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Anna Nagar, Chrompet, KK Nagar, Karapakkam and T Nagar priced between 72.261 lakh and 140.0153 lakh for the 12 months ending November 2012",
+      "How did flat prices in T Nagar, Karapakkam, KK Nagar, Chrompet or Anna Nagar in the 72.261 to 140.0153 lakh range move in the year to 2012-11?",
+      "Show the 12-month housing price trend for Anna Nagar, Chrompet, KK Nagar, Karapakkam and T Nagar, 72.261-140.0153 lakh, window ending Nov 2012",
+      "T Nagar, Karapakkam, KK Nagar, Chrompet or Anna Nagar: property sale prices priced between 72.261 lakh and 140.0153 lakh, twelve months up to November 2012",
+      "Price trend of apartments sold in Anna Nagar, Chrompet, KK Nagar, Karapakkam and T Nagar in the 72.261 to 140.0153 lakh range during the year ending 2012-11"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 5,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Velachery\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2005-11\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Velachery"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2005-11"
+   },
+   "n_rows": 113,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1200888233
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2005-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": null
+    },
+    "MR8": {
+     "k": 2
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Velachery for the 12 months ending November 2005",
+      "How did flat prices in Velachery move in the year to 2005-11?",
+      "Show the 12-month housing price trend for Velachery, window ending Nov 2005",
+      "Velachery: property sale prices, twelve months up to November 2005",
+      "Price trend of apartments sold in Velachery during the year ending 2005-11"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 6,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"T Nagar\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2007-10\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "T Nagar"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2007-10"
+   },
+   "n_rows": 429,
+   "params": {
+    "MR1": {
+     "permutation_seed": 1421454891
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2007-05"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Adyar, Chrompet and T Nagar for the 12 months ending October 2007",
+      "How did flat prices in T Nagar, Chrompet or Adyar move in the year to 2007-10?",
+      "Show the 12-month housing price trend for Adyar, Chrompet and T Nagar, window ending Oct 2007",
+      "T Nagar, Chrompet or Adyar: property sale prices, twelve months up to October 2007",
+      "Price trend of apartments sold in Adyar, Chrompet and T Nagar during the year ending 2007-10"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 7,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Anna Nagar\",\"Chrompet\"],\"price_band\":null,\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2015-02\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Anna Nagar",
+     "Chrompet"
+    ],
+    "price_band": null,
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2015-02"
+   },
+   "n_rows": 282,
+   "params": {
+    "MR1": {
+     "permutation_seed": 227939461
+    },
+    "MR4": {
+     "X": 250000,
+     "month": "2014-12"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Chrompet"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Anna Nagar and Chrompet for the 12 months ending February 2015",
+      "How did flat prices in Chrompet or Anna Nagar move in the year to 2015-02?",
+      "Show the 12-month housing price trend for Anna Nagar and Chrompet, window ending Feb 2015",
+      "How have home prices in Anna Nagar and Chrompet changed over the last year?",
+      "flat prices in Chrompet or Anna Nagar in the past 12 months"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 8,
+   "canonical": "{\"bhk\":null,\"localities\":[\"Adyar\",\"Chrompet\",\"KK Nagar\",\"Karapakkam\",\"T Nagar\",\"Velachery\"],\"price_band\":[7945255,11690990],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-08\"}",
+   "criteria": {
+    "bhk": null,
+    "localities": [
+     "Adyar",
+     "Chrompet",
+     "KK Nagar",
+     "Karapakkam",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     7945255,
+     11690990
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-08"
+   },
+   "n_rows": 420,
+   "params": {
+    "MR1": {
+     "permutation_seed": 786544956
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-02"
+    },
+    "MR5": {
+     "delta": 0.3
+    },
+    "MR6": {
+     "subset": [
+      "Adyar",
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 4
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of homes in Adyar, Chrompet, KK Nagar, Karapakkam, T Nagar and Velachery priced between 79.45255 lakh and 116.9099 lakh for the 12 months ending August 2009",
+      "How did flat prices in Velachery, T Nagar, Karapakkam, KK Nagar, Chrompet or Adyar in the 79.45255 to 116.9099 lakh range move in the year to 2009-08?",
+      "Show the 12-month housing price trend for Adyar, Chrompet, KK Nagar, Karapakkam, T Nagar and Velachery, 79.45255-116.9099 lakh, window ending Aug 2009",
+      "Velachery, T Nagar, Karapakkam, KK Nagar, Chrompet or Adyar: property sale prices priced between 79.45255 lakh and 116.9099 lakh, twelve months up to August 2009",
+      "Price trend of apartments sold in Adyar, Chrompet, KK Nagar, Karapakkam, T Nagar and Velachery in the 79.45255 to 116.9099 lakh range during the year ending 2009-08"
+     ]
+    }
+   },
+   "stratum": "broad"
+  },
+  {
+   "base_id": 9,
+   "canonical": "{\"bhk\":[4],\"localities\":[\"Adyar\",\"Anna Nagar\",\"Chrompet\",\"KK Nagar\",\"T Nagar\",\"Velachery\"],\"price_band\":[11692000,18893580],\"price_unit\":\"inr\",\"sale_cond\":null,\"sqft_range\":null,\"window_end\":\"2009-06\"}",
+   "criteria": {
+    "bhk": [
+     4
+    ],
+    "localities": [
+     "Adyar",
+     "Anna Nagar",
+     "Chrompet",
+     "KK Nagar",
+     "T Nagar",
+     "Velachery"
+    ],
+    "price_band": [
+     11692000,
+     18893580
+    ],
+    "price_unit": "inr",
+    "sale_cond": null,
+    "sqft_range": null,
+    "window_end": "2009-06"
+   },
+   "n_rows": 48,
+   "params": {
+    "MR1": {
+     "permutation_seed": 203355303
+    },
+    "MR4": {
+     "X": 1000000,
+     "month": "2009-02"
+    },
+    "MR5": {
+     "delta": 0.1
+    },
+    "MR6": {
+     "subset": [
+      "KK Nagar"
+     ]
+    },
+    "MR8": {
+     "k": 10
+    },
+    "MR9": {
+     "phrasings": [
+      "Median prices of 4 BHK homes in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery priced between 116.92 lakh and 188.9358 lakh for the 12 months ending June 2009",
+      "How did 4 bedroom flat prices in Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar in the 116.92 to 188.9358 lakh range move in the year to 2009-06?",
+      "Show the 12-month housing price trend for Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery, 116.92-188.9358 lakh, 4 BHK window ending Jun 2009",
+      "Velachery, T Nagar, KK Nagar, Chrompet, Anna Nagar or Adyar: 4 bedroom property sale prices priced between 116.92 lakh and 188.9358 lakh, twelve months up to June 2009",
+      "Price trend of 4 BHK apartments sold in Adyar, Anna Nagar, Chrompet, KK Nagar, T Nagar and Velachery in the 116.92 to 188.9358 lakh range during the year ending 2009-06"
+     ]
+    }
+   },
+   "stratum": "thin"
+  }
+ ],
+ "gen_seed": 42,
+ "n_bases": 10,
+ "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+ "strata": {
+  "broad": 8,
+  "thin": 2
+ }
+}

@@ -97,7 +97,7 @@ At start-up the application logic MUST recompute the SHA256 of `data/chennai_sna
 | RC4 | Snapshot contents | 7 localities, 5 sale conditions, unique `listing_id`, `bhk` ∈ {1–4}, price > 0, sqft > 0, no nulls |
 | RC5 | Cleaning counts | R1 = 38, R2 = 15, R3 = 1, R4 = 0 failures |
 | RC6 | Golden vectors: `python scripts/golden_vectors.py data/chennai_snapshot.csv 2015-02 2011-12` | Reproduces `golden.md` A1 (338 rows for 2015-02; 1,300 rows for 2011-12) and the L2 example `golden.md` A3 (38 → 49 → 71 rows; covered months 3 → 6 → 9) |
-| RC7 | `python -m tests.mt.reproduce` | Fails loudly on a snapshot hash mismatch; needs no GPU and no network |
+| RC7 | `python -m tests.mt.run` | Fails loudly on a snapshot hash mismatch; needs no GPU and no network |
 
 A change to the raw file, the freeze script, or any rule in section 2 changes the snapshot hash. That requires a changelog line in `CONTRACT.md` section 12, a version bump, and agreement of both parties before anything else proceeds. After the `v0-results` tag, any such change must also explain what was wrong.
 

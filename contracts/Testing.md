@@ -145,7 +145,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
 | `LLM_MODE` | `off` | `live` on the canonical machine, then `replay` |
 | MRs | MR1–MR11 (X1 cut); MR9 through the rule parser, the model stubbed to fail (1.2.0) | MR9; MR1 and MR3 in AI mode (sentence queries), with the Validator's widen/stop decision live |
 | Bases | ≥ 100 per MR | ≥ 30 (50 target) per MR |
-| Seeds | run each base once with `seed = 0` | all `SEEDS` = (101, 202, 303) |
+| Seeds | run each base once with `seed = 0` | all `SEEDS` = (0, 101, 202) (1.2.0) |
 
 * **Mode A:** the application is deterministic by construction. Run the determinism self-test (same input twice → identical bytes, I-DET) on **every** base. State in the report that k = 3 seeds add nothing here, and that with `LLM_MODE=off` the seed changes nothing (the test checks it).
 * **Mode B:** a source run and its follow-up use the **same** seed value (D9). A **base violates** if **any** seed pair violates (any-seed rule). Also report the per-pair violation rate as a second number.
@@ -183,7 +183,7 @@ Skip rules are written only in terms of report fields so they can be checked aut
    4. check by hand against the oracle;
    5. classify as **agent fault**, **data artifact**, **ill-conceived MR**, or **tests bug**, with the evidence.
 5. The final headline run is tagged `final-results`.
-6. **One-command reproduction** (not built at the freeze, global open item 10; the results are rebuilt with `python -m tests.mt.run --bases 350`): `python -m tests.mt.reproduce` rebuilds `results/headline_table.md` from the frozen snapshot, `GEN_SEED`, `SEEDS` and `LLM_MODE=replay`. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch or a replay-cache miss. The report states that a live (non-replay) run may drift.
+6. **One-command reproduction:** `python -m tests.mt.run --bases 350` rebuilds `results/headline_table.md` from the frozen snapshot and `GEN_SEED` with the model off. It needs no GPU and no network, and fails loudly on a snapshot hash mismatch. Model results are reproduced with `LLM_MODE=replay` from the recorded cache (a miss is `E_REPLAY_MISS`). The report states that a live (non-replay) run may drift.
 
 ## 11. Harness self-tests (what must exist)
 
