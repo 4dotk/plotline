@@ -346,7 +346,7 @@ The UI is a separate app (`docs/design_changes.md` C17).
 6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.
 7. Review the **[clarification]** rows in `contracts/agents/_review.md`, `llm.md` §12 and `testing.md` §12 (at T79).
 8. Write the ½-page reflection (what an LLM could have produced without running the system, and what it could not) for the report.
-9. **Mode B (9.3) is not met.** Recorded: MR9 only, 30 bases × `SEEDS` (2/30 bases violate, `docs/diagnosis/MR9.md`; `results/mode_b/openrouter/mr9_30_bases_3_seeds/`), on a hosted model (OpenRouter, `nvidia/nemotron-3-super-120b-a12b:free`), not the canonical machine, and no replay cache committed (`results/mode_b/`). MR1 and MR3 in AI mode were not run.
+9. **Mode B (9.3) is not met.** Recorded: MR9 only, 30 bases × `SEEDS` (2/30 bases violate, `docs/diagnosis/MR9.md`; `results/mode_b/openrouter/mr9_30_bases_3_seeds/`), on a hosted model (OpenRouter, `nvidia/nemotron-3-super-120b-a12b:free`), not the canonical machine; its replay cache is committed (`cache/llm_replay_openrouter.jsonl`), the canonical machine's is not. MR1 and MR3 in AI mode were not run.
 
 | Version | Date | Change | Agreed |
 |---|---|---|---|
