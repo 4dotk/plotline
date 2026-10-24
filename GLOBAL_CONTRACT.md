@@ -340,7 +340,7 @@ The UI is a separate app (`docs/design_changes.md` C17).
 **Open items:**
 1. Both confirm D1–D11, or change them (before Gate 1).
 2. Verify that `llama serve` exposes an OpenAI-compatible endpoint with JSON-schema output; record version, flags, GGUF hash; confirm the same GGUF on both machines (Day 1).
-3. Check the Kaggle licence wording and add the citation (Day 1).
+3. Check the Kaggle licence wording and add the citation (Day 1). **Done:** DbCL v1.0 (`contracts/Data.md` §1).
 4. Project name is undecided (not needed by the contract).
 5. Write `example_response.json` from section 6 using the golden numbers (Day 1).
 6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.

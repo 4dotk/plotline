@@ -8,7 +8,7 @@ The suite has four layers:
 |---|---|---|
 | Unit tests | `tests/unit`: one file per agent, plus the contract, orchestrator, API and LLM client | 234 tests |
 | Harness self-tests | `tests/mt_selftests`: oracle, statistics, generator, and one planted fault per MR | 72 tests |
-| MT campaign | `tests/mt/run.py`: MR1–MR11 on 350 bases, Mode A (structured criteria, model off; MR9 through the rule parser), plus MR9 in Mode B on 10 bases | about 7,000 runs before MR11 |
+| MT campaign | `tests/mt/run.py`: MR1–MR11 on 350 bases, Mode A (structured criteria, model off; MR9 through the rule parser), plus MR9 in Mode B (10 bases × seed 0, then 30 bases × seeds 0, 101, 202) | about 7,000 runs before MR11 |
 | Free-text sets | `tests/smoke_queries.py` (20), `tests/nl_eval_queries.py` (34), `tests/nl_l1_scenarios.py` (18): sentences through the AI-mode path, judged against an expected reading | 72 sentences |
 
 ## 1. Code coverage by layer
@@ -82,7 +82,7 @@ Faults in the application found on 10-16, and the layer that found each one. The
 | A place outside the data ("Hyderabad", "Mylapore") answered for all 7 localities | free-text set | No |
 | The model dropped "5 BHK", invented a band for "around 80 lakh" (₹75–85 lakh), and obeyed "ignore your instructions" | free-text set, live model (`results/nl_eval/model_before_fixes.jsonl`) | No |
 | The model converted "from 1.5 cr down to 90 lakhs" to ₹9 lakh – ₹1.5 crore (90 lakh read as 9 lakh): a number made by the model, which D11 forbids. It also read "big family home" as sale condition Family. 15/18 realistic L1 scenarios right | realistic L1 scenarios, live model (`results/nl_eval/l1_model.jsonl`) | No |
-| After the prompt change (10-16) the model still reads "at least 3 BHK" as 3, "for my family" as sale condition Family, and "around 80 lakh" as ₹80–80 lakh: 31/34 right, up from 28/34 | free-text set, live model (`results/nl_eval/model_after_fixes.jsonl`) | No |
+| After the prompt change (10-16) the model still reads "at least 3 BHK" as 3, "for my family" as sale condition Family, and "around 80 lakh" as ₹80–80 lakh: 31/34 right, up from 26/34 | free-text set, live model (`results/nl_eval/model_after_fixes.jsonl`) | No |
 | Each locality has its own data range (Adyar ends May 2012): "Adyar 2023", "Adyar 3 BHK" and "Velachery 1 BHK" all returned `ok` with 0 rows and no explanation | realistic L1 scenarios | Partly: such runs were in the sweep, but no MR or oracle check asks whether an empty answer was explained |
 | F1: lakh → INR through a float dropped a row at the band edge | code review (10-13) | No |
 

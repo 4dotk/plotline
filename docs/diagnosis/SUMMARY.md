@@ -46,7 +46,7 @@ None of these reaches a Mode A number, which is consistent with no agent fault h
 | MR5 | 0/114 → 0/114 | 13/196 → 13/196 |
 | MR6 | 0/169 → 0/169 | 37/226 → 37/226 |
 | MR7 | 0/266 → 0/266 | 8/348 → 8/348 |
-| MR9 | 0 evaluated (LLM off) | – |
+| MR9 | 0 evaluated (LLM off) → 0/350 (rule parser, C25) | – |
 | MR10 | 0/154 → 0/154 | 108/350 → 108/350 |
 
-`TODO(final-results)`: after the real final run (`uv run python -m tests.mt.run --bases 350`, which rewrites `results/`) and the `final-results` tag, confirm that this table still holds.
+The final run on the frozen 1.2.0 code (`results/headline_table.md`, `results/run_manifest.json`) matches this table. It also adds MR11, which did not exist at `v0-results`: 0/350.

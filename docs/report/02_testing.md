@@ -17,14 +17,15 @@ Comparators: EXACT `==`; REL_TOL relative 1e-9; ABS_TOL absolute 1e-9 (fractions
 | 6 | Localities L → subset S ⇒ ALL count(S) ≤ ALL count(L); S's records unchanged | Monotonic | Precondition: \|L\| ≥ 2. Skip: L2 fired | EXACT counts; REL_TOL medians | Topology double-counting |
 | 7 | `window_end` + 1 ⇒ the 11 overlap months unchanged | Directional (invariance on the overlap) | Precondition: room in the snapshot. Skip: L2 fired | EXACT; REL_TOL; ABS_TOL | Off-by-one windows; window-wide state |
 | 8 | Prices × k, k ∈ {2, 4, 10} ⇒ counts and flags unchanged; money × k | Directional | Skip: flag margin | As MR2 | Absolute rupee thresholds |
-| 9 | Sentence → paraphrase ⇒ same `effective_criteria`, then the same report | Invariance | Needs the LLM (Mode B); every base skips in Mode A | EXACT | Planner maps paraphrases differently |
+| 9 | Sentence → paraphrase ⇒ same `effective_criteria`, then the same report | Invariance | Mode A: read by the rule parser (model stubbed to fail); Mode B: the live model | EXACT | Planner maps paraphrases differently |
 | 10 | Split by BHK ⇒ Σ per-BHK counts = source count | Monotonic (additive) | Skip: L2 fired; any soft filter set | EXACT | Rows lost or double-counted across BHK |
+| 11 | Plant every repairable defect at once (" adyar ", band high to low, BHK 7) ⇒ report equals the clean one, with exactly one L1 repair and a `repaired` notice | Invariance (repair) | All bases | EXACT | Repairs that change the question; repairs not disclosed |
 
 Each MR except MR9 has a planted-fault selftest that it catches (`tests/mt_selftests/`, table in `docs/MR_SPEC.md`).
 
 ## 2. Results (Mode A, `LLM_MODE=off`, 350 bases, seed 0)
 
-`TODO(final numbers)`: replace with `results/headline_table.md` at the `final-results` tag. The table below is the current committed run (commit `ab21456`, identical in counts to `v0-results`; reproduced byte-identically on 2026-10-16, see `docs/diagnosis/SUMMARY.md`).
+The final run on the frozen 1.2.0 code, from `results/headline_table.md` (MR1–MR8 and MR10 identical in counts to `v0-results`; MR9 through the rule parser and MR11 added after it, `docs/design_changes.md` C25).
 
 | MR | Evaluated | Skipped | Violations, rate [95 % CI] | Unconditioned |
 |---|---|---|---|---|
@@ -37,13 +38,14 @@ Each MR except MR9 has a planted-fault selftest that it catches (`tests/mt_selft
 | MR6 | 169 | 181 | 0/169 = 0.0 % [0.0, 2.2] CP | 37/226 = 16.4 % [12.1, 21.8] W |
 | MR7 | 266 | 84 | 0/266 = 0.0 % [0.0, 1.4] CP | 8/348 = 2.3 % [1.2, 4.5] W |
 | MR8 | 350 | 0 | 0/350 = 0.0 % [0.0, 1.0] CP | – |
-| MR9 | 0 | 350 (`LLM_MODE = off`) | n/a | – |
+| MR9 (rule parser) | 350 | 0 | 0/350 = 0.0 % [0.0, 1.0] CP | – |
 | MR10 | 154 | 196 | 0/154 = 0.0 % [0.0, 2.4] CP | 108/350 = 30.9 % [26.2, 35.9] W |
+| MR11 | 350 | 0 | 0/350 = 0.0 % [0.0, 1.0] CP | – |
 
 CP = Clopper–Pearson, W = Wilson. On every base: 0 oracle mismatches and 0 I-DET or I-PURE failures (`results/run_manifest.json`). The skip reasons per MR are in `results/headline_table.md`; every skip is listed in `results/skips.csv`.
 
 **Against the predictions** (`NOTEBOOK.md`, made before the first full run):
-* 0 violations for MR1–8 and MR10, and MR9 fully skipped: **correct**.
+* 0 violations for MR1–8 and MR10, and MR9 fully skipped (at `v0-results`, before MR9 ran through the rule parser): **correct**.
 * MR7 as the most likely MR to violate: **wrong**. It has 0 conditioned violations and the lowest unconditioned rate (2.3 %).
 * The heavy skips we predicted for MR3, MR4, MR5 and MR10: **correct**.
 
@@ -102,10 +104,11 @@ The MT campaign runs only structured, valid criteria with the model off (Mode A)
 | Parser | Right | Flagged | Silent | Error | Source |
 |---|---|---|---|---|---|
 | Rules only, before the F2 fixes | 26/34 | 2 | 6 | 0 | `results/nl_eval/rules_before_fixes.jsonl` |
-| Rules only, after the F2 fixes | 32/34 | 1 | 1 | 0 | `results/nl_eval/rules_after_fixes.jsonl` |
-| Model (gemma-4-e4b, live) | `TODO(number)` | | | | `results/nl_eval/model_live.jsonl` |
+| Rules only, after the F2 fixes and the Inspector (1.2.0) | 33/34 | 1 | 0 | 0 | `results/nl_eval/rules_after_fixes.jsonl` |
+| Model (gemma-4-e4b, live), before the prompt change | 26/34 | 2 | 6 | 0 | `results/nl_eval/model_before_fixes.jsonl` |
+| Model (gemma-4-e4b, live), after the prompt change | 31/34 | 0 | 3 | 0 | `results/nl_eval/model_after_fixes.jsonl` |
 
-Still silent after the fixes: a place outside the data ("homes in Mylapore") is answered for all 7 localities.
+A place outside the data ("homes in Mylapore") is now refused with an `out_of_scope` notice by the Inspector. Still silent with the model: "at least 3 bhk" read as 3, "around 80 lakh" read as ₹80–80 lakh, and "for my family" read as sale condition Family.
 
 ## 7. Threats to validity
 
@@ -125,3 +128,4 @@ Added by this round:
 * **No adequacy criterion was fixed in advance.** Nothing signalled that the suite never touched L1, the sentence path or the Planner. The suite was declared complete on its own pass rate. Mutants were planted only in the Aggregator and Validator, not in the Planner, where F2 was.
 * **Test inputs written by the same people (and tools) as the parser.** All 20 original sentences wrote "2 bhk" with a space, the same assumption the parser made. The live check passed any valid reading, so it could not fail on a wrong one (F2).
 * **Model availability.** The model server serves one request at a time on CPU. With a 120 s timeout and 3 attempts, a busy server sends the Planner to the rule fallback without the user being told, other than in the trace.
+* **The hosted model changed after the freeze.** The free hosted model used for Mode B (nvidia/nemotron-3-super-120b-a12b:free) became unavailable on 10-24, so the Mode B numbers above cannot be re-run on the same model. Live use now runs on Gemma 4 26B A4B (google/gemma-4-26b-a4b-it), which answered all 5 queries of a spot check in 15–35 s each. Gemma 4 31B was tried first as the stronger model and dropped: on the free tier about half its calls failed with a provider internal error or an empty answer, and the calls that succeeded took 23–128 s each. These spot checks are not recorded results; every number in this report comes from the models named in its sections.

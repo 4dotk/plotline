@@ -16,7 +16,7 @@ This is a **subcontract**, not a separate global or shared contract. It adds det
 | Raw SHA256 | `f7ba74d1e7aa4f7ad3bd66a8b4b9331d9bc5b8c135213289c4fd8391f6b96a64` |
 | Raw rows | 7,109 |
 | Coverage | 7 localities, sales from 2004-01 to 2015-02 |
-| Licence | Check the licence text on the Kaggle page and cite it in the report (global open item 3). |
+| Licence | Open Database Contents License (DbCL) v1.0, <https://opendatacommons.org/licenses/dbcl/1-0/>, as stated on the Kaggle page. Cited in the report (`docs/report/01_system.md` §2). |
 
 The raw file is never read by the application logic or the test suite. It is read only by `scripts/freeze_snapshot.py`.
 

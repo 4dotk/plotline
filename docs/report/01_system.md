@@ -1,6 +1,6 @@
 # Report draft, part 1: the system
 
-*Draft (T61). The sources for every statement are named inline. Open items are marked `TODO`.*
+*Draft (T61). The sources for every statement are named inline.*
 
 ## 1. System
 
@@ -21,7 +21,7 @@ Eight agents, run by the orchestrator (`src/plotline/orchestrator.py`; roles fro
 
 The model never produces a number (decision D11). It turns a sentence into criteria, chooses between two actions and writes text. Every figure in a report is computed by code, and a separate test oracle (`tests/mt/oracle.py`) recomputes the figures without importing application logic.
 
-The model inside the application is Gemma 4 E4B-it (Q4_K_M GGUF), served locally by `llama serve`. Thinking is on for the Planner and off for the Validator and Diagnostic (contract 1.1.2). Live answers are written to a replay cache keyed by the prompt, the model tag and the thinking setting, so that runs can be reproduced without a GPU (`contracts/LLM.md`).
+The model inside the application is Gemma 4 E4B-it (Q4_K_M GGUF), served locally by `llama serve`. Thinking is on for the Planner and off for the Validator and Diagnostic (contract 1.1.2). Live answers are written to a replay cache keyed by the prompt, the model tag and the thinking setting, so that runs can be reproduced without a GPU (`contracts/LLM.md`). Mode B was recorded on a hosted model instead (`nvidia/nemotron-3-super-120b-a12b:free` on OpenRouter, `docs/diagnosis/MR9.md`); every result names the model it came from.
 
 ## 2. Data source
 
@@ -31,7 +31,7 @@ The model inside the application is Gemma 4 E4B-it (Q4_K_M GGUF), served locally
 | Raw file | `data/raw/Chennai_Housing_Sale.csv`, committed unchanged, 7,109 rows, SHA-256 `f7ba74d1…6a64` |
 | Coverage | 7 localities, sales from 2004-01 to 2015-02 |
 | Snapshot | `data/chennai_snapshot.csv`, 7,108 rows, SHA-256 `18487b6f…6209` (`data/SNAPSHOT.sha256`) |
-| Licence | `TODO(licence)`: cite the licence text from the Kaggle page (global open item 3) |
+| Licence | Open Database Contents License (DbCL) v1.0, <https://opendatacommons.org/licenses/dbcl/1-0/>, as stated on the Kaggle page |
 
 The snapshot is produced once by `scripts/freeze_snapshot.py` with five logged cleaning rules:
 * R1: 38 locality spellings fixed;
@@ -70,10 +70,6 @@ flowchart TD
 ## 4. UI
 
 A web front end (built with Lovable against `examples/example_response.json`) calls the FastAPI app in `src/plotline/api.py`: `GET /api/health`, `GET /api/meta` and `POST /api/run`. All rounding happens in the UI; the application never rounds (`GLOBAL_CONTRACT.md` §6.3).
-
-`TODO(ui)`: list what the UI shows (charts, flags, trace view), checked against the UI repository.
-
-`TODO(screenshot)`: one screenshot of a report with an L2 firing.
 
 ## 5. Trace excerpt
 
