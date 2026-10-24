@@ -16,3 +16,6 @@ cache/llm_replay.jsonl
 # raw coverage data and the scratch sweep written by scripts/coverage_by_layer.py
 results/adequacy/.coverage*
 results/adequacy/mt_run/
+
+# drafts and scratch files from other agents, not part of the submission
+temp/
