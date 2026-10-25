@@ -9,10 +9,12 @@ __pycache__/
 test_logs/
 *.log
 cache/*.tmp
-# replay cache: the hosted-model cache (cache/llm_replay_openrouter.jsonl) is committed, it
-# replays the results in results/mode_b/openrouter/. The canonical-machine cache is not committed
+# replay cache: the hosted-model caches (cache/llm_replay_nemotron.jsonl and
+# cache/llm_replay_gemma26b.jsonl) are committed, they replay results/mode_b/nemotron/,
+# results/mode_b/gemma26b/ and pilot_tests/. The canonical-machine cache is not committed
 # until a clean Mode B recording there; then remove this line (GLOBAL_CONTRACT 8, 11)
 cache/llm_replay.jsonl
+cache/llm_replay_gemma_e4b.jsonl
 # raw coverage data and the scratch sweep written by scripts/coverage_by_layer.py
 results/adequacy/.coverage*
 results/adequacy/mt_run/

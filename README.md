@@ -40,7 +40,8 @@ Every MT command below writes into `results/` unless given `--out <dir>`; use `-
 | **Mode A**, the headline (MR1–MR11, 350 bases, seed 0) | `uv run python -m tests.mt.run --bases 350` | off; MR9 through the rule parser | `results/` |
 | Mode A smoke | `uv run python -m tests.mt.run --bases 20 --out <dir>` | off | `<dir>` |
 | Mode A, chosen MRs | `uv run python -m tests.mt.run --mr MR3a --mr MR10 --bases 350 --out <dir>` | off | `<dir>` |
-| **Mode B**, replayed (reproduces `results/mode_b/openrouter/mr9_30_bases_3_seeds/`) | `LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_openrouter.jsonl LLM_MODEL_TAG=nemotron-3-super-120b-openrouter-free LLM_MAX_TOKENS=2048 uv run python -m tests.mt.run --mr MR9 --bases 30 --live --seeds 0 101 202 --out <dir>` | replay, offline | `<dir>` |
+| **Mode B**, replayed (reproduces `results/mode_b/nemotron/`) | `LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_nemotron.jsonl LLM_MODEL_TAG=nemotron-3-super-120b-openrouter-free LLM_MAX_TOKENS=2048 uv run python -m tests.mt.run --mr MR9 --bases 30 --live --seeds 0 101 202 --out <dir>` | replay, offline | `<dir>` |
+| **Mode B (Gemma)**, replayed (reproduces `results/mode_b/gemma26b/`) | `LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_gemma26b.jsonl LLM_MODEL_TAG=gemma-4-26b-a4b-it-openrouter-byok LLM_MAX_TOKENS=4096 uv run python -m tests.mt.run --mr MR9 --mr MR3a --mr MR3b --mr MR1 --bases 30 --live --seeds 0 101 202 --out <dir>` | replay, offline | `<dir>` |
 | Mode B, live | `uv run python -m tests.mt.run --mr MR9 --bases 30 --live --seeds 0 101 202 --out <dir>` | the model in `.env` | `<dir>` |
 | Mutants, all 16 / one | `uv run python -m tests.mt.mutants --bases 60 [--mutant M5] --out <dir>` | off | `results/mutants/` |
 | Diagnosis: loops on vs off, trace diff of one base | `uv run python -m tests.mt.diagnose --mr MR10 --base-id 321 --out <dir>` | off | `results/diagnosis/` |
@@ -53,12 +54,23 @@ Every MT command below writes into `results/` unless given `--out <dir>`; use `-
 
 MR names: `MR1 MR2 MR3a MR3b MR4 MR5 MR6 MR7 MR8 MR9 MR10 MR11`. Mutants: `M1`–`M16`. In the "Writes to" column, a `results/…` default applies when `--out` is left out.
 
-Mode A is deterministic and needs no model or network. Mode B (MR9 on a hosted model, `nvidia/nemotron-3-super-120b-a12b:free` on OpenRouter, 30 bases × seeds 0, 101, 202) can be replayed offline from the committed cache. The cache key includes the model tag and the max tokens, so both must be the recording's (the tag is in the run's manifest; the max tokens were 2048):
+Mode A is deterministic and needs no model or network. Mode B (MR9 on two hosted models — `nvidia/nemotron-3-super-120b-a12b:free` on OpenRouter, 30 bases × seeds 0, 101, 202, and `google/gemma-4-26b-a4b-it:free` for MR9, MR3 and MR1, 30 bases × seeds 0, 101, 202) can be replayed offline from the committed caches. The cache key includes the model tag and the max tokens, so both must be the recording's (the tag is in the run's manifest):
+
+Nemotron:
 
 ```bash
-LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_openrouter.jsonl \
+LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_nemotron.jsonl \
 LLM_MODEL_TAG=nemotron-3-super-120b-openrouter-free LLM_MAX_TOKENS=2048 \
   uv run python -m tests.mt.run --mr MR9 --bases 30 --live --seeds 0 101 202
+```
+
+Gemma:
+
+```bash
+LLM_MODE=replay LLM_CACHE_PATH=cache/llm_replay_gemma26b.jsonl \
+LLM_MODEL_TAG=gemma-4-26b-a4b-it-openrouter-byok LLM_MAX_TOKENS=4096 \
+  uv run python -m tests.mt.run --mr MR9 --mr MR3a --mr MR3b --mr MR1 \
+  --bases 30 --live --seeds 0 101 202
 ```
 
 A call missing from the cache fails loudly (`E_REPLAY_MISS`); replay never goes live.

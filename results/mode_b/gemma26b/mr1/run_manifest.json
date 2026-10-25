@@ -1,0 +1,44 @@
+{
+  "contract_version": "1.2.0",
+  "gen_seed": 42,
+  "git_commit": "94715ed",
+  "invariant_violations": [],
+  "llm": {
+    "base_url": "https://openrouter.ai/api/v1",
+    "model": "google/gemma-4-26b-a4b-it:free",
+    "model_tag": "gemma-4-26b-a4b-it-openrouter-byok"
+  },
+  "llm_mode": "live",
+  "mode": "B (AI mode)",
+  "mrs": {
+    "MR1": {
+      "evaluated": 30,
+      "skipped": 0,
+      "violations": 0
+    }
+  },
+  "n_bases": 30,
+  "oracle_mismatches": {
+    "count": 0,
+    "first": []
+  },
+  "seed_registry_entries": 180,
+  "seeds": [
+    0,
+    101,
+    202
+  ],
+  "snapshot_sha256": "18487b6ff164507f254c7bca38f13be786523b1e3fec03dd457bffa866cb6209",
+  "strata": {
+    "broad": 24,
+    "thin": 6
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pydantic": "2.14.0",
+    "python": "3.14.8",
+    "scipy": "1.18.1"
+  },
+  "query_form": "canonical sentence per base (the same sentence MR9 uses as its source)"
+}

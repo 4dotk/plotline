@@ -1,0 +1,25 @@
+{
+  "cache_hits": 1920,
+  "live_calls": 288,
+  "retries": 16,
+  "gave_up": 0,
+  "throttle_s": 2582.9042167632433,
+  "errors": [
+    "02:33:00 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:33:36 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:42:24 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:45:00 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:46:00 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:46:24 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:47:48 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:48:36 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:49:24 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:54:12 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:58:48 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "02:59:12 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "03:01:24 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "03:01:36 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "03:04:01 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal",
+    "03:04:12 OpenAIAPIError: Error code: 502 - {'error': {'message': 'Provider returned error', 'code': 502, 'metadata': {'raw': '{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal"
+  ]
+}
