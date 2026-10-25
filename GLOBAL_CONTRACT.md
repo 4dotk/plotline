@@ -292,7 +292,7 @@ The tests call `run(...)` directly (not the API), build each follow-up from its 
 
 ### 9.3 Base inputs
 
-One **base input** = one distinct `Criteria` (the unit for counting and confidence intervals; the 3 seeds on one base are not independent). A generator seeded by `GEN_SEED` draws them: 80 % broad (≥ 60 matching rows), 20 % thin (20–59 rows with a price band, which exercises L2). **Mode A** (`LLM_MODE=off`): ≥ 100 bases per MR. **Mode B** (live, then replayed): ≥ 30 bases (50 target) for MR9, plus MR1 and MR3 in AI mode. Details: `testing.md` §4. *Status at the freeze: not met (open item 9).*
+One **base input** = one distinct `Criteria` (the unit for counting and confidence intervals; the 3 seeds on one base are not independent). A generator seeded by `GEN_SEED` draws them: 80 % broad (≥ 60 matching rows), 20 % thin (20–59 rows with a price band, which exercises L2). **Mode A** (`LLM_MODE=off`): ≥ 100 bases per MR. **Mode B** (live, then replayed): ≥ 30 bases (50 target) for MR9, plus MR1 and MR3 in AI mode. Details: `testing.md` §4. *Status at 2026-10-25: MR9, MR1 and MR3 were run on hosted models, 30 bases × `SEEDS` each, but not on the canonical machine (open item 9).*
 
 ### 9.4 Seeds and statistics
 
@@ -346,7 +346,7 @@ The UI is a separate app (`docs/design_changes.md` C17).
 6. Redraw the control-flow graph with L1 and L2 marked as cycles, and update the design note (Day 1): `median_price_inr` → `median_price` + `price_unit`; remove L3 (text and graph, including the clean/moderate/severe re-scan branch); give every agent its one-line job and Kind (7.1); use the 6.3 formulas for `coverage_score` and `anomaly_flags`; the Diagnostic runs for every flag; the snapshot has 7,108 rows.
 7. Review the **[clarification]** rows in `contracts/agents/_review.md`, `llm.md` §12 and `testing.md` §12 (at T79).
 8. Write the ½-page reflection (what an LLM could have produced without running the system, and what it could not) for the report.
-9. **Mode B (9.3) is not met.** Recorded: MR9 only, 30 bases × `SEEDS` (2/30 bases violate, `docs/diagnosis/MR9.md`; `results/mode_b/openrouter/mr9_30_bases_3_seeds/`), on a hosted model (OpenRouter, `nvidia/nemotron-3-super-120b-a12b:free`), not the canonical machine; its replay cache is committed (`cache/llm_replay_openrouter.jsonl`), the canonical machine's is not. MR1 and MR3 in AI mode were not run.
+9. **Mode B (9.3) is met on hosted models, not on the canonical machine.** Recorded: MR9, MR1 and MR3 in AI mode, 30 bases × `SEEDS` each, on `google/gemma-4-26b-a4b-it:free` (`results/mode_b/gemma26b/`; MR9 4/30 bases violate, MR3a/b 0/20 with 10 skipped, MR1 0/30). MR9 was also run on `nvidia/nemotron-3-super-120b-a12b:free` (`results/mode_b/nemotron/`, 2/30 bases violate, `docs/diagnosis/MR9.md`). Both replay caches are committed (`cache/llm_replay_gemma26b.jsonl`, `cache/llm_replay_nemotron.jsonl`); the canonical machine's is not. The model's widen/stop decision is not covered in Mode B.
 
 | Version | Date | Change | Agreed |
 |---|---|---|---|

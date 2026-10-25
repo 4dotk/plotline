@@ -21,7 +21,7 @@ Eight agents, run by the orchestrator (`src/plotline/orchestrator.py`; roles fro
 
 The model never produces a number (decision D11). It turns a sentence into criteria, chooses between two actions and writes text. Every figure in a report is computed by code, and a separate test oracle (`tests/mt/oracle.py`) recomputes the figures without importing application logic.
 
-The model inside the application is Gemma 4 E4B-it (Q4_K_M GGUF), served locally by `llama serve`. Thinking is on for the Planner and off for the Validator and Diagnostic (contract 1.1.2). Live answers are written to a replay cache keyed by the prompt, the model tag and the thinking setting, so that runs can be reproduced without a GPU (`contracts/LLM.md`). Mode B was recorded on a hosted model instead (`nvidia/nemotron-3-super-120b-a12b:free` on OpenRouter, `docs/diagnosis/MR9.md`); every result names the model it came from.
+The model inside the application is Gemma 4 E4B-it (Q4_K_M GGUF), served locally by `llama serve`. Thinking is on for the Planner and off for the Validator and Diagnostic (contract 1.1.2). Live answers are written to a replay cache keyed by the prompt, the model tag and the thinking setting, so that runs can be reproduced without a GPU (`contracts/LLM.md`). Mode B was recorded on hosted models instead: `nvidia/nemotron-3-super-120b-a12b:free` for MR9, and `google/gemma-4-26b-a4b-it:free` for MR9, MR3 and MR1 (both on OpenRouter; `docs/diagnosis/MR9.md`). Every result names the model it came from.
 
 ## 2. Data source
 

@@ -18,9 +18,14 @@ How each was checked:
 
 In every case the existing skip rule is exactly what keeps these diffs out of the conditioned table, so the skip rules stand unchanged.
 
-## MR9 in Mode B (2026-10-17)
+## MR9 in Mode B (2026-10-17, rerun 2026-10-24/25)
 
-The only conditioned violations in the campaign: **2/30 bases** on the live model (OpenRouter, 30 bases × seeds 0, 101, 202). **Class: Planner fault on an ambiguous input; not fixed (code frozen).** Both are seed 101 on "… move in the year to 2010-11?". The model read it as the Indian financial year 2010-11 (`window_end` 2011-03) or as no month at all (null, so the latest month). See [MR9.md](MR9.md).
+The conditioned violations in the campaign were found by MR9. **Class: Planner fault on an ambiguous input; not fixed (code frozen).**
+
+* **Nemotron 3 Super 120B:** **2/30 bases** on the live model (OpenRouter, 30 bases × seeds 0, 101, 202). Both are seed 101 on "… move in the year to 2010-11?". The model read it as the Indian financial year 2010-11 (`window_end` 2011-03) or as no month at all (null, so the latest month).
+* **Gemma 4 26B A4B:** **4/30 bases = 13.3 % [5.3 %, 29.7 %]** on the same 30 bases × 3 seeds; all four financial-year-looking dates (bases 9, 10, 22, 24) fail under all three seeds, with follow-up `window_end` 2015-02. The seed no longer decides, so on this model the fault is systematic.
+
+MR9, MR3 and MR1 were also run on Gemma in Mode B: MR3a/b 0/20 with 10 skipped (unconditioned 9/30 = 30 %), MR1 0/30. See [MR9.md](MR9.md).
 
 ## Before / after (T60)
 
